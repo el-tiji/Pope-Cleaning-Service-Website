@@ -1,0 +1,82 @@
+import { Sparkles, Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import { Link } from "wouter";
+
+export function Footer() {
+  return (
+    <footer className="bg-secondary text-secondary-foreground pt-16 pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="col-span-1 md:col-span-1">
+            <Link href="/">
+              <a className="flex items-center gap-2 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-display font-bold text-xl leading-none tracking-tight text-white">Pope</span>
+                  <span className="text-xs font-semibold text-accent uppercase tracking-wider">Cleaning Services</span>
+                </div>
+              </a>
+            </Link>
+            <p className="text-secondary-foreground/70 text-sm mb-6 max-w-xs">
+              Premium residential and commercial cleaning services across the Perth metropolitan area. We bring the sparkle back to your space.
+            </p>
+            <div className="flex items-center gap-4">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                <Facebook className="w-5 h-5 text-white" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                <Instagram className="w-5 h-5 text-white" />
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h4 className="font-display font-bold text-lg mb-6 text-white">Services</h4>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Residential Cleaning</a></li>
+              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Commercial Cleaning</a></li>
+              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Vacate Cleaning</a></li>
+              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Carpet & Upholstery</a></li>
+              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Tile & Grout</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-display font-bold text-lg mb-6 text-white">Company</h4>
+            <ul className="space-y-3">
+              <li><a href="#about" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">About Us</a></li>
+              <li><a href="#reviews" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Testimonials</a></li>
+              <li><a href="#faq" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">FAQ</a></li>
+              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Work With Us</a></li>
+              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Privacy Policy</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-display font-bold text-lg mb-6 text-white">Contact</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-secondary-foreground/70 text-sm">
+                <Phone className="w-5 h-5 text-accent shrink-0" />
+                <span>1300 000 000</span>
+              </li>
+              <li className="flex items-start gap-3 text-secondary-foreground/70 text-sm">
+                <Mail className="w-5 h-5 text-accent shrink-0" />
+                <span>hello@popecleaning.com.au</span>
+              </li>
+              <li className="flex items-start gap-3 text-secondary-foreground/70 text-sm">
+                <MapPin className="w-5 h-5 text-accent shrink-0" />
+                <span>Servicing all of Perth Metropolitan area</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-secondary-foreground/50">
+          <p>&copy; {new Date().getFullYear()} Pope Cleaning Services. All rights reserved.</p>
+          <p className="mt-2 md:mt-0">Crafted for Perth with care.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
