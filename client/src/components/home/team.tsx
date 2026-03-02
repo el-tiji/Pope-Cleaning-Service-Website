@@ -37,6 +37,15 @@ export function Team() {
             </div>
             
             <div className="relative group">
+              <div className="absolute top-8 left-8 z-20 flex items-center gap-3 bg-white/90 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-2xl border border-white/50">
+                <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
+                  <span className="font-display font-bold text-2xl">P</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-display font-bold text-xl leading-none tracking-tight text-secondary">Pope</span>
+                  <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Cleaning Services</span>
+                </div>
+              </div>
               <img 
                 src={ASSETS.team.hero.src} 
                 alt={ASSETS.team.hero.alt} 
