@@ -1,0 +1,101 @@
+AI‑GENERATED VISUAL ASSETS (TEMPORARY PLACEHOLDERS)
+
+IMPORTANT: For now, assume that ALL images, illustrations, icons and 3D elements will be AI‑generated placeholders, NOT final photography.
+
+GENERAL RULES
+- Do NOT use random stock photography URLs.
+- Instead, design the layout and components assuming that we will later drop in real AI‑generated assets that follow the same style.
+- For each visual asset, do two things:
+  1) Provide a meaningful, semantic file name or path (for example: `/assets/placeholders/hero-house-cleaning-3d.png`).
+  2) Provide clear, descriptive alt text and comments explaining what the image should look like (scene, style, colors).
+- Keep all placeholders easy to replace later (one central config or a clear assets/ folder).
+
+STYLE OF AI‑GENERATED IMAGES AND ILLUSTRATIONS
+- Use a consistent, modern 3D / isometric style across the whole site.
+- Scenes should relate directly to cleaning and to Pope Cleaning Services:
+  - Perth‑style houses and apartments.
+  - Offices and commercial spaces.
+  - Carpets, tiles, upholstery, bathrooms, glass, and outdoor areas.
+  - Cleaning tools (vacuum, mop, steam machine, pressure washer, etc.).
+- Visual style:
+  - Clean, minimal, slightly playful but still professional.
+  - Soft 3D shapes, rounded edges, subtle gradients.
+  - Lighting that feels bright and “freshly cleaned”, no dark or moody scenes.
+
+COLOR PALETTE AND COMPLEMENTARY COLORS
+- Base the image palettes on the brand colors:
+  - Primary blue (#2F7FD1 or similar).
+  - Dark navy/blue (#004170 or similar).
+  - Light bubble blue (#7EC8FF or similar).
+- Add carefully chosen complementary accents to make the 3D elements pop:
+  - Soft warm accent like a light peach or soft orange (#FFC999 or #FFB46A) for small details (pillows, buckets, icons).
+  - Neutral whites and light grays for walls and backgrounds so the blues stand out.
+- Make sure the assets never clash with the UI:
+  - Avoid neon or extremely saturated colors.
+  - Keep backgrounds light so text overlays remain readable.
+
+PLACEHOLDER IMAGES BY SECTION (DESCRIPTIONS)
+
+1) HOME HERO
+- Use a large isometric/3D illustration placeholder:
+  - File example: `/assets/placeholders/hero-perth-house-cleaning-3d.png`
+  - Description: an isometric view of a modern Perth living room and kitchen, with a cleaner vacuuming a carpet and another cleaning tiles. Blue cleaning bubbles and sparkles around surfaces. Colors follow the brand blues with small warm accent details.
+
+2) SERVICES CARDS
+- Each service card gets a small square or circular 3D/isometric icon:
+  - Residential: cozy living room with sofa and rug.
+  - Commercial: small office scene with desks and windows.
+  - Vacate: empty room with moving boxes and a cleaner.
+  - Carpet & Upholstery: close‑up of a carpet and sofa being steam‑cleaned.
+  - Tile & Grout: tiled bathroom floor with visible grout lines.
+  - Pressure Cleaning: driveway or patio being pressure‑washed.
+  - Car Detailing: car interior seat being cleaned.
+- Use filenames like `/assets/placeholders/icon-service-residential-3d.png`, etc.
+
+3) ABOUT US (MAIN 3D STORYTELLING)
+- Hero illustration placeholder:
+  - File: `/assets/placeholders/about-perth-neighbourhood-3d.png`
+  - Description: an isometric “mini Perth neighborhood” with a few houses, a small office, and a Pope Cleaning branded van in blue. Two stylized characters representing the owners standing by the van.
+- Timeline/milestones:
+  - Small 3D icons for each year or milestone (house, office, vacate symbol), using brand colors.
+
+4) REVIEWS & RESULTS
+- Before/after placeholders:
+  - Use paired images with filenames like:
+    - `/assets/placeholders/beforeafter-carpet-3d-before.png`
+    - `/assets/placeholders/beforeafter-carpet-3d-after.png`
+  - Description: same isometric room with a dirty carpet (before) and a perfectly clean carpet (after).
+- Testimonial avatars:
+  - Simple 3D/flat avatars or initials in circular frames in brand colors.
+
+5) FAQs
+- Small 3D icons next to FAQ categories:
+  - Shield for guarantees, house icon for service areas, leaf icon for eco‑friendly products, credit card icon for payments.
+- Filenames like `/assets/placeholders/icon-faq-guarantee-3d.png`.
+
+6) CONTACT & BOOKING
+- Side illustration:
+  - File: `/assets/placeholders/map-perth-service-area-3d.png`
+  - Description: isometric map‑style illustration of Perth metro with a pin or marker showing “Pope Cleaning Services”, using blues and soft complementary colors.
+
+7) WORK WITH US
+- Hero illustration:
+  - File: `/assets/placeholders/team-cleaners-perth-3d.png`
+  - Description: a small team of diverse cleaners in Pope Cleaning uniforms standing with equipment and a branded van.
+
+VIDEO / MOTION PLACEHOLDERS
+- Where a hero video or short explainer video is planned:
+  - Implement a video component with a static 3D thumbnail placeholder image (e.g. `/assets/placeholders/video-cover-carpet-clean-3d.png`).
+  - Provide alt text and a caption indicating the future video content (“Short 30–40 second video of carpet and tile cleaning in a Perth home”).
+- Do not rely on auto‑playing video; treat video as an enhancement.
+
+TECHNICAL IMPLEMENTATION FOR PLACEHOLDERS
+- Centralize asset references:
+  - Create a simple config or constants file (for example `assets.ts` or `visuals.ts`) exporting paths and alt texts for all placeholders.
+  - Use these constants in components so we can swap the images later without hunting through the codebase.
+- Ensure all placeholders:
+  - Have descriptive alt attributes.
+  - Are optimized for responsive layouts (set aspect ratios, use `object-fit: cover` where appropriate).
+  - Use modern formats where possible (WebP/AVIF) while still working with PNG/JPEG fallbacks.
+
+The goal is to ship a fully functional, visually coherent site that already looks like a polished 3D/isometric cleaning brand, while still using temporary AI‑style placeholders that we can replace at any time with final AI‑generated or photographic assets.
