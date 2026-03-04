@@ -74,25 +74,30 @@ export function Contact() {
             </form>
           </div>
           
-            <div className="relative">
-              <div className="absolute inset-0 bg-accent/20 rounded-[3rem] transform -rotate-3 scale-105 blur-2xl -z-10"></div>
-              <div className="bg-white p-6 rounded-[2.5rem] shadow-2xl border border-white/50 relative">
-                <div className="bg-secondary text-white p-8 rounded-2xl shadow-xl">
-                  <h4 className="font-display font-bold text-2xl mb-4">Service Area</h4>
-                  <p className="text-lg text-white/80 leading-relaxed mb-6">
-                    We proudly serve the entire Perth metropolitan area, providing premium cleaning services from Joondalup to Mandurah.
-                  </p>
-                  <ul className="space-y-3">
-                    {["Perth CBD", "Victoria Park", "South Perth", "Subiaco", "Scarborough"].map((area) => (
-                      <li key={area} className="flex items-center gap-3 text-sm font-medium text-accent">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                        {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+          <div className="relative">
+            <div className="absolute inset-0 bg-accent/20 rounded-[3rem] transform -rotate-3 scale-105 blur-2xl -z-10"></div>
+            <div className="bg-white p-2 rounded-[2.5rem] shadow-2xl border border-white/50 relative">
+              <div className="absolute -bottom-6 -right-6 bg-secondary text-white p-6 rounded-2xl shadow-xl max-w-xs animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
+                <h4 className="font-bold text-lg mb-2">Service Area</h4>
+                <p className="text-sm text-white/80">We proudly serve the entire Perth metropolitan area, from Joondalup to Mandurah.</p>
+              </div>
+              
+              <img 
+                src={ASSETS.contact.map.src} 
+                alt={ASSETS.contact.map.alt} 
+                className="w-full h-auto object-cover rounded-[2rem] bg-blue-50/50 aspect-square"
+                loading="lazy"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                  (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="hidden w-full h-auto object-cover rounded-[2rem] bg-blue-50 aspect-square flex-col items-center justify-center text-primary border border-primary/20">
+                <span className="font-bold mb-2">Map Placeholder</span>
+                <span className="text-sm text-muted-foreground">3D Perth Metro Map</span>
               </div>
             </div>
+          </div>
           
         </div>
       </div>
