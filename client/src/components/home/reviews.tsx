@@ -1,7 +1,74 @@
 import { ASSETS } from "@/lib/assets";
-import { Play } from "lucide-react";
+import { Play, Star, Send } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+
+interface Review {
+  name: string;
+  sub: string;
+  text: string;
+  rating: number;
+}
 
 export function Reviews() {
+  const [reviews, setReviews] = useState<Review[]>([
+    {
+      name: "Sarah M.",
+      sub: "Residential Client",
+      text: "Absolutely incredible service. They managed to get stains out of my carpet that have been there for years. The team was punctual, polite, and very thorough.",
+      rating: 5
+    },
+    {
+      name: "James T.",
+      sub: "Office Manager",
+      text: "We switched to Pope Cleaning for our corporate office and the difference is night and day. The place smells fresh every morning and the attention to detail is outstanding.",
+      rating: 5
+    },
+    {
+      name: "Elena W.",
+      sub: "End of Lease",
+      text: "Booked them for a vacate clean and got my full bond back without any issues. The real estate agent even asked for their details! Highly recommended.",
+      rating: 5
+    }
+  ]);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    serviceType: "",
+    rating: 5,
+    text: ""
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleRatingChange = (rating: number) => {
+    setFormData(prev => ({ ...prev, rating }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.name && formData.serviceType && formData.text) {
+      const newReview: Review = {
+        name: formData.name,
+        sub: formData.serviceType,
+        text: formData.text,
+        rating: formData.rating
+      };
+      setReviews(prev => [newReview, ...prev]);
+      setFormData({ name: "", serviceType: "", rating: 5, text: "" });
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 3000);
+    }
+  };
+
   return (
     <section id="reviews" className="py-24 bg-secondary text-white relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,46 +118,108 @@ export function Reviews() {
           </div>
         </div>
 
-        {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              name: "Sarah M.",
-              sub: "Residential Client",
-              text: "Absolutely incredible service. They managed to get stains out of my carpet that have been there for years. The team was punctual, polite, and very thorough.",
-              rating: 5
-            },
-            {
-              name: "James T.",
-              sub: "Office Manager",
-              text: "We switched to Pope Cleaning for our corporate office and the difference is night and day. The place smells fresh every morning and the attention to detail is outstanding.",
-              rating: 5
-            },
-            {
-              name: "Elena W.",
-              sub: "End of Lease",
-              text: "Booked them for a vacate clean and got my full bond back without any issues. The real estate agent even asked for their details! Highly recommended.",
-              rating: 5
-            }
-          ].map((review, i) => (
-            <div key={i} className="bg-white text-secondary rounded-3xl p-8 shadow-xl relative">
-              <div className="flex text-yellow-400 mb-4">
-                {[...Array(review.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                ))}
-              </div>
-              <p className="text-muted-foreground mb-6 italic leading-relaxed">"{review.text}"</p>
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-xl">
-                  {review.name.charAt(0)}
+        {/* Testimonials and New Review Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* New Review Form */}
+          <div className="lg:col-span-1 h-fit sticky top-32">
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/20">
+              <h4 className="text-xl font-bold mb-4">Share Your Experience</h4>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label className="text-xs uppercase tracking-wider text-white/70">Your Name</Label>
+                  <Input 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="John Doe" 
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/20 focus:border-accent"
+                  />
                 </div>
-                <div>
-                  <h5 className="font-bold text-secondary">{review.name}</h5>
-                  <p className="text-xs text-muted-foreground font-medium">{review.sub}</p>
+                
+                <div className="space-y-2">
+                  <Label className="text-xs uppercase tracking-wider text-white/70">Service Used</Label>
+                  <Input 
+                    name="serviceType"
+                    value={formData.serviceType}
+                    onChange={handleInputChange}
+                    placeholder="Residential Cleaning" 
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/20 focus:border-accent"
+                  />
                 </div>
-              </div>
+                
+                <div className="space-y-2">
+                  <Label className="text-xs uppercase tracking-wider text-white/70">Rating</Label>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => handleRatingChange(star)}
+                        className="transition-all"
+                      >
+                        <Star 
+                          className={`w-6 h-6 ${
+                            star <= formData.rating 
+                              ? "fill-yellow-400 text-yellow-400" 
+                              : "text-white/30"
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label className="text-xs uppercase tracking-wider text-white/70">Review</Label>
+                  <Textarea 
+                    name="text"
+                    value={formData.text}
+                    onChange={handleInputChange}
+                    placeholder="Share your experience with Pope Cleaning..." 
+                    className="min-h-[100px] bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/20 focus:border-accent resize-none text-sm"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-accent text-secondary hover:bg-primary/80 font-bold rounded-full h-10 gap-2"
+                  disabled={!formData.name || !formData.serviceType || !formData.text}
+                >
+                  <Send className="w-4 h-4" />
+                  Post Review
+                </Button>
+                
+                {submitted && (
+                  <div className="bg-green-500/20 border border-green-500/50 text-white text-xs p-3 rounded-lg text-center animate-in fade-in duration-300">
+                    ¡Gracias! Tu reseña ha sido publicada.
+                  </div>
+                )}
+              </form>
             </div>
-          ))}
+          </div>
+          
+          {/* Reviews List */}
+          <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {reviews.map((review, i) => (
+              <div key={i} className={`bg-white text-secondary rounded-3xl p-6 shadow-xl relative transition-all duration-500 ${i === 0 ? 'animate-in fade-in slide-in-from-bottom-4' : ''}`}>
+                <div className="flex text-yellow-400 mb-3">
+                  {[...Array(review.rating)].map((_, idx) => (
+                    <svg key={idx} className="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mb-6 italic leading-relaxed text-sm">"{review.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm">
+                    {review.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-secondary text-sm">{review.name}</h5>
+                    <p className="text-xs text-muted-foreground font-medium">{review.sub}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
