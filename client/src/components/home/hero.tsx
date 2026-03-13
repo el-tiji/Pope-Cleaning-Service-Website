@@ -89,9 +89,9 @@ export function Hero() {
                 </div>
               </div>
               
-              <div className="relative overflow-hidden rounded-[2rem] bg-muted/20 group">
+              <div className="relative overflow-hidden rounded-[2rem] bg-muted/20 group aspect-[4/3] sm:aspect-video">
                 <div 
-                  className="flex transition-transform duration-500 ease-in-out" 
+                  className="flex transition-transform duration-500 ease-in-out h-full" 
                   style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
                 >
                   {carouselImages.map((src, index) => (
@@ -99,7 +99,7 @@ export function Hero() {
                       key={index}
                       src={src} 
                       alt={`Cleaning scene ${index + 1}`} 
-                      className="w-full h-auto object-cover min-w-full shrink-0"
+                      className="w-full h-full object-cover min-w-full shrink-0"
                       loading={index === 0 ? "eager" : "lazy"}
                     />
                   ))}
