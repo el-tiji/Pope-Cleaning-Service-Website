@@ -1,4 +1,4 @@
-import { Sparkles, Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import { Sparkles, Phone, Mail, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 import { Link } from "wouter";
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
             <Link href="/">
               <a className="flex items-center gap-2 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
-                  <Sparkles className="w-6 h-6" />
+                  <span className="font-display font-bold text-2xl">P</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="font-display font-bold text-xl leading-none tracking-tight text-white">Pope</span>
@@ -22,11 +22,14 @@ export function Footer() {
               Premium residential and commercial cleaning services across the Perth metropolitan area. We bring the sparkle back to your space.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
                 <Facebook className="w-5 h-5 text-white" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
                 <Instagram className="w-5 h-5 text-white" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
+                <Youtube className="w-5 h-5 text-white" />
               </a>
             </div>
           </div>
