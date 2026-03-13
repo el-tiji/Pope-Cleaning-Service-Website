@@ -1,5 +1,5 @@
 import { ASSETS } from "@/lib/assets";
-import { Play, Star, Send } from "lucide-react";
+import { Play, Star, Send, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,6 +43,18 @@ export function Reviews() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const videoCarousel = [
+    { src: ASSETS.videoPlaceholder.src, title: "Carpet & Tile Transformation", desc: "Watch how we restored this Perth home in 40 seconds." },
+    { src: "/assets/placeholders/video-cover-1.png", title: "Deep Kitchen Clean", desc: "Grease and grime removal in a modern kitchen." },
+    { src: "/assets/placeholders/video-cover-2.png", title: "End of Lease Guarantee", desc: "Securing the bond back for a 3-bedroom apartment." },
+    { src: "/assets/placeholders/video-cover-3.png", title: "Commercial Office Reset", desc: "Preparing an office space for a busy work week." },
+    { src: "/assets/placeholders/video-cover-4.png", title: "Premium Car Detailing", desc: "Reviving the interior of a family SUV." },
+  ];
+
+  const nextVideo = () => setCurrentVideoIndex((prev) => (prev + 1) % videoCarousel.length);
+  const prevVideo = () => setCurrentVideoIndex((prev) => (prev - 1 + videoCarousel.length) % videoCarousel.length);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -80,26 +92,62 @@ export function Reviews() {
           </p>
         </div>
 
-        {/* Video Placeholder */}
-        <div className="max-w-4xl mx-auto mb-20 relative group cursor-pointer">
+        {/* Video Placeholder Carousel */}
+        <div className="max-w-4xl mx-auto mb-20 relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-[2.5rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
           <div className="relative bg-black rounded-[2rem] overflow-hidden aspect-video shadow-2xl">
-            <img 
-              src={ASSETS.videoPlaceholder.src} 
-              alt={ASSETS.videoPlaceholder.alt} 
-              className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/30 group-hover:bg-primary group-hover:border-primary transition-all duration-300 transform group-hover:scale-110">
-                <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
+            <div 
+              className="flex transition-transform duration-500 ease-in-out h-full" 
+              style={{ transform: `translateX(-${currentVideoIndex * 100}%)` }}
+            >
+              {videoCarousel.map((video, idx) => (
+                <div key={idx} className="min-w-full h-full relative cursor-pointer group/video">
+                  <img 
+                    src={video.src} 
+                    alt={`Video thumbnail: ${video.title}`} 
+                    className="w-full h-full object-cover opacity-80 group-hover/video:scale-105 transition-transform duration-700"
+                    loading={idx === 0 ? "eager" : "lazy"}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/30 group-hover/video:bg-primary group-hover/video:border-primary transition-all duration-300 transform group-hover/video:scale-110">
+                      <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none">
+                    <div className="bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl border border-white/10 inline-block transform translate-y-2 opacity-0 group-hover/video:translate-y-0 group-hover/video:opacity-100 transition-all duration-300">
+                      <h4 className="font-bold text-lg">{video.title}</h4>
+                      <p className="text-sm text-white/70">{video.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Video Carousel Controls */}
+            <div className="absolute bottom-4 right-6 flex items-center gap-4 z-20">
+              <div className="flex items-center gap-1.5 px-3 py-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+                {videoCarousel.map((_, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => setCurrentVideoIndex(idx)}
+                    className={`w-2 h-2 rounded-full transition-all cursor-pointer ${idx === currentVideoIndex ? 'bg-primary w-4' : 'bg-white/30 hover:bg-white/60'}`}
+                  />
+                ))}
               </div>
             </div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="bg-black/40 backdrop-blur-md px-6 py-4 rounded-xl border border-white/10 inline-block">
-                <h4 className="font-bold text-lg">Carpet & Tile Transformation</h4>
-                <p className="text-sm text-white/70">Watch how we restored this Perth home in 40 seconds.</p>
-              </div>
-            </div>
+
+            <button 
+              onClick={prevVideo}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur shadow-md flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:border-primary transition-colors cursor-pointer opacity-0 group-hover:opacity-100"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={nextVideo}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur shadow-md flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:border-primary transition-colors cursor-pointer opacity-0 group-hover:opacity-100"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
         </div>
 
