@@ -7,6 +7,7 @@ import { Reviews } from "@/components/home/reviews";
 import { FAQ } from "@/components/home/faq";
 import { Contact } from "@/components/home/contact";
 import { Team } from "@/components/home/team";
+import { Chatbot } from "@/components/chatbot";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Team />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 }
