@@ -6,7 +6,7 @@ const services = [
   {
     id: "residential",
     title: "Residential Cleaning",
-    description: "Regular or one-off house cleaning tailored to your lifestyle and space.",
+    description: "Regular or one-off house cleaning tailored to your lifestyle. We dust, vacuum, mop, and sanitize all high-touch surfaces. Includes kitchens, bathrooms, living areas, and bedrooms for a complete home refresh.",
     icon: ASSETS.services.residential,
     color: "bg-blue-50",
   },
