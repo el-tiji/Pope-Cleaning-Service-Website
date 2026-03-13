@@ -9,7 +9,6 @@ export function Contact() {
   return (
     <section id="contact" className="py-24 bg-background relative">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 rounded-l-[100px] pointer-events-none"></div>
-      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -79,7 +78,7 @@ export function Contact() {
             <div className="bg-white p-2 rounded-[2.5rem] shadow-2xl border border-white/50 relative">
               <div className="absolute -bottom-6 -right-6 bg-secondary text-white p-6 rounded-2xl shadow-xl max-w-xs animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
                 <h4 className="font-bold text-lg mb-2">Service Area</h4>
-                <p className="text-sm text-white/80">We proudly serve the entire Perth metropolitan area, from Joondalup to Mandurah.</p>
+                <p className="text-white/80 text-center text-[16px]">We proudly serve the entire Perth metropolitan area, from Joondalup to Mandurah.</p>
               </div>
               
               <img 
