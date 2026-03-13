@@ -1,8 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/assets";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 export function Hero() {
+  const carouselImages = [
+    ASSETS.hero.src,
+    "/assets/placeholders/hero-carousel-1.png",
+    "/assets/placeholders/hero-carousel-2.png",
+    "/assets/placeholders/hero-carousel-3.png",
+    "/assets/placeholders/hero-carousel-4.png",
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
   return (
     <section className="relative pt-20 pb-32 overflow-hidden bg-background">
       <div className="absolute inset-0 bg-pattern opacity-50"></div>
@@ -60,7 +79,7 @@ export function Hero() {
           <div className="relative">
             <div className="absolute inset-0 bg-primary/10 rounded-[3rem] transform rotate-3 scale-105 blur-xl -z-10"></div>
             <div className="bg-white rounded-[2.5rem] p-4 shadow-2xl border border-white/50 relative">
-              <div className="absolute -top-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-in fade-in zoom-in duration-1000 delay-300">
+              <div className="absolute -top-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-in fade-in zoom-in duration-1000 delay-300 z-20">
                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                   <CheckCircle2 className="w-6 h-6 text-green-600" />
                 </div>
@@ -70,12 +89,47 @@ export function Hero() {
                 </div>
               </div>
               
-              <img 
-                src={ASSETS.hero.src} 
-                alt={ASSETS.hero.alt} 
-                className="w-full h-auto object-cover rounded-[2rem] bg-muted/20"
-                loading="eager"
-              />
+              <div className="relative overflow-hidden rounded-[2rem] bg-muted/20 group">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out" 
+                  style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                >
+                  {carouselImages.map((src, index) => (
+                    <img 
+                      key={index}
+                      src={src} 
+                      alt={`Cleaning scene ${index + 1}`} 
+                      className="w-full h-auto object-cover min-w-full shrink-0"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
+                </div>
+                
+                {/* Carousel Controls */}
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button 
+                    onClick={prevImage}
+                    className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-secondary hover:bg-white hover:text-primary transition-colors cursor-pointer"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div className="flex items-center gap-1.5 px-3 bg-white/80 backdrop-blur rounded-full shadow-md">
+                    {carouselImages.map((_, idx) => (
+                      <button 
+                        key={idx}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentImageIndex ? 'bg-primary' : 'bg-primary/20 hover:bg-primary/50'}`}
+                      />
+                    ))}
+                  </div>
+                  <button 
+                    onClick={nextImage}
+                    className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-secondary hover:bg-white hover:text-primary transition-colors cursor-pointer"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           
