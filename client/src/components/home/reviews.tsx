@@ -171,7 +171,7 @@ export function Reviews() {
           {/* New Review Form */}
           <div className="lg:col-span-1 h-fit sticky top-32">
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/20">
-              <h4 className="text-xl font-bold mb-4">Share Your Experience</h4>
+              <h4 className="text-xl font-bold mb-4 text-[#ffffff]">Share Your Experience</h4>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label className="text-xs uppercase tracking-wider text-white/70">Your Name</Label>
