@@ -44,13 +44,6 @@ const services = [
     description: "Transform driveways, patios, and exteriors with high-power washing.",
     icon: ASSETS.services.pressure,
     color: "bg-cyan-50",
-  },
-  {
-    id: "car",
-    title: "Car Detailing",
-    description: "Interior deep cleaning to make your daily commute feel luxurious.",
-    icon: ASSETS.services.car,
-    color: "bg-gray-50",
   }
 ];
 
@@ -66,19 +59,19 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card key={service.id} className={`border-none soft-shadow-hover bg-background cursor-pointer group ${index === 0 ? 'lg:col-span-2 lg:row-span-2 flex flex-col justify-between' : ''}`}>
-              <CardHeader className={`${index === 0 ? 'p-8 pb-4' : 'p-6 pb-2'}`}>
+            <Card key={service.id} className={`border-none soft-shadow-hover bg-background cursor-pointer group`}>
+              <CardHeader className="p-6 pb-2">
                 <div className={`w-16 h-16 rounded-2xl ${service.color} mb-4 flex items-center justify-center overflow-hidden p-2 group-hover:scale-110 transition-transform duration-300`}>
                   <img src={service.icon.src} alt={service.icon.alt} className="w-full h-full object-contain drop-shadow-sm" />
                 </div>
-                <CardTitle className={`text-secondary ${index === 0 ? 'text-3xl' : 'text-xl'}`}>{service.title}</CardTitle>
-                <CardDescription className={`text-muted-foreground mt-2 ${index === 0 ? 'text-lg' : 'text-base'}`}>
+                <CardTitle className="text-secondary text-xl">{service.title}</CardTitle>
+                <CardDescription className="text-muted-foreground mt-2 text-base">
                   {service.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className={`${index === 0 ? 'p-8 pt-0' : 'p-6 pt-2'}`}>
+              <CardContent className="p-6 pt-2">
                 <div className="flex items-center text-primary font-semibold text-sm group-hover:gap-2 transition-all">
                   <span>Learn more</span>
                   <ArrowRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -87,10 +80,12 @@ export function Services() {
             </Card>
           ))}
           
-          <Card className="border-none bg-primary text-primary-foreground soft-shadow flex flex-col justify-center items-center text-center p-8">
-            <h3 className="text-2xl font-bold mb-4">Need something else?</h3>
-            <p className="text-primary-foreground/80 mb-6">We offer custom cleaning packages tailored to your specific requirements.</p>
-            <button className="bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-accent hover:text-secondary transition-colors w-full">
+          <Card className="border-none bg-primary text-primary-foreground soft-shadow flex flex-col sm:flex-row justify-between items-center text-left p-8 md:col-span-2 lg:col-span-3 gap-6">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Need something else?</h3>
+              <p className="text-primary-foreground/80 mb-0 max-w-xl">We offer custom cleaning packages tailored to your specific requirements. Get in touch to discuss your unique needs.</p>
+            </div>
+            <button className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-accent hover:text-secondary transition-colors shrink-0 whitespace-nowrap shadow-lg">
               Get a Custom Quote
             </button>
           </Card>
