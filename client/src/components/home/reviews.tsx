@@ -153,7 +153,7 @@ export function Reviews() {
 
         {/* Before / After Slider (Static Mockup) */}
         <div className="max-w-4xl mx-auto mb-24 bg-white/5 rounded-3xl p-6 md:p-10 border border-white/10">
-          <h4 className="text-2xl font-bold mb-8 text-center">Drag to compare</h4>
+          <h4 className="font-bold mb-8 text-center text-[#ffffff] text-[26px]">Drag to compare</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3] group">
               <img src={ASSETS.reviews.beforeCarpet.src} alt={ASSETS.reviews.beforeCarpet.alt} className="w-full h-full object-cover" />
