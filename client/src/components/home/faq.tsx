@@ -41,7 +41,7 @@ export function FAQ() {
     <section id="faq" className="py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-bold tracking-wider text-primary uppercase mb-3">Questions?</h2>
+          <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Questions?</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Frequently Asked Questions</h3>
           <p className="text-lg text-muted-foreground">
             Everything you need to know about our services, process, and guarantees.
