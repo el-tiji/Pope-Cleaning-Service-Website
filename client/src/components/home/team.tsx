@@ -10,7 +10,7 @@ export function Team() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
             <div>
-              <h2 className="text-sm font-bold tracking-wider text-accent uppercase mb-3">Work With Us</h2>
+              <h2 className="font-bold tracking-wider uppercase mb-3 text-[#ffffff] text-[18px]">Work With Us</h2>
               <h3 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Join the Pope Cleaning Family</h3>
               
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
