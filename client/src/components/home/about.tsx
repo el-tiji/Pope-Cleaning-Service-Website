@@ -5,7 +5,6 @@ export function About() {
   return (
     <section id="about" className="py-24 bg-background relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-pattern opacity-30 pointer-events-none"></div>
-      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -25,7 +24,7 @@ export function About() {
           </div>
           
           <div className="order-1 lg:order-2">
-            <h2 className="text-sm font-bold tracking-wider text-primary uppercase mb-3">About Us</h2>
+            <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">About Us</h2>
             <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">A cleaner approach to your everyday life.</h3>
             
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
