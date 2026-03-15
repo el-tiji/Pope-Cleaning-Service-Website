@@ -13,7 +13,7 @@ export function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <div>
-            <h2 className="text-sm font-bold tracking-wider text-primary uppercase mb-3">Get a Quote</h2>
+            <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Get a Quote</h2>
             <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Book your clean today</h3>
             <p className="text-lg text-muted-foreground mb-10">
               Fill out the form below with your requirements, and our team will get back to you with a customized quote within 2 hours.
