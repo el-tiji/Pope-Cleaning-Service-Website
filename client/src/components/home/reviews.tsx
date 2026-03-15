@@ -50,7 +50,7 @@ export function Reviews() {
     { src: "/assets/placeholders/video-cover-1.png", title: "Deep Kitchen Clean", desc: "Grease and grime removal in a modern kitchen." },
     { src: "/assets/placeholders/video-cover-2.png", title: "End of Lease Guarantee", desc: "Securing the bond back for a 3-bedroom apartment." },
     { src: "/assets/placeholders/video-cover-3.png", title: "Commercial Office Reset", desc: "Preparing an office space for a busy work week." },
-    { src: "/assets/placeholders/video-cover-4.png", title: "Premium Car Detailing", desc: "Reviving the interior of a family SUV." },
+    { src: "/assets/placeholders/video-cover-4.png", title: "Exterior Pressure Washing", desc: "Removing years of grime from a driveway and patio." },
   ];
 
   const nextVideo = () => setCurrentVideoIndex((prev) => (prev + 1) % videoCarousel.length);
