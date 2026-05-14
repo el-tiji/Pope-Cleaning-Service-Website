@@ -808,7 +808,7 @@ export default function Booking() {
 
             {/* Sidebar Summary */}
             <div className="lg:col-span-1">
-              <div className="sticky top-28 bg-secondary text-white rounded-[2rem] p-6 shadow-2xl overflow-y-auto max-h-[calc(100vh-8rem)] animate-in fade-in zoom-in-95 duration-700 delay-200">
+              <div className="sticky top-28 bg-secondary text-white rounded-[2rem] p-6 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-700 delay-200">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 
                 <h3 className="font-display font-bold text-xl mb-4 relative z-10 flex items-center gap-2">
