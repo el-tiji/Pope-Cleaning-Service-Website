@@ -16,9 +16,9 @@ import { cn } from "@/lib/utils";
 // --- PRICING CONFIGURATION ---
 const PRICING_CONFIG = {
   basePrices: {
-    regular: 120,
+    regular: 90,
     spring: 250,
-    vacate: 350,
+    vacate: 400,
     office: 180
   },
   modifiers: {
