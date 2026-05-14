@@ -183,29 +183,33 @@ export default function Booking() {
     let base = PRICING_CONFIG.basePrices[formData.plan as keyof typeof PRICING_CONFIG.basePrices];
     
     let modifiers = 0;
-    modifiers += PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm];
-    modifiers += formData.bedrooms * PRICING_CONFIG.modifiers.bedroom;
-    modifiers += formData.bathrooms * PRICING_CONFIG.modifiers.bathroom;
-    modifiers += formData.showers * PRICING_CONFIG.modifiers.shower;
-    modifiers += formData.toilets * PRICING_CONFIG.modifiers.toilet;
-    modifiers += Math.max(0, formData.floors - 1) * PRICING_CONFIG.modifiers.floor;
-    modifiers += formData.bedMaking * PRICING_CONFIG.modifiers.bedMaking;
+    if (currentStep > 0) {
+      modifiers += PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm];
+      modifiers += formData.bedrooms * PRICING_CONFIG.modifiers.bedroom;
+      modifiers += formData.bathrooms * PRICING_CONFIG.modifiers.bathroom;
+      modifiers += formData.showers * PRICING_CONFIG.modifiers.shower;
+      modifiers += formData.toilets * PRICING_CONFIG.modifiers.toilet;
+      modifiers += Math.max(0, formData.floors - 1) * PRICING_CONFIG.modifiers.floor;
+      modifiers += formData.bedMaking * PRICING_CONFIG.modifiers.bedMaking;
+    }
 
     let extrasTotal = 0;
-    Object.entries(formData.extras).forEach(([key, value]) => {
-      if (!value) return;
-      const config = PRICING_CONFIG.modifiers.extras[key as keyof typeof PRICING_CONFIG.modifiers.extras];
-      if (!config) return;
-      
-      // If it's included in the current plan, it's free
-      if (config.includedIn.includes(formData.plan)) return;
+    if (currentStep > 1) {
+      Object.entries(formData.extras).forEach(([key, value]) => {
+        if (!value) return;
+        const config = PRICING_CONFIG.modifiers.extras[key as keyof typeof PRICING_CONFIG.modifiers.extras];
+        if (!config) return;
+        
+        // If it's included in the current plan, it's free
+        if (config.includedIn.includes(formData.plan)) return;
 
-      if (config.isMultiplier && typeof value === 'number') {
-        extrasTotal += config.price * value;
-      } else if (value === true) {
-        extrasTotal += config.price;
-      }
-    });
+        if (config.isMultiplier && typeof value === 'number') {
+          extrasTotal += config.price * value;
+        } else if (value === true) {
+          extrasTotal += config.price;
+        }
+      });
+    }
 
     let subtotal = base + modifiers + extrasTotal;
     
