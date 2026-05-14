@@ -18,7 +18,7 @@ const PRICING_CONFIG = {
     regular: 120,
     spring: 250,
     vacate: 350,
-    office: 150
+    office: 180
   },
   modifiers: {
     sqm: {
