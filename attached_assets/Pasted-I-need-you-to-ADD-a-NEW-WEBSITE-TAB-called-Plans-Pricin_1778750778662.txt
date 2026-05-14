@@ -1,0 +1,294 @@
+I need you to ADD a NEW WEBSITE TAB called “Plans & Pricing” and build it as an interactive quote calculator, not as a fixed price table.
+
+IMPORTANT BUSINESS LOGIC
+- Do NOT show final prices as flat default prices only.
+- Instead, present 3 residential cleaning plan types:
+  1) Regular Cleaning
+  2) Spring Cleaning
+  3) Vacate Cleaning
+- Each plan can show a “starting from” label for marketing purposes, but the real quote must be calculated dynamically based on the customer’s property details and selected extras.
+- The objective is to estimate the total price BEFORE arrival, reducing manual adjustments onsite.
+
+PAGE / TAB REQUIREMENT
+Create a new navigation tab:
+- Plans & Pricing
+
+This page should include:
+1. A top section explaining that every property is different and prices are calculated based on home size, layout, condition, and optional services.
+2. A plan selection section for:
+   - Regular Cleaning
+   - Spring Cleaning
+   - Vacate Cleaning
+3. A multi-step survey / estimator form.
+4. A live pricing summary panel.
+5. A final section to upload photos of the home.
+6. A notes / recommendations text box for the customer.
+7. A final submit button that saves the quote request and sends it to admin.
+
+DESIGN DIRECTION
+- Match the existing Pope Cleaning Services branding:
+  - Primary blue inspired by the logo
+  - Dark navy secondary
+  - Light bubble blue accents
+  - White / light gray backgrounds
+- Keep the UI clean, premium, modern, and easy to use.
+- Use card-based sections with strong hierarchy and excellent mobile responsiveness.
+- Make the form feel trustworthy and easy, not overwhelming.
+- Use progressive disclosure: multi-step form rather than one giant form.
+
+PLANS SECTION
+Create 3 pricing plan cards:
+- Regular Cleaning
+- Spring Cleaning
+- Vacate Cleaning
+
+For each plan card include:
+- Title
+- Short description
+- “Ideal for” line
+- “Starting from” marketing label
+- A button: “Calculate My Price”
+
+Suggested content:
+1) Regular Cleaning
+- Ideal for weekly, fortnightly or ongoing home maintenance.
+- Focus on kitchens, bathrooms, floors, dusting and surface cleaning.
+
+2) Spring Cleaning
+- Ideal for deeper occasional cleaning.
+- Includes more detailed cleaning of hard-to-reach and neglected areas.
+
+3) Vacate Cleaning
+- Ideal for move-outs, end-of-lease and final inspections.
+- More detailed and bond/inspection oriented.
+
+Do NOT hardcode final public prices as exact universal prices.
+Instead use configurable pricing variables in code.
+
+MULTI-STEP SURVEY / ESTIMATOR FORM
+Build a multi-step pricing survey with these steps:
+
+STEP 1 — Plan Type
+Fields:
+- Cleaning plan type:
+  - Regular Cleaning
+  - Spring Cleaning
+  - Vacate Cleaning
+- Frequency:
+  - One-off
+  - Weekly
+  - Fortnightly
+  - Monthly
+Notes:
+- Frequency can affect discounts or pricing modifiers.
+
+STEP 2 — Property Details
+Fields:
+- Property type:
+  - House
+  - Apartment / Unit
+  - Townhouse
+  - Office / Other
+- Approximate internal area:
+  - Let user enter square meters OR choose ranges:
+    - under 80 sqm
+    - 80–120 sqm
+    - 121–180 sqm
+    - 181–250 sqm
+    - 250+ sqm
+- Number of floors / levels
+- Number of bedrooms
+- Number of bathrooms
+- Number of showers
+- Number of separate toilets (optional but useful)
+- Number of beds to make / bed linen changes
+- Occupancy status:
+  - Furnished
+  - Unfurnished
+  - Vacant
+- Condition level:
+  - Light cleaning needed
+  - Standard cleaning needed
+  - Heavy cleaning needed
+
+STEP 3 — Included Areas
+Let the customer select main service areas:
+- Kitchen
+- Living room
+- Dining area
+- Bedrooms
+- Bathrooms
+- Laundry
+- Hallways / stairs
+- Balcony / patio
+
+STEP 4 — Extras / Additional Zones
+Checkboxes and optional quantity inputs:
+- Interior windows
+- Exterior windows
+- Garage
+- Backyard furniture
+- Outdoor surfaces / patio furniture
+- Pool area
+- Fridge inside
+- Oven deep clean
+- Cabinets / drawers inside
+- Wall spot cleaning
+- Blinds
+- Carpet steam cleaning
+- Upholstery / couch cleaning
+- Pressure cleaning
+- Trash removal
+- Extra rubbish / bulk waste
+- Garden tidy-up (if applicable)
+
+For quantity-based extras, allow numeric inputs where needed:
+- Number of interior windows
+- Number of exterior windows
+- Number of couches
+- Number of rugs
+- Number of rubbish bags / estimated trash amount
+- Number of outdoor furniture sets
+
+STEP 5 — Access & Logistics
+Fields:
+- Suburb
+- Parking availability:
+  - Easy parking
+  - Limited parking
+  - Paid parking
+- Preferred date
+- Preferred time window
+- Is there anything we should know about access?
+  - stairs without lift
+  - pets
+  - fragile items
+  - recent renovation dust
+  - mould concerns
+  - none
+
+STEP 6 — Photos & Notes
+Include a photo upload section with guidance text:
+- “Please upload clear photos of the main areas so we can prepare an accurate quote.”
+Required recommended photo categories:
+- Kitchen
+- Main bathroom
+- Living room
+- Main bedroom
+- Additional areas needing attention
+Allow multiple uploads.
+Allow drag-and-drop and mobile camera upload.
+
+Also include a large text area:
+- Label: “Recommendations or special instructions”
+- Placeholder example:
+  “Please let us know about stains, fragile furniture, access instructions, priority areas, or anything you would like our team to pay special attention to.”
+
+LIVE PRICE CALCULATION
+Implement a live estimate summary sidebar/panel visible on desktop and sticky summary on mobile.
+
+The pricing engine should be CONFIGURABLE in code and easy to edit later.
+Use a pricing configuration object / constants file such as:
+- base price per plan
+- sqm modifier
+- bedroom modifier
+- bathroom modifier
+- shower modifier
+- floor/level modifier
+- bed-making modifier
+- heavy-condition modifier
+- per-extra service modifiers
+- parking/logistics modifier if needed
+- frequency discount modifier
+
+The pricing formula should be structured like this conceptually:
+Estimated Total =
+Base Plan Price
++ Area Modifier
++ Floor Modifier
++ Bedroom Modifier
++ Bathroom Modifier
++ Shower Modifier
++ Bed-Making Modifier
++ Extras Total
++ Condition Modifier
++ Logistics Modifier
+- Frequency Discount (if applicable)
+
+IMPORTANT:
+- Display estimate as:
+  - “Estimated price range” or
+  - “Estimated total before final confirmation”
+- Add a note such as:
+  - “Final quote may be adjusted after reviewing photos and special requirements.”
+This protects the business from edge cases.
+
+ADMIN / DATA STORAGE REQUIREMENTS
+When the customer submits the form:
+- Save all form data in the database.
+- Save uploaded image references / file paths.
+- Save selected plan, property info, extras, estimate, notes and contact details.
+- Send an email notification to admin with:
+  - customer info
+  - plan selected
+  - property details
+  - extras selected
+  - estimated total
+  - special instructions
+- Send confirmation email to the customer.
+
+CUSTOMER DETAILS SECTION
+Before final submit, collect:
+- Full name
+- Email
+- Phone number
+- Preferred contact method:
+  - Phone
+  - Email
+  - WhatsApp
+- Preferred language:
+  - English
+  - Spanish
+  - Chinese
+  - Filipino
+
+UX REQUIREMENTS
+- Multi-step progress indicator at the top.
+- Ability to go back and edit previous steps.
+- Auto-save current form state in memory during the session.
+- Clear validation on required fields.
+- Friendly microcopy.
+- Mobile-first and very easy to complete from a phone.
+- Use accessible labels, fieldsets, and proper error messages.
+- Add tooltips or helper text where the customer might be confused.
+
+MARKETING / TRUST CONTENT ON THE PAGE
+Below the calculator, include a short reassurance section:
+- Family-owned business in Perth
+- Over 7 years of experience
+- Satisfaction guarantee
+- Quotes tailored to your property
+- Option to contact us directly for custom jobs
+
+Also include a small CTA:
+- “Need help with a complex property?”
+- Button: “Contact Us for a Custom Quote”
+
+TECHNICAL REQUIREMENTS
+- Use reusable components.
+- Organize the pricing logic cleanly in one file/module so it is easy to modify later.
+- Make image upload production-friendly.
+- Keep the estimate fast and reactive.
+- Ensure form works well even with many conditional options.
+- Use TypeScript if the project already uses it.
+- Keep all copy aligned with the Pope Cleaning Services brand voice.
+
+OUTPUT REQUIREMENT
+Generate:
+1. The new “Plans & Pricing” page.
+2. The multi-step estimator form.
+3. The pricing calculation logic with editable config values.
+4. The upload section for home photos.
+5. The notes / recommendations text area.
+6. Admin email + customer confirmation flow.
+7. Responsive UI integrated into the existing site navigation and design system.

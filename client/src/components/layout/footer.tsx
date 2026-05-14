@@ -61,21 +61,21 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-white">Services</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Residential Cleaning</a></li>
-              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Commercial Cleaning</a></li>
-              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Vacate Cleaning</a></li>
-              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Carpet & Upholstery</a></li>
-              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Tile & Grout</a></li>
+              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Residential Cleaning</a></Link></li>
+              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Commercial Cleaning</a></Link></li>
+              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Vacate Cleaning</a></Link></li>
+              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Carpet & Upholstery</a></Link></li>
+              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Tile & Grout</a></Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-white">Company</h4>
             <ul className="space-y-3">
-              <li><a href="#about" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">About Us</a></li>
-              <li><a href="#reviews" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Testimonials</a></li>
-              <li><a href="#faq" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">FAQ</a></li>
-              <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Work With Us</a></li>
+              <li><Link href="/about"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">About Us</a></Link></li>
+              <li><Link href="/reviews"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Testimonials</a></Link></li>
+              <li><a href="/#faq" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">FAQ</a></li>
+              <li><a href="/about" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Work With Us</a></li>
               <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Privacy Policy</a></li>
             </ul>
           </div>
