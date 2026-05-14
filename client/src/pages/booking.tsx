@@ -824,9 +824,14 @@ export default function Booking() {
                       <span className="text-4xl font-display font-bold text-white">${estimate.total}</span>
                     </div>
                   </div>
-                  <p className="text-[10px] text-white/40 text-right leading-tight mt-1">
-                    * Estimated price before final confirmation.<br/> Final quote may be adjusted upon review.
-                  </p>
+                  <div className="flex flex-col items-end gap-1 mt-2 text-right">
+                    <p className="text-xs font-semibold text-accent bg-accent/10 px-2 py-0.5 rounded">
+                      All prices are inclusive of GST
+                    </p>
+                    <p className="text-[10px] text-white/40 leading-tight">
+                      * Estimated price before final confirmation.<br/> Final quote may be adjusted upon review.
+                    </p>
+                  </div>
                 </div>
               </div>
               
