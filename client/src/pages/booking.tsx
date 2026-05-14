@@ -399,7 +399,7 @@ export default function Booking() {
                           .map((freq, index, array) => {
                           const isSelected = formData.frequency === freq.id;
                           const discount = getFrequencyDiscount(formData.plan, freq.id);
-                          const isRecommended = index === Math.floor(array.length / 2);
+                          const isRecommended = array.length > 1 && index === Math.floor(array.length / 2);
                           return (
                             <div 
                               key={freq.id}
