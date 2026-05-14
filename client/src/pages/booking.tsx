@@ -808,7 +808,7 @@ export default function Booking() {
 
             {/* Sidebar Summary */}
             <div className="lg:col-span-1">
-              <div className="sticky top-28 bg-secondary text-white rounded-[2rem] p-6 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-700 delay-200">
+              <div className="sticky top-28 bg-secondary text-white rounded-[2rem] p-6 shadow-2xl overflow-y-auto max-h-[calc(100vh-8rem)] animate-in fade-in zoom-in-95 duration-700 delay-200">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 
                 <h3 className="font-display font-bold text-xl mb-4 relative z-10 flex items-center gap-2">
@@ -874,17 +874,23 @@ export default function Booking() {
                     </p>
                   </div>
                 </div>
-              </div>
-              
-              {/* Trust Indicators */}
-              <div className="mt-8 space-y-4 px-2">
-                <div className="flex items-center gap-3 text-sm text-secondary font-medium">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><CheckCircle2 className="w-4 h-4 text-blue-600"/></div>
-                  Family-owned business in Perth
-                </div>
-                <div className="flex items-center gap-3 text-sm text-secondary font-medium">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><ShieldCheck className="w-4 h-4 text-blue-600"/></div>
-                  100% Satisfaction guarantee
+
+                <div className="mt-6 pt-6 border-t border-white/20 relative z-10 space-y-3">
+                  {[
+                    "Family-owned business in Perth",
+                    "100% satisfaction guarantee",
+                    "Fully insured and police-checked team",
+                    "Transparent quotes tailored to your property",
+                    "Flexible bookings across Perth metro",
+                    "Eco-friendly options available"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 text-sm text-white/80 font-medium">
+                      <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-primary"/>
+                      </div>
+                      <span className="leading-snug">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
               
