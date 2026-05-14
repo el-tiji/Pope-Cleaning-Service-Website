@@ -35,20 +35,20 @@ const PRICING_CONFIG = {
     floor: 20, // per floor above 1
     bedMaking: 10,
     extras: {
-      interiorWindows: { price: 40, includedIn: ['spring', 'vacate'] },
-      exteriorWindows: { price: 60, includedIn: ['vacate'] },
-      garage: { price: 50, includedIn: ['vacate'] },
-      poolArea: { price: 80, includedIn: [] },
-      fridge: { price: 40, includedIn: [] },
-      oven: { price: 50, includedIn: ['spring', 'vacate'] },
-      cabinets: { price: 45, includedIn: ['spring', 'vacate'] },
-      wallSpot: { price: 40, includedIn: ['spring', 'vacate'] },
-      blinds: { price: 30, includedIn: [] },
-      carpetSteam: { price: 50, includedIn: ['vacate'], isMultiplier: true }, // per room
-      upholstery: { price: 45, includedIn: ['vacate'], isMultiplier: true }, // per couch
-      pressure: { price: 90, includedIn: ['vacate'] },
-      trash: { price: 25, includedIn: ['spring', 'vacate'] },
-      garden: { price: 70, includedIn: [] }
+      interiorWindows: { price: 40, includedIn: ['spring', 'vacate'] as string[] },
+      exteriorWindows: { price: 60, includedIn: ['vacate'] as string[] },
+      garage: { price: 50, includedIn: ['vacate'] as string[] },
+      poolArea: { price: 80, includedIn: [] as string[] },
+      fridge: { price: 40, includedIn: [] as string[] },
+      oven: { price: 50, includedIn: ['spring', 'vacate'] as string[] },
+      cabinets: { price: 45, includedIn: ['spring', 'vacate'] as string[] },
+      wallSpot: { price: 40, includedIn: ['spring', 'vacate'] as string[] },
+      blinds: { price: 30, includedIn: [] as string[] },
+      carpetSteam: { price: 50, includedIn: ['vacate'] as string[], isMultiplier: true }, // per room
+      upholstery: { price: 45, includedIn: ['vacate'] as string[], isMultiplier: true }, // per couch
+      pressure: { price: 90, includedIn: ['vacate'] as string[] },
+      trash: { price: 25, includedIn: ['spring', 'vacate'] as string[] },
+      garden: { price: 70, includedIn: [] as string[] }
     }
   },
   frequencyDiscounts: {
@@ -373,7 +373,19 @@ export default function Booking() {
                     <div>
                       <h3 className="text-2xl font-bold text-secondary mb-6">2. How often?</h3>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        {FREQUENCIES.filter(f => f.validFor.includes(formData.plan)).map(freq => {
+                        {FREQUENCIES.filter(f => f.validFor.includes(formData.plan))
+                          .sort((a, b) => {
+                            const discountA = PRICING_CONFIG.frequencyDiscounts[a.id as keyof typeof PRICING_CONFIG.frequencyDiscounts] || 0;
+                            const discountB = PRICING_CONFIG.frequencyDiscounts[b.id as keyof typeof PRICING_CONFIG.frequencyDiscounts] || 0;
+                            
+                            // If Office Cleaning, sort by discount descending (Highest discount to Lowest/One-off)
+                            if (formData.plan === 'office') {
+                              return discountB - discountA;
+                            }
+                            // Otherwise, sort by discount ascending (Lowest/One-off to Highest discount)
+                            return discountA - discountB;
+                          })
+                          .map(freq => {
                           const isSelected = formData.frequency === freq.id;
                           const discount = PRICING_CONFIG.frequencyDiscounts[freq.id as keyof typeof PRICING_CONFIG.frequencyDiscounts];
                           return (
