@@ -68,7 +68,7 @@ const PLANS = [
 ];
 
 const FREQUENCIES = [
-  { id: "one-off", label: "One-off", validFor: ['regular', 'spring', 'vacate'] },
+  { id: "one-off", label: "One-off", validFor: ['regular', 'spring', 'vacate', 'office'] },
   { id: "2-times-week", label: "2x a Week", validFor: ['regular', 'office'] },
   { id: "weekly", label: "Weekly", validFor: ['regular', 'office'] },
   { id: "fortnightly", label: "Fortnightly", validFor: ['regular', 'office'] },
