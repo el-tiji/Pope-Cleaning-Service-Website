@@ -27,7 +27,9 @@ const PRICING_CONFIG = {
       '121-180': 30,
       '181-250': 60,
       '251-350': 100,
-      '350+': 150
+      '350+': 150,
+      '351-500': 200,
+      '500+': 280
     },
     bedroom: 20,
     bathroom: 30,
@@ -103,7 +105,9 @@ const SQM_RANGES = [
   { id: "121-180", label: "121 – 180 sqm" },
   { id: "181-250", label: "181 – 250 sqm" },
   { id: "251-350", label: "251 – 350 sqm" },
-  { id: "350+", label: "350+ sqm" }
+  { id: "350+", label: "350+ sqm" },
+  { id: "351-500", label: "351 – 500 sqm" },
+  { id: "500+", label: "500+ sqm" }
 ];
 
 const EXTRAS_LIST = [
@@ -493,9 +497,15 @@ export default function Booking() {
                           <Label className="mb-3 block text-base">Approximate Internal Area</Label>
                           <div className={cn(
                             "grid gap-2",
-                            formData.plan === 'office' ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2 md:grid-cols-5"
+                            formData.plan === 'office' ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-6" : "grid-cols-2 md:grid-cols-5"
                           )}>
-                            {SQM_RANGES.filter(range => formData.plan !== 'office' || range.id !== '350+').map(range => (
+                            {SQM_RANGES.filter(range => {
+                              if (formData.plan === 'office') {
+                                return range.id !== '350+';
+                              } else {
+                                return range.id !== '351-500' && range.id !== '500+';
+                              }
+                            }).map(range => (
                               <div 
                                 key={range.id}
                                 onClick={() => updateForm('area', range.id)}
