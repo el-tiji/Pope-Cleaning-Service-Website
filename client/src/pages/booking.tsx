@@ -385,14 +385,13 @@ export default function Booking() {
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                         {FREQUENCIES.filter(f => f.validFor.includes(formData.plan))
                           .sort((a, b) => {
-                            const discountA = getFrequencyDiscount(formData.plan, a.id);
-                            const discountB = getFrequencyDiscount(formData.plan, b.id);
-                            
-                            // If Office Cleaning, sort by discount descending (Highest discount to Lowest/One-off)
                             if (formData.plan === 'office') {
-                              return discountB - discountA;
+                              const officeOrder = ['one-off', 'monthly', 'fortnightly', 'weekly', '2-times-week'];
+                              return officeOrder.indexOf(a.id) - officeOrder.indexOf(b.id);
                             }
                             // Otherwise, sort by discount ascending (Lowest/One-off to Highest discount)
+                            const discountA = getFrequencyDiscount(formData.plan, a.id);
+                            const discountB = getFrequencyDiscount(formData.plan, b.id);
                             return discountA - discountB;
                           })
                           .map(freq => {
