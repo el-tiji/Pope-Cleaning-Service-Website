@@ -532,14 +532,16 @@ export default function Booking() {
                               
                               {isIncluded ? (
                                 <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded uppercase">Included</span>
-                              ) : extra.type === 'toggle' ? (
-                                <span className="text-xs font-bold text-muted-foreground">+${config.price}</span>
+                              ) : extra.type === 'toggle' && isSelected ? (
+                                <span className="text-xs font-bold text-primary">+${config.price}</span>
                               ) : null}
                             </div>
 
                             {extra.type === 'counter' && !isIncluded && (
                               <div className="mt-3 flex items-center justify-between border-t border-border/50 pt-3">
-                                <span className="text-xs font-bold text-muted-foreground">${config.price} each</span>
+                                <span className="text-xs font-bold text-primary">
+                                  {formData.extras[extra.id] > 0 ? `+$${config.price * formData.extras[extra.id]}` : ""}
+                                </span>
                                 <div className="flex items-center gap-3">
                                   <button type="button" onClick={(e) => { e.stopPropagation(); updateExtra(extra.id, Math.max(0, (formData.extras[extra.id] || 0) - 1)); }} className="w-7 h-7 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-border"><Minus className="w-3 h-3" /></button>
                                   <span className="w-4 text-center font-bold text-sm">{formData.extras[extra.id] || 0}</span>
@@ -752,11 +754,9 @@ export default function Booking() {
                     <p className="text-white/50 text-xs font-bold uppercase tracking-wider mb-2">Property Details</p>
                     <div className="flex justify-between">
                       <span className="text-white/80">{formData.bedrooms} Beds, {formData.bathrooms} Baths</span>
-                      <span className="text-white/50">+${(formData.bedrooms * PRICING_CONFIG.modifiers.bedroom) + (formData.bathrooms * PRICING_CONFIG.modifiers.bathroom)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-white/80">Area: {SQM_RANGES.find(r => r.id === formData.area)?.label}</span>
-                      <span className="text-white/50">+${PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm]}</span>
                     </div>
                   </div>
 
