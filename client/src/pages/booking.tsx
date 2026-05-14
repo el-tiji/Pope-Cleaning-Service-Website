@@ -230,7 +230,7 @@ export default function Booking() {
     if (currentStep > 0) {
       modifiers += PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm] || 0;
       
-      const isStandard = formData.plan === 'regular' || formData.plan === 'spring';
+      const isStandard = formData.plan !== 'office';
       
       const calcMod = (val: number, standard: number, price: number) => {
         if (isStandard) {
