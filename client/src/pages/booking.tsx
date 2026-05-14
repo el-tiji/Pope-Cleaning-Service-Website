@@ -396,9 +396,10 @@ export default function Booking() {
                             const discountB = getFrequencyDiscount(formData.plan, b.id);
                             return discountB - discountA;
                           })
-                          .map(freq => {
+                          .map((freq, index, array) => {
                           const isSelected = formData.frequency === freq.id;
                           const discount = getFrequencyDiscount(formData.plan, freq.id);
+                          const isRecommended = index === Math.floor(array.length / 2);
                           return (
                             <div 
                               key={freq.id}
@@ -408,9 +409,17 @@ export default function Booking() {
                                 isSelected ? "border-primary bg-primary text-white shadow-md" : "border-border hover:border-primary/30"
                               )}
                             >
+                              {isRecommended && (
+                                <span className={cn(
+                                  "absolute -top-3 right-2 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm whitespace-nowrap",
+                                  isSelected ? "bg-white text-primary" : "bg-primary text-white"
+                                )}>
+                                  Recommended
+                                </span>
+                              )}
                               {discount > 0 && (
                                 <span className={cn(
-                                  "absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm whitespace-nowrap",
+                                  "absolute -top-3 left-2 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm whitespace-nowrap",
                                   isSelected ? "bg-accent text-secondary" : "bg-green-100 text-green-700"
                                 )}>
                                   Save {discount * 100}%
