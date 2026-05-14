@@ -164,9 +164,11 @@ export default function Booking() {
         return discountB - discountA;
       });
       
-    // Set frequency to the middle option (average discount)
-    const middleIndex = Math.floor(validFreqs.length / 2);
-    setFormData(prev => ({ ...prev, frequency: validFreqs[middleIndex]?.id || 'one-off' }));
+    // Set frequency to the recommended option
+    let recommendedId = validFreqs[Math.floor(validFreqs.length / 2)]?.id || 'one-off';
+    if (formData.plan === 'regular') recommendedId = 'weekly';
+    
+    setFormData(prev => ({ ...prev, frequency: recommendedId }));
 
     // Auto-select included extras
     const newExtras = { ...formData.extras };
@@ -399,7 +401,7 @@ export default function Booking() {
                           .map((freq, index, array) => {
                           const isSelected = formData.frequency === freq.id;
                           const discount = getFrequencyDiscount(formData.plan, freq.id);
-                          const isRecommended = array.length > 1 && index === Math.floor(array.length / 2);
+                          const isRecommended = array.length > 1 && (formData.plan === 'regular' ? freq.id === 'weekly' : index === Math.floor(array.length / 2));
                           return (
                             <div 
                               key={freq.id}
