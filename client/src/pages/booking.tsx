@@ -1,213 +1,809 @@
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { useState } from "react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Calendar, Clock, ArrowRight, ShieldCheck } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { 
+  Check, Sparkles, Calendar, Clock, ArrowRight, ArrowLeft, 
+  ShieldCheck, Briefcase, Home, Building, Plus, Minus, 
+  Camera, MapPin, CheckCircle2, User, Mail, Phone, UploadCloud, Info
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const services = [
-  {
-    id: "regular",
-    title: "Regular Cleaning",
-    description: "Keep your home consistently fresh and tidy. Ideal for busy professionals and families.",
-    basePrice: 120,
-    icon: Calendar,
-    benefits: ["Dusting & wiping surfaces", "Vacuuming & mopping floors", "Kitchen & bathroom sanitation", "Trash removal"]
+// --- PRICING CONFIGURATION ---
+const PRICING_CONFIG = {
+  basePrices: {
+    regular: 120,
+    spring: 250,
+    vacate: 350,
+    office: 150
   },
-  {
-    id: "spring",
-    title: "Spring Cleaning",
-    description: "A thorough top-to-bottom deep clean to refresh your space completely.",
-    basePrice: 250,
-    icon: Sparkles,
-    benefits: ["Inside cabinets & drawers", "Skirting boards & doors", "Deep bathroom scrubbing", "Oven & fridge interior"]
+  modifiers: {
+    sqm: {
+      'under80': 0,
+      '80-120': 30,
+      '121-180': 60,
+      '181-250': 100,
+      '250+': 150
+    },
+    bedroom: 20,
+    bathroom: 30,
+    shower: 15,
+    toilet: 10,
+    floor: 20, // per floor above 1
+    bedMaking: 10,
+    extras: {
+      interiorWindows: { price: 40, includedIn: ['spring', 'vacate'] },
+      exteriorWindows: { price: 60, includedIn: ['vacate'] },
+      garage: { price: 50, includedIn: ['vacate'] },
+      poolArea: { price: 80, includedIn: [] },
+      fridge: { price: 40, includedIn: [] },
+      oven: { price: 50, includedIn: ['spring', 'vacate'] },
+      cabinets: { price: 45, includedIn: ['spring', 'vacate'] },
+      wallSpot: { price: 40, includedIn: ['spring', 'vacate'] },
+      blinds: { price: 30, includedIn: [] },
+      carpetSteam: { price: 50, includedIn: ['vacate'], isMultiplier: true }, // per room
+      upholstery: { price: 45, includedIn: ['vacate'], isMultiplier: true }, // per couch
+      pressure: { price: 90, includedIn: ['vacate'] },
+      trash: { price: 25, includedIn: ['spring', 'vacate'] },
+      garden: { price: 70, includedIn: [] }
+    }
   },
-  {
-    id: "vacate",
-    title: "Vacate Cleaning",
-    description: "Bond-back guarantee cleaning for end of lease. Meets all real estate standards.",
-    basePrice: 350,
-    icon: ShieldCheck,
-    benefits: ["100% Bond Back Guarantee", "Full kitchen & oven deep clean", "Inside all windows & tracks", "Spot spot cleaning walls"]
+  frequencyDiscounts: {
+    'one-off': 0,
+    '2-times-week': 0.25,
+    'weekly': 0.15,
+    'fortnightly': 0.10,
+    'monthly': 0.05
   }
+};
+
+const PLANS = [
+  { id: "regular", title: "Regular Cleaning", description: "Ideal for ongoing home maintenance (weekly/fortnightly).", icon: Calendar, startingPrice: PRICING_CONFIG.basePrices.regular },
+  { id: "spring", title: "Spring Cleaning", description: "Ideal for deeper occasional cleaning of neglected areas.", icon: Sparkles, startingPrice: PRICING_CONFIG.basePrices.spring },
+  { id: "vacate", title: "Vacate Cleaning", description: "Ideal for move-outs. Detailed and bond-inspection oriented.", icon: ShieldCheck, startingPrice: PRICING_CONFIG.basePrices.vacate },
+  { id: "office", title: "Office Cleaning", description: "Professional commercial space cleaning and maintenance.", icon: Briefcase, startingPrice: PRICING_CONFIG.basePrices.office }
 ];
 
-const frequencies = [
-  { id: "daily", label: "Daily", discount: 0.25, badge: "Save 25%" },
-  { id: "weekly", label: "Weekly", discount: 0.15, badge: "Save 15%" },
-  { id: "fortnightly", label: "Fortnightly", discount: 0.10, badge: "Save 10%" },
-  { id: "monthly", label: "Monthly", discount: 0.05, badge: "Save 5%" },
-  { id: "occasional", label: "Occasional", discount: 0, badge: "Standard Rate" }
+const FREQUENCIES = [
+  { id: "one-off", label: "One-off", validFor: ['regular', 'spring', 'vacate'] },
+  { id: "2-times-week", label: "2x a Week", validFor: ['regular', 'office'] },
+  { id: "weekly", label: "Weekly", validFor: ['regular', 'office'] },
+  { id: "fortnightly", label: "Fortnightly", validFor: ['regular', 'office'] },
+  { id: "monthly", label: "Monthly", validFor: ['regular', 'spring', 'office'] }
 ];
+
+const PROPERTY_TYPES = [
+  { id: "house", label: "House", icon: Home },
+  { id: "apartment", label: "Apartment / Unit", icon: Building },
+  { id: "townhouse", label: "Townhouse", icon: Home },
+  { id: "office", label: "Office Space", icon: Briefcase }
+];
+
+const SQM_RANGES = [
+  { id: "under80", label: "Under 80 sqm" },
+  { id: "80-120", label: "80 – 120 sqm" },
+  { id: "121-180", label: "121 – 180 sqm" },
+  { id: "181-250", label: "181 – 250 sqm" },
+  { id: "250+", label: "250+ sqm" }
+];
+
+const EXTRAS_LIST = [
+  { id: "interiorWindows", label: "Interior Windows", type: "toggle" },
+  { id: "exteriorWindows", label: "Exterior Windows", type: "toggle" },
+  { id: "garage", label: "Garage Sweep/Clean", type: "toggle" },
+  { id: "poolArea", label: "Pool Area Tidy", type: "toggle" },
+  { id: "fridge", label: "Fridge Inside", type: "toggle" },
+  { id: "oven", label: "Oven Deep Clean", type: "toggle" },
+  { id: "cabinets", label: "Cabinets Inside", type: "toggle" },
+  { id: "wallSpot", label: "Wall Spot Cleaning", type: "toggle" },
+  { id: "blinds", label: "Blinds Dusting/Wipe", type: "toggle" },
+  { id: "trash", label: "Trash Removal", type: "toggle" },
+  { id: "pressure", label: "Pressure Cleaning", type: "toggle" },
+  { id: "garden", label: "Garden Tidy-up", type: "toggle" },
+  { id: "carpetSteam", label: "Carpet Steam (Rooms)", type: "counter" },
+  { id: "upholstery", label: "Upholstery (Couches)", type: "counter" }
+];
+
+const STEPS = ["Plan & Frequency", "Property Details", "Extras", "Logistics", "Details & Submit"];
 
 export default function Booking() {
-  const [selectedService, setSelectedService] = useState(services[0]);
-  const [selectedFrequency, setSelectedFrequency] = useState(frequencies[1]);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const calculatePrice = () => {
-    return Math.round(selectedService.basePrice * (1 - selectedFrequency.discount));
+  // Form State
+  const [formData, setFormData] = useState({
+    plan: "regular",
+    frequency: "fortnightly",
+    propertyType: "house",
+    area: "80-120",
+    floors: 1,
+    bedrooms: 2,
+    bathrooms: 1,
+    showers: 1,
+    toilets: 1,
+    bedMaking: 0,
+    balcony: false,
+    occupancy: "furnished",
+    extras: {} as Record<string, any>,
+    suburb: "",
+    parking: "easy",
+    date: "",
+    timeWindow: "morning",
+    accessNotes: "",
+    recommendations: "",
+    customer: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      contactMethod: "email",
+      language: "english"
+    }
+  });
+
+  // Handle plan change logic (adjust frequency if needed)
+  useEffect(() => {
+    const validFreqs = FREQUENCIES.filter(f => f.validFor.includes(formData.plan));
+    if (!validFreqs.find(f => f.id === formData.frequency)) {
+      setFormData(prev => ({ ...prev, frequency: validFreqs[0].id }));
+    }
+    // Auto-select included extras
+    const newExtras = { ...formData.extras };
+    EXTRAS_LIST.forEach(extra => {
+      const config = PRICING_CONFIG.modifiers.extras[extra.id as keyof typeof PRICING_CONFIG.modifiers.extras];
+      if (config.includedIn.includes(formData.plan)) {
+        if (extra.type === 'toggle') newExtras[extra.id] = true;
+        if (extra.type === 'counter' && !newExtras[extra.id]) newExtras[extra.id] = 1; 
+      }
+    });
+    setFormData(prev => ({ ...prev, extras: newExtras }));
+  }, [formData.plan]);
+
+  const updateForm = (key: string, value: any) => {
+    setFormData(prev => ({ ...prev, [key]: value }));
   };
+
+  const updateCustomer = (key: string, value: any) => {
+    setFormData(prev => ({ ...prev, customer: { ...prev.customer, [key]: value } }));
+  };
+
+  const updateExtra = (id: string, value: any) => {
+    setFormData(prev => ({ ...prev, extras: { ...prev.extras, [id]: value } }));
+  };
+
+  const incrementCounter = (key: string) => updateForm(key, (formData as any)[key] + 1);
+  const decrementCounter = (key: string) => updateForm(key, Math.max(0, (formData as any)[key] - 1));
+
+  // Pricing Engine
+  const calculateEstimate = () => {
+    let base = PRICING_CONFIG.basePrices[formData.plan as keyof typeof PRICING_CONFIG.basePrices];
+    
+    let modifiers = 0;
+    modifiers += PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm];
+    modifiers += formData.bedrooms * PRICING_CONFIG.modifiers.bedroom;
+    modifiers += formData.bathrooms * PRICING_CONFIG.modifiers.bathroom;
+    modifiers += formData.showers * PRICING_CONFIG.modifiers.shower;
+    modifiers += formData.toilets * PRICING_CONFIG.modifiers.toilet;
+    modifiers += Math.max(0, formData.floors - 1) * PRICING_CONFIG.modifiers.floor;
+    modifiers += formData.bedMaking * PRICING_CONFIG.modifiers.bedMaking;
+
+    let extrasTotal = 0;
+    Object.entries(formData.extras).forEach(([key, value]) => {
+      if (!value) return;
+      const config = PRICING_CONFIG.modifiers.extras[key as keyof typeof PRICING_CONFIG.modifiers.extras];
+      if (!config) return;
+      
+      // If it's included in the current plan, it's free
+      if (config.includedIn.includes(formData.plan)) return;
+
+      if (config.isMultiplier && typeof value === 'number') {
+        extrasTotal += config.price * value;
+      } else if (value === true) {
+        extrasTotal += config.price;
+      }
+    });
+
+    let subtotal = base + modifiers + extrasTotal;
+    
+    // Apply frequency discount
+    const discountRate = PRICING_CONFIG.frequencyDiscounts[formData.frequency as keyof typeof PRICING_CONFIG.frequencyDiscounts] || 0;
+    const discountAmount = subtotal * discountRate;
+    
+    return {
+      subtotal,
+      discountAmount,
+      total: Math.round(subtotal - discountAmount),
+      base,
+      modifiers,
+      extrasTotal
+    };
+  };
+
+  const estimate = calculateEstimate();
+
+  const handleNext = () => {
+    if (currentStep < STEPS.length - 1) {
+      setCurrentStep(prev => prev + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep(prev => prev - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Mock API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 1500);
+  };
+
+  // UI Components for Form
+  const Counter = ({ label, value, onInc, onDec }: any) => (
+    <div className="flex items-center justify-between p-4 bg-muted/30 rounded-xl border border-border">
+      <span className="font-medium text-secondary">{label}</span>
+      <div className="flex items-center gap-4">
+        <button type="button" onClick={onDec} className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-border hover:bg-muted transition-colors"><Minus className="w-4 h-4" /></button>
+        <span className="w-4 text-center font-bold">{value}</span>
+        <button type="button" onClick={onInc} className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-border hover:bg-muted transition-colors"><Plus className="w-4 h-4" /></button>
+      </div>
+    </div>
+  );
+
+  if (isSuccess) {
+    return (
+      <div className="min-h-screen flex flex-col bg-background">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <div className="max-w-lg w-full bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-border text-center animate-in zoom-in-95 duration-500">
+            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle2 className="w-12 h-12 text-green-600" />
+            </div>
+            <h2 className="text-3xl font-bold text-secondary mb-4">Quote Requested!</h2>
+            <p className="text-muted-foreground mb-8">
+              Thank you, {formData.customer.firstName}! We've received your request for a {PLANS.find(p => p.id === formData.plan)?.title}. Our team will review your details and photos, and send a final confirmation to your email shortly.
+            </p>
+            <div className="bg-muted/50 p-6 rounded-2xl mb-8">
+              <p className="text-sm text-muted-foreground mb-1">Estimated Total</p>
+              <p className="text-4xl font-bold text-primary">${estimate.total}</p>
+            </div>
+            <Button onClick={() => window.location.href = '/'} className="w-full h-14 rounded-xl text-lg font-bold">
+              Return to Home
+            </Button>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 pt-24 pb-32">
+      <main className="flex-1 pt-8 pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <h1 className="text-sm font-bold tracking-wider text-primary uppercase mb-3">Custom Plans</h1>
-            <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Design your perfect clean</h2>
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Get your custom quote</h1>
             <p className="text-lg text-muted-foreground">
-              Select your service type and how often you'd like us to visit. The more frequent we clean, the more you save!
+              Every property in Perth is unique. Use our interactive estimator to find the right plan and calculate your price instantly.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             
-            <div className="lg:col-span-2 space-y-12">
-              {/* Step 1: Select Service */}
-              <section className="animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 fill-mode-both">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center text-lg">1</div>
-                  <h3 className="text-2xl font-bold text-secondary">Choose a Service</h3>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {services.map((service) => {
-                    const Icon = service.icon;
-                    const isSelected = selectedService.id === service.id;
-                    
-                    return (
-                      <Card 
-                        key={service.id}
-                        onClick={() => setSelectedService(service)}
-                        className={cn(
-                          "cursor-pointer transition-all duration-300 border-2 overflow-hidden relative",
-                          isSelected 
-                            ? "border-primary bg-primary/5 shadow-lg shadow-primary/10 transform scale-[1.02]" 
-                            : "border-border hover:border-primary/50 hover:bg-muted/30"
-                        )}
-                      >
-                        {isSelected && (
-                          <div className="absolute top-3 right-3 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white">
-                            <Check className="w-3.5 h-3.5" />
-                          </div>
-                        )}
-                        <div className="p-6">
-                          <div className={cn(
-                            "w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors",
-                            isSelected ? "bg-primary text-white" : "bg-primary/10 text-primary"
-                          )}>
-                            <Icon className="w-6 h-6" />
-                          </div>
-                          <h4 className="font-bold text-lg text-secondary mb-2">{service.title}</h4>
-                          <p className="text-sm text-muted-foreground">{service.description}</p>
-                        </div>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </section>
-
-              {/* Step 2: Select Frequency */}
-              <section className="animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 fill-mode-both">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center text-lg">2</div>
-                  <h3 className="text-2xl font-bold text-secondary">How Often?</h3>
-                </div>
-                
-                <div className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-border">
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                    {frequencies.map((freq) => {
-                      const isSelected = selectedFrequency.id === freq.id;
-                      return (
-                        <button
-                          key={freq.id}
-                          onClick={() => setSelectedFrequency(freq)}
-                          className={cn(
-                            "relative flex flex-col items-center justify-center p-4 rounded-2xl border-2 transition-all duration-300",
-                            isSelected 
-                              ? "border-primary bg-primary text-white shadow-md transform scale-105" 
-                              : "border-border bg-background text-secondary hover:border-primary/40 hover:bg-muted/30"
-                          )}
-                        >
-                          {freq.discount > 0 && (
-                            <span className={cn(
-                              "absolute -top-3 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm whitespace-nowrap",
-                              isSelected ? "bg-accent text-secondary" : "bg-green-100 text-green-700"
-                            )}>
-                              {freq.badge}
-                            </span>
-                          )}
-                          <Clock className={cn("w-6 h-6 mb-2", isSelected ? "text-white" : "text-primary")} />
-                          <span className="font-semibold text-sm">{freq.label}</span>
-                        </button>
-                      );
-                    })}
+            {/* Form Area */}
+            <div className="lg:col-span-2">
+              
+              {/* Progress Bar */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-2">
+                  {STEPS.map((step, idx) => (
+                    <div key={idx} className={cn(
+                      "text-xs font-bold uppercase tracking-wider hidden md:block",
+                      idx === currentStep ? "text-primary" : idx < currentStep ? "text-primary/60" : "text-muted-foreground"
+                    )}>
+                      {step}
+                    </div>
+                  ))}
+                  <div className="md:hidden text-sm font-bold text-primary uppercase tracking-wider">
+                    Step {currentStep + 1} of {STEPS.length}: {STEPS[currentStep]}
                   </div>
                 </div>
-              </section>
+                <div className="h-2 w-full bg-muted rounded-full overflow-hidden flex">
+                  {STEPS.map((_, idx) => (
+                    <div key={idx} className={cn(
+                      "h-full flex-1 transition-colors duration-300",
+                      idx <= currentStep ? "bg-primary" : "bg-transparent",
+                      idx > 0 && "border-l border-white/20"
+                    )} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Form Steps */}
+              <div className="bg-white rounded-[2rem] p-6 md:p-8 shadow-xl border border-border animate-in fade-in zoom-in-95 duration-500">
+                
+                {/* STEP 1: Plan & Frequency */}
+                {currentStep === 0 && (
+                  <div className="space-y-8 animate-in slide-in-from-right-8 duration-500">
+                    <div>
+                      <h3 className="text-2xl font-bold text-secondary mb-6">1. Choose your plan</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {PLANS.map(plan => {
+                          const Icon = plan.icon;
+                          const isSelected = formData.plan === plan.id;
+                          return (
+                            <div 
+                              key={plan.id}
+                              onClick={() => updateForm('plan', plan.id)}
+                              className={cn(
+                                "cursor-pointer rounded-2xl p-5 border-2 transition-all duration-300 relative",
+                                isSelected ? "border-primary bg-primary/5 shadow-md" : "border-border hover:border-primary/30"
+                              )}
+                            >
+                              {isSelected && <div className="absolute top-4 right-4 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white"><Check className="w-4 h-4" /></div>}
+                              <Icon className={cn("w-8 h-8 mb-3", isSelected ? "text-primary" : "text-muted-foreground")} />
+                              <h4 className="font-bold text-lg text-secondary mb-1">{plan.title}</h4>
+                              <p className="text-sm text-muted-foreground mb-3">{plan.description}</p>
+                              <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">Starting from ${plan.startingPrice}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl font-bold text-secondary mb-6">2. How often?</h3>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        {FREQUENCIES.filter(f => f.validFor.includes(formData.plan)).map(freq => {
+                          const isSelected = formData.frequency === freq.id;
+                          const discount = PRICING_CONFIG.frequencyDiscounts[freq.id as keyof typeof PRICING_CONFIG.frequencyDiscounts];
+                          return (
+                            <div 
+                              key={freq.id}
+                              onClick={() => updateForm('frequency', freq.id)}
+                              className={cn(
+                                "cursor-pointer rounded-xl p-4 border-2 text-center transition-all duration-300 relative",
+                                isSelected ? "border-primary bg-primary text-white shadow-md" : "border-border hover:border-primary/30"
+                              )}
+                            >
+                              {discount > 0 && (
+                                <span className={cn(
+                                  "absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm whitespace-nowrap",
+                                  isSelected ? "bg-accent text-secondary" : "bg-green-100 text-green-700"
+                                )}>
+                                  Save {discount * 100}%
+                                </span>
+                              )}
+                              <span className="font-bold text-sm block mt-1">{freq.label}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 2: Property Details */}
+                {currentStep === 1 && (
+                  <div className="space-y-8 animate-in slide-in-from-right-8 duration-500">
+                    <div>
+                      <h3 className="text-2xl font-bold text-secondary mb-6">Property Details</h3>
+                      
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                          {PROPERTY_TYPES.map(pt => (
+                            <div 
+                              key={pt.id}
+                              onClick={() => updateForm('propertyType', pt.id)}
+                              className={cn(
+                                "cursor-pointer rounded-xl p-3 border-2 text-center transition-all duration-300",
+                                formData.propertyType === pt.id ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/30"
+                              )}
+                            >
+                              <pt.icon className="w-6 h-6 mx-auto mb-2" />
+                              <span className="font-semibold text-xs">{pt.label}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div>
+                          <Label className="mb-3 block text-base">Approximate Internal Area</Label>
+                          <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+                            {SQM_RANGES.map(range => (
+                              <div 
+                                key={range.id}
+                                onClick={() => updateForm('area', range.id)}
+                                className={cn(
+                                  "cursor-pointer rounded-lg p-2 border-2 text-center text-xs font-semibold transition-all",
+                                  formData.area === range.id ? "border-primary bg-primary text-white" : "border-border text-secondary hover:border-primary/30"
+                                )}
+                              >
+                                {range.label}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <Counter label="Bedrooms" value={formData.bedrooms} onInc={() => incrementCounter('bedrooms')} onDec={() => decrementCounter('bedrooms')} />
+                          <Counter label="Bathrooms" value={formData.bathrooms} onInc={() => incrementCounter('bathrooms')} onDec={() => decrementCounter('bathrooms')} />
+                          <Counter label="Separate Showers" value={formData.showers} onInc={() => incrementCounter('showers')} onDec={() => decrementCounter('showers')} />
+                          <Counter label="Separate Toilets" value={formData.toilets} onInc={() => incrementCounter('toilets')} onDec={() => decrementCounter('toilets')} />
+                          <Counter label="Floors / Levels" value={formData.floors} onInc={() => incrementCounter('floors')} onDec={() => updateForm('floors', Math.max(1, formData.floors - 1))} />
+                          <Counter label="Beds to Make/Change" value={formData.bedMaking} onInc={() => incrementCounter('bedMaking')} onDec={() => decrementCounter('bedMaking')} />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border">
+                          <div>
+                            <Label className="mb-3 block">Occupancy</Label>
+                            <div className="flex bg-muted/50 p-1 rounded-xl">
+                              {['Furnished', 'Unfurnished', 'Vacant'].map(opt => (
+                                <button
+                                  key={opt}
+                                  onClick={() => updateForm('occupancy', opt.toLowerCase())}
+                                  className={cn(
+                                    "flex-1 py-2 text-sm font-semibold rounded-lg transition-all",
+                                    formData.occupancy === opt.toLowerCase() ? "bg-white shadow-sm text-primary" : "text-muted-foreground hover:text-secondary"
+                                  )}
+                                >
+                                  {opt}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                          <div>
+                            <Label className="mb-3 block">Outdoor Areas</Label>
+                            <div 
+                              onClick={() => updateForm('balcony', !formData.balcony)}
+                              className={cn(
+                                "cursor-pointer flex items-center justify-between p-3 rounded-xl border-2 transition-all",
+                                formData.balcony ? "border-primary bg-primary/5" : "border-border bg-muted/30"
+                              )}
+                            >
+                              <span className="font-semibold text-sm">Balcony / Patio</span>
+                              <div className={cn("w-5 h-5 rounded-full border flex items-center justify-center", formData.balcony ? "bg-primary border-primary text-white" : "border-muted-foreground")}>
+                                {formData.balcony && <Check className="w-3 h-3" />}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 3: Extras */}
+                {currentStep === 2 && (
+                  <div className="space-y-6 animate-in slide-in-from-right-8 duration-500">
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-2xl font-bold text-secondary">Extra Services</h3>
+                      <span className="text-xs font-semibold bg-blue-100 text-blue-700 px-3 py-1 rounded-full flex items-center gap-1"><Info className="w-3 h-3"/> Some may be included in your plan</span>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {EXTRAS_LIST.map(extra => {
+                        const config = PRICING_CONFIG.modifiers.extras[extra.id as keyof typeof PRICING_CONFIG.modifiers.extras];
+                        const isIncluded = config.includedIn.includes(formData.plan);
+                        const isSelected = formData.extras[extra.id];
+                        
+                        return (
+                          <div 
+                            key={extra.id}
+                            onClick={() => {
+                              if (isIncluded) return; // Prevent toggling included items
+                              if (extra.type === 'toggle') updateExtra(extra.id, !isSelected);
+                            }}
+                            className={cn(
+                              "flex flex-col justify-center p-4 rounded-xl border-2 transition-all relative overflow-hidden",
+                              isIncluded ? "border-green-200 bg-green-50/50 cursor-default" : 
+                              isSelected ? "border-primary bg-primary/5 cursor-pointer" : "border-border bg-muted/10 cursor-pointer hover:border-primary/30"
+                            )}
+                          >
+                            <div className="flex items-center justify-between w-full">
+                              <div className="flex items-center gap-3">
+                                {extra.type === 'toggle' && (
+                                  <div className={cn("w-5 h-5 rounded border flex items-center justify-center shrink-0", 
+                                    isIncluded ? "bg-green-500 border-green-500 text-white" :
+                                    isSelected ? "bg-primary border-primary text-white" : "border-muted-foreground"
+                                  )}>
+                                    {(isSelected || isIncluded) && <Check className="w-3.5 h-3.5" />}
+                                  </div>
+                                )}
+                                <span className={cn("font-semibold text-sm", isIncluded ? "text-green-800" : "text-secondary")}>
+                                  {extra.label}
+                                </span>
+                              </div>
+                              
+                              {isIncluded ? (
+                                <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded uppercase">Included</span>
+                              ) : extra.type === 'toggle' ? (
+                                <span className="text-xs font-bold text-muted-foreground">+${config.price}</span>
+                              ) : null}
+                            </div>
+
+                            {extra.type === 'counter' && !isIncluded && (
+                              <div className="mt-3 flex items-center justify-between border-t border-border/50 pt-3">
+                                <span className="text-xs font-bold text-muted-foreground">${config.price} each</span>
+                                <div className="flex items-center gap-3">
+                                  <button type="button" onClick={(e) => { e.stopPropagation(); updateExtra(extra.id, Math.max(0, (formData.extras[extra.id] || 0) - 1)); }} className="w-7 h-7 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-border"><Minus className="w-3 h-3" /></button>
+                                  <span className="w-4 text-center font-bold text-sm">{formData.extras[extra.id] || 0}</span>
+                                  <button type="button" onClick={(e) => { e.stopPropagation(); updateExtra(extra.id, (formData.extras[extra.id] || 0) + 1); }} className="w-7 h-7 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-border"><Plus className="w-3 h-3" /></button>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 4: Logistics & Notes */}
+                {currentStep === 3 && (
+                  <div className="space-y-6 animate-in slide-in-from-right-8 duration-500">
+                    <h3 className="text-2xl font-bold text-secondary mb-6">Logistics & Access</h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label>Suburb / Postal Code</Label>
+                        <div className="relative">
+                          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                          <Input 
+                            placeholder="e.g. Joondalup 6027" 
+                            className="pl-9 bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors"
+                            value={formData.suburb}
+                            onChange={(e) => updateForm('suburb', e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label>Parking Availability</Label>
+                        <div className="flex bg-muted/50 p-1 rounded-xl h-10">
+                          {['Easy', 'Limited', 'Paid'].map(opt => (
+                            <button
+                              key={opt}
+                              onClick={() => updateForm('parking', opt.toLowerCase())}
+                              className={cn(
+                                "flex-1 text-sm font-semibold rounded-lg transition-all",
+                                formData.parking === opt.toLowerCase() ? "bg-white shadow-sm text-primary" : "text-muted-foreground hover:text-secondary"
+                              )}
+                            >
+                              {opt}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label>Preferred Date</Label>
+                        <Input 
+                          type="date" 
+                          className="bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors"
+                          value={formData.date}
+                          onChange={(e) => updateForm('date', e.target.value)}
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label>Time Window</Label>
+                        <div className="flex bg-muted/50 p-1 rounded-xl h-10">
+                          {['Morning', 'Afternoon', 'Anytime'].map(opt => (
+                            <button
+                              key={opt}
+                              onClick={() => updateForm('timeWindow', opt.toLowerCase())}
+                              className={cn(
+                                "flex-1 text-sm font-semibold rounded-lg transition-all",
+                                formData.timeWindow === opt.toLowerCase() ? "bg-white shadow-sm text-primary" : "text-muted-foreground hover:text-secondary"
+                              )}
+                            >
+                              {opt}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-border">
+                      <Label className="mb-2 block">Special Access Notes / Recommendations</Label>
+                      <Textarea 
+                        placeholder="Please let us know about stairs without lift, pets, fragile items, or priority areas..."
+                        className="min-h-[120px] bg-muted/50 border-transparent focus:border-primary focus:bg-white resize-none"
+                        value={formData.recommendations}
+                        onChange={(e) => updateForm('recommendations', e.target.value)}
+                      />
+                    </div>
+
+                    <div>
+                      <Label className="mb-2 block flex items-center gap-2"><Camera className="w-4 h-4"/> Upload Photos (Optional but recommended)</Label>
+                      <div className="border-2 border-dashed border-border rounded-xl p-8 text-center bg-muted/10 hover:bg-muted/30 transition-colors cursor-pointer flex flex-col items-center">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3">
+                          <UploadCloud className="w-6 h-6 text-primary" />
+                        </div>
+                        <p className="text-sm font-semibold text-secondary mb-1">Click to upload or drag & drop</p>
+                        <p className="text-xs text-muted-foreground">Kitchen, bathrooms, and living areas help us quote accurately.</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 5: Details & Submit */}
+                {currentStep === 4 && (
+                  <div className="space-y-6 animate-in slide-in-from-right-8 duration-500">
+                    <h3 className="text-2xl font-bold text-secondary mb-6">Your Details</h3>
+                    
+                    <form id="quote-form" onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <Label>First Name *</Label>
+                        <div className="relative">
+                          <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                          <Input required placeholder="Jane" className="pl-9 bg-muted/50 border-transparent focus:border-primary" value={formData.customer.firstName} onChange={e => updateCustomer('firstName', e.target.value)} />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Last Name *</Label>
+                        <Input required placeholder="Doe" className="bg-muted/50 border-transparent focus:border-primary" value={formData.customer.lastName} onChange={e => updateCustomer('lastName', e.target.value)} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Email *</Label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                          <Input required type="email" placeholder="jane@example.com" className="pl-9 bg-muted/50 border-transparent focus:border-primary" value={formData.customer.email} onChange={e => updateCustomer('email', e.target.value)} />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Phone Number *</Label>
+                        <div className="relative">
+                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                          <Input required type="tel" placeholder="0400 000 000" className="pl-9 bg-muted/50 border-transparent focus:border-primary" value={formData.customer.phone} onChange={e => updateCustomer('phone', e.target.value)} />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2 md:col-span-2">
+                        <Label>Preferred Contact Method</Label>
+                        <div className="flex flex-wrap gap-3">
+                          {['Email', 'Phone', 'WhatsApp'].map(method => (
+                            <button
+                              key={method}
+                              type="button"
+                              onClick={() => updateCustomer('contactMethod', method.toLowerCase())}
+                              className={cn(
+                                "px-4 py-2 text-sm font-semibold rounded-lg border transition-all",
+                                formData.customer.contactMethod === method.toLowerCase() ? "bg-primary border-primary text-white" : "bg-white border-border text-secondary hover:border-primary/50"
+                              )}
+                            >
+                              {method}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                )}
+
+                {/* Form Navigation Controls */}
+                <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
+                  <Button 
+                    type="button" 
+                    variant="ghost" 
+                    onClick={handleBack} 
+                    className={cn("text-muted-foreground font-semibold hover:text-secondary", currentStep === 0 && "opacity-0 pointer-events-none")}
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" /> Back
+                  </Button>
+                  
+                  {currentStep < STEPS.length - 1 ? (
+                    <Button onClick={handleNext} className="h-12 px-8 rounded-xl font-bold shadow-md shadow-primary/20">
+                      Continue <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  ) : (
+                    <Button 
+                      type="submit" 
+                      form="quote-form"
+                      disabled={isSubmitting}
+                      className="h-12 px-8 rounded-xl font-bold bg-accent text-secondary hover:bg-accent/90 shadow-lg shadow-accent/20"
+                    >
+                      {isSubmitting ? "Processing..." : "Submit Quote Request"}
+                    </Button>
+                  )}
+                </div>
+
+              </div>
             </div>
 
-            {/* Summary Sidebar */}
+            {/* Sidebar Summary */}
             <div className="lg:col-span-1">
-              <div className="sticky top-32 bg-secondary text-white rounded-[2rem] p-8 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-700 delay-300 fill-mode-both">
+              <div className="sticky top-28 bg-secondary text-white rounded-[2rem] p-6 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-700 delay-200">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 
-                <h3 className="font-display font-bold text-2xl mb-6 relative z-10">Your Plan Summary</h3>
+                <h3 className="font-display font-bold text-xl mb-4 relative z-10 flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-accent"/> Live Estimate
+                </h3>
                 
-                <div className="space-y-6 relative z-10">
-                  <div className="flex justify-between items-start border-b border-white/10 pb-6">
-                    <div>
-                      <p className="text-white/60 text-sm font-medium mb-1">Service Type</p>
-                      <p className="font-bold text-lg text-accent">{selectedService.title}</p>
-                    </div>
-                  </div>
+                <div className="space-y-4 relative z-10 text-sm">
                   
-                  <div className="flex justify-between items-start border-b border-white/10 pb-6">
-                    <div>
-                      <p className="text-white/60 text-sm font-medium mb-1">Frequency</p>
-                      <p className="font-bold text-lg text-white">{selectedFrequency.label}</p>
-                      {selectedFrequency.discount > 0 && (
-                        <p className="text-green-400 text-xs font-bold mt-1 uppercase tracking-wider">{selectedFrequency.badge} Applied</p>
-                      )}
+                  <div className="flex justify-between items-center border-b border-white/10 pb-4">
+                    <span className="text-white/70">Plan Selected</span>
+                    <span className="font-bold text-accent">{PLANS.find(p => p.id === formData.plan)?.title}</span>
+                  </div>
+
+                  <div className="flex justify-between items-center border-b border-white/10 pb-4">
+                    <span className="text-white/70">Frequency</span>
+                    <span className="font-bold">{FREQUENCIES.find(f => f.id === formData.frequency)?.label}</span>
+                  </div>
+
+                  <div className="space-y-2 border-b border-white/10 pb-4">
+                    <p className="text-white/50 text-xs font-bold uppercase tracking-wider mb-2">Property Details</p>
+                    <div className="flex justify-between">
+                      <span className="text-white/80">{formData.bedrooms} Beds, {formData.bathrooms} Baths</span>
+                      <span className="text-white/50">+${(formData.bedrooms * PRICING_CONFIG.modifiers.bedroom) + (formData.bathrooms * PRICING_CONFIG.modifiers.bathroom)}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-white/80">Area: {SQM_RANGES.find(r => r.id === formData.area)?.label}</span>
+                      <span className="text-white/50">+${PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm]}</span>
                     </div>
                   </div>
 
-                  <div>
-                    <p className="text-white/60 text-sm font-medium mb-3">What's included:</p>
-                    <ul className="space-y-2">
-                      {selectedService.benefits.map((benefit, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-white/80">
-                          <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {estimate.extrasTotal > 0 && (
+                    <div className="flex justify-between items-center border-b border-white/10 pb-4">
+                      <span className="text-white/70">Extra Services</span>
+                      <span className="font-bold">+${estimate.extrasTotal}</span>
+                    </div>
+                  )}
+
+                  {estimate.discountAmount > 0 && (
+                    <div className="flex justify-between items-center pb-2 text-green-400">
+                      <span className="font-semibold">Frequency Discount</span>
+                      <span className="font-bold">-${Math.round(estimate.discountAmount)}</span>
+                    </div>
+                  )}
+
                 </div>
                 
-                <div className="mt-8 pt-8 border-t border-white/10 relative z-10">
-                  <div className="flex justify-between items-end mb-6">
-                    <span className="text-white/80 font-medium">Estimated Total</span>
+                <div className="mt-6 pt-6 border-t border-white/20 relative z-10">
+                  <div className="flex justify-between items-end mb-2">
+                    <span className="text-white/90 font-medium text-sm">Estimated Total</span>
                     <div className="text-right">
-                      {selectedFrequency.discount > 0 && (
-                        <span className="text-white/40 line-through text-sm mr-2">${selectedService.basePrice}</span>
+                      {estimate.discountAmount > 0 && (
+                        <span className="text-white/40 line-through text-xs mr-2">${estimate.subtotal}</span>
                       )}
-                      <span className="text-4xl font-display font-bold text-white">${calculatePrice()}</span>
+                      <span className="text-4xl font-display font-bold text-white">${estimate.total}</span>
                     </div>
                   </div>
-                  
-                  <Button className="w-full h-14 rounded-xl text-base font-bold bg-accent text-secondary hover:bg-white transition-colors shadow-lg flex justify-between px-6 group">
-                    <span>Book this Plan</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <p className="text-center text-xs text-white/40 mt-4">
-                    * Final price may vary based on exact property size and condition.
+                  <p className="text-[10px] text-white/40 text-right leading-tight mt-1">
+                    * Estimated price before final confirmation.<br/> Final quote may be adjusted upon review.
                   </p>
                 </div>
               </div>
+              
+              {/* Trust Indicators */}
+              <div className="mt-8 space-y-4 px-2">
+                <div className="flex items-center gap-3 text-sm text-secondary font-medium">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><CheckCircle2 className="w-4 h-4 text-blue-600"/></div>
+                  Family-owned business in Perth
+                </div>
+                <div className="flex items-center gap-3 text-sm text-secondary font-medium">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><ShieldCheck className="w-4 h-4 text-blue-600"/></div>
+                  100% Satisfaction guarantee
+                </div>
+              </div>
+              
             </div>
 
           </div>
