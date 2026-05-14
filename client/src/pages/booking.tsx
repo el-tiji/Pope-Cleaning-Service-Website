@@ -8,7 +8,8 @@ import { Label } from "@/components/ui/label";
 import { 
   Check, Sparkles, Calendar, Clock, ArrowRight, ArrowLeft, 
   ShieldCheck, Briefcase, Home, Building, Plus, Minus, 
-  Camera, MapPin, CheckCircle2, User, Mail, Phone, UploadCloud, Info
+  Camera, MapPin, CheckCircle2, User, Mail, Phone, UploadCloud, Info,
+  Users, Building2, Layers, Store, Warehouse, Factory, Landmark, Dumbbell, HelpCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -22,11 +23,11 @@ const PRICING_CONFIG = {
   },
   modifiers: {
     sqm: {
-      'under80': 0,
-      '80-120': 30,
-      '121-180': 60,
-      '181-250': 100,
-      '250+': 150
+      'under120': 0,
+      '121-180': 30,
+      '181-250': 60,
+      '251-350': 100,
+      '350+': 150
     },
     bedroom: 20,
     bathroom: 30,
@@ -83,12 +84,26 @@ const PROPERTY_TYPES = [
   { id: "townhouse", label: "Townhouse", icon: Home }
 ];
 
+const OFFICE_PROPERTY_TYPES = [
+  { id: "regular-office", label: "Regular Office", icon: Briefcase },
+  { id: "coworking", label: "Coworking Space", icon: Users },
+  { id: "commercial-building", label: "Commercial Building", icon: Building2 },
+  { id: "corporate-building", label: "Corporate Building", icon: Landmark },
+  { id: "strata", label: "Strata / Common Areas", icon: Layers },
+  { id: "retail", label: "Retail / Showroom", icon: Store },
+  { id: "warehouse", label: "Warehouse / Industrial", icon: Warehouse },
+  { id: "workshop", label: "Workshop / Factory", icon: Factory },
+  { id: "public-facility", label: "Public Facility", icon: Building },
+  { id: "gym", label: "Gym / Fitness Studio", icon: Dumbbell },
+  { id: "other", label: "Other", icon: HelpCircle }
+];
+
 const SQM_RANGES = [
-  { id: "under80", label: "Under 80 sqm" },
-  { id: "80-120", label: "80 – 120 sqm" },
+  { id: "under120", label: "Under 120 sqm" },
   { id: "121-180", label: "121 – 180 sqm" },
   { id: "181-250", label: "181 – 250 sqm" },
-  { id: "250+", label: "250+ sqm" }
+  { id: "251-350", label: "251 – 350 sqm" },
+  { id: "350+", label: "350+ sqm" }
 ];
 
 const EXTRAS_LIST = [
@@ -128,7 +143,8 @@ export default function Booking() {
     plan: "regular",
     frequency: "fortnightly",
     propertyType: "house",
-    area: "80-120",
+    otherPropertyType: "",
+    area: "under120",
     floors: 1,
     bedrooms: 2,
     bathrooms: 1,
@@ -442,26 +458,44 @@ export default function Booking() {
                       <h3 className="text-2xl font-bold text-secondary mb-6">Property Details</h3>
                       
                       <div className="space-y-6">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                          {PROPERTY_TYPES.map(pt => (
+                        <div className={cn(
+                          "grid gap-3",
+                          formData.plan === 'office' ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4" : "grid-cols-2 md:grid-cols-3"
+                        )}>
+                          {(formData.plan === 'office' ? OFFICE_PROPERTY_TYPES : PROPERTY_TYPES).map(pt => (
                             <div 
                               key={pt.id}
                               onClick={() => updateForm('propertyType', pt.id)}
                               className={cn(
-                                "cursor-pointer rounded-xl p-3 border-2 text-center transition-all duration-300",
-                                formData.propertyType === pt.id ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/30"
+                                "cursor-pointer rounded-xl p-3 border-2 text-center transition-all duration-300 flex flex-col items-center justify-center",
+                                formData.propertyType === pt.id ? "border-primary bg-primary/5 text-primary shadow-md" : "border-border text-muted-foreground hover:border-primary/30"
                               )}
                             >
-                              <pt.icon className="w-6 h-6 mx-auto mb-2" />
+                              <pt.icon className="w-6 h-6 mb-2" />
                               <span className="font-semibold text-xs">{pt.label}</span>
                             </div>
                           ))}
                         </div>
 
+                        {formData.propertyType === 'other' && formData.plan === 'office' && (
+                          <div className="mt-4 animate-in fade-in duration-300">
+                            <Label className="mb-2 block text-base">Please specify property type</Label>
+                            <Input 
+                              placeholder="e.g. Clinic, School, Studio..." 
+                              className="bg-muted/50 border-transparent focus:border-primary"
+                              value={formData.otherPropertyType}
+                              onChange={(e) => updateForm('otherPropertyType', e.target.value)}
+                            />
+                          </div>
+                        )}
+
                         <div>
                           <Label className="mb-3 block text-base">Approximate Internal Area</Label>
-                          <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
-                            {SQM_RANGES.map(range => (
+                          <div className={cn(
+                            "grid gap-2",
+                            formData.plan === 'office' ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2 md:grid-cols-5"
+                          )}>
+                            {SQM_RANGES.filter(range => formData.plan !== 'office' || range.id !== '350+').map(range => (
                               <div 
                                 key={range.id}
                                 onClick={() => updateForm('area', range.id)}
@@ -476,49 +510,53 @@ export default function Booking() {
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <Counter label="Bedrooms" value={formData.bedrooms} onInc={() => incrementCounter('bedrooms')} onDec={() => decrementCounter('bedrooms')} />
-                          <Counter label="Bathrooms" value={formData.bathrooms} onInc={() => incrementCounter('bathrooms')} onDec={() => decrementCounter('bathrooms')} />
-                          <Counter label="Separate Showers" value={formData.showers} onInc={() => incrementCounter('showers')} onDec={() => decrementCounter('showers')} />
-                          <Counter label="Separate Toilets" value={formData.toilets} onInc={() => incrementCounter('toilets')} onDec={() => decrementCounter('toilets')} />
-                          <Counter label="Floors / Levels" value={formData.floors} onInc={() => incrementCounter('floors')} onDec={() => updateForm('floors', Math.max(1, formData.floors - 1))} />
-                          <Counter label="Beds to Make/Change" value={formData.bedMaking} onInc={() => incrementCounter('bedMaking')} onDec={() => decrementCounter('bedMaking')} />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border">
-                          <div>
-                            <Label className="mb-3 block">Occupancy</Label>
-                            <div className="flex bg-muted/50 p-1 rounded-xl">
-                              {['Furnished', 'Unfurnished', 'Vacant'].map(opt => (
-                                <button
-                                  key={opt}
-                                  onClick={() => updateForm('occupancy', opt.toLowerCase())}
-                                  className={cn(
-                                    "flex-1 py-2 text-sm font-semibold rounded-lg transition-all",
-                                    formData.occupancy === opt.toLowerCase() ? "bg-white shadow-sm text-primary" : "text-muted-foreground hover:text-secondary"
-                                  )}
-                                >
-                                  {opt}
-                                </button>
-                              ))}
-                            </div>
+                        {formData.plan !== 'office' && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <Counter label="Bedrooms" value={formData.bedrooms} onInc={() => incrementCounter('bedrooms')} onDec={() => decrementCounter('bedrooms')} />
+                            <Counter label="Bathrooms" value={formData.bathrooms} onInc={() => incrementCounter('bathrooms')} onDec={() => decrementCounter('bathrooms')} />
+                            <Counter label="Separate Showers" value={formData.showers} onInc={() => incrementCounter('showers')} onDec={() => decrementCounter('showers')} />
+                            <Counter label="Separate Toilets" value={formData.toilets} onInc={() => incrementCounter('toilets')} onDec={() => decrementCounter('toilets')} />
+                            <Counter label="Floors / Levels" value={formData.floors} onInc={() => incrementCounter('floors')} onDec={() => updateForm('floors', Math.max(1, formData.floors - 1))} />
+                            <Counter label="Beds to Make/Change" value={formData.bedMaking} onInc={() => incrementCounter('bedMaking')} onDec={() => decrementCounter('bedMaking')} />
                           </div>
-                          <div>
-                            <Label className="mb-3 block">Outdoor Areas</Label>
-                            <div 
-                              onClick={() => updateForm('balcony', !formData.balcony)}
-                              className={cn(
-                                "cursor-pointer flex items-center justify-between p-3 rounded-xl border-2 transition-all",
-                                formData.balcony ? "border-primary bg-primary/5" : "border-border bg-muted/30"
-                              )}
-                            >
-                              <span className="font-semibold text-sm">Balcony / Patio</span>
-                              <div className={cn("w-5 h-5 rounded-full border flex items-center justify-center", formData.balcony ? "bg-primary border-primary text-white" : "border-muted-foreground")}>
-                                {formData.balcony && <Check className="w-3 h-3" />}
+                        )}
+
+                        {formData.plan !== 'office' && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border">
+                            <div>
+                              <Label className="mb-3 block">Occupancy</Label>
+                              <div className="flex bg-muted/50 p-1 rounded-xl">
+                                {['Furnished', 'Unfurnished', 'Vacant'].map(opt => (
+                                  <button
+                                    key={opt}
+                                    onClick={() => updateForm('occupancy', opt.toLowerCase())}
+                                    className={cn(
+                                      "flex-1 py-2 text-sm font-semibold rounded-lg transition-all",
+                                      formData.occupancy === opt.toLowerCase() ? "bg-white shadow-sm text-primary" : "text-muted-foreground hover:text-secondary"
+                                    )}
+                                  >
+                                    {opt}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                            <div>
+                              <Label className="mb-3 block">Outdoor Areas</Label>
+                              <div 
+                                onClick={() => updateForm('balcony', !formData.balcony)}
+                                className={cn(
+                                  "cursor-pointer flex items-center justify-between p-3 rounded-xl border-2 transition-all",
+                                  formData.balcony ? "border-primary bg-primary/5" : "border-border bg-muted/30"
+                                )}
+                              >
+                                <span className="font-semibold text-sm">Balcony / Patio</span>
+                                <div className={cn("w-5 h-5 rounded-full border flex items-center justify-center", formData.balcony ? "bg-primary border-primary text-white" : "border-muted-foreground")}>
+                                  {formData.balcony && <Check className="w-3 h-3" />}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        )}
 
                       </div>
                     </div>
