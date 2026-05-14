@@ -56,7 +56,8 @@ const PRICING_CONFIG = {
     '2-times-week': 0.25,
     'weekly': 0.15,
     'fortnightly': 0.10,
-    'monthly': 0.05
+    'monthly': 0.10,
+    'every-3-months': 0.05
   }
 };
 
@@ -72,7 +73,8 @@ const FREQUENCIES = [
   { id: "2-times-week", label: "2x a Week", validFor: ['regular', 'office'] },
   { id: "weekly", label: "Weekly", validFor: ['regular', 'office'] },
   { id: "fortnightly", label: "Fortnightly", validFor: ['regular', 'office'] },
-  { id: "monthly", label: "Monthly", validFor: ['regular', 'spring', 'office'] }
+  { id: "monthly", label: "Monthly", validFor: ['regular', 'spring', 'office'] },
+  { id: "every-3-months", label: "Every 3 Months", validFor: ['spring'] }
 ];
 
 const PROPERTY_TYPES = [
