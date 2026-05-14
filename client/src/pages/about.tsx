@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <About />
         <Team />
       </main>
