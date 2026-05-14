@@ -222,6 +222,15 @@ export default function Booking() {
   const incrementCounter = (key: string) => updateForm(key, (formData as any)[key] + 1);
   const decrementCounter = (key: string) => updateForm(key, Math.max(0, (formData as any)[key] - 1));
 
+  const isStandard = formData.plan !== 'office';
+  
+  const getCounterExtra = (val: number, standard: number, price: number) => {
+    if (isStandard) {
+      return Math.max(0, val - standard) * price;
+    }
+    return val * price;
+  };
+
   // Pricing Engine
   const calculateEstimate = () => {
     let base = PRICING_CONFIG.basePrices[formData.plan as keyof typeof PRICING_CONFIG.basePrices];
@@ -229,22 +238,13 @@ export default function Booking() {
     let modifiers = 0;
     if (currentStep > 0) {
       modifiers += PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm] || 0;
-      
-      const isStandard = formData.plan !== 'office';
-      
-      const calcMod = (val: number, standard: number, price: number) => {
-        if (isStandard) {
-          return Math.max(0, val - standard) * price;
-        }
-        return val * price;
-      };
 
-      modifiers += calcMod(formData.bedrooms, 3, PRICING_CONFIG.modifiers.bedroom);
-      modifiers += calcMod(formData.bathrooms, 2, PRICING_CONFIG.modifiers.bathroom);
-      modifiers += calcMod(formData.showers, 2, PRICING_CONFIG.modifiers.shower);
-      modifiers += calcMod(formData.toilets, 1, PRICING_CONFIG.modifiers.toilet);
-      modifiers += calcMod(formData.floors, 1, PRICING_CONFIG.modifiers.floor);
-      modifiers += formData.bedMaking * PRICING_CONFIG.modifiers.bedMaking;
+      modifiers += getCounterExtra(formData.bedrooms, 3, PRICING_CONFIG.modifiers.bedroom);
+      modifiers += getCounterExtra(formData.bathrooms, 2, PRICING_CONFIG.modifiers.bathroom);
+      modifiers += getCounterExtra(formData.showers, 2, PRICING_CONFIG.modifiers.shower);
+      modifiers += getCounterExtra(formData.toilets, 1, PRICING_CONFIG.modifiers.toilet);
+      modifiers += getCounterExtra(formData.floors, 1, PRICING_CONFIG.modifiers.floor);
+      modifiers += getCounterExtra(formData.bedMaking, 0, PRICING_CONFIG.modifiers.bedMaking);
     }
 
     let extrasTotal = 0;
@@ -309,9 +309,12 @@ export default function Booking() {
   };
 
   // UI Components for Form
-  const Counter = ({ label, value, onInc, onDec }: any) => (
+  const Counter = ({ label, value, onInc, onDec, extraCost }: any) => (
     <div className="flex items-center justify-between p-4 bg-muted/30 rounded-xl border border-border">
-      <span className="font-medium text-secondary">{label}</span>
+      <div className="flex flex-col">
+        <span className="font-medium text-secondary">{label}</span>
+        {extraCost > 0 && <span className="text-xs font-bold text-primary">+${extraCost}</span>}
+      </div>
       <div className="flex items-center gap-4">
         <button type="button" onClick={onDec} className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-border hover:bg-muted transition-colors"><Minus className="w-4 h-4" /></button>
         <span className="w-4 text-center font-bold">{value}</span>
@@ -521,29 +524,39 @@ export default function Booking() {
                               } else {
                                 return !['121-200', '201-300', '301-500', '501-750', '750+'].includes(range.id);
                               }
-                            }).map(range => (
+                            }).map(range => {
+                              const extraCost = PRICING_CONFIG.modifiers.sqm[range.id as keyof typeof PRICING_CONFIG.modifiers.sqm] || 0;
+                              return (
                               <div 
                                 key={range.id}
                                 onClick={() => updateForm('area', range.id)}
                                 className={cn(
-                                  "cursor-pointer rounded-lg p-2 border-2 text-center text-xs font-semibold transition-all",
+                                  "cursor-pointer rounded-lg p-2 border-2 text-center text-xs font-semibold transition-all flex flex-col justify-center items-center gap-1",
                                   formData.area === range.id ? "border-primary bg-primary text-white" : "border-border text-secondary hover:border-primary/30"
                                 )}
                               >
-                                {range.label}
+                                <span>{range.label}</span>
+                                {extraCost > 0 && (
+                                  <span className={cn(
+                                    "text-[10px] font-bold px-1.5 rounded",
+                                    formData.area === range.id ? "bg-white/20 text-white" : "bg-primary/10 text-primary"
+                                  )}>
+                                    +${extraCost}
+                                  </span>
+                                )}
                               </div>
-                            ))}
+                            )})}
                           </div>
                         </div>
 
                         {formData.plan !== 'office' && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <Counter label="Bedrooms" value={formData.bedrooms} onInc={() => incrementCounter('bedrooms')} onDec={() => decrementCounter('bedrooms')} />
-                            <Counter label="Bathrooms" value={formData.bathrooms} onInc={() => incrementCounter('bathrooms')} onDec={() => decrementCounter('bathrooms')} />
-                            <Counter label="Separate Showers" value={formData.showers} onInc={() => incrementCounter('showers')} onDec={() => decrementCounter('showers')} />
-                            <Counter label="Separate Toilets" value={formData.toilets} onInc={() => incrementCounter('toilets')} onDec={() => decrementCounter('toilets')} />
-                            <Counter label="Floors / Levels" value={formData.floors} onInc={() => incrementCounter('floors')} onDec={() => updateForm('floors', Math.max(1, formData.floors - 1))} />
-                            <Counter label="Beds to Make/Change" value={formData.bedMaking} onInc={() => incrementCounter('bedMaking')} onDec={() => decrementCounter('bedMaking')} />
+                            <Counter label="Bedrooms" value={formData.bedrooms} extraCost={getCounterExtra(formData.bedrooms, 3, PRICING_CONFIG.modifiers.bedroom)} onInc={() => incrementCounter('bedrooms')} onDec={() => decrementCounter('bedrooms')} />
+                            <Counter label="Bathrooms" value={formData.bathrooms} extraCost={getCounterExtra(formData.bathrooms, 2, PRICING_CONFIG.modifiers.bathroom)} onInc={() => incrementCounter('bathrooms')} onDec={() => decrementCounter('bathrooms')} />
+                            <Counter label="Separate Showers" value={formData.showers} extraCost={getCounterExtra(formData.showers, 2, PRICING_CONFIG.modifiers.shower)} onInc={() => incrementCounter('showers')} onDec={() => decrementCounter('showers')} />
+                            <Counter label="Separate Toilets" value={formData.toilets} extraCost={getCounterExtra(formData.toilets, 1, PRICING_CONFIG.modifiers.toilet)} onInc={() => incrementCounter('toilets')} onDec={() => decrementCounter('toilets')} />
+                            <Counter label="Floors / Levels" value={formData.floors} extraCost={getCounterExtra(formData.floors, 1, PRICING_CONFIG.modifiers.floor)} onInc={() => incrementCounter('floors')} onDec={() => updateForm('floors', Math.max(1, formData.floors - 1))} />
+                            <Counter label="Beds to Make/Change" value={formData.bedMaking} extraCost={getCounterExtra(formData.bedMaking, 0, PRICING_CONFIG.modifiers.bedMaking)} onInc={() => incrementCounter('bedMaking')} onDec={() => decrementCounter('bedMaking')} />
                           </div>
                         )}
 
