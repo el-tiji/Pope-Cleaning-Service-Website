@@ -28,8 +28,11 @@ const PRICING_CONFIG = {
       '181-250': 60,
       '251-350': 100,
       '350+': 150,
-      '351-500': 200,
-      '500+': 280
+      '121-200': 30,
+      '201-300': 60,
+      '301-500': 100,
+      '501-750': 200,
+      '750+': 280
     },
     bedroom: 20,
     bathroom: 30,
@@ -106,8 +109,11 @@ const SQM_RANGES = [
   { id: "181-250", label: "181 – 250 sqm" },
   { id: "251-350", label: "251 – 350 sqm" },
   { id: "350+", label: "350+ sqm" },
-  { id: "351-500", label: "351 – 500 sqm" },
-  { id: "500+", label: "500+ sqm" }
+  { id: "121-200", label: "121 – 200 sqm" },
+  { id: "201-300", label: "201 – 300 sqm" },
+  { id: "301-500", label: "301 – 500 sqm" },
+  { id: "501-750", label: "501 – 750 sqm" },
+  { id: "750+", label: "750+ sqm" }
 ];
 
 const EXTRAS_LIST = [
@@ -501,9 +507,9 @@ export default function Booking() {
                           )}>
                             {SQM_RANGES.filter(range => {
                               if (formData.plan === 'office') {
-                                return range.id !== '350+';
+                                return !['121-180', '181-250', '251-350', '350+'].includes(range.id);
                               } else {
-                                return range.id !== '351-500' && range.id !== '500+';
+                                return !['121-200', '201-300', '301-500', '501-750', '750+'].includes(range.id);
                               }
                             }).map(range => (
                               <div 
