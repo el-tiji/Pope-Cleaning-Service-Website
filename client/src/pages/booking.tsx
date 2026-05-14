@@ -80,8 +80,7 @@ const FREQUENCIES = [
 const PROPERTY_TYPES = [
   { id: "house", label: "House", icon: Home },
   { id: "apartment", label: "Apartment / Unit", icon: Building },
-  { id: "townhouse", label: "Townhouse", icon: Home },
-  { id: "office", label: "Office Space", icon: Briefcase }
+  { id: "townhouse", label: "Townhouse", icon: Home }
 ];
 
 const SQM_RANGES = [
