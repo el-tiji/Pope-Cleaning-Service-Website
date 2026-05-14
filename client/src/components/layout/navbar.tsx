@@ -19,11 +19,16 @@ export function Navbar() {
         </Link>
         
         <div className="hidden md:flex items-center gap-8">
-          <Link href="#services"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Services</a></Link>
-          <Link href="#about"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">About Us</a></Link>
-          <Link href="#reviews"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Reviews</a></Link>
-          <Link href="#faq"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">FAQ</a></Link>
-          <Button className="rounded-full px-6 font-semibold shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all">Book Now</Button>
+          <Link href="/"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Home</a></Link>
+          <Link href="/book"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Plans & Pricing</a></Link>
+          <a href="/#services" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Services</a>
+          <a href="/#about" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">About Us</a>
+          <a href="/#reviews" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Reviews</a>
+          <Link href="/book">
+            <Button className="rounded-full px-6 font-semibold shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all cursor-pointer">
+              Book Now
+            </Button>
+          </Link>
         </div>
 
         <Button variant="ghost" size="icon" className="md:hidden">
