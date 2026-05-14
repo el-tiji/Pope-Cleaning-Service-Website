@@ -41,6 +41,7 @@ const PRICING_CONFIG = {
     floor: 20, // per floor above 1
     bedMaking: 10,
     extras: {
+      balcony: { price: 30, includedIn: [] as string[] },
       interiorWindows: { price: 40, includedIn: ['spring', 'vacate'] as string[] },
       exteriorWindows: { price: 60, includedIn: ['vacate'] as string[] },
       garage: { price: 50, includedIn: ['vacate'] as string[] },
@@ -117,6 +118,7 @@ const SQM_RANGES = [
 ];
 
 const EXTRAS_LIST = [
+  { id: "balcony", label: "Balcony / Patio", type: "toggle" },
   { id: "interiorWindows", label: "Interior Windows", type: "toggle" },
   { id: "exteriorWindows", label: "Exterior Windows", type: "toggle" },
   { id: "garage", label: "Garage Sweep/Clean", type: "toggle" },
@@ -156,13 +158,11 @@ export default function Booking() {
     otherPropertyType: "",
     area: "under120",
     floors: 1,
-    bedrooms: 2,
-    bathrooms: 1,
-    showers: 1,
+    bedrooms: 3,
+    bathrooms: 2,
+    showers: 2,
     toilets: 1,
     bedMaking: 0,
-    balcony: false,
-    occupancy: "furnished",
     extras: {} as Record<string, any>,
     suburb: "",
     parking: "easy",
@@ -228,12 +228,22 @@ export default function Booking() {
     
     let modifiers = 0;
     if (currentStep > 0) {
-      modifiers += PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm];
-      modifiers += formData.bedrooms * PRICING_CONFIG.modifiers.bedroom;
-      modifiers += formData.bathrooms * PRICING_CONFIG.modifiers.bathroom;
-      modifiers += formData.showers * PRICING_CONFIG.modifiers.shower;
-      modifiers += formData.toilets * PRICING_CONFIG.modifiers.toilet;
-      modifiers += Math.max(0, formData.floors - 1) * PRICING_CONFIG.modifiers.floor;
+      modifiers += PRICING_CONFIG.modifiers.sqm[formData.area as keyof typeof PRICING_CONFIG.modifiers.sqm] || 0;
+      
+      const isStandard = formData.plan === 'regular' || formData.plan === 'spring';
+      
+      const calcMod = (val: number, standard: number, price: number) => {
+        if (isStandard) {
+          return Math.max(0, val - standard) * price;
+        }
+        return val * price;
+      };
+
+      modifiers += calcMod(formData.bedrooms, 3, PRICING_CONFIG.modifiers.bedroom);
+      modifiers += calcMod(formData.bathrooms, 2, PRICING_CONFIG.modifiers.bathroom);
+      modifiers += calcMod(formData.showers, 2, PRICING_CONFIG.modifiers.shower);
+      modifiers += calcMod(formData.toilets, 1, PRICING_CONFIG.modifiers.toilet);
+      modifiers += calcMod(formData.floors, 1, PRICING_CONFIG.modifiers.floor);
       modifiers += formData.bedMaking * PRICING_CONFIG.modifiers.bedMaking;
     }
 
@@ -534,43 +544,6 @@ export default function Booking() {
                             <Counter label="Separate Toilets" value={formData.toilets} onInc={() => incrementCounter('toilets')} onDec={() => decrementCounter('toilets')} />
                             <Counter label="Floors / Levels" value={formData.floors} onInc={() => incrementCounter('floors')} onDec={() => updateForm('floors', Math.max(1, formData.floors - 1))} />
                             <Counter label="Beds to Make/Change" value={formData.bedMaking} onInc={() => incrementCounter('bedMaking')} onDec={() => decrementCounter('bedMaking')} />
-                          </div>
-                        )}
-
-                        {formData.plan !== 'office' && (
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border">
-                            <div>
-                              <Label className="mb-3 block">Occupancy</Label>
-                              <div className="flex bg-muted/50 p-1 rounded-xl">
-                                {['Furnished', 'Unfurnished', 'Vacant'].map(opt => (
-                                  <button
-                                    key={opt}
-                                    onClick={() => updateForm('occupancy', opt.toLowerCase())}
-                                    className={cn(
-                                      "flex-1 py-2 text-sm font-semibold rounded-lg transition-all",
-                                      formData.occupancy === opt.toLowerCase() ? "bg-white shadow-sm text-primary" : "text-muted-foreground hover:text-secondary"
-                                    )}
-                                  >
-                                    {opt}
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                            <div>
-                              <Label className="mb-3 block">Outdoor Areas</Label>
-                              <div 
-                                onClick={() => updateForm('balcony', !formData.balcony)}
-                                className={cn(
-                                  "cursor-pointer flex items-center justify-between p-3 rounded-xl border-2 transition-all",
-                                  formData.balcony ? "border-primary bg-primary/5" : "border-border bg-muted/30"
-                                )}
-                              >
-                                <span className="font-semibold text-sm">Balcony / Patio</span>
-                                <div className={cn("w-5 h-5 rounded-full border flex items-center justify-center", formData.balcony ? "bg-primary border-primary text-white" : "border-muted-foreground")}>
-                                  {formData.balcony && <Check className="w-3 h-3" />}
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         )}
 
