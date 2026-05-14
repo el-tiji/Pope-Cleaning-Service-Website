@@ -111,6 +111,14 @@ const EXTRAS_LIST = [
 
 const STEPS = ["Plan & Frequency", "Property Details", "Extras", "Logistics", "Details & Submit"];
 
+const getFrequencyDiscount = (plan: string, frequency: string) => {
+  if (plan === 'regular') {
+    if (frequency === 'monthly') return 0.05;
+    if (frequency === 'fortnightly') return 0.10;
+  }
+  return PRICING_CONFIG.frequencyDiscounts[frequency as keyof typeof PRICING_CONFIG.frequencyDiscounts] || 0;
+};
+
 export default function Booking() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -216,7 +224,7 @@ export default function Booking() {
     let subtotal = base + modifiers + extrasTotal;
     
     // Apply frequency discount
-    const discountRate = PRICING_CONFIG.frequencyDiscounts[formData.frequency as keyof typeof PRICING_CONFIG.frequencyDiscounts] || 0;
+    const discountRate = getFrequencyDiscount(formData.plan, formData.frequency);
     const discountAmount = subtotal * discountRate;
     
     return {
@@ -377,8 +385,8 @@ export default function Booking() {
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                         {FREQUENCIES.filter(f => f.validFor.includes(formData.plan))
                           .sort((a, b) => {
-                            const discountA = PRICING_CONFIG.frequencyDiscounts[a.id as keyof typeof PRICING_CONFIG.frequencyDiscounts] || 0;
-                            const discountB = PRICING_CONFIG.frequencyDiscounts[b.id as keyof typeof PRICING_CONFIG.frequencyDiscounts] || 0;
+                            const discountA = getFrequencyDiscount(formData.plan, a.id);
+                            const discountB = getFrequencyDiscount(formData.plan, b.id);
                             
                             // If Office Cleaning, sort by discount descending (Highest discount to Lowest/One-off)
                             if (formData.plan === 'office') {
@@ -389,7 +397,7 @@ export default function Booking() {
                           })
                           .map(freq => {
                           const isSelected = formData.frequency === freq.id;
-                          const discount = PRICING_CONFIG.frequencyDiscounts[freq.id as keyof typeof PRICING_CONFIG.frequencyDiscounts];
+                          const discount = getFrequencyDiscount(formData.plan, freq.id);
                           return (
                             <div 
                               key={freq.id}
