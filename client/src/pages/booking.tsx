@@ -750,15 +750,17 @@ export default function Booking() {
                     <span className="font-bold">{FREQUENCIES.find(f => f.id === formData.frequency)?.label}</span>
                   </div>
 
-                  <div className="space-y-2 border-b border-white/10 pb-4">
-                    <p className="text-white/50 text-xs font-bold uppercase tracking-wider mb-2">Property Details</p>
-                    <div className="flex justify-between">
-                      <span className="text-white/80">{formData.bedrooms} Beds, {formData.bathrooms} Baths</span>
+                  {currentStep > 0 && (
+                    <div className="space-y-2 border-b border-white/10 pb-4">
+                      <p className="text-white/50 text-xs font-bold uppercase tracking-wider mb-2">Property Details</p>
+                      <div className="flex justify-between">
+                        <span className="text-white/80">{formData.bedrooms} Beds, {formData.bathrooms} Baths</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-white/80">Area: {SQM_RANGES.find(r => r.id === formData.area)?.label}</span>
+                      </div>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-white/80">Area: {SQM_RANGES.find(r => r.id === formData.area)?.label}</span>
-                    </div>
-                  </div>
+                  )}
 
                   {estimate.extrasTotal > 0 && (
                     <div className="flex justify-between items-center border-b border-white/10 pb-4">
