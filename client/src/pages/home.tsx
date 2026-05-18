@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/home/hero";
+import { Reviews } from "@/components/home/reviews";
 import { FAQ } from "@/components/home/faq";
 import { Contact } from "@/components/home/contact";
 import { Chatbot } from "@/components/chatbot";
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <Hero />
+        <Reviews />
         <FAQ />
         <Contact />
       </main>
