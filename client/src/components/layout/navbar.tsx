@@ -23,7 +23,6 @@ export function Navbar() {
           <Link href="/services"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Services</a></Link>
           <Link href="/about"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">About Us</a></Link>
           <Link href="/reviews"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Reviews</a></Link>
-          <Link href="/book"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Plans & Pricing</a></Link>
           <Link href="/book">
             <Button className="rounded-full px-6 font-semibold shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all cursor-pointer">
               Book Now
