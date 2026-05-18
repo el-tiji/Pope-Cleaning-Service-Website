@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/assets";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "wouter";
 
 export function Hero() {
   const carouselImages = [
@@ -48,12 +49,16 @@ export function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-primary/25">
-                Book a Clean
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base font-semibold border-border bg-white hover:bg-muted/30">
-                View Our Services
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-primary/25 w-full sm:w-auto">
+                  Book a Clean
+                </Button>
+              </Link>
+              <Link href="/services">
+                <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base font-semibold border-border bg-white hover:bg-muted/30 w-full sm:w-auto">
+                  View Our Services
+                </Button>
+              </Link>
             </div>
             
             <div className="flex items-center gap-6">
@@ -64,7 +69,7 @@ export function Hero() {
                   </div>
                 ))}
               </div>
-              <a href="#reviews" className="flex flex-col hover:opacity-80 transition-opacity">
+              <Link href="/reviews" className="flex flex-col hover:opacity-80 transition-opacity">
                 <div className="flex items-center gap-1 text-yellow-400">
                   {/* Stars */}
                   {[...Array(5)].map((_, i) => (
@@ -72,7 +77,7 @@ export function Hero() {
                   ))}
                 </div>
                 <span className="text-sm font-medium text-secondary hover:underline underline-offset-4 decoration-primary/30">500+ Happy Perth Locals</span>
-              </a>
+              </Link>
             </div>
           </div>
           
