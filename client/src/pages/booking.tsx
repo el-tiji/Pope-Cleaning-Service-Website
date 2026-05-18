@@ -867,7 +867,7 @@ export default function Booking() {
                   </div>
                   <div className="flex flex-col items-end gap-1 mt-2 text-right">
                     <p className="text-xs font-semibold text-accent bg-accent/10 px-2 py-0.5 rounded">
-                      All prices are inclusive of GST
+                      +GST
                     </p>
                     <p className="text-[10px] text-white/40 leading-tight">
                       * Estimated price before final confirmation.<br/> Final quote may be adjusted upon review.
