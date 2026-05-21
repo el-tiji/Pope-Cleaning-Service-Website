@@ -271,10 +271,14 @@ export default function Booking() {
     const discountRate = getFrequencyDiscount(formData.plan, formData.frequency);
     const discountAmount = subtotal * discountRate;
     
+    const preGstTotal = subtotal - discountAmount;
+    const gstAmount = preGstTotal * 0.10; // 10% GST
+    
     return {
       subtotal,
       discountAmount,
-      total: Math.round(subtotal - discountAmount),
+      gstAmount: Math.round(gstAmount),
+      total: Math.round(preGstTotal + gstAmount),
       base,
       modifiers,
       extrasTotal
@@ -866,8 +870,9 @@ export default function Booking() {
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-1 mt-2 text-right">
-                    <p className="text-xs font-semibold text-accent bg-accent/10 px-2 py-0.5 rounded">
-                      +GST
+                    <p className="text-xs font-semibold text-accent/80 border border-accent/20 px-2 py-0.5 rounded flex items-center gap-2">
+                      <span>GST (10%)</span>
+                      <span className="text-accent">${estimate.gstAmount}</span>
                     </p>
                     <p className="text-[10px] text-white/40 leading-tight">
                       * Estimated price before final confirmation.<br/> Final quote may be adjusted upon review.
