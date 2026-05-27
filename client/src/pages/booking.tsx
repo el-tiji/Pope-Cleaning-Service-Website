@@ -258,7 +258,7 @@ export default function Booking() {
         // If it's included in the current plan, it's free
         if (config.includedIn.includes(formData.plan)) return;
 
-        if (config.isMultiplier && typeof value === 'number') {
+        if ('isMultiplier' in config && config.isMultiplier && typeof value === 'number') {
           extrasTotal += config.price * value;
         } else if (value === true) {
           extrasTotal += config.price;
@@ -814,11 +814,13 @@ export default function Booking() {
                 </div>
 
               </div>
+              </RevealOnScroll>
             </div>
 
             {/* Sidebar Summary */}
             <div className="lg:col-span-1">
-              <div className="sticky top-28 bg-secondary text-white rounded-[2rem] p-6 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-700 delay-200">
+              <RevealOnScroll delay={0.3}>
+              <div className="sticky top-28 bg-secondary text-white rounded-[2rem] p-6 shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 
                 <h3 className="font-display font-bold text-xl mb-4 relative z-10 flex items-center gap-2">
@@ -904,7 +906,7 @@ export default function Booking() {
                   ))}
                 </div>
               </div>
-              
+              </RevealOnScroll>
             </div>
 
           </div>
