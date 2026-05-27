@@ -78,3 +78,21 @@ id = "HxEetdTXAV4xHEN82B1vi"
 uri = "file://client/public/assets/tiltshift/about/hero.png"
 type = "image"
 title = "Tilt-shift Perth neighborhood Pope van"
+
+[[generated]]
+id = "FKrxY_r-rhG27OKSChum5"
+uri = "file://client/public/assets/tiltshift/home/hero-4.png"
+type = "image"
+title = "Tilt-shift bedroom cleaning"
+
+[[generated]]
+id = "y1oI1I3BvrGBmU-itiOU7"
+uri = "file://client/public/assets/tiltshift/home/hero-5.png"
+type = "image"
+title = "Tilt-shift outdoor patio cleaning"
+
+[[generated]]
+id = "_PeC0ICDIxNsV8Xs5H_Rc"
+uri = "file://client/public/assets/tiltshift/home/hero-6.png"
+type = "image"
+title = "Tilt-shift spotless staircase"
