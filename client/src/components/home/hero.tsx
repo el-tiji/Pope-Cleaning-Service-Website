@@ -50,13 +50,8 @@ export function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link href="/book">
-                <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-primary/25 w-full sm:w-auto hover:bg-primary/90 transition-colors">
-                  Book a Clean
-                </Button>
-              </Link>
               <Link href="/services">
-                <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base font-semibold border-border bg-white hover:bg-muted/30 w-full sm:w-auto transition-colors">
+                <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-primary/25 w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
                   View Our Services
                 </Button>
               </Link>
