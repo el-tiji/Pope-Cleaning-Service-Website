@@ -7,10 +7,10 @@ import { Link } from "wouter";
 export function Hero() {
   const carouselImages = [
     "/assets/tiltshift/home/hero-1.png",
-    "/assets/tiltshift/home/hero-2.png",
-    "/assets/tiltshift/home/hero-3.png",
     "/assets/tiltshift/home/hero-4.png",
     "/assets/tiltshift/home/hero-5.png",
+    "/assets/tiltshift/home/hero-2.png",
+    "/assets/tiltshift/home/hero-3.png",
     "/assets/tiltshift/home/hero-6.png",
   ];
 
