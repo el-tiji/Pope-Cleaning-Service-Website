@@ -38,7 +38,7 @@ const highlights = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-24 bg-white">
+    <section id="faq" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Questions?</h2>

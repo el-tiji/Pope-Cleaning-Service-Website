@@ -5,7 +5,7 @@ import { Link } from "wouter";
 
 export function HowWeWork() {
   return (
-    <section className="py-24 bg-muted/20 border-y border-border relative overflow-hidden">
+    <section className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Intro Header */}

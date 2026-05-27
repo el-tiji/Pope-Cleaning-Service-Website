@@ -25,7 +25,7 @@ export function CustomQuoteForm() {
 
   if (isSuccess) {
     return (
-      <section id="services-custom-quote" className="py-24 bg-muted/30 border-t border-border">
+      <section id="services-custom-quote" className="py-24 bg-background border-t border-border">
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="w-10 h-10" />
@@ -50,7 +50,7 @@ export function CustomQuoteForm() {
   }
 
   return (
-    <section id="services-custom-quote" className="py-24 bg-muted/30 border-t border-border">
+    <section id="services-custom-quote" className="py-24 bg-background border-t border-border">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Request a Custom Cleaning Quote</h2>

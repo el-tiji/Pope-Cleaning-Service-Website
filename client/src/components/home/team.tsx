@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function Team() {
   return (
-    <section id="careers" className="py-24 bg-white relative overflow-hidden">
+    <section id="careers" className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-secondary text-white rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[100px] transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
