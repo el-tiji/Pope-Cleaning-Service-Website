@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Link } from "wouter";
 import { Upload, CheckCircle2, ArrowRight, ClipboardList, Briefcase, KeySquare } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
 export function CustomQuoteForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,54 +57,59 @@ export function CustomQuoteForm() {
         <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
           {/* LEFT COLUMN: Explanatory Content */}
           <div className="lg:col-span-1 space-y-8">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Need a Custom Cleaning Solution?</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                If you can’t find exactly what you need in our standard services, or you have a complex property or special request, tell us about it here. We’ll prepare a tailored quote based on your specific requirements.
-              </p>
-            </div>
+            <RevealOnScroll>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Need a Custom Cleaning Solution?</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  If you can’t find exactly what you need in our standard services, or you have a complex property or special request, tell us about it here. We’ll prepare a tailored quote based on your specific requirements.
+                </p>
+              </div>
+            </RevealOnScroll>
 
-            <div className="bg-primary/5 rounded-3xl p-6 border border-primary/10">
-              <h3 className="font-bold text-secondary text-xl mb-4">Perfect for:</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <Briefcase className="w-4 h-4" />
-                  </div>
-                  <span className="text-secondary/80 font-medium pt-1">Mixed residential & commercial jobs</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <KeySquare className="w-4 h-4" />
-                  </div>
-                  <span className="text-secondary/80 font-medium pt-1">Warehouses, workshops & hangars</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <ClipboardList className="w-4 h-4" />
-                  </div>
-                  <span className="text-secondary/80 font-medium pt-1">Post-renovation & event clean-ups</span>
-                </li>
-              </ul>
-            </div>
+            <RevealOnScroll delay={0.1}>
+              <div className="bg-primary/5 rounded-3xl p-6 border border-primary/10">
+                <h3 className="font-bold text-secondary text-xl mb-4">Perfect for:</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                      <Briefcase className="w-4 h-4" />
+                    </div>
+                    <span className="text-secondary/80 font-medium pt-1">Mixed residential & commercial jobs</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                      <KeySquare className="w-4 h-4" />
+                    </div>
+                    <span className="text-secondary/80 font-medium pt-1">Warehouses, workshops & hangars</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                      <ClipboardList className="w-4 h-4" />
+                    </div>
+                    <span className="text-secondary/80 font-medium pt-1">Post-renovation & event clean-ups</span>
+                  </li>
+                </ul>
+              </div>
+            </RevealOnScroll>
 
-            <div className="hidden lg:block relative mt-8 h-48 rounded-3xl overflow-hidden border border-border">
+            <RevealOnScroll delay={0.2} className="hidden lg:block relative mt-8 h-48 rounded-3xl overflow-hidden border border-border">
                <img 
                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
                  alt="Professional commercial cleaning setup"
                  className="w-full h-full object-cover"
                />
                <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
-            </div>
+            </RevealOnScroll>
           </div>
 
           {/* RIGHT COLUMN: Unified Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-border">
-              <form onSubmit={handleSubmit} className="space-y-10">
-                <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-secondary border-b border-border pb-4">Request a Custom Quote</h3>
-                </div>
+            <RevealOnScroll delay={0.3}>
+              <div className="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-border">
+                <form onSubmit={handleSubmit} className="space-y-10">
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-secondary border-b border-border pb-4">Request a Custom Quote</h3>
+                  </div>
                 
                 {/* 1. Contact Details */}
                 <div className="space-y-6">
@@ -281,6 +287,7 @@ export function CustomQuoteForm() {
                 </div>
               </form>
             </div>
+            </RevealOnScroll>
           </div>
           
         </div>

@@ -12,6 +12,7 @@ import {
   Users, Building2, Layers, Store, Warehouse, Factory, Landmark, Dumbbell, HelpCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
 // --- PRICING CONFIGURATION ---
 const PRICING_CONFIG = {
@@ -361,12 +362,14 @@ export default function Booking() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Get your custom quote</h1>
-            <p className="text-lg text-muted-foreground">
-              Every property in Perth is unique. Use our interactive estimator to find the right plan and calculate your price instantly.
-            </p>
-          </div>
+          <RevealOnScroll>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Get your custom quote</h1>
+              <p className="text-lg text-muted-foreground">
+                Every property in Perth is unique. Use our interactive estimator to find the right plan and calculate your price instantly.
+              </p>
+            </div>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             
@@ -374,37 +377,40 @@ export default function Booking() {
             <div className="lg:col-span-2">
               
               {/* Progress Bar */}
-              <div className="mb-8">
-                <div className="flex items-center justify-between mb-2">
-                  {STEPS.map((step, idx) => (
-                    <div key={idx} className={cn(
-                      "text-xs font-bold uppercase tracking-wider hidden md:block",
-                      idx === currentStep ? "text-primary" : idx < currentStep ? "text-primary/60" : "text-muted-foreground"
-                    )}>
-                      {step}
+              <RevealOnScroll delay={0.1}>
+                <div className="mb-8">
+                  <div className="flex items-center justify-between mb-2">
+                    {STEPS.map((step, idx) => (
+                      <div key={idx} className={cn(
+                        "text-xs font-bold uppercase tracking-wider hidden md:block",
+                        idx === currentStep ? "text-primary" : idx < currentStep ? "text-primary/60" : "text-muted-foreground"
+                      )}>
+                        {step}
+                      </div>
+                    ))}
+                    <div className="md:hidden text-sm font-bold text-primary uppercase tracking-wider">
+                      Step {currentStep + 1} of {STEPS.length}: {STEPS[currentStep]}
                     </div>
-                  ))}
-                  <div className="md:hidden text-sm font-bold text-primary uppercase tracking-wider">
-                    Step {currentStep + 1} of {STEPS.length}: {STEPS[currentStep]}
+                  </div>
+                  <div className="h-2 w-full bg-muted rounded-full overflow-hidden flex">
+                    {STEPS.map((_, idx) => (
+                      <div key={idx} className={cn(
+                        "h-full flex-1 transition-colors duration-300",
+                        idx <= currentStep ? "bg-primary" : "bg-transparent",
+                        idx > 0 && "border-l border-white/20"
+                      )} />
+                    ))}
                   </div>
                 </div>
-                <div className="h-2 w-full bg-muted rounded-full overflow-hidden flex">
-                  {STEPS.map((_, idx) => (
-                    <div key={idx} className={cn(
-                      "h-full flex-1 transition-colors duration-300",
-                      idx <= currentStep ? "bg-primary" : "bg-transparent",
-                      idx > 0 && "border-l border-white/20"
-                    )} />
-                  ))}
-                </div>
-              </div>
+              </RevealOnScroll>
 
               {/* Form Steps */}
-              <div className="bg-white rounded-[2rem] p-6 md:p-8 shadow-xl border border-border animate-in fade-in zoom-in-95 duration-500">
-                
-                {/* STEP 1: Plan & Frequency */}
-                {currentStep === 0 && (
-                  <div className="space-y-8 animate-in slide-in-from-right-8 duration-500">
+              <RevealOnScroll delay={0.2}>
+                <div className="bg-white rounded-[2rem] p-6 md:p-8 shadow-xl border border-border">
+                  
+                  {/* STEP 1: Plan & Frequency */}
+                  {currentStep === 0 && (
+                    <div className="space-y-8 animate-in slide-in-from-right-8 duration-500">
                     <div>
                       <h3 className="text-2xl font-bold text-secondary mb-6">1. Choose your plan</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

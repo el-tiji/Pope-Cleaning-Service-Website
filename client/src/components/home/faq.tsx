@@ -1,4 +1,5 @@
 import { ASSETS } from "@/lib/assets";
+import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 import {
   Accordion,
   AccordionContent,
@@ -40,46 +41,52 @@ export function FAQ() {
   return (
     <section id="faq" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Questions?</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Frequently Asked Questions</h3>
-          <p className="text-lg text-muted-foreground">
-            Everything you need to know about our services, process, and guarantees.
-          </p>
-        </div>
+        <RevealOnScroll>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Questions?</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Frequently Asked Questions</h3>
+            <p className="text-lg text-muted-foreground">
+              Everything you need to know about our services, process, and guarantees.
+            </p>
+          </div>
+        </RevealOnScroll>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {highlights.map((item, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-background border border-border">
-                  <div className="w-16 h-16 rounded-xl bg-white shadow-sm flex items-center justify-center p-2 shrink-0">
-                    <img src={item.icon.src} alt={item.icon.alt} className="w-full h-full object-contain" />
+                <RevealOnScroll key={i} delay={i * 0.1}>
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-background border border-border">
+                    <div className="w-16 h-16 rounded-xl bg-white shadow-sm flex items-center justify-center p-2 shrink-0">
+                      <img src={item.icon.src} alt={item.icon.alt} className="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-secondary">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-secondary">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
-                  </div>
-                </div>
+                </RevealOnScroll>
               ))}
             </div>
           </div>
           
           <div className="lg:col-span-8">
-            <div className="bg-background rounded-3xl p-6 md:p-8 border border-border">
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, i) => (
-                  <AccordionItem key={i} value={`item-${i}`} className="border-b border-border last:border-0">
-                    <AccordionTrigger className="text-left text-lg font-semibold text-secondary hover:text-primary py-6">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+            <RevealOnScroll delay={0.2}>
+              <div className="bg-background rounded-3xl p-6 md:p-8 border border-border">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, i) => (
+                    <AccordionItem key={i} value={`item-${i}`} className="border-b border-border last:border-0">
+                      <AccordionTrigger className="text-left text-lg font-semibold text-secondary hover:text-primary py-6">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </RevealOnScroll>
           </div>
         </div>
       </div>

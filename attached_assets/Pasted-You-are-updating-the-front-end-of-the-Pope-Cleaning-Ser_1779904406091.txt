@@ -1,0 +1,106 @@
+You are updating the front-end of the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- Add smooth, modern scroll-based entrance animations to the entire site.
+- As the user scrolls down, key elements (headings, text blocks, cards, images, icons, buttons) should gently "rise into place" with a fade-in effect.
+- The interaction should feel similar in spirit to the animated content transitions on https://shademaster.com.au/, but adapted to our own design system and performance constraints.
+
+HIGH-LEVEL ANIMATION BEHAVIOUR
+- When a section or element first enters the viewport (as the user scrolls down), it should:
+  - Start slightly lower than its final position (e.g. 20–40px down).
+  - Be slightly transparent (e.g. 0–20% opacity).
+  - Animate upwards into its final position while fading to full opacity.
+- Each element should animate only once when it first appears (no constant looping).
+- Subsequent scrolls back up/down should not re-trigger the same large animation excessively (avoid annoying flicker).
+
+SCOPE – WHAT SHOULD ANIMATE
+Apply this “rise and fade-in” animation to:
+
+- Section titles and headings (H1, H2, H3).
+- Paragraph blocks and key text sections.
+- Service cards on the Services page.
+- Pricing cards on the Plans & Pricing page.
+- Hero sub-content (text and CTAs), excluding extremely heavy hero backgrounds.
+- Icons and feature badges (e.g. trust badges, key selling points).
+- Image blocks (hero images, service thumbnails, before/after frames).
+- CTA sections like “Book a Clean”, “Request a Quote”, “Custom Cleaning Quote”.
+- The new business model/intro sections we created before FAQs.
+
+Do NOT animate:
+- Navigation bar/header (should remain stable).
+- Critical UI elements that appear and disappear quickly (like error messages or form validations).
+- Anything that would make forms harder to use (inputs should not jump around while typing).
+
+TECHNICAL IMPLEMENTATION
+
+Approach:
+- Use an Intersection Observer-based solution or a lightweight animation library (e.g. a minimal custom hook, or an existing tiny utility) instead of heavy scroll event listeners.
+- Create a reusable “reveal on scroll” mechanism that can be applied via:
+  - A shared component wrapper (e.g. `<RevealOnScroll>...</RevealOnScroll>`), or
+  - A CSS utility class (e.g. `className="reveal-on-scroll"`), combined with JavaScript to add an “is-visible” class when intersecting.
+
+Base classes:
+- Define base CSS for the hidden state:
+  - Example:
+    - `transform: translateY(30px);`
+    - `opacity: 0;`
+    - `transition: transform 0.5s ease-out, opacity 0.5s ease-out;`
+- When an element becomes visible (e.g. has `.is-visible` class):
+  - `transform: translateY(0);`
+  - `opacity: 1;`
+
+Timing & variation:
+- Use slight variations in delay or duration for different elements to avoid all elements moving at exactly the same time:
+  - e.g. each child in a section can have an incremental delay (0ms, 80ms, 160ms, 240ms).
+- Standard duration: 400–600ms per element.
+- Easing: `ease-out` or `cubic-bezier` that feels smooth and natural.
+
+ACCESSIBILITY & PERFORMANCE
+- Ensure animations are **subtle**:
+  - No large bounces, overshoots or abrupt motions.
+  - The effect is a gentle slide up + fade-in.
+- Respect reduced motion settings:
+  - If the user has `prefers-reduced-motion: reduce` set, disable these entrance animations and show all content in the final, static position.
+- Performance:
+  - Use CSS transforms and opacity (GPU-friendly) for animations.
+  - Avoid changing layout properties (no animating width, height, margin or top).
+  - Avoid creating too many Intersection Observers; reuse observers or build a small hook.
+
+APPLYING THE ANIMATION
+
+Implementation guidelines:
+- Create a reusable component/hook, for example:
+  - `useRevealOnScroll(ref)` or
+  - `<RevealOnScroll>` wrapper.
+- Refactor main sections to use this pattern:
+  - Home:
+    - Hero text, intro blocks, service summary, business model section, trust badges, Book a Clean CTA.
+  - Services:
+    - Section header, service cards grid, any explanation blocks, custom quote section.
+  - Plans & Pricing:
+    - Section header, plan cards, estimator explainer blocks.
+  - Pricing Info:
+    - Hero, explanatory text, the “standard-based benchmark” block.
+  - About Us:
+    - Hero, company story, team section, guarantees.
+  - Reviews & Results:
+    - Testimonials, before/after images, review headers.
+  - Contact & Booking:
+    - Intro text, contact details block, map, form container.
+  - Work With Us:
+    - Hero text, job cards, application form header.
+
+Fallback / minimal version:
+- Even if not every single small element is wrapped, make sure the most visible blocks and cards use the reveal-on-scroll behaviour to create a cohesive experience.
+
+DESIGN CONSISTENCY
+- Use existing brand colours and backgrounds; do not add heavy gradients just for the animation.
+- Maintain current layout; only add motion on entry.
+- Animation should complement, not replace, existing visual hierarchy.
+
+OUTPUT
+- Implement a reusable “rise and fade-in on scroll” animation system across the site, inspired by the smooth content transitions seen on https://shademaster.com.au/.
+- Ensure:
+  - Each key section and card animates upward into place when first scrolled into view.
+  - Animations are subtle, performant and accessible.
+  - The behaviour is consistent on all main pages and responsive layouts.
