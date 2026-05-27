@@ -8,7 +8,7 @@ const services = [
     id: "residential",
     title: "Residential Cleaning",
     shortDescription: "Regular home cleaning for busy Perth households – kitchens, bathrooms, floors and surfaces kept consistently fresh.",
-    image: "/assets/tiltshift/services/regular.png",
+    image: "/assets/tiltshift/services/residential.png",
     alt: "Miniature living room being cleaned - Residential Cleaning service",
     link: "/book",
   },
@@ -40,7 +40,7 @@ const services = [
     id: "carpet",
     title: "Carpet & Upholstery",
     shortDescription: "Deep steam cleaning to refresh fibers, remove stubborn stains, and eliminate hidden allergens.",
-    image: "/assets/tiltshift/reviews/after.png", // Using the clean carpet image
+    image: "/assets/tiltshift/services/carpet.png",
     alt: "Clean carpet - Carpet & Upholstery cleaning service",
     link: "/book",
   },
@@ -48,7 +48,7 @@ const services = [
     id: "pressure",
     title: "Pressure Cleaning",
     shortDescription: "Transform driveways, patios, and outdoor exteriors with high-power, deep-cleaning washing.",
-    image: "/assets/tiltshift/home/hero-5.png", // Using the patio pressure washing image
+    image: "/assets/tiltshift/services/pressure.png",
     alt: "Outdoor patio pressure washing - Pressure Cleaning service",
     link: "/book",
   }

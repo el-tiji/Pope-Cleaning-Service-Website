@@ -11,19 +11,19 @@ title = "3D isometric bright clean home"
 id = "LjsIKtBAulSvG2hWNpDzk"
 uri = "file://client/public/assets/tiltshift/home/hero-1.png"
 type = "image"
-title = "Wide angle tilt-shift living room"
+title = "Miniature 3D pristine home"
 
 [[generated]]
 id = "mXXrNQILuAMksB-EaGBNo"
 uri = "file://client/public/assets/tiltshift/home/hero-2.png"
 type = "image"
-title = "Wide angle tilt-shift kitchen cleaning"
+title = "Miniature 3D clean bathroom"
 
 [[generated]]
 id = "cHAcEYII2b1fiZXvs5vlq"
 uri = "file://client/public/assets/tiltshift/home/hero-3.png"
 type = "image"
-title = "Tilt-shift cleaner outside shower glass"
+title = "Miniature 3D modern office"
 
 [[generated]]
 id = "80s4zoJCHRbxQEdBUZFea"
@@ -41,13 +41,13 @@ title = "Tilt-shift regular house cleaning"
 id = "2nPqBqxfNW0X0SV4-Xxj7"
 uri = "file://client/public/assets/tiltshift/services/spring.png"
 type = "image"
-title = "Tilt-shift deep spring cleaning"
+title = "Miniature 3D kitchen clean"
 
 [[generated]]
 id = "QS8-LY528FdX3MZdTO7H7"
 uri = "file://client/public/assets/tiltshift/services/vacate.png"
 type = "image"
-title = "Tilt-shift vacate empty apartment"
+title = "Miniature 3D empty apartment"
 
 [[generated]]
 id = "Ing7Mqg8zoEPH7gbngqmR"
@@ -65,7 +65,7 @@ title = "Tilt-shift dirty carpet before"
 id = "eWlK9Kzed9yn8P4HrX61k"
 uri = "file://client/public/assets/tiltshift/reviews/after.png"
 type = "image"
-title = "Tilt-shift clean carpet after"
+title = "Tilt-shift 3D avatars"
 
 [[generated]]
 id = "zlsa6cFM3pI3_yC0jFoph"
@@ -83,13 +83,13 @@ title = "Tilt-shift Perth neighborhood Pope van"
 id = "FKrxY_r-rhG27OKSChum5"
 uri = "file://client/public/assets/tiltshift/home/hero-4.png"
 type = "image"
-title = "Wide angle tilt-shift bedroom"
+title = "Miniature 3D clean bedroom"
 
 [[generated]]
 id = "y1oI1I3BvrGBmU-itiOU7"
 uri = "file://client/public/assets/tiltshift/home/hero-5.png"
 type = "image"
-title = "Tilt-shift clean dining room"
+title = "Miniature 3D shining kitchen"
 
 [[generated]]
 id = "_PeC0ICDIxNsV8Xs5H_Rc"
@@ -126,3 +126,21 @@ id = "o10IwRVFUqEAR2gq3RCS4"
 uri = "file://client/public/assets/tiltshift/avatars/avatar-4.png"
 type = "image"
 title = "3D miniature style avatar 4"
+
+[[generated]]
+id = "j71Q9MFuwZ9kAzG5oVCLH"
+uri = "file://client/public/assets/tiltshift/services/residential.png"
+type = "image"
+title = "Miniature 3D living room"
+
+[[generated]]
+id = "ZKwxdBmpC11Jza5cp0lnv"
+uri = "file://client/public/assets/tiltshift/services/carpet.png"
+type = "image"
+title = "Miniature 3D carpet cleaning"
+
+[[generated]]
+id = "2oY144MQBp-CBmXYGntS3"
+uri = "file://client/public/assets/tiltshift/services/pressure.png"
+type = "image"
+title = "Miniature 3D pressure washing"
