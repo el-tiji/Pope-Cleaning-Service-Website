@@ -35,8 +35,8 @@ export const ASSETS = {
   },
   about: {
     hero: {
-      src: "/assets/placeholders/about-perth-neighbourhood-3d.png",
-      alt: "Isometric Perth neighborhood with Pope Cleaning van",
+      src: "/assets/tiltshift/about/hero.png",
+      alt: "Tilt-shift miniature Perth neighborhood with Pope Cleaning van",
     }
   },
   reviews: {
