@@ -62,7 +62,7 @@ export const ASSETS = {
     payment: { src: "/assets/placeholders/icon-faq-payment-3d.png", alt: "Credit card icon" }
   },
   contact: {
-    map: { src: "/assets/placeholders/map-perth-service-area-3d.png", alt: "Isometric map of Perth" }
+    map: { src: "/assets/tiltshift/contact/map.png", alt: "Tilt-shift miniature map of Perth" }
   },
   videoPlaceholder: {
     src: "/assets/placeholders/video-cover-carpet-clean-3d.png",

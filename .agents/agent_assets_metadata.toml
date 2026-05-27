@@ -66,3 +66,9 @@ id = "eWlK9Kzed9yn8P4HrX61k"
 uri = "file://client/public/assets/tiltshift/reviews/after.png"
 type = "image"
 title = "Tilt-shift clean carpet after"
+
+[[generated]]
+id = "zlsa6cFM3pI3_yC0jFoph"
+uri = "file://client/public/assets/tiltshift/contact/map.png"
+type = "image"
+title = "Tilt-shift Perth map"
