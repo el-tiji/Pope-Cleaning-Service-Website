@@ -139,7 +139,7 @@ export default function PricingPage() {
                 </div>
                 <div className="flex flex-col justify-center items-center text-center p-8 bg-black/20 rounded-2xl border border-white/5">
                   <Clock className="w-16 h-16 text-accent mb-4" />
-                  <h4 className="text-2xl font-bold mb-2">Approx. 2 Hours</h4>
+                  <h4 className="text-2xl font-bold mb-2 text-[#ffffff]">Approx. 2 Hours</h4>
                   <p className="text-sm text-white/70">For this benchmark property, a standard clean is assumed to take approximately 2 hours with our normal scope of work.</p>
                 </div>
               </div>
