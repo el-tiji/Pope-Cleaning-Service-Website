@@ -99,19 +99,6 @@ export function Services() {
               </Card>
             </Link>
           ))}
-          
-          {/* Custom Quote Callout */}
-          <Card className="border-none bg-primary text-primary-foreground soft-shadow flex flex-col sm:flex-row justify-between items-center text-left p-8 md:col-span-2 lg:col-span-3 gap-6 rounded-3xl">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Need something else?</h3>
-              <p className="text-primary-foreground/80 mb-0 max-w-xl">We offer custom cleaning packages tailored to your specific requirements. Get in touch to discuss your unique needs.</p>
-            </div>
-            <Link href="/services#services-custom-quote">
-              <button className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-accent hover:text-secondary transition-colors shrink-0 whitespace-nowrap shadow-lg">
-                Get a Custom Quote
-              </button>
-            </Link>
-          </Card>
         </div>
       </div>
     </section>

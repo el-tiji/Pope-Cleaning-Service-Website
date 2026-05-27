@@ -1,0 +1,124 @@
+You are updating the Services page of the Pope Cleaning Services website (Perth, Western Australia).
+
+PROBLEM
+- On the Services page there are currently duplicated or repetitive blocks related to “Get a Custom Quote” / “Request a Custom Cleaning Quote”.
+- This feels redundant and confusing to users (multiple cards or boxes saying essentially the same thing).
+- The goal is to have ONE clear, premium-looking custom quote section and form on the Services page.
+
+GOAL
+- Identify and remove any duplicated or outdated “Get a Custom Quote” / “Request a Quote” boxes on the Services page.
+- Replace them with a SINGLE, unified “Custom Cleaning Quote” section with a well-designed form.
+- Make this section visually strong and clearly positioned as the place for:
+  - special requests,
+  - services not listed in the standard plans, and
+  - personalised combinations of services.
+
+STEP 1 – REMOVE DUPLICATES
+- Scan the Services page components for:
+  - Repeated banners or cards that mention “Get a custom quote”, “Get a free quote”, “Custom service” or similar.
+- Keep only one entry point on the Services page for custom quotes.
+- Remove or comment out:
+  - Any smaller inline “custom quote” tiles that essentially repeat the same call to action.
+  - Old or partial forms related to custom quotes.
+
+STEP 2 – CREATE ONE UNIFIED SECTION
+
+Placement:
+- Place the unified section near the bottom of the Services page, AFTER the grid of standard services and BEFORE any global footer/FAQs if applicable.
+- Section ID: `services-custom-quote` (or similar).
+
+Content & structure:
+
+1) Header and explanation
+- Heading (H2), example:
+  “Need a Custom Cleaning Solution?”
+- Short paragraph explaining the purpose:
+  - Example:
+    “If you can’t find exactly what you need in our standard services, or you have a complex property or special request, tell us about it here. We’ll prepare a tailored quote based on your specific requirements.”
+- Make clear that this is for:
+  - Mixed residential + commercial jobs.
+  - Warehouses, workshops, hangars, event clean-ups, post-renovation, etc.
+  - Any other non-standard cleaning work in Perth.
+
+2) Visual emphasis
+- On larger screens, split the section into two columns:
+  - Left: the explanation and bullet points describing when to use a custom quote.
+  - Right: the general/custom quote form.
+- Use an icon or small illustration showing a mix of home + office + workshop elements to visually support the idea of “custom / special jobs”.
+
+3) Unified custom quote form
+- Use ONE form only; do not keep multiple similar forms.
+- Form title (optional, inside the section):
+  - “Request a Custom Cleaning Quote”
+
+Form fields:
+
+A) Contact details
+- Full name (required)
+- Email (required)
+- Phone / WhatsApp (required)
+- Preferred contact method:
+  - Phone
+  - Email
+  - WhatsApp
+
+B) Property / facility info (flexible)
+- Property or facility type (select, required):
+  - House
+  - Apartment / Unit
+  - Townhouse
+  - Office / Commercial
+  - Warehouse / Workshop
+  - Retail / Showroom
+  - Medical / Clinic
+  - Hangar / Aviation Facility
+  - Other (with text input)
+- Suburb (required)
+- Postcode (required)
+
+C) Job description (core of the form)
+- A required large text area:
+  - Label: “Describe the cleaning work you need”
+  - Placeholder example:
+    “Please describe your property and what you would like us to clean. Include areas (e.g. warehouse floor, hangar, showroom, office, outdoor areas), how dirty it is, and anything special we should know.”
+- Optional tags / checkboxes for quick hints (but no complex logic):
+  - Deep cleaning
+  - One-off special clean
+  - Post-renovation clean
+  - Event / after-event clean
+  - Mixed residential + commercial
+  - Ongoing commercial contract
+  - Other
+
+D) Timing and frequency
+- Preferred frequency:
+  - One-off job
+  - Short-term project
+  - Regular ongoing service
+- Preferred date or time frame (text or date field)
+- Preferred time window (optional):
+  - Morning
+  - Afternoon
+  - After hours / weekends
+  - Flexible
+
+E) Photos (optional but encouraged)
+- File upload input:
+  - Label: “Photos (optional but recommended)”
+  - Helper text:
+    “Upload photos of the areas to be cleaned so we can understand the job better.”
+- Allow multiple files.
+
+F) Additional notes
+- Large text area:
+  - Label: “Additional notes or special instructions”
+  - Placeholder:
+    “Tell us about access, parking, safety requirements, machinery, or anything important for preparing your quote.”
+
+4) CTA and behaviour
+- Button label:
+  - “Request Custom Quote”
+- On submit:
+  - Validate required fields.
+  - Save the request in the database as a `customQuote` type.
+  - Send an email notification to admin with all details and a clear sub

@@ -7,7 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Link } from "wouter";
-import { Upload, CheckCircle2, ArrowRight } from "lucide-react";
+import { Upload, CheckCircle2, ArrowRight, ClipboardList, Briefcase, KeySquare } from "lucide-react";
 
 export function CustomQuoteForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,207 +51,238 @@ export function CustomQuoteForm() {
 
   return (
     <section id="services-custom-quote" className="py-24 bg-background border-t border-border">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Request a Custom Cleaning Quote</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Need a cleaning service that isn’t listed on our website, or a personalised combination of services? Tell us what you need and we’ll prepare a tailored quote for you. Ideal for special requests, complex jobs, or mixed residential/commercial projects.
-          </p>
-        </div>
-
-        <div className="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-border">
-          <form onSubmit={handleSubmit} className="space-y-12">
-            
-            {/* Contact Details */}
-            <div className="space-y-6">
-              <div className="border-b border-border pb-2">
-                <h3 className="text-xl font-bold text-secondary">1. Contact Details</h3>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="fullName">Full Name <span className="text-red-500">*</span></Label>
-                  <Input id="fullName" required placeholder="John Doe" className="bg-muted/30" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
-                  <Input id="email" type="email" required placeholder="john@example.com" className="bg-muted/30" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone / WhatsApp <span className="text-red-500">*</span></Label>
-                  <Input id="phone" type="tel" required placeholder="0400 000 000" className="bg-muted/30" />
-                </div>
-                <div className="space-y-2">
-                  <Label>Preferred Contact Method</Label>
-                  <Select defaultValue="phone">
-                    <SelectTrigger className="bg-muted/30">
-                      <SelectValue placeholder="Select method" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="phone">Phone Call</SelectItem>
-                      <SelectItem value="email">Email</SelectItem>
-                      <SelectItem value="whatsapp">WhatsApp</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
+      <div className="container mx-auto px-4 max-w-6xl">
+        
+        <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
+          {/* LEFT COLUMN: Explanatory Content */}
+          <div className="lg:col-span-1 space-y-8">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Need a Custom Cleaning Solution?</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                If you can’t find exactly what you need in our standard services, or you have a complex property or special request, tell us about it here. We’ll prepare a tailored quote based on your specific requirements.
+              </p>
             </div>
 
-            {/* Service Context */}
-            <div className="space-y-6">
-              <div className="border-b border-border pb-2">
-                <h3 className="text-xl font-bold text-secondary">2. Property or Facility Information</h3>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2 md:col-span-2">
-                  <Label>Property or Facility Type <span className="text-red-500">*</span></Label>
-                  <Select required>
-                    <SelectTrigger className="bg-muted/30">
-                      <SelectValue placeholder="Select property type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="house">House</SelectItem>
-                      <SelectItem value="apartment">Apartment / Unit</SelectItem>
-                      <SelectItem value="townhouse">Townhouse</SelectItem>
-                      <SelectItem value="office">Office / Commercial</SelectItem>
-                      <SelectItem value="warehouse">Warehouse / Workshop</SelectItem>
-                      <SelectItem value="retail">Retail / Showroom</SelectItem>
-                      <SelectItem value="medical">Medical / Clinic</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="suburb">Suburb <span className="text-red-500">*</span></Label>
-                  <Input id="suburb" required placeholder="e.g. Subiaco" className="bg-muted/30" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="postcode">Postcode <span className="text-red-500">*</span></Label>
-                  <Input id="postcode" required placeholder="e.g. 6008" className="bg-muted/30" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="size">Approximate Size (m²) or Description</Label>
-                  <Input id="size" placeholder="e.g. Large open warehouse or 150m²" className="bg-muted/30" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="floors">Number of Floors / Levels</Label>
-                  <Input id="floors" type="number" min="1" placeholder="e.g. 2" className="bg-muted/30" />
-                </div>
-              </div>
+            <div className="bg-primary/5 rounded-3xl p-6 border border-primary/10">
+              <h3 className="font-bold text-secondary text-xl mb-4">Perfect for:</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <Briefcase className="w-4 h-4" />
+                  </div>
+                  <span className="text-secondary/80 font-medium pt-1">Mixed residential & commercial jobs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <KeySquare className="w-4 h-4" />
+                  </div>
+                  <span className="text-secondary/80 font-medium pt-1">Warehouses, workshops & hangars</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <ClipboardList className="w-4 h-4" />
+                  </div>
+                  <span className="text-secondary/80 font-medium pt-1">Post-renovation & event clean-ups</span>
+                </li>
+              </ul>
             </div>
 
-            {/* Custom Service */}
-            <div className="space-y-6">
-              <div className="border-b border-border pb-2">
-                <h3 className="text-xl font-bold text-secondary">3. Service Details</h3>
-              </div>
-              <div className="space-y-4">
-                <Label>What type of custom cleaning do you need? (Check all that apply)</Label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {[
-                    "Deep cleaning", "One-off special clean", "Post-renovation clean",
-                    "Event / after-event clean", "Workshop / hangar clean", "Mixed residential + commercial", "Other"
-                  ].map((tag) => (
-                    <div key={tag} className="flex items-center space-x-2">
-                      <Checkbox id={`tag-${tag}`} />
-                      <label htmlFor={`tag-${tag}`} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        {tag}
-                      </label>
+            <div className="hidden lg:block relative mt-8 h-48 rounded-3xl overflow-hidden border border-border">
+               <img 
+                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
+                 alt="Professional commercial cleaning setup"
+                 className="w-full h-full object-cover"
+               />
+               <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Unified Form */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-border">
+              <form onSubmit={handleSubmit} className="space-y-10">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-secondary border-b border-border pb-4">Request a Custom Quote</h3>
+                </div>
+                
+                {/* 1. Contact Details */}
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="fullName">Full Name <span className="text-red-500">*</span></Label>
+                      <Input id="fullName" required placeholder="John Doe" className="bg-muted/30" />
                     </div>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="description">Describe the cleaning work you need <span className="text-red-500">*</span></Label>
-                <Textarea 
-                  id="description" 
-                  required
-                  placeholder="Please describe your property and what you would like us to clean. Include areas (e.g. warehouse floor, hangar, showroom, office, outdoor areas), how dirty it is, and anything special we should know." 
-                  className="min-h-[120px] bg-muted/30 resize-y"
-                />
-              </div>
-            </div>
-
-            {/* Timing & Frequency */}
-            <div className="space-y-6">
-              <div className="border-b border-border pb-2">
-                <h3 className="text-xl font-bold text-secondary">4. Timing & Frequency</h3>
-              </div>
-              <div className="space-y-4">
-                <Label>Preferred Frequency</Label>
-                <RadioGroup defaultValue="one-off" className="flex flex-col sm:flex-row gap-4">
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="one-off" id="r-one-off" />
-                    <Label htmlFor="r-one-off">One-off job</Label>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
+                      <Input id="email" type="email" required placeholder="john@example.com" className="bg-muted/30" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone / WhatsApp <span className="text-red-500">*</span></Label>
+                      <Input id="phone" type="tel" required placeholder="0400 000 000" className="bg-muted/30" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Preferred Contact Method</Label>
+                      <Select defaultValue="phone">
+                        <SelectTrigger className="bg-muted/30">
+                          <SelectValue placeholder="Select method" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="phone">Phone Call</SelectItem>
+                          <SelectItem value="email">Email</SelectItem>
+                          <SelectItem value="whatsapp">WhatsApp</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="short-term" id="r-short-term" />
-                    <Label htmlFor="r-short-term">Short-term project</Label>
+                </div>
+
+                {/* 2. Property Information */}
+                <div className="space-y-6">
+                  <h4 className="font-bold text-secondary text-lg border-b border-border/50 pb-2">Facility Details</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2 md:col-span-2">
+                      <Label>Property or Facility Type <span className="text-red-500">*</span></Label>
+                      <Select required>
+                        <SelectTrigger className="bg-muted/30">
+                          <SelectValue placeholder="Select property type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="house">House</SelectItem>
+                          <SelectItem value="apartment">Apartment / Unit</SelectItem>
+                          <SelectItem value="townhouse">Townhouse</SelectItem>
+                          <SelectItem value="office">Office / Commercial</SelectItem>
+                          <SelectItem value="warehouse">Warehouse / Workshop</SelectItem>
+                          <SelectItem value="retail">Retail / Showroom</SelectItem>
+                          <SelectItem value="medical">Medical / Clinic</SelectItem>
+                          <SelectItem value="hangar">Hangar / Aviation Facility</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="suburb">Suburb <span className="text-red-500">*</span></Label>
+                      <Input id="suburb" required placeholder="e.g. Subiaco" className="bg-muted/30" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="postcode">Postcode <span className="text-red-500">*</span></Label>
+                      <Input id="postcode" required placeholder="e.g. 6008" className="bg-muted/30" />
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="ongoing" id="r-ongoing" />
-                    <Label htmlFor="r-ongoing">Regular ongoing service</Label>
+                </div>
+
+                {/* 3. Job Description */}
+                <div className="space-y-6">
+                  <h4 className="font-bold text-secondary text-lg border-b border-border/50 pb-2">Cleaning Requirements</h4>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="description">Describe the cleaning work you need <span className="text-red-500">*</span></Label>
+                    <Textarea 
+                      id="description" 
+                      required
+                      placeholder="Please describe your property and what you would like us to clean. Include areas (e.g. warehouse floor, hangar, showroom, office, outdoor areas), how dirty it is, and anything special we should know." 
+                      className="min-h-[140px] bg-muted/30 resize-y"
+                    />
                   </div>
-                </RadioGroup>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="timeframe">Preferred Date(s) or Time Frame</Label>
-                  <Input id="timeframe" placeholder="e.g. Next week, or specific date" className="bg-muted/30" />
-                </div>
-                <div className="space-y-2">
-                  <Label>Preferred Time Window</Label>
-                  <Select defaultValue="flexible">
-                    <SelectTrigger className="bg-muted/30">
-                      <SelectValue placeholder="Select time window" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="morning">Morning</SelectItem>
-                      <SelectItem value="afternoon">Afternoon</SelectItem>
-                      <SelectItem value="after-hours">After hours / Weekends</SelectItem>
-                      <SelectItem value="flexible">Flexible</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </div>
 
-            {/* Photos & Notes */}
-            <div className="space-y-6">
-              <div className="border-b border-border pb-2">
-                <h3 className="text-xl font-bold text-secondary">5. Photos & Additional Notes</h3>
-              </div>
-              
-              <div className="space-y-2">
-                <Label>Photos or files (optional but recommended)</Label>
-                <p className="text-sm text-muted-foreground mb-2">Upload photos or documents that help us understand the areas to be cleaned.</p>
-                <div className="border-2 border-dashed border-border rounded-xl p-8 text-center bg-muted/10 hover:bg-muted/30 transition-colors cursor-pointer flex flex-col items-center justify-center">
-                  <Upload className="w-8 h-8 text-muted-foreground mb-3" />
-                  <p className="text-sm font-medium text-secondary">Click to upload or drag and drop</p>
-                  <p className="text-xs text-muted-foreground mt-1">SVG, PNG, JPG or PDF (max 10MB)</p>
+                  <div className="space-y-4 pt-2">
+                    <Label className="text-muted-foreground">Quick Tags (Optional)</Label>
+                    <div className="flex flex-wrap gap-4">
+                      {[
+                        "Deep cleaning", "One-off special clean", "Post-renovation clean",
+                        "Event / after-event clean", "Mixed residential + commercial", "Ongoing commercial contract"
+                      ].map((tag) => (
+                        <div key={tag} className="flex items-center space-x-2 bg-muted/30 px-3 py-2 rounded-lg border border-border/50">
+                          <Checkbox id={`tag-${tag}`} />
+                          <label htmlFor={`tag-${tag}`} className="text-sm font-medium leading-none cursor-pointer">
+                            {tag}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="notes">Additional notes or special instructions</Label>
-                <Textarea 
-                  id="notes" 
-                  placeholder="Tell us about access (stairs, parking, security), safety requirements, machinery, or anything important for preparing your quote." 
-                  className="min-h-[100px] bg-muted/30 resize-y"
-                />
-              </div>
-            </div>
+                {/* 4. Timing & Frequency */}
+                <div className="space-y-6">
+                  <h4 className="font-bold text-secondary text-lg border-b border-border/50 pb-2">Timing & Frequency</h4>
+                  <div className="space-y-4">
+                    <Label>Preferred Frequency</Label>
+                    <RadioGroup defaultValue="one-off" className="flex flex-col sm:flex-row gap-4">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="one-off" id="r-one-off" />
+                        <Label htmlFor="r-one-off">One-off job</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="short-term" id="r-short-term" />
+                        <Label htmlFor="r-short-term">Short-term project</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="ongoing" id="r-ongoing" />
+                        <Label htmlFor="r-ongoing">Regular ongoing service</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    <div className="space-y-2">
+                      <Label htmlFor="timeframe">Preferred Date(s) or Time Frame</Label>
+                      <Input id="timeframe" placeholder="e.g. Next week, or specific date" className="bg-muted/30" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Preferred Time Window</Label>
+                      <Select defaultValue="flexible">
+                        <SelectTrigger className="bg-muted/30">
+                          <SelectValue placeholder="Select time window" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="morning">Morning</SelectItem>
+                          <SelectItem value="afternoon">Afternoon</SelectItem>
+                          <SelectItem value="after-hours">After hours / Weekends</SelectItem>
+                          <SelectItem value="flexible">Flexible</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="pt-6 border-t border-border">
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="w-full h-14 text-lg font-bold rounded-xl bg-accent text-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Submitting..." : "Submit Custom Quote Request"}
-              </Button>
+                {/* 5. Photos & Notes */}
+                <div className="space-y-6">
+                  <h4 className="font-bold text-secondary text-lg border-b border-border/50 pb-2">Additional Info</h4>
+                  
+                  <div className="space-y-2">
+                    <Label>Photos (optional but recommended)</Label>
+                    <p className="text-sm text-muted-foreground mb-2">Upload photos of the areas to be cleaned so we can understand the job better.</p>
+                    <div className="border-2 border-dashed border-border rounded-xl p-8 text-center bg-muted/10 hover:bg-muted/30 transition-colors cursor-pointer flex flex-col items-center justify-center">
+                      <Upload className="w-8 h-8 text-muted-foreground mb-3" />
+                      <p className="text-sm font-medium text-secondary">Click to upload or drag and drop</p>
+                      <p className="text-xs text-muted-foreground mt-1">Allow multiple files (max 10MB each)</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 pt-2">
+                    <Label htmlFor="notes">Additional notes or special instructions</Label>
+                    <Textarea 
+                      id="notes" 
+                      placeholder="Tell us about access, parking, safety requirements, machinery, or anything important for preparing your quote." 
+                      className="min-h-[100px] bg-muted/30 resize-y"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-8">
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full h-16 text-lg font-bold rounded-xl bg-accent text-secondary hover:bg-primary hover:text-primary-foreground shadow-lg transition-all"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Request Custom Quote"}
+                  </Button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
+          
         </div>
       </div>
     </section>
