@@ -1,9 +1,7 @@
 import { ASSETS } from "@/lib/assets";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
+import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
 
 export function Contact() {
   return (
@@ -14,63 +12,23 @@ export function Contact() {
           
           <div>
             <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Get a Quote</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Book your clean today</h3>
-            <p className="text-lg text-muted-foreground mb-10">
-              Fill out the form below with your requirements, and our team will get back to you with a customized quote within 2 hours.
+            <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Need a custom cleaning solution?</h3>
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
+              While we offer standardized pricing for most residential and commercial properties, we know that some jobs require a tailored approach. Whether it's a post-renovation clean, a large warehouse, or a specific combination of services, we're here to help.
             </p>
             
-            <form className="space-y-6 bg-white p-8 rounded-3xl shadow-xl border border-border">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input id="firstName" placeholder="John" className="bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name</Label>
-                  <Input id="lastName" placeholder="Doe" className="bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors" />
-                </div>
-              </div>
+            <div className="bg-white p-8 rounded-3xl shadow-xl border border-border">
+              <h4 className="text-2xl font-bold text-secondary mb-4">Request a Custom Quote</h4>
+              <p className="text-muted-foreground mb-8">
+                Tell us exactly what you need and our team will prepare a personalized estimate based on your specific requirements.
+              </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="john@example.com" className="bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
-                  <Input id="phone" type="tel" placeholder="0400 000 000" className="bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors" />
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Label>Service Type</Label>
-                <Select>
-                  <SelectTrigger className="bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors">
-                    <SelectValue placeholder="Select a service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="residential">Residential Cleaning</SelectItem>
-                    <SelectItem value="commercial">Commercial Cleaning</SelectItem>
-                    <SelectItem value="vacate">Vacate / End of Lease</SelectItem>
-                    <SelectItem value="carpet">Carpet & Upholstery</SelectItem>
-                    <SelectItem value="other">Other / Custom</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="details">Additional Details</Label>
-                <Textarea 
-                  id="details" 
-                  placeholder="Tell us about your space (e.g., number of bedrooms, specific areas to focus on...)" 
-                  className="min-h-[120px] bg-muted/50 border-transparent focus:border-primary focus:bg-white transition-colors resize-none" 
-                />
-              </div>
-              
-              <Button type="button" className="w-full h-14 text-base font-bold rounded-xl shadow-md shadow-primary/20">
-                Request Free Quote
-              </Button>
-            </form>
+              <Link href="/services#services-custom-quote">
+                <Button className="w-full sm:w-auto h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2">
+                  Go to Custom Quote Form <ArrowRight className="w-5 h-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
           
           <div className="relative">

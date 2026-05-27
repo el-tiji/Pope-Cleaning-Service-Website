@@ -1,0 +1,143 @@
+You are updating the Pope Cleaning Services website (Perth, Western Australia).
+
+TASK OVERVIEW
+- Remove the existing “Get a Quote” form from the HOME page.
+- Create a NEW, GENERAL “Custom Cleaning Quote” form at the very end of the SERVICES page.
+- This form is specifically for:
+  - Cleaning services that are NOT listed in the standard plans, or
+  - Highly customised jobs requested by the client.
+
+1) REMOVE HOME PAGE FORM
+- On the Home page:
+  - Completely remove or comment out the existing “Get a Quote” form section.
+  - Keep any “Get a Free Quote” / “Custom Quote” buttons on Home, but make them navigate/scroll to the new form on the Services page instead.
+  - Ensure there are no broken anchors or dead links.
+
+2) NEW FORM LOCATION (SERVICES PAGE)
+- On the Services page:
+  - At the bottom, after all listed services and cards, add a new section:
+    - Section ID: `services-custom-quote`
+    - Heading (H2): “Request a Custom Cleaning Quote”
+    - Short intro paragraph explaining, for example:
+      - “Need a cleaning service that isn’t listed on our website, or a personalised combination of services? Tell us what you need and we’ll prepare a tailored quote for you.”
+      - Emphasise that this form is for special requests, complex jobs, or mixed residential/commercial projects.
+
+3) NEW GENERAL / CUSTOM QUOTE FORM
+
+This form should be simpler and more flexible than the full estimator, focused on free‑text description rather than rigid options.
+
+A) Contact details
+- Full name (required)
+- Email (required)
+- Phone / WhatsApp (required)
+- Preferred contact method:
+  - Phone
+  - Email
+  - WhatsApp
+
+B) Service context (simple but open)
+- Property or facility type (multi‑purpose select, required):
+  - House
+  - Apartment / Unit
+  - Townhouse
+  - Office / Commercial
+  - Warehouse / Workshop
+  - Retail / Showroom
+  - Medical / Clinic
+  - Other (with free text)
+- Suburb (required)
+- Postcode (required)
+
+C) Basic size / scope (optional but helpful)
+- Short fields to guide, but not over‑constrain:
+  - Approximate size (m²) OR description field (e.g. “Large open warehouse”, “Small 2-bedroom unit”).
+  - Number of floors / levels (optional).
+- Do NOT force the user to specify every room; the detailed description will cover special requirements.
+
+D) Type of custom service (free text + tags)
+- “What type of custom cleaning do you need?”
+  - Provide optional tag-like checkboxes for quick hints:
+    - Deep cleaning
+    - One‑off special clean
+    - Post‑renovation clean
+    - Event / after‑event clean
+    - Workshop / hangar clean
+    - Mixed residential + commercial
+    - Other
+- Include a required large text area:
+  - Label: “Describe the cleaning work you need”
+  - Placeholder example:
+    “Please describe your property and what you would like us to clean. Include areas (e.g. warehouse floor, hangar, showroom, office, outdoor areas), how dirty it is, and anything special we should know.”
+
+E) Timing & frequency
+- Preferred frequency:
+  - One‑off job
+  - Short‑term project
+  - Regular ongoing service
+- Preferred date(s) or time frame (free text or date input)
+- Preferred time window (optional):
+  - Morning
+  - Afternoon
+  - After hours / weekends
+  - Flexible
+
+F) Photos & attachments (optional but encouraged)
+- Allow the user to upload photos or files:
+  - Label: “Photos or files (optional but recommended)”
+  - Description:
+    “Upload photos or documents that help us understand the areas to be cleaned.”
+- Support multiple uploads (drag-and-drop and mobile camera).
+
+G) Additional notes
+- Large text area:
+  - Label: “Additional notes or special instructions”
+  - Placeholder:
+    “Tell us about access (stairs, parking, security), safety requirements, machinery, or anything important for preparing your quote.”
+
+4) UX & DESIGN REQUIREMENTS
+- Design:
+  - Use the same brand colours and typography as the existing site.
+  - Group fields into clear sections: Contact, Property/Facility, Custom Service Description, Timing, Photos, Notes.
+  - Use card-style groups with subtle shadows so it feels premium and trustworthy.
+- Validation:
+  - Required: name, email, phone, property/facility type, suburb, postcode, main description.
+  - Show friendly inline error messages.
+- Responsiveness:
+  - Fully mobile-first.
+  - Single-column layout on mobile; two columns for some fields on desktop.
+
+5) BEHAVIOUR & INTEGRATION
+- When the form is submitted:
+  - Save the custom quote request in the database under a distinct type (e.g. `customQuote`), storing:
+    - Contact details
+    - Property/facility type
+    - Suburb/postcode
+    - Service description
+    - Timing/frequency
+    - Notes
+    - Any file references
+    - Timestamp
+  - Send an email notification to admin with the full details and a clear subject such as:
+    - “New Custom Cleaning Quote Request – [Name, Suburb]”
+  - Send a confirmation email to the customer summarising their request and next steps.
+
+- After submit:
+  - Show a success message, e.g.:
+    “Thank you! We’ve received your custom cleaning request. Our team will review the details and contact you with a tailored quote.”
+  - Provide optional buttons:
+    - “Back to Services”
+    - “Go to Plans & Pricing” (for standard residential/office plans)
+
+6) LINKS FROM OTHER PAGES
+- On the Services page, clearly differentiate:
+  - Standard services with links to the “Plans & Pricing” estimator.
+  - Custom / special jobs with this new “Request a Custom Cleaning Quote” form.
+- On Home (and other pages), update any “Custom job?” or “Something not listed?” links to jump to `#services-custom-quote`.
+
+7) CLEANUP
+- Remove any references in the codebase that still assume a quote form lives on the Home page.
+- Ensure analytics/tracking (if present) clearly differentiate:
+  - Standard estimator submissions
+  - Custom quote form submissions.
+
+Make sure the new “Request a Custom Cleaning Quote” section feels like a natural, premium extension of the Services page, explicitly positioned for non-standard or personalised cleaning work that is not covered by the main plans.
