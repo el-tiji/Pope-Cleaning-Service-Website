@@ -1,7 +1,7 @@
 import { ASSETS } from "@/lib/assets";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 export function Contact() {
   return (
@@ -24,25 +24,36 @@ export function Contact() {
               </p>
               
               <Link href="/services#services-custom-quote">
-                <Button className="w-full sm:w-auto h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2">
+                <Button className="w-full sm:w-auto h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2 hover:translate-y-[-2px] transition-transform">
                   Go to Custom Quote Form <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
             </div>
           </div>
           
-          <div className="relative">
-            <div className="absolute inset-0 bg-accent/20 rounded-[3rem] transform -rotate-3 scale-105 blur-2xl -z-10"></div>
-            <div className="bg-white p-2 rounded-[2.5rem] shadow-2xl border border-white/50 relative">
-              <div className="absolute -bottom-6 -right-6 bg-secondary text-white p-6 rounded-2xl shadow-xl max-w-xs animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-                <h4 className="font-bold text-lg mb-2">Service Area</h4>
-                <p className="text-white/80 text-center text-[16px]">We proudly serve the entire Perth metropolitan area, from Joondalup to Mandurah.</p>
+          <div className="relative group perspective-1000">
+            <div className="absolute inset-0 bg-accent/20 rounded-[3rem] transform -rotate-3 scale-105 blur-2xl -z-10 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-110"></div>
+            <div className="bg-white p-2 rounded-[2.5rem] shadow-2xl border border-white/50 relative transform transition-transform duration-700 hover:rotate-y-2 hover:rotate-x-2">
+              
+              {/* Centered Service Area Badge */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-[85%] sm:w-80">
+                <div className="bg-white/95 backdrop-blur-md text-secondary p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/60 animate-in zoom-in-95 duration-1000 delay-500 hover:scale-105 transition-transform cursor-default">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center animate-bounce">
+                      <MapPin className="w-6 h-6 text-primary" />
+                    </div>
+                  </div>
+                  <h4 className="font-extrabold text-2xl mb-3 text-center text-primary">Service Area</h4>
+                  <p className="text-secondary/80 text-center text-[16px] leading-relaxed font-medium">
+                    We proudly serve the entire <span className="text-primary font-bold">Perth</span> metropolitan area, from Joondalup to Mandurah.
+                  </p>
+                </div>
               </div>
               
               <img 
                 src={ASSETS.contact.map.src} 
                 alt={ASSETS.contact.map.alt} 
-                className="w-full h-auto object-cover rounded-[2rem] bg-blue-50/50 aspect-square"
+                className="w-full h-auto object-cover rounded-[2rem] bg-blue-50/50 aspect-square opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';
