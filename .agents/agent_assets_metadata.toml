@@ -17,13 +17,13 @@ title = "Tilt-shift clean home living room"
 id = "mXXrNQILuAMksB-EaGBNo"
 uri = "file://client/public/assets/tiltshift/home/hero-2.png"
 type = "image"
-title = "Tilt-shift pristine modern kitchen"
+title = "Tilt-shift modern kitchen with cleaner"
 
 [[generated]]
 id = "cHAcEYII2b1fiZXvs5vlq"
 uri = "file://client/public/assets/tiltshift/home/hero-3.png"
 type = "image"
-title = "Tilt-shift beautiful clean bathroom"
+title = "Tilt-shift clean bathroom with cleaner"
 
 [[generated]]
 id = "80s4zoJCHRbxQEdBUZFea"
@@ -96,3 +96,9 @@ id = "_PeC0ICDIxNsV8Xs5H_Rc"
 uri = "file://client/public/assets/tiltshift/home/hero-6.png"
 type = "image"
 title = "Tilt-shift spotless staircase"
+
+[[generated]]
+id = "Umx231nDUfNxPVzYbxFdW"
+uri = "file://client/public/assets/tiltshift/home/hero-7.png"
+type = "image"
+title = "Tilt-shift window cleaning exterior"

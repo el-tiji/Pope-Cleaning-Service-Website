@@ -12,6 +12,7 @@ export function Hero() {
     "/assets/tiltshift/home/hero-4.png",
     "/assets/tiltshift/home/hero-5.png",
     "/assets/tiltshift/home/hero-6.png",
+    "/assets/tiltshift/home/hero-7.png",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
