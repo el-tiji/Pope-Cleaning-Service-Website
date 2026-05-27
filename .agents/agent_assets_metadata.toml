@@ -102,3 +102,27 @@ id = "Umx231nDUfNxPVzYbxFdW"
 uri = "file://client/public/assets/tiltshift/home/hero-7.png"
 type = "image"
 title = "Top-down tilt-shift exterior window cleaning"
+
+[[generated]]
+id = "yhihN7_dbpluXRA-OlnJB"
+uri = "file://client/public/assets/tiltshift/avatars/avatar-1.png"
+type = "image"
+title = "3D miniature style avatar 1"
+
+[[generated]]
+id = "LebPnynr9I51NusJscF4H"
+uri = "file://client/public/assets/tiltshift/avatars/avatar-2.png"
+type = "image"
+title = "3D miniature style avatar 2"
+
+[[generated]]
+id = "ozs1EOPMBqZR08O0_vgip"
+uri = "file://client/public/assets/tiltshift/avatars/avatar-3.png"
+type = "image"
+title = "3D miniature style avatar 3"
+
+[[generated]]
+id = "o10IwRVFUqEAR2gq3RCS4"
+uri = "file://client/public/assets/tiltshift/avatars/avatar-4.png"
+type = "image"
+title = "3D miniature style avatar 4"

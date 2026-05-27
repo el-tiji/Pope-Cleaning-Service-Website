@@ -66,7 +66,7 @@ export function Hero() {
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-10 h-10 rounded-full border-2 border-background bg-muted flex items-center justify-center overflow-hidden">
-                    <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i}&backgroundColor=7EC8FF`} alt="User avatar" />
+                    <img src={`/assets/tiltshift/avatars/avatar-${i}.png`} alt="User avatar" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
