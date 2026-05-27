@@ -35,8 +35,8 @@ export function Contact() {
             <div className="absolute inset-0 bg-accent/20 rounded-[3rem] transform -rotate-3 scale-105 blur-2xl -z-10 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-110"></div>
             <div className="bg-white p-2 rounded-[2.5rem] shadow-2xl border border-white/50 relative transform transition-transform duration-700 hover:rotate-y-2 hover:rotate-x-2">
               
-              {/* Centered Service Area Badge */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-[85%] sm:w-80">
+              {/* Center-Bottom Service Area Badge */}
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 w-[85%] sm:w-80">
                 <div className="bg-white/95 backdrop-blur-md text-secondary p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/60 animate-in zoom-in-95 duration-1000 delay-500 hover:scale-105 transition-transform cursor-default">
                   <div className="flex items-center justify-center mb-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center animate-bounce">
