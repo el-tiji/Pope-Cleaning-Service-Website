@@ -40,14 +40,12 @@ export default function PricingPage() {
                 Every home or office is different. The live estimated price in our booking section uses the information you provide about size, rooms, extras and access to give you a customized, accurate quote before we even step through the door.
               </p>
             </div>
-            <div className="order-1 lg:order-2 relative aspect-square md:aspect-[4/3] lg:aspect-square rounded-[2.5rem] overflow-hidden bg-primary/5 border border-primary/20 flex items-center justify-center shadow-2xl group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10"></div>
+            <div className="order-1 lg:order-2 relative aspect-square md:aspect-[4/3] lg:aspect-square rounded-[2.5rem] overflow-hidden bg-muted/20 flex items-center justify-center shadow-2xl group">
               <img
-                src="/assets/placeholders/pricing-info-3d.png"
-                alt="Bright, isometric scene of a very clean Perth-style home"
+                src="/assets/tiltshift/pricing/hero.png"
+                alt="Bright, tilt-shift scene of a very clean Perth-style home with a timer representing efficiency"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => {
-                  // Fallback to a high-quality relevant image if the specific placeholder doesn't exist
                   e.currentTarget.src = "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80";
                 }}
               />

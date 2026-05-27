@@ -6,3 +6,63 @@ id = "q10yaEb8iS5jQ9Z_lsy-H"
 uri = "file://client/public/assets/placeholders/pricing-info-3d.png"
 type = "image"
 title = "3D isometric bright clean home"
+
+[[generated]]
+id = "LjsIKtBAulSvG2hWNpDzk"
+uri = "file://client/public/assets/tiltshift/home/hero-1.png"
+type = "image"
+title = "Tilt-shift clean home living room"
+
+[[generated]]
+id = "mXXrNQILuAMksB-EaGBNo"
+uri = "file://client/public/assets/tiltshift/home/hero-2.png"
+type = "image"
+title = "Tilt-shift pristine modern kitchen"
+
+[[generated]]
+id = "cHAcEYII2b1fiZXvs5vlq"
+uri = "file://client/public/assets/tiltshift/home/hero-3.png"
+type = "image"
+title = "Tilt-shift beautiful clean bathroom"
+
+[[generated]]
+id = "80s4zoJCHRbxQEdBUZFea"
+uri = "file://client/public/assets/tiltshift/pricing/hero.png"
+type = "image"
+title = "Tilt-shift pricing info clock"
+
+[[generated]]
+id = "i9HeFlRCmzAin5ULE60KX"
+uri = "file://client/public/assets/tiltshift/services/regular.png"
+type = "image"
+title = "Tilt-shift regular house cleaning"
+
+[[generated]]
+id = "2nPqBqxfNW0X0SV4-Xxj7"
+uri = "file://client/public/assets/tiltshift/services/spring.png"
+type = "image"
+title = "Tilt-shift deep spring cleaning"
+
+[[generated]]
+id = "QS8-LY528FdX3MZdTO7H7"
+uri = "file://client/public/assets/tiltshift/services/vacate.png"
+type = "image"
+title = "Tilt-shift vacate empty apartment"
+
+[[generated]]
+id = "Ing7Mqg8zoEPH7gbngqmR"
+uri = "file://client/public/assets/tiltshift/services/office.png"
+type = "image"
+title = "Tilt-shift modern office cleaning"
+
+[[generated]]
+id = "kXgdbHNZ9vB4luhdbcidG"
+uri = "file://client/public/assets/tiltshift/reviews/before.png"
+type = "image"
+title = "Tilt-shift dirty carpet before"
+
+[[generated]]
+id = "eWlK9Kzed9yn8P4HrX61k"
+uri = "file://client/public/assets/tiltshift/reviews/after.png"
+type = "image"
+title = "Tilt-shift clean carpet after"

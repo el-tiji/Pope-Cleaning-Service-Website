@@ -1,0 +1,52 @@
+You are a senior front-end/UI designer helping me refresh ALL visual assets on the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- Replace all existing placeholder images and illustrations with NEW AI-GENERATED images in a consistent “tilt-shift / miniature world” style.
+- Keep the existing layout and structure of the site.
+- Only update the visual assets (image files, paths, alt text and descriptions) and any small UI tweaks needed to showcase them well.
+
+STYLE REQUIREMENTS
+
+GENERAL VISUAL STYLE
+- Use a tilt-shift / miniature-world style for all scenes:
+  - The environment looks like a tiny, realistic model or diorama.
+  - Foreground areas are in sharp focus; background is softly blurred, as in tilt-shift photography.
+  - The overall effect should be bright, clean, and slightly playful, but still professional.
+- The theme is “premium cleaning in Perth”:
+  - Show tidy, modern Australian homes and offices.
+  - Emphasise spotless surfaces, fresh colours and clear organisation.
+- Keep consistency:
+  - All images should look like part of the same visual universe.
+  - Use similar lighting, depth-of-field and colour balance site-wide.
+
+COLOURS & BRANDING
+- Base the colour palette on the Pope Cleaning Services logo:
+  - Primary blue (mid blue) for uniforms, vans and accents.
+  - Dark navy for key contrasts.
+  - Light bubble blue for highlights and cleaning bubbles or sparkle effects.
+- Use complementary warm accents (soft orange/peach, light wood tones) sparingly:
+  - For furniture, decor or small props, but not to overpower the brand blues.
+- Backgrounds:
+  - Mostly bright, neutral and airy.
+  - Walls and large surfaces should be white, light grey or very soft tones to make the blue details pop.
+
+FILE ORGANISATION
+- Create a consistent folder/asset structure, e.g.:
+  - `/assets/tiltshift/home/`
+  - `/assets/tiltshift/services/`
+  - `/assets/tiltshift/about/`
+  - `/assets/tiltshift/reviews/`
+  - `/assets/tiltshift/pricing/`
+  - `/assets/tiltshift/contact/`
+  - `/assets/tiltshift/work-with-us/`
+- For each image:
+  - Use a descriptive filename.
+  - Provide an accurate `alt` text string.
+  - Add a short code comment near the import or usage explaining the intended scene, so we can regenerate or adjust later if needed.
+
+UPDATE IMAGES BY PAGE / SECTION
+
+1) HOME PAGE
+
+Hero image:
+- Replace hero 

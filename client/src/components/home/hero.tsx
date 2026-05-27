@@ -6,11 +6,9 @@ import { Link } from "wouter";
 
 export function Hero() {
   const carouselImages = [
-    ASSETS.hero.src,
-    "/assets/placeholders/hero-carousel-1.png",
-    "/assets/placeholders/hero-carousel-2.png",
-    "/assets/placeholders/hero-carousel-3.png",
-    "/assets/placeholders/hero-carousel-4.png",
+    "/assets/tiltshift/home/hero-1.png",
+    "/assets/tiltshift/home/hero-2.png",
+    "/assets/tiltshift/home/hero-3.png",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
