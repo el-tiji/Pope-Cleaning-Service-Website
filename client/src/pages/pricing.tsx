@@ -293,7 +293,7 @@ export default function PricingPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.2}>
                 <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm text-center">
-                  <h3 className="text-2xl font-bold mb-4">Ready for your quote?</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-[#ffffff]">Ready for your quote?</h3>
                   <p className="text-white/70 mb-8">Take 2 minutes to fill out our interactive booking form and see your custom live estimate immediately.</p>
                   <Link href="/book">
                     <Button size="lg" className="w-full rounded-full h-14 text-lg font-bold bg-accent text-secondary hover:bg-white transition-colors gap-2 group">
