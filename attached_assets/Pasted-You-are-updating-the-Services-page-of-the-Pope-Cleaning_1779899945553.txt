@@ -1,0 +1,154 @@
+You are updating the Services page of the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- Redesign the services grid/cards to be more visual and interactive.
+- Each service card should:
+  1) Show a large generated image (approx. 70% of the card area).
+  2) Display the service name over the image (with an opacity overlay) or directly below it.
+  3) On hover, reveal a short description text instead of just the title.
+  4) Include a “Learn More” click action that navigates to a detailed service page.
+- This behaviour should be implemented for ALL listed services.
+
+SERVICES TO INCLUDE
+Make sure the new cards cover at least these services:
+- Residential Cleaning
+- Spring Cleaning
+- Vacate / End of Lease Cleaning
+- Office / Commercial Cleaning
+- Carpet & Upholstery Cleaning
+- Tile & Grout Cleaning
+- Pressure Cleaning
+- Car Detailing
+(If there are more services in the codebase, apply the same pattern.)
+
+CARD LAYOUT & DESIGN
+
+General layout:
+- Use a responsive grid of cards on the Services page.
+- Each card should:
+  - Occupy a tile in the grid with a fixed aspect ratio (e.g. 4:3 or similar).
+  - Use about 70% of the vertical space for the image.
+  - Use the remaining ~30% for text area (title / description / CTA) OR display text over the lower part of the image with a translucent overlay.
+
+Image area:
+- Use generated images consistent with the site’s visual style (tilt-shift / miniature look, cleaning-related scenes).
+- The image should:
+  - Fill the top ~70% of the card.
+  - Use `object-fit: cover` to avoid distortion.
+- Provide semantic imports / filenames, for example:
+  - `/assets/tiltshift/services/residential-card.png`
+  - `/assets/tiltshift/services/spring-card.png`
+  - `/assets/tiltshift/services/vacate-card.png`
+  - `/assets/tiltshift/services/office-card.png`
+  - `/assets/tiltshift/services/carpet-card.png`
+  - `/assets/tiltshift/services/tile-card.png`
+  - `/assets/tiltshift/services/pressure-card.png`
+  - `/assets/tiltshift/services/car-detailing-card.png`
+
+Title placement:
+- Use one of these two patterns (you can choose based on what fits the existing design better, but make it consistent):
+  1) Title overlaid on the bottom of the image:
+     - A semi-transparent dark or brand-coloured overlay band (e.g. navy with 70% opacity).
+     - Service name in white text on top of that band.
+  2) Title below the image:
+     - Image at the top 70%.
+     - Service name in a bold heading just under the image.
+
+In both cases, the title should be easy to read and clearly associated with the card.
+
+HOVER / INTERACTION BEHAVIOUR
+
+Desktop hover:
+- When the user hovers the mouse over the card:
+  - Smoothly transition from the title view to a brief description view.
+  - You can implement this as:
+    - Title fades out and a short description fades in, OR
+    - The overlay expands to show description, OR
+    - The lower text area flips from title to description.
+- The image should remain visible, but you can slightly dim it or apply a subtle overlay when the description appears.
+- The “Learn More” CTA should become clearly visible on hover (e.g. fade in or slide up).
+
+Mobile / touch:
+- On touch devices that don’t have hover:
+  - Show both the title and a short description below the image by default, and keep the “Learn More” button always visible.
+  - Do not rely solely on hover states.
+
+CONTENT OF THE TEXT
+
+For each card:
+- Title: the service name.
+- Short description (used on hover / expanded view):
+  - 1–2 short sentences in plain language explaining the service.
+  - Example for Residential Cleaning:
+    - “Regular home cleaning for busy Perth households – kitchens, bathrooms, floors and surfaces kept consistently fresh.”
+  - Example for Vacate / End of Lease:
+    - “Detailed move-out cleaning designed to meet real estate inspection standards, including kitchen, bathrooms and optional carpets.”
+
+BUTTON & NAVIGATION
+
+“Learn More” button:
+- Each card must have a clear “Learn More” button or link.
+- On desktop:
+  - It can appear or be highlighted on hover.
+- On mobile:
+  - It should be visible without needing hover.
+
+Click behaviour:
+- When the user clicks “Learn More” for a given service, navigate to the corresponding detailed service page, for example:
+  - Residential Cleaning → `/services/residential-cleaning`
+  - Spring Cleaning → `/services/spring-cleaning`
+  - Vacate → `/services/vacate-end-of-lease`
+  - Office Cleaning → `/services/office-cleaning`
+  - Carpet & Upholstery → `/services/carpet-upholstery`
+  - Tile & Grout → `/services/tile-grout`
+  - Pressure Cleaning → `/services/pressure-cleaning`
+  - Car Detailing → `/services/car-detailing`
+- Use the existing routing system (e.g. Next.js routes) and connect to the pages that already exist or will be created.
+
+Integration with “Book Now”:
+- On each detailed service page (target of the “Learn More” button):
+  - Ensure there is a prominent “Book Now” or “Request a Quote” button.
+  - That button should link to:
+    - The main booking/quote section (e.g. Contact & Booking page or Plans & Pricing estimator), OR
+    - A specific anchor like `#book-now` on the booking page.
+- The service type should be passed or pre-selected if possible (e.g. via query parameter or state) so the booking form knows which service the user is interested in.
+
+ANIMATION & UI DETAILS
+
+Hover animation:
+- Use smooth, subtle transitions:
+  - 150–250 ms duration.
+  - Ease-in-out curves.
+- Possible effects:
+  - Slight lift of the card (shadow increases slightly).
+  - Image zooms in 3–5%.
+  - Title/description cross-fade.
+- Avoid heavy or distracting animations; keep it clean and professional.
+
+Accessibility:
+- Ensure that the cards remain usable via keyboard:
+  - Focus states should highlight the card and make the “Learn More” button accessible.
+- The description text should be readable with sufficient colour contrast on the overlay.
+- All images must have appropriate `alt` text describing the service (e.g. “Miniature living room being cleaned – Residential Cleaning service”).
+
+RESPONSIVENESS
+
+- On large screens:
+  - Use a 3- or 4-column grid for cards, depending on available width.
+- On tablets:
+  - 2-column layout.
+- On mobile:
+  - Single column layout with cards full-width.
+
+IMPLEMENTATION NOTES
+
+- Refactor the existing Services cards component to:
+  - Use a data-driven list (array of service objects with title, slug, image, shortDescription, alt, link).
+  - Map over that list to render the new interactive cards.
+- Keep all styling consistent with the rest of the site (same font family, colours, border radius, shadows).
+- Do not change the underlying URLs of the detailed service pages; just improve the way users navigate to them from the Services overview.
+
+The outcome should be a visually rich, interactive Services page that:
+- Shows large service images (70% of each card),
+- Uses hover interactions to reveal a short description,
+- Provides a clear “Learn More” CTA that takes users to detailed service pages with a clear “Book Now” path.

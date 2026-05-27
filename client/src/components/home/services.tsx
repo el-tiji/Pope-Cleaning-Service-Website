@@ -1,49 +1,56 @@
 import { ASSETS } from "@/lib/assets";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 
 const services = [
   {
     id: "residential",
     title: "Residential Cleaning",
-    description: "Regular or one-off house cleaning tailored to your lifestyle. We dust, vacuum, mop, and sanitize all high-touch surfaces. Includes kitchens, bathrooms, living areas, and bedrooms for a complete home refresh.",
-    icon: ASSETS.services.residential,
-    color: "bg-blue-50",
+    shortDescription: "Regular home cleaning for busy Perth households – kitchens, bathrooms, floors and surfaces kept consistently fresh.",
+    image: "/assets/tiltshift/services/regular.png",
+    alt: "Miniature living room being cleaned - Residential Cleaning service",
+    link: "/book",
   },
   {
-    id: "commercial",
-    title: "Commercial & Office",
-    description: "Maintain a pristine workspace that leaves a lasting impression on clients.",
-    icon: ASSETS.services.commercial,
-    color: "bg-indigo-50",
+    id: "spring",
+    title: "Spring Cleaning",
+    shortDescription: "Deep, detail-focused cleaning for neglected areas, bringing back the sparkle to your entire home.",
+    image: "/assets/tiltshift/services/spring.png",
+    alt: "Deep spring cleaning scene - Spring Cleaning service",
+    link: "/book",
   },
   {
     id: "vacate",
     title: "Vacate / End of Lease",
-    description: "Guaranteed bond-back cleaning to ease the stress of moving out.",
-    icon: ASSETS.services.vacate,
-    color: "bg-orange-50",
+    shortDescription: "Detailed move-out cleaning designed to meet real estate inspection standards, ensuring you get your bond back.",
+    image: "/assets/tiltshift/services/vacate.png",
+    alt: "Clean empty apartment - Vacate / End of Lease cleaning service",
+    link: "/book",
+  },
+  {
+    id: "commercial",
+    title: "Office / Commercial",
+    shortDescription: "Maintain a pristine, professional workspace that leaves a lasting impression on clients and boosts employee morale.",
+    image: "/assets/tiltshift/services/office.png",
+    alt: "Spotless modern office - Commercial Cleaning service",
+    link: "/book",
   },
   {
     id: "carpet",
     title: "Carpet & Upholstery",
-    description: "Deep steam cleaning to refresh fibers and remove stubborn stains.",
-    icon: ASSETS.services.carpet,
-    color: "bg-sky-50",
-  },
-  {
-    id: "tile",
-    title: "Tile & Grout",
-    description: "High-pressure interior cleaning that makes your floors look brand new.",
-    icon: ASSETS.services.tile,
-    color: "bg-slate-50",
+    shortDescription: "Deep steam cleaning to refresh fibers, remove stubborn stains, and eliminate hidden allergens.",
+    image: "/assets/tiltshift/reviews/after.png", // Using the clean carpet image
+    alt: "Clean carpet - Carpet & Upholstery cleaning service",
+    link: "/book",
   },
   {
     id: "pressure",
     title: "Pressure Cleaning",
-    description: "Transform driveways, patios, and exteriors with high-power washing.",
-    icon: ASSETS.services.pressure,
-    color: "bg-cyan-50",
+    shortDescription: "Transform driveways, patios, and outdoor exteriors with high-power, deep-cleaning washing.",
+    image: "/assets/tiltshift/home/hero-5.png", // Using the patio pressure washing image
+    alt: "Outdoor patio pressure washing - Pressure Cleaning service",
+    link: "/book",
   }
 ];
 
@@ -60,34 +67,50 @@ export function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <Card key={service.id} className={`border-none soft-shadow-hover bg-background cursor-pointer group`}>
-              <CardHeader className="p-6 pb-2">
-                <div className={`w-16 h-16 rounded-2xl ${service.color} mb-4 flex items-center justify-center overflow-hidden p-2 group-hover:scale-110 transition-transform duration-300`}>
-                  <img src={service.icon.src} alt={service.icon.alt} className="w-full h-full object-contain drop-shadow-sm" />
+          {services.map((service) => (
+            <Link key={service.id} href={service.link}>
+              <Card className="group relative overflow-hidden border border-border/50 rounded-3xl aspect-[4/3] cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300">
+                {/* Background Image (Top 70%) */}
+                <div className="absolute inset-0 h-[70%] md:h-full overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.alt} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {/* Subtle dark overlay for text readability on mobile/base state */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 md:opacity-50 group-hover:opacity-90 transition-opacity duration-300"></div>
                 </div>
-                <CardTitle className="text-secondary text-xl">{service.title}</CardTitle>
-                <CardDescription className="text-muted-foreground mt-2 text-base">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6 pt-2">
-                <div className="flex items-center text-primary font-semibold text-sm group-hover:gap-2 transition-all">
-                  <span>Learn more</span>
-                  <ArrowRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                {/* Content Overlay */}
+                <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 h-[50%] md:h-full transition-transform duration-300 md:translate-y-8 group-hover:translate-y-0">
+                  <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
+                  
+                  {/* Short description (visible on hover for desktop, always visible on mobile) */}
+                  <p className="text-white/90 text-sm leading-relaxed mb-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                    {service.shortDescription}
+                  </p>
+                  
+                  {/* Learn More CTA */}
+                  <div className="flex items-center text-accent font-semibold text-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 delay-100">
+                    <span>Learn more</span>
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+              </Card>
+            </Link>
           ))}
           
-          <Card className="border-none bg-primary text-primary-foreground soft-shadow flex flex-col sm:flex-row justify-between items-center text-left p-8 md:col-span-2 lg:col-span-3 gap-6">
+          {/* Custom Quote Callout */}
+          <Card className="border-none bg-primary text-primary-foreground soft-shadow flex flex-col sm:flex-row justify-between items-center text-left p-8 md:col-span-2 lg:col-span-3 gap-6 rounded-3xl">
             <div>
               <h3 className="text-2xl font-bold mb-2">Need something else?</h3>
               <p className="text-primary-foreground/80 mb-0 max-w-xl">We offer custom cleaning packages tailored to your specific requirements. Get in touch to discuss your unique needs.</p>
             </div>
-            <button className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-accent hover:text-secondary transition-colors shrink-0 whitespace-nowrap shadow-lg">
-              Get a Custom Quote
-            </button>
+            <Link href="/services#services-custom-quote">
+              <button className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-accent hover:text-secondary transition-colors shrink-0 whitespace-nowrap shadow-lg">
+                Get a Custom Quote
+              </button>
+            </Link>
           </Card>
         </div>
       </div>
