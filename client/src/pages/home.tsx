@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/hero";
 import { FAQ } from "@/components/home/faq";
 import { Contact } from "@/components/home/contact";
 import { Chatbot } from "@/components/chatbot";
+import { HowWeWork } from "@/components/home/how-we-work";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <Hero />
+        <HowWeWork />
         <FAQ />
         <Contact />
       </main>

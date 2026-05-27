@@ -1,0 +1,149 @@
+You are updating the HOME page of the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- Add a NEW section on the HOME page directly BEFORE the “Frequently Asked Questions” section.
+- This section must:
+  - Introduce Pope Cleaning Services and its main services in a very clear way.
+  - Explain the company’s business model: how the service works from quote to cleaning.
+  - End with a large, centred call-to-action button (e.g. “Book a Clean”) that links to the main Book Now.
+
+SECTION PLACEMENT
+- Find the current “Frequently Asked Questions” (FAQ) section on the HOME page.
+- Insert the new section immediately above it.
+- The section should be visually distinct but consistent with the rest of the home page design.
+
+SECTION STRUCTURE
+
+1) INTRO HEADER BLOCK
+
+Create a full-width intro block with:
+
+- Heading (H2) – example:
+  “Pope Cleaning Services – How We Work”
+
+- Subheading – example:
+  “Family-owned in Perth, delivering detailed residential and commercial cleaning with clear pricing and easy booking.”
+
+- Short intro paragraph (2–3 sentences), covering:
+  - Pope Cleaning Services is a family-owned business based in Perth, WA.
+  - We serve both homes and businesses with regular cleaning, spring/deep cleans, vacate/end-of-lease, carpets & upholstery, tiles & grout, and office/commercial cleaning.
+  - We focus on high-quality, detailed cleaning rather than rushing through jobs.
+(Make an animation on the sides of the text like a shining star of spotless cleaning)
+
+Optionally, on larger screens, place the text on one side and a small illustration or image (e.g. tilt-shift style home + office + cleaning van) on the other side.
+
+2) “OUR SERVICES AT A GLANCE” SUMMARY
+
+Below the intro, add a concise services overview row.
+
+Layout:
+- Use 3–4 cards or icon blocks in a row (stacked vertically on mobile).
+
+Each card should contain:
+- A small icon or mini tilt-shift image.
+- Service category title.
+- One short, clear sentence.
+
+Suggested categories:
+
+- Residential Cleaning
+  - “Regular, spring and deep cleaning for Perth homes and units.”
+- Vacate / End of Lease Cleaning
+  - “Detailed move-out cleans designed for real estate inspections and bond conditions.”
+- Carpets, Upholstery & Tiles
+  - “Carpet steam cleaning, upholstery care and tile & grout restoration.”
+- Office & Commercial Cleaning
+  - “Flexible cleaning for offices, shared spaces, warehouses and other facilities.”
+
+Make sure the style matches the existing Services cards (same colours and typography).
+
+3) “OUR BUSINESS MODEL – SIMPLE AND TRANSPARENT”
+
+Add another block that explains the business model in 3–4 simple steps.
+
+Heading:
+- H3 example: “Our Business Model – Simple and Transparent”
+
+Use a horizontal or vertical step layout, with icons or numbered circles:
+
+Step 1 – Tell us what you need
+- Customers choose a standard service or request a custom clean.
+- They can:
+  - Use the Plans & Pricing estimator, or
+  - Fill out the quote/booking form for personalised requests.
+
+Step 2 – We prepare a tailored estimate
+- We use details such as property type, size, rooms, extras and access to calculate a realistic estimated price.
+- For complex jobs, we may review photos and contact the customer for more detail.
+
+Step 3 – We schedule your clean
+- We confirm a convenient time across Perth metro.
+- A trained, insured and police-checked team arrives with all equipment and products.
+
+Step 4 – We deliver detailed, high-quality cleaning
+- Our focus is on thorough, detailed work – kitchens, bathrooms, floors and key areas.
+- We back our work with a satisfaction guarantee and responsive follow-up.
+
+Keep text short and scannable (2–3 lines per step).
+
+4) TRUST & VALUE HIGHLIGHTS (OPTIONAL SUB-ROW)
+
+Below the steps, add a small row of “trust badges” or key selling points, such as:
+
+- Family-owned business in Perth
+- 100% satisfaction guarantee
+- Fully insured and police-checked team
+- Transparent, tailored quotes
+- Flexible bookings across Perth metro
+- Eco-friendly options available
+
+Implement them as small icon+text items in one or two rows.
+
+5) MAIN CALL TO ACTION – CENTRED BUTTON
+
+At the bottom of this new section, add a strong, centred call to action.
+
+Layout:
+- A short line of text above the button, e.g.:
+  - “Ready to experience a detailed, professional clean?”
+  - or “Let’s make your home or workplace feel like new.”
+
+- Large, centred button:
+  - Label: “Book a Clean”
+  - Style: primary brand colour (blue) with clear contrast, rounded corners, strong hover state.
+  - The button should stand out prominently on both desktop and mobile.
+
+Button behaviour:
+- Clicking “Book a Clean” should send users to the main booking/quote flow, for example:
+  - The Contact & Booking page, or
+  - The Plans & Pricing estimator, or
+  - A `#book-now` anchor on the booking page (use whichever is already defined in the project).
+- If possible, use smooth scrolling when pointing to an anchor within the same page.
+
+DESIGN & RESPONSIVENESS
+
+- Use the existing brand palette:
+  - Primary blue, navy accents, light backgrounds.
+- Use the same typography as the rest of the site.
+- Suggested background:
+  - Slightly different from the rest of the page (e.g. very light grey or a subtle gradient) to visually separate this section from FAQs.
+- Ensure:
+  - Good spacing above/below the section.
+  - Clear separation from the FAQ block (enough whitespace and a strong heading).
+  - Fully responsive layout: stack columns on small screens, side-by-side layout on larger screens.
+
+ACCESSIBILITY & IMPLEMENTATION NOTES
+
+- All headings should follow a logical hierarchy (H2 for section title, H3 for sub-sections).
+- Make sure the “Book a Clean” button:
+  - Is keyboard focusable.
+  - Has accessible label text.
+- Implement this as a reusable component if practical (e.g. `HomeBusinessModelSection`) rather than inline code.
+
+OUTPUT
+- Implement a new “Who We Are & How We Work” style section on the HOME page, directly before the FAQ section, with:
+  - Intro to Pope Cleaning Services and main service categories.
+  - A simple explanation of the business model in 3–4 steps.
+  - Trust/value highlights.
+  - A large, centred “Book a Clean” button linked to the booking flow.
+- Ensure the section looks polished, consistent with the rest of the site, and very clear on desktop and mobile.
