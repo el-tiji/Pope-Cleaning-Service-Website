@@ -9,6 +9,7 @@ import Booking from "@/pages/booking";
 import ServicesPage from "@/pages/services";
 import AboutPage from "@/pages/about";
 import ReviewsPage from "@/pages/reviews";
+import PricingPage from "@/pages/pricing";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -31,6 +32,7 @@ function Router() {
         <Route path="/services" component={ServicesPage}/>
         <Route path="/about" component={AboutPage}/>
         <Route path="/reviews" component={ReviewsPage}/>
+        <Route path="/pricing" component={PricingPage}/>
         {/* Fallback to 404 */}
         <Route component={NotFound} />
       </Switch>
