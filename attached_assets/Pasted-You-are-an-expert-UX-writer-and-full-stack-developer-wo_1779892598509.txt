@@ -1,0 +1,152 @@
+You are an expert UX writer and full‑stack developer working on the Pope Cleaning Services website (Perth, Western Australia).
+
+I need you to ADD a NEW WEBSITE TAB called “Pricing Info” that explains clearly:
+- how our live estimated price works,
+- how cleaning prices are calculated, and
+- why high-quality, detailed cleaning and timing affect the final price.
+
+This is an INFORMATION PAGE, not another calculator. It should use the same design system and 3D/isometric visual style as the rest of the site.
+
+GOAL OF THE PAGE
+- Educate customers so they understand how the “Book Now” live estimate is calculated.
+- Set realistic expectations on price, time and quality.
+- Show that we prioritise detailed, high‑standard cleaning over rushing jobs.
+- Increase trust so visitors feel comfortable using the estimator and booking online.
+
+PAGE STRUCTURE
+
+1) HERO SECTION – “How Our Pricing Works”
+- Add a top hero section with:
+  - Title (H1) example:
+    “How Our Cleaning Prices Are Calculated”
+  - Subheading example:
+    “Transparent pricing based on your home, the level of detail and the time it takes to clean properly – not just a generic flat rate.”
+  - Short intro paragraph summarising:
+    - Every home or office is different.
+    - The live estimated price in the “Plans & Pricing” tab uses the information the customer provides about size, rooms, extras and access.
+- Include a large 3D/isometric illustration placeholder that matches the rest of the site:
+  - File name example: `/assets/placeholders/pricing-info-3d.png`
+  - Description: a bright, isometric scene of a very clean Perth-style home with sparkling surfaces and a large clock or timer, representing high-quality, detailed cleaning done efficiently but thoroughly.
+  - Use brand blues with subtle complementary warm accents.
+
+2) SECTION – “What Affects Your Live Estimated Price”
+Create a section with an H2 such as:
+- “What Affects Your Live Estimated Price?”
+
+Then list the main factors in clear cards or bullet blocks. For example:
+
+- Size of the property
+  - Number of bedrooms, bathrooms, showers and overall floor area.
+- Type of clean
+  - Regular Cleaning, Spring Cleaning, Vacate Cleaning or Office Cleaning.
+- Level of detail
+  - Standard maintenance clean vs deeper, detail-focused cleaning for neglected areas.
+- Extras and additional zones
+  - Windows, oven, fridge, carpets, upholstery, outdoor areas, etc.
+- Access and logistics
+  - Stairs without lift, limited parking, heavy dust or construction residue, pets, etc.
+- Time required
+  - The number of hours needed to clean properly to our standards.
+
+Explain in friendly text that:
+- “Our live estimated price combines all of these factors to give you a realistic estimate before we arrive, instead of a generic flat rate.”
+
+3) SECTION – “Our Standard-Based Price Example”
+Create a highlighted section (card or banner) that explains the base standard used by the estimator.
+
+Use a heading such as:
+- “Our Standard-Based Price Benchmark”
+
+Text to include (you can generate the paragraphs):
+
+- Explain that the estimator uses a standard reference clean to set expectations.
+- Define the base scenario:
+
+  - Standard-based price is calculated on a typical single-storey home with:
+    - 3 bedrooms
+    - 2 bathrooms
+    - 2 showers
+    - 1 separate toilet
+    - 1 floor (single level)
+  - For this benchmark property, a **standard clean is assumed to take approximately 2 hours** with our normal scope of work.
+
+- Clarify that:
+  - “If your home is larger, has more bathrooms, extra levels, or needs a deeper clean, the estimated time and price will increase.”
+  - “If your home is smaller or requires less work, your estimate may be lower.”
+
+Make this section visually strong, like a clean info card with icons for bed, bath, shower, toilet and a clock/timer.
+
+4) SECTION – “How the Estimator Calculates Your Price”
+Add an H2 like:
+- “How the Live Estimator Calculates Your Price”
+
+Explain the logic using simple bullet points or a visual formula (no code, just explanation). For example:
+
+- Step 1 – Base plan
+  - Starts from your chosen plan: Regular, Spring, Vacate or Office cleaning.
+- Step 2 – Property details
+  - Adjusts for bedrooms, bathrooms, showers, floors and approximate size.
+- Step 3 – Extras and additional zones
+  - Adds extras such as windows, oven, fridge, carpets, upholstery, outdoor areas, trash removal, etc.
+- Step 4 – Access and logistics
+  - Considers parking, stairs, pets, heavy dust or other special conditions.
+- Step 5 – Time and quality
+  - Converts the workload into estimated cleaning hours based on our quality standards.
+- Step 6 – Final estimate
+  - Combines all of the above into an “Estimated price range” or “Estimated total before final confirmation”.
+
+Include a short disclaimer paragraph:
+- “Your live estimate is based on the information you provide. Final confirmation may change after we review your photos or if the actual conditions are very different from the description.”
+
+5) SECTION – “Why Quality and Time Matter”
+Add an H2 such as:
+- “Why Quality and Time Matter for Your Cleaning Price”
+
+Explain that:
+- Pope Cleaning focuses on clean, detailed and consistent results, not on rushing.
+- Spending the right amount of time is essential for:
+  - Proper bathroom and kitchen sanitation.
+  - Detailed dusting and surface cleaning.
+  - Correct use of equipment and products.
+- Rushing leads to missed areas and poor results, so your price reflects the time needed to do the job properly.
+
+Include a small icon or mini-illustration row showing:
+- Sparkling surfaces
+- A clock
+- A checklist
+
+6) SECTION – “How to Get the Most Accurate Estimate”
+Create a practical tips section:
+
+Heading example:
+- “How to Get the Most Accurate Estimate”
+
+Bullet points such as:
+- Fill in all the fields in the “Plans & Pricing” calculator (rooms, extras, access conditions).
+- Choose the cleaning type that best matches your needs (Regular vs Spring vs Vacate vs Office).
+- Be honest about the condition of the property (light, standard or heavy).
+- Upload clear photos of key areas (kitchen, bathrooms, living room, bedrooms and any problem areas).
+- Use the notes box to tell us about stains, fragile items and priorities.
+
+7) CALL TO ACTION
+End the page with a clear CTA linking back to your estimator:
+
+- Button: “Open the Live Price Estimator”
+  - This should scroll or navigate to the “Plans & Pricing” tab.
+- Secondary text:
+  - “Have questions about your estimate? Contact us for a custom quote or message us on WhatsApp.”
+
+DESIGN & VISUAL STYLE
+- Use the existing brand colors and typography.
+- Use the same 3D / isometric illustration style as other parts of the site:
+  - Clean, bright rooms.
+  - Blue accents with subtle warm complementary tones.
+  - Slight 3D depth in cards and icons.
+- Make the page fully responsive and readable on mobile.
+
+OUTPUT
+- Implement a new “Pricing Info” page/tab with:
+  - Hero section and 3D illustration placeholder.
+  - Sections described above.
+  - Clear text explaining how the live estimated price works.
+  - Link/CTA to the existing “Plans & Pricing” estimator.
