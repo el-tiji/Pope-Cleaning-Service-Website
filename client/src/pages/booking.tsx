@@ -276,10 +276,10 @@ export default function Booking() {
     const gstAmount = preGstTotal * 0.10; // 10% GST
     
     return {
-      subtotal,
-      discountAmount,
-      gstAmount: Math.round(gstAmount),
-      total: Math.round(preGstTotal + gstAmount),
+      subtotal: subtotal.toFixed(2),
+      discountAmount: discountAmount.toFixed(2),
+      gstAmount: gstAmount.toFixed(2),
+      total: (preGstTotal + gstAmount).toFixed(2),
       base,
       modifiers,
       extrasTotal
@@ -858,10 +858,10 @@ export default function Booking() {
                     </div>
                   )}
 
-                  {estimate.discountAmount > 0 && (
+                  {Number(estimate.discountAmount) > 0 && (
                     <div className="flex justify-between items-center pb-2 text-green-400">
                       <span className="font-semibold">Frequency Discount</span>
-                      <span className="font-bold">-${Math.round(estimate.discountAmount)}</span>
+                      <span className="font-bold">-${estimate.discountAmount}</span>
                     </div>
                   )}
 
@@ -871,7 +871,7 @@ export default function Booking() {
                   <div className="flex justify-between items-end mb-2">
                     <span className="text-white/90 font-medium text-sm">Estimated Total</span>
                     <div className="text-right">
-                      {estimate.discountAmount > 0 && (
+                      {Number(estimate.discountAmount) > 0 && (
                         <span className="text-white/40 line-through text-xs mr-2">${estimate.subtotal}</span>
                       )}
                       <span className="text-4xl font-display font-bold text-white">${estimate.total}</span>
