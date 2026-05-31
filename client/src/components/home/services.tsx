@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
-import { ServicePreviewPopover } from "@/components/ui/service-preview-popover";
 
 const services = [
   {
@@ -13,10 +12,6 @@ const services = [
     image: "/assets/tiltshift/services/residential.png",
     alt: "Miniature living room being cleaned - Residential Cleaning service",
     link: "/book",
-    previewImages: [
-      { src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80", alt: "Clean living room" },
-      { src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80", alt: "Clean bathroom" }
-    ]
   },
   {
     id: "spring",
@@ -25,7 +20,6 @@ const services = [
     image: "/assets/tiltshift/services/spring.png",
     alt: "Deep spring cleaning scene - Spring Cleaning service",
     link: "/book",
-    previewImages: []
   },
   {
     id: "vacate",
@@ -34,10 +28,6 @@ const services = [
     image: "/assets/tiltshift/services/vacate.png",
     alt: "Clean empty apartment - Vacate / End of Lease cleaning service",
     link: "/book",
-    previewImages: [
-      { src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80", alt: "Empty clean kitchen" },
-      { src: "https://images.unsplash.com/photo-1556020685-e631950279c1?auto=format&fit=crop&q=80", alt: "Empty clean living space" }
-    ]
   },
   {
     id: "commercial",
@@ -46,10 +36,6 @@ const services = [
     image: "/assets/tiltshift/services/office.png",
     alt: "Spotless modern office - Commercial Cleaning service",
     link: "/book",
-    previewImages: [
-      { src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80", alt: "Clean office space" },
-      { src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80", alt: "Clean meeting room" }
-    ]
   },
   {
     id: "carpet",
@@ -58,10 +44,6 @@ const services = [
     image: "/assets/tiltshift/services/carpet.png",
     alt: "Clean carpet - Carpet & Upholstery cleaning service",
     link: "/book",
-    previewImages: [
-      { src: "https://images.unsplash.com/photo-1558904541-efa843a96f09?auto=format&fit=crop&q=80", alt: "Professional carpet cleaning" },
-      { src: "https://images.unsplash.com/photo-1528699633788-424224dc89b5?auto=format&fit=crop&q=80", alt: "Clean sofa upholstery" }
-    ]
   },
   {
     id: "pressure",
@@ -70,7 +52,6 @@ const services = [
     image: "/assets/tiltshift/services/pressure.png",
     alt: "Outdoor patio pressure washing - Pressure Cleaning service",
     link: "/book",
-    previewImages: []
   }
 ];
 
@@ -105,40 +86,19 @@ export function Services() {
                   </div>
 
                   {/* Content Overlay */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 h-[50%] md:h-full flex items-end">
-                    {service.previewImages?.length > 0 ? (
-                      <ServicePreviewPopover serviceName={service.title} images={service.previewImages}>
-                        <div className="flex flex-col justify-end w-full h-full transition-transform duration-300 md:translate-y-8 group-hover:translate-y-0 relative z-20">
-                          <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
-                          
-                          {/* Short description (visible on hover for desktop, always visible on mobile) */}
-                          <p className="text-white/90 text-sm leading-relaxed mb-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75">
-                            {service.shortDescription}
-                          </p>
-                          
-                          {/* Learn More CTA */}
-                          <div className="flex items-center text-accent font-semibold text-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 delay-100">
-                            <span>Learn more</span>
-                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </div>
-                        </div>
-                      </ServicePreviewPopover>
-                    ) : (
-                      <div className="flex flex-col justify-end w-full h-full transition-transform duration-300 md:translate-y-8 group-hover:translate-y-0 relative z-20">
-                        <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
-                        
-                        {/* Short description (visible on hover for desktop, always visible on mobile) */}
-                        <p className="text-white/90 text-sm leading-relaxed mb-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75">
-                          {service.shortDescription}
-                        </p>
-                        
-                        {/* Learn More CTA */}
-                        <div className="flex items-center text-accent font-semibold text-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 delay-100">
-                          <span>Learn more</span>
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
-                    )}
+                  <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 h-[50%] md:h-full transition-transform duration-300 md:translate-y-8 group-hover:translate-y-0">
+                    <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
+                    
+                    {/* Short description (visible on hover for desktop, always visible on mobile) */}
+                    <p className="text-white/90 text-sm leading-relaxed mb-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                      {service.shortDescription}
+                    </p>
+                    
+                    {/* Learn More CTA */}
+                    <div className="flex items-center text-accent font-semibold text-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 delay-100">
+                      <span>Learn more</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </Card>
               </Link>
