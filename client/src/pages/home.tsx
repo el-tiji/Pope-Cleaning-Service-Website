@@ -13,8 +13,8 @@ export default function Home() {
       <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <Hero />
         <HowWeWork />
-        <FAQ />
         <Contact />
+        <FAQ />
       </main>
       <Footer />
       <Chatbot />
