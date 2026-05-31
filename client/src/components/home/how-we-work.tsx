@@ -1,7 +1,9 @@
-import { Sparkles, FileText, Calculator, CalendarCheck, CheckCircle, ShieldCheck, ThumbsUp, MapPin, Leaf, Users } from "lucide-react";
+import { Sparkles, Home, Building2, SprayCan, FileText, Calculator, CalendarCheck, CheckCircle, ShieldCheck, ThumbsUp, MapPin, Leaf, Users } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
+import { ServicesBlock } from "./services";
 
 export function HowWeWork() {
   return (
@@ -27,6 +29,11 @@ export function HowWeWork() {
               Pope Cleaning Services is a family-owned business based in Perth, WA. We serve both homes and businesses with regular cleaning, spring/deep cleans, vacate/end-of-lease, carpets & upholstery, tiles & grout, and office/commercial cleaning. We focus on high-quality, detailed cleaning rather than rushing through jobs.
             </p>
           </RevealOnScroll>
+        </div>
+
+        {/* Our Services Block */}
+        <div className="mb-24">
+          <ServicesBlock />
         </div>
 
         {/* Business Model Steps */}
