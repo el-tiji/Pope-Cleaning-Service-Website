@@ -36,50 +36,6 @@ export function HowWeWork() {
           <ServicesBlock />
         </div>
 
-        {/* Business Model Steps */}
-        <div className="mb-24">
-          <RevealOnScroll>
-            <h3 className="text-3xl md:text-4xl font-bold text-secondary text-center mb-16">Our Business Model – Simple & Transparent</h3>
-          </RevealOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative">
-            {/* Connecting line for desktop */}
-            <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-1 bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 -z-10 rounded-full"></div>
-            
-            {[
-              {
-                icon: <FileText className="w-8 h-8" />,
-                title: "1. Tell us what you need",
-                desc: "Choose a standard service via our estimator or request a custom clean for personalized needs."
-              },
-              {
-                icon: <Calculator className="w-8 h-8" />,
-                title: "2. Tailored estimate",
-                desc: "We use details like property size and extra tasks to calculate a realistic estimated price."
-              },
-              {
-                icon: <CalendarCheck className="w-8 h-8" />,
-                title: "3. We schedule your clean",
-                desc: "We confirm a time. A trained, insured team arrives fully equipped across Perth metro."
-              },
-              {
-                icon: <CheckCircle className="w-8 h-8" />,
-                title: "4. Detailed, high-quality cleaning",
-                desc: "We focus on thorough work, backed by a satisfaction guarantee and responsive follow-up."
-              }
-            ].map((step, idx) => (
-              <RevealOnScroll key={idx} delay={idx * 0.15}>
-                <div className="relative flex flex-col items-center text-center group">
-                  <div className="w-20 h-20 rounded-2xl bg-white border-4 border-muted flex items-center justify-center text-primary mb-6 shadow-lg z-10 group-hover:border-primary/50 group-hover:-translate-y-2 transition-all duration-300">
-                    {step.icon}
-                  </div>
-                  <h4 className="text-xl font-bold text-secondary mb-3">{step.title}</h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">{step.desc}</p>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-
         {/* Trust Badges */}
         <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-24">
           {[
