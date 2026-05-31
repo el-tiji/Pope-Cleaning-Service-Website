@@ -61,7 +61,7 @@ const PRICING_CONFIG = {
   },
   frequencyDiscounts: {
     'one-off': 0,
-    '2-times-week': 0.25,
+    '2-times-week': 0.20,
     'weekly': 0.15,
     'fortnightly': 0.10,
     'monthly': 0.10,
