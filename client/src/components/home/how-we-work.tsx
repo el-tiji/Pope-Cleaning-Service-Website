@@ -30,51 +30,6 @@ export function HowWeWork() {
           </RevealOnScroll>
         </div>
 
-        {/* Services at a Glance */}
-        <div className="mb-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <RevealOnScroll delay={0.1}>
-              <Card className="p-6 border border-border/50 shadow-sm hover:shadow-xl transition-all duration-300 bg-white rounded-3xl group h-full">
-                <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Home className="w-7 h-7" />
-                </div>
-                <h4 className="text-xl font-bold text-secondary mb-3">Residential Cleaning</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">Regular, spring and deep cleaning for Perth homes and units.</p>
-              </Card>
-            </RevealOnScroll>
-            
-            <RevealOnScroll delay={0.2}>
-              <Card className="p-6 border border-border/50 shadow-sm hover:shadow-xl transition-all duration-300 bg-white rounded-3xl group h-full">
-                <div className="w-14 h-14 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <ShieldCheck className="w-7 h-7" />
-                </div>
-                <h4 className="text-xl font-bold text-secondary mb-3">Vacate / End of Lease</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">Detailed move-out cleans designed for real estate inspections and bond conditions.</p>
-              </Card>
-            </RevealOnScroll>
-            
-            <RevealOnScroll delay={0.3}>
-              <Card className="p-6 border border-border/50 shadow-sm hover:shadow-xl transition-all duration-300 bg-white rounded-3xl group h-full">
-                <div className="w-14 h-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <SprayCan className="w-7 h-7" />
-                </div>
-                <h4 className="text-xl font-bold text-secondary mb-3">Carpets & Tiles</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">Carpet steam cleaning, upholstery care and tile & grout restoration.</p>
-              </Card>
-            </RevealOnScroll>
-            
-            <RevealOnScroll delay={0.4}>
-              <Card className="p-6 border border-border/50 shadow-sm hover:shadow-xl transition-all duration-300 bg-white rounded-3xl group h-full">
-                <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Building2 className="w-7 h-7" />
-                </div>
-                <h4 className="text-xl font-bold text-secondary mb-3">Office & Commercial</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">Flexible cleaning for offices, shared spaces, warehouses and other facilities.</p>
-              </Card>
-            </RevealOnScroll>
-          </div>
-        </div>
-
         {/* Business Model Steps */}
         <div className="mb-24">
           <RevealOnScroll>
