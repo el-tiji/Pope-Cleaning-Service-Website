@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Services } from "@/components/home/services";
 import { CustomQuoteForm } from "@/components/services/custom-quote";
 import { Chatbot } from "@/components/chatbot";
 import { useEffect } from "react";
@@ -23,8 +22,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <Services />
+      <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700 pt-24">
         <CustomQuoteForm />
       </main>
       <Footer />
