@@ -1,8 +1,59 @@
-import { Sparkles, Home, Building2, SprayCan, FileText, Calculator, CalendarCheck, CheckCircle, ShieldCheck, ThumbsUp, MapPin, Leaf, Users } from "lucide-react";
+import { Sparkles, Home, Building2, SprayCan, FileText, Calculator, CalendarCheck, CheckCircle, ShieldCheck, ThumbsUp, MapPin, Leaf, Users, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
+
+const services = [
+  {
+    id: "residential",
+    title: "Residential Cleaning",
+    shortDescription: "Regular home cleaning for busy Perth households – kitchens, bathrooms, floors and surfaces kept consistently fresh.",
+    image: "/assets/tiltshift/services/residential.png",
+    alt: "Miniature living room being cleaned - Residential Cleaning service",
+    link: "/book",
+  },
+  {
+    id: "spring",
+    title: "Spring Cleaning",
+    shortDescription: "Deep, detail-focused cleaning for neglected areas, bringing back the sparkle to your entire home.",
+    image: "/assets/tiltshift/services/spring.png",
+    alt: "Deep spring cleaning scene - Spring Cleaning service",
+    link: "/book",
+  },
+  {
+    id: "vacate",
+    title: "Vacate / End of Lease",
+    shortDescription: "Detailed move-out cleaning designed to meet real estate inspection standards, ensuring you get your bond back.",
+    image: "/assets/tiltshift/services/vacate.png",
+    alt: "Clean empty apartment - Vacate / End of Lease cleaning service",
+    link: "/book",
+  },
+  {
+    id: "commercial",
+    title: "Office / Commercial",
+    shortDescription: "Maintain a pristine, professional workspace that leaves a lasting impression on clients and boosts employee morale.",
+    image: "/assets/tiltshift/services/office.png",
+    alt: "Spotless modern office - Commercial Cleaning service",
+    link: "/book",
+  },
+  {
+    id: "carpet",
+    title: "Carpet & Upholstery",
+    shortDescription: "Deep steam cleaning to refresh fibers, remove stubborn stains, and eliminate hidden allergens.",
+    image: "/assets/tiltshift/services/carpet.png",
+    alt: "Clean carpet - Carpet & Upholstery cleaning service",
+    link: "/book",
+  },
+  {
+    id: "pressure",
+    title: "Pressure Cleaning",
+    shortDescription: "Transform driveways, patios, and outdoor exteriors with high-power, deep-cleaning washing.",
+    image: "/assets/tiltshift/services/pressure.png",
+    alt: "Outdoor patio pressure washing - Pressure Cleaning service",
+    link: "/book",
+  }
+];
 
 export function HowWeWork() {
   return (
