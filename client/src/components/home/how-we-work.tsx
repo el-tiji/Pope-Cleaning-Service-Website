@@ -30,6 +30,39 @@ export function HowWeWork() {
           </RevealOnScroll>
         </div>
 
+        {/* Our Services at a Glance */}
+        <div className="mb-24">
+          <RevealOnScroll>
+            <h3 className="text-2xl md:text-3xl font-bold text-secondary text-center mb-10">Our Services at a Glance</h3>
+          </RevealOnScroll>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {[
+              { title: "Residential", image: "/assets/tiltshift/services/residential.png" },
+              { title: "Spring Clean", image: "/assets/tiltshift/services/spring.png" },
+              { title: "Vacate / Lease", image: "/assets/tiltshift/services/vacate.png" },
+              { title: "Commercial", image: "/assets/tiltshift/services/office.png" },
+              { title: "Carpets & Upholstery", image: "/assets/tiltshift/services/carpet.png" },
+              { title: "Pressure Washing", image: "/assets/tiltshift/services/pressure.png" },
+            ].map((service, idx) => (
+              <RevealOnScroll key={idx} delay={idx * 0.1}>
+                <Link href="/book">
+                  <div className="relative rounded-2xl overflow-hidden aspect-square group cursor-pointer border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <img 
+                      src={service.image} 
+                      alt={`${service.title} Cleaning`} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-4 left-0 right-0 text-center px-2">
+                      <h4 className="text-white font-bold text-sm md:text-base">{service.title}</h4>
+                    </div>
+                  </div>
+                </Link>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+
         {/* Business Model Steps */}
         <div className="mb-24">
           <RevealOnScroll>

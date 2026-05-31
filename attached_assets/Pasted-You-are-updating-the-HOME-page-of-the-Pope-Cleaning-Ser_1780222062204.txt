@@ -1,0 +1,85 @@
+You are updating the HOME page of the Pope Cleaning Services website (Perth, Western Australia).
+
+CONTEXT
+- Previously, the Home page had 4 service cards in an “Our Services” section.
+- Those 4 cards have been removed or commented out.
+- We now want to show the new “Our Services” images (the same visual assets used in the Services page) in that area on Home, as a simple, visual gallery/strip.
+
+GOAL
+- Reuse the existing “Our Services” images (Residential, Spring, Vacate, Office/Commercial, Carpets & Tiles, etc.) and display them on the Home page.
+- Insert these images directly BELOW the area where the old 4 cards were removed.
+- The new block should:
+  - Fit the Home layout.
+  - Be fully responsive.
+  - Make it easy for users to see at a glance the main services offered.
+
+STEP 1 – FIND THE OLD CARDS LOCATION
+- In the Home page component (e.g. `home.tsx`, `index.tsx` or similar):
+  - Locate the section where the original 4 service cards used to be (e.g. the “Our Services” cards).
+  - Those cards may now be removed or commented out.
+- Directly below that point, create a new visual block.
+
+STEP 2 – REUSE “OUR SERVICES” IMAGES
+
+- Identify the “Our Services” images already used in the Services page cards, such as:
+  - `/assets/tiltshift/services/residential-card.png`
+  - `/assets/tiltshift/services/spring-card.png`
+  - `/assets/tiltshift/services/vacate-card.png`
+  - `/assets/tiltshift/services/office-card.png`
+  - `/assets/tiltshift/services/carpets-tiles-card.png`
+  - `/assets/tiltshift/services/tile-card.png` (if separate)
+  - Or whatever filenames currently exist for those service images.
+
+- Import those images into the Home page (or use the same service data array / component used on the Services page).
+
+STEP 3 – NEW “OUR SERVICES” IMAGE STRIP ON HOME
+
+Create a new section in the Home page, directly under the removed cards area:
+
+Structure:
+- Optional small heading:
+  - H2 example: “Our Services at a Glance”
+- Below the heading, render a responsive row/grid of service image tiles.
+
+Layout:
+- Use a flexible grid:
+  - On large screens: 4–6 images in a row (scrollable horizontally or wrapped in 2 rows).
+  - On tablets: 3 per row.
+  - On mobile: 1–2 per row.
+- Each tile should show:
+  - The service image.
+  - A simple overlay or caption with the service name (e.g. Residential, Vacate, Carpets & Tiles, Office / Commercial).
+
+Design:
+- Keep the style consistent with the rest of the site:
+  - Rounded corners.
+  - Light shadow.
+  - Hover state (slight zoom-in or shadow increase) on desktop.
+- Make sure the images are clickable and lead to the detailed service pages if desired:
+  - Residential → `/services/residential-cleaning`
+  - Vacate → `/services/vacate-end-of-lease`
+  - Carpets & Tiles → `/services/carpet-and-tiles`
+  - Office / Commercial → `/services/office-cleaning`
+  - etc.
+
+STEP 4 – INSERT POSITION UNDER REMOVED CARDS
+
+- Ensure that this new “Our Services at a Glance” image strip is placed:
+  - Exactly where the 4 original cards used to be, or immediately after that section.
+  - Within the existing Home layout container (same max-width, padding, etc.).
+- The order on Home should feel natural, e.g.:
+  - Hero → Intro / Business Model → Our Services at a Glance (image strip) → other sections → FAQs.
+
+RESPONSIVENESS & ACCESSIBILITY
+
+- The images must:
+  - Be responsive with `object-fit: cover`.
+  - Have appropriate alt text (e.g. “Residential Cleaning – tidy living room being cleaned”).
+- The grid/strip should look good from mobile to desktop:
+  - Use Tailwind or the corresponding CSS system to handle columns and spacing.
+
+OUTPUT
+
+- Implement a new “Our Services” image strip on the HOME page, directly below the location where the previous 4 service cards were removed.
+- The strip should reuse the service images from the Services page, show service names, and optionally link to service detail pages.
+- The section must maintain the site’s existing style and be fully responsive.
