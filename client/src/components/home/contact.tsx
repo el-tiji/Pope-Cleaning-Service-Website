@@ -28,8 +28,8 @@ export function Contact() {
                 </p>
                 
                 <Link href="/services#services-custom-quote">
-                  <Button className="w-full sm:w-auto h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2 hover:translate-y-[-2px] transition-transform">
-                    Go to Custom Quote Form <ArrowRight className="w-5 h-5" />
+                  <Button className="w-full sm:w-auto h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2 hover:translate-y-[-2px] transition-transform group">
+                    Go to Custom Quote Form <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </div>

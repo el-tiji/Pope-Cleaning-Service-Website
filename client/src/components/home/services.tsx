@@ -60,9 +60,9 @@ export function ServicesBlock() {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
-          <RevealOnScroll key={service.id} delay={index * 0.1}>
+          <RevealOnScroll key={service.id} delay={index * 0.1} variant="zoom">
             <Link href={service.link}>
-              <Card className="group relative overflow-hidden border border-border/50 rounded-3xl aspect-[4/3] cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300">
+              <Card className="group relative overflow-hidden border border-border/50 rounded-3xl aspect-[4/3] cursor-pointer shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-primary/40 transition-all duration-500">
                 {/* Background Image (Top 70%) */}
                 <div className="absolute inset-0 h-[70%] md:h-full overflow-hidden">
                   <img 

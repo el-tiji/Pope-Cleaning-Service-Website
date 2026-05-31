@@ -1,0 +1,252 @@
+You are upgrading the Pope Cleaning Services website (Perth, Western Australia).
+
+IMPORTANT CONSTRAINTS
+- Do NOT redesign the entire site or change its core layout, structure, routing or existing business logic.
+- Do NOT break or remove existing components (Navbar, Footer, pricing calculator, forms, RevealOnScroll, etc.).
+- You may ONLY enhance the current UI with animations and subtle 3D-ish visual treatments.
+- All work must remain compatible with the existing tech stack, including:
+  - React + TypeScript
+  - Tailwind CSS (or current utility classes)
+  - Existing components such as: Navbar, Footer, Button, RevealOnScroll, pricing form, etc.  (for example, `booking.tsx` currently imports `RevealOnScroll` and uses config objects). [file:178]
+
+OVERALL GOAL
+- Turn the current site into a highly engaging, premium-feeling experience using:
+  - Scrolling animations
+  - Hover animations
+  - Hero animations
+  - Loading animations
+  - Light 3D / parallax-style animations
+  - Accent and micro‑interactions
+  - Mouse‑responsive effects (subtle)
+  - Illustration animations
+  - Soft page transition animations
+  - Entrance animations
+- While keeping performance, accessibility and usability high, and matching the Pope Cleaning Services brand.
+
+REFERENCE / INSPIRATION
+Use the interaction styles and principles from:
+- Wix Studio’s “10 website animations to convert and engage users” (scrolling, hover, hero, loading, 3D, accent, mouse, illustration, page transitions, entrance). [web:183]
+- General best practices for motion in UX (smooth, purpose-driven, not overwhelming). [web:179][web:181][web:180]
+
+PART 1 – GLOBAL ANIMATION FOUNDATION
+
+1.1 Reuse and extend existing RevealOnScroll
+- You already have a `RevealOnScroll` component imported from `"@/components/ui/reveal-on-scroll"`. [file:178]
+- Keep it, but:
+  - Ensure it uses Intersection Observer (or similar) to add an `is-visible` class when elements enter the viewport.
+  - Base animation:
+    - Hidden state: `opacity: 0`, `transform: translateY(24px) scale(0.98)`.
+    - Visible state: `opacity: 1`, `transform: translateY(0) scale(1)`.
+    - Transition: 400–600ms ease-out.
+  - Add support for variants via props, e.g.:
+    - `variant="rise" | "fade" | "slide-left" | "slide-right" | "zoom"`.
+    - `delay` prop to slightly stagger elements.
+  - Implement variants only via CSS classes (no heavy JS).
+
+1.2 Create a small animation tokens/config system
+- In a central file (e.g. `@/config/animations.ts`), define:
+  - Durations (short, base, long)
+  - Easing presets
+  - Standard transforms for entrance, hover, button presses, etc.
+- Use these across the site so everything feels consistent.
+
+1.3 Respect reduced motion
+- Honor `prefers-reduced-motion: reduce`:
+  - Disable non-essential animations (scroll reveals, parallax, mouse-follow).
+  - Show content in its final static position.
+
+PART 2 – SCROLLING & ENTRANCE ANIMATIONS (ENTRANCE + SCROLL TYPES)
+
+Apply RevealOnScroll (with variants) to:
+
+- Home:
+  - Hero sub-content (text & primary CTA).
+  - “Our Services” section (title + grid).
+  - Business model / “How we work” section.
+  - Trust badges row.
+  - “Book a Clean” CTA section before FAQs.
+
+- Services:
+  - Section title.
+  - Service cards (each card reveals as user scrolls).
+  - The unified “Custom Cleaning Quote” section.
+  - Any “Our Services at a Glance” strips.
+
+- Plans & Pricing:
+  - Page hero (“Plans & Pricing”).
+  - Plan cards.
+  - Multi-step estimator headings and major groups (each step can animate on first reveal).
+
+- Pricing Info, About, Reviews & Results, Contact, Work With Us:
+  - All major headings and primary content blocks should use `RevealOnScroll` with a suitable variant.
+
+Animation style:
+- Use “rise + fade” by default.
+- Optionally mix some “slide-left” or “slide-right” variants in alternating sections for visual rhythm.
+
+PART 3 – HOVER ANIMATIONS (BUTTONS, CARDS, ICONS)
+
+3.1 Buttons
+- All primary and secondary buttons (using the existing `Button` component) should have:
+  - Hover:
+    - Slight scale-up (e.g. `scale(1.03)`).
+    - Shadow increase.
+    - Background lightening or darkening according to brand palette.
+  - Active (pressed):
+    - Slight scale-down (e.g. `scale(0.97)`).
+- Implement via Tailwind or CSS classes in the `Button` component only, so the change is global.
+
+3.2 Service cards and plan cards
+- On hover:
+  - Slight lift (translateY(-4px)).
+  - Slight scale-up (1.02).
+  - Soft shadow and subtle border-color accent in brand blue.
+  - If an image is present:
+    - Gentle image zoom-in (1.05) with `overflow-hidden` container.
+
+3.3 Icons and trust badges
+- On hover/focus:
+  - A micro “pop” animation (scale 1 → 1.05 → 1).
+  - Optional subtle color accent (e.g. blue tint).
+- Ensure this is subtle so it doesn’t feel childish.
+
+Use the Wix hover animations article as conceptual guidance (visual cues on hover, not full redesign). [web:186][web:183]
+
+PART 4 – HERO ANIMATIONS
+
+Home hero:
+- Animate on initial page load:
+  - Hero text column:
+    - Entrance with “rise + fade”.
+  - Hero illustration / tilt-shift or 3D cleaning scene:
+    - Slight delayed entrance, maybe from right with `translateX(24px)` and fade.
+  - Hero background accents or bubbles:
+    - Add tiny floating or pulsing micro-motions (slow, subtle).
+
+Other hero sections (Plans & Pricing, About, Pricing Info):
+- Similar pattern: main heading + supporting text + hero image reveal on first load.
+
+PART 5 – LOADING ANIMATIONS (LIGHTWEIGHT)
+
+5.1 Global loading state
+- If the app already has page-level loading or form submission loading:
+  - Add a clean spinner or progress bar that uses brand colours.
+  - Keep it minimal and consistent on all pages.
+
+5.2 Form submission
+- When major forms (Booking, Custom Quote, Plans & Pricing estimator final submit) are submitting:
+  - Disable submit button.
+  - Add small inline spinner or “Cleaning in progress…” style micro-copy.
+- No full-page loading overlays unless absolutely necessary.
+
+PART 6 – 3D / PARALLAX-STYLE & ILLUSTRATION ANIMATIONS
+
+6.1 Light 3D / parallax for hero illustration sections
+- For key hero image areas (Home, Pricing Info, maybe About):
+  - Add subtle parallax movement on scroll:
+    - Background layer moves slightly slower than foreground.
+    - Use 3D transform and small translateY/translateX values only.
+  - Keep amplitudes small (5–15px) to avoid motion sickness.
+
+6.2 Tilt-shift / miniature cleaning illustrations
+- If any illustrations are currently flat:
+  - Wrap them in a container that:
+    - On hover:
+      - Applies a slight 3D tilt (`rotateX`/`rotateY`), like a card leaning a bit.
+      - Adds a bit of shadow change, as in 3D card hover examples. [web:188][web:183]
+  - On scroll entrance:
+    - Use `RevealOnScroll` with a `zoom` variant for these.
+
+PART 7 – ACCENT & MOUSE EFFECT ANIMATIONS
+
+7.1 Accent animations
+- Small details around headings or CTAs:
+  - Underline accents that “grow” into place on reveal.
+  - Sparkle icons that gently pulse near “Book a Clean” or key trust statements (e.g. “100% satisfaction guarantee”).
+- Limit these so they remain tasteful and do not overwhelm.
+
+7.2 Mouse-follow effects (only in 1–2 areas)
+- Create one hero section (preferably Home) with a very subtle mouse-follow effect:
+  - e.g. a few floating cleaning bubbles or sparkles that move slightly based on cursor (Track 3D style). [web:184][web:188]
+- Constraints:
+  - Only on desktop.
+  - Disable or reduce on mobile and when `prefers-reduced-motion` is enabled.
+  - Small movement distances (no wild parallax).
+
+PART 8 – PAGE TRANSITIONS
+
+8.1 Route change transitions
+- Implement a lightweight page transition:
+  - For example, a fade-through:
+    - On route change:
+      - Old page fades out slightly as new page fades in.
+      - Duration ~250–300ms.
+  - Or a subtle upward entrance of the main content container.
+- Implement at the layout level:
+  - Wrap main page container with a transition component or CSS animation triggered by route change (for example, using a key or location state).
+
+8.2 No blocking
+- Do not block navigation or require a full-screen loader.
+- Ensure back/forward navigation remains snappy.
+
+PART 9 – ILLUSTRATION ANIMATIONS
+
+9.1 Animated illustrations for key sections
+- Where you use drawings / 3D style cleaning scenes:
+  - Use simple, repeating micro-animations:
+    - Slight floating up and down.
+    - Tiny rotation (1–2 degrees).
+    - Slow pulsing highlight.
+- Keep them subtle and slow to maintain a calm, premium look.
+
+PART 10 – APPLYING ANIMATION TYPES TO PAGE ITEMS
+
+For each major page, ensure that **each important item** uses at least one of the animation categories, without overdoing it:
+
+Home:
+- Hero: hero + entrance + subtle 3D + mouse effect.
+- Our Services strip: scroll + hover.
+- Business model section: scroll + entrance; maybe icons with micro-3D.
+- Trust badges: hover + accent.
+- Book a Clean CTA: entrance + hover emphasis.
+
+Services:
+- Service cards: scroll + hover + small 3D scale.
+- “Learn More” / “Book” CTAs: hover.
+- Custom Quote section: entrance + scroll.
+
+Plans & Pricing:
+- Plan cards and estimator steps: entrance + scroll.
+- Live price summary sidebar: entrance (sticky behaviour unchanged).
+
+Pricing Info:
+- Benchmark card and explanation blocks: entrance.
+
+About:
+- Story and family-owned description: entrance + small illustration motion.
+
+Reviews & Results:
+- Testimonials and before/after images: entrance + hover (slight zoom on images).
+
+Contact & Booking:
+- Intro and map: entrance.
+- Form container: entrance + subtle hover on inputs (focus state enhancements).
+
+Work With Us:
+- Job cards: entrance + hover.
+
+PART 11 – PERFORMANCE, CLEANUP & NON-DESTRUCTIVE CHANGES
+
+- Do NOT introduce heavy animation libraries if not already used; prefer CSS and small utilities.
+- Avoid large JS listeners on scroll; use Intersection Observer and transform/opacity transitions.
+- Keep all existing functionality intact:
+  - Pricing config and calculator logic (PRICING_CONFIG, PLANS, FREQUENCIES, etc.) must not be modified. [file:178]
+  - Form fields, validation, API calls, routing and data structures must remain the same.
+- Comment your new animation utilities/components so it is clear where to adjust or disable them.
+
+DELIVERABLE
+- Update the codebase so that:
+  - Every major section has at least one type of animation (scroll/entrance, hover, or accent).
+  - Hero areas use hero + entrance + subtle 3D/mouse effects.
+  - Transitions are cohesive and respect accessibility/performance best practices.
+  - The overall site feels more dynamic and premium, but the underlying layout, content and logic remain unchanged.

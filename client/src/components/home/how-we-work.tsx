@@ -45,9 +45,9 @@ export function HowWeWork() {
             { icon: <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />, text: "Flexible Perth Bookings" },
             { icon: <Leaf className="w-4 h-4 sm:w-5 sm:h-5" />, text: "Eco-friendly Options" },
           ].map((badge, idx) => (
-            <RevealOnScroll key={idx} delay={idx * 0.1}>
-              <div className="flex items-center gap-2 bg-white px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl shadow-sm border border-border/50 hover:shadow-md transition-shadow">
-                <div className="text-accent">{badge.icon}</div>
+            <RevealOnScroll key={idx} delay={idx * 0.1} variant="zoom">
+              <div className="flex items-center gap-2 bg-white px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl shadow-sm border border-border/50 hover:shadow-md hover:-translate-y-1 hover:scale-105 hover:border-primary/30 transition-all duration-300 cursor-pointer group">
+                <div className="text-accent group-hover:scale-110 transition-transform">{badge.icon}</div>
                 <span className="text-xs sm:text-sm font-bold text-secondary">{badge.text}</span>
               </div>
             </RevealOnScroll>
