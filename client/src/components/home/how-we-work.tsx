@@ -20,7 +20,6 @@ export function HowWeWork() {
           </div>
           
           <RevealOnScroll>
-            <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Pope Cleaning Services</h2>
             <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">How We Work</h3>
             <p className="text-xl font-medium text-secondary/80 mb-4 leading-relaxed max-w-3xl mx-auto">
               Family-owned in Perth, delivering detailed residential and commercial cleaning with clear pricing and easy booking.
