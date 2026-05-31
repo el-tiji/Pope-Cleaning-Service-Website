@@ -1,0 +1,65 @@
+You are updating the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- Take the existing “Our Services” image/content block from the Services page (or shared component) and display it on the HOME page, in the exact area where the 4 service cards used to be.
+- The images, layout and styling of “Our Services” must be reused INTACT (same component, same design). Do not redesign it, just reuse it in Home.
+
+CONTEXT
+- On the HOME page there used to be 4 service cards in a section (e.g. “Our Services”).
+- Those 4 cards have been removed.
+- On the SERVICES page (or in a shared component), there is already an “Our Services” section that shows our services with images, titles and hover behaviour.
+- We want to re-use that exact existing “Our Services” component/section on the HOME page.
+
+TASKS
+
+1) IDENTIFY THE EXISTING “OUR SERVICES” COMPONENT
+- Find the component or JSX block that renders the “Our Services” images and text.
+  - It might live in:
+    - `Services` page file, or
+    - A shared component like `OurServicesSection`, `ServicesGrid`, etc.
+- If it is NOT yet a separate component, refactor it into one:
+  - Example: create `<OurServicesSection />` that encapsulates:
+    - The section heading for “Our Services” (if appropriate).
+    - The grid/cards with images and service titles.
+    - Existing hover/animation behaviour (if present).
+
+2) USE THE SAME COMPONENT ON HOME
+- In the HOME page component (e.g. `home.tsx`, `index.tsx`):
+  - Locate the previous position where the 4 old service cards were rendered.
+    - This might now be commented out or removed.
+  - Directly in that spot (inside the same container/section), render the shared `OurServicesSection` component.
+- The idea is:
+  - The Services page still uses `<OurServicesSection />`.
+  - The Home page also uses `<OurServicesSection />` in place of the old 4 cards.
+  - The content and styling of “Our Services” remains consistent across both pages.
+
+3) KEEP IMAGES AND STYLING INTACT
+- Do NOT create new image imports or new markup for these services on Home.
+- Instead:
+  - Import and reuse the same images and JSX from the existing “Our Services” component.
+- Ensure:
+  - Same images.
+  - Same titles.
+  - Same hover/animation behaviour.
+  - Same Tailwind/CSS classes.
+- The only change is that this block is now ALSO shown on the Home page, in the location where the 4 cards used to be.
+
+4) LAYOUT & RESPONSIVENESS ON HOME
+- Make sure that when `<OurServicesSection />` is rendered on the Home page:
+  - It sits correctly within the Home layout container (same max-width and padding as other sections).
+  - It does not break margins/spacing before or after.
+- On mobile, tablet and desktop, the section should look identical to how it appears on the Services page.
+
+5) LINKS & INTERACTION
+- Ensure that any “Learn More” or “Book” links inside the “Our Services” block still work correctly when rendered on Home:
+  - Service detail links should still navigate to `/services/...`.
+  - Buttons like “Learn More” and “Book Now” must behave exactly the same.
+- Do NOT duplicate logic; re-use the same component.
+
+6) CLEANUP
+- Remove the old, now-unused JSX for the previous 4 cards from the Home page.
+- If any unused imports were only for those old cards, you can remove them.
+
+OUTPUT
+- The Home page should now display the same “Our Services” block (images + text) that is used on the Services page, in the exact position where the old 4 cards used to be, with identical styling and behaviour.
+- All images and interactions for “Our Services” are reused intact via a shared component.
