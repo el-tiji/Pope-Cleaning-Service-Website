@@ -58,15 +58,6 @@ const services = [
 export function ServicesBlock() {
   return (
     <>
-      <RevealOnScroll>
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Expert cleaning for every surface</h3>
-          <p className="text-lg text-muted-foreground">
-            From cozy apartments to sprawling offices, our comprehensive range of services ensures no speck of dust is left behind.
-          </p>
-        </div>
-      </RevealOnScroll>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <RevealOnScroll key={service.id} delay={index * 0.1}>
