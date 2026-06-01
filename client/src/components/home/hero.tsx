@@ -87,6 +87,11 @@ export function Hero() {
                     View Our Services
                   </Button>
                 </Link>
+                <Link href="/about">
+                  <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-black/5 w-full sm:w-auto bg-white/80 backdrop-blur-md text-secondary hover:bg-white hover:text-primary hover:border-primary/30 transition-all">
+                    About Us
+                  </Button>
+                </Link>
               </div>
             </RevealOnScroll>
             
