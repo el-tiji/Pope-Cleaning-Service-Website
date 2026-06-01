@@ -11,7 +11,7 @@ export function HowWeWork() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Intro Header */}
-        <div className="text-center max-w-4xl mx-auto mb-20 relative">
+        <div className="text-center max-w-4xl mx-auto mb-16 relative">
           <div className="hidden md:block absolute top-0 -left-8 text-yellow-400 animate-pulse">
             <Sparkles className="w-12 h-12" />
           </div>
@@ -23,11 +23,6 @@ export function HowWeWork() {
             <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">How We Work</h3>
             <p className="text-xl font-medium text-secondary/80 mb-4 leading-relaxed max-w-3xl mx-auto">Family-owned in Perth, delivering detailed residential and commercial cleaning with clear pricing and easy booking.  We focus on high-quality, detailed cleaning rather than rushing through jobs.</p>
           </RevealOnScroll>
-        </div>
-
-        {/* Our Services Block */}
-        <div className="mb-24">
-          <ServicesBlock />
         </div>
 
         {/* Trust Badges */}
@@ -47,6 +42,11 @@ export function HowWeWork() {
               </div>
             </RevealOnScroll>
           ))}
+        </div>
+
+        {/* Our Services Block */}
+        <div className="mb-24">
+          <ServicesBlock />
         </div>
 
         {/* Main CTA */}
