@@ -24,9 +24,6 @@ export function HowWeWork() {
             <p className="text-xl font-medium text-secondary/80 mb-4 leading-relaxed max-w-3xl mx-auto">
               Family-owned in Perth, delivering detailed residential and commercial cleaning with clear pricing and easy booking.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Pope Cleaning Services is a family-owned business based in Perth, WA. We serve both homes and businesses with regular cleaning, spring/deep cleans, vacate/end-of-lease, carpets & upholstery, tiles & grout, and office/commercial cleaning. We focus on high-quality, detailed cleaning rather than rushing through jobs.
-            </p>
           </RevealOnScroll>
         </div>
 
