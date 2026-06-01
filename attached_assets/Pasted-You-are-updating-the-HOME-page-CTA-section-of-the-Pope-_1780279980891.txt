@@ -1,0 +1,122 @@
+You are updating the HOME page CTA section of the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- Enhance the “Ready to experience a detailed professional clean?” section by placing decorative text bubbles around the main CTA card.
+- These bubbles should highlight our key trust messages:
+  - Family-owned in Perth
+  - 100% Satisfaction Guarantee
+  - Fully Insured & Checked
+  - Transparent Quotes
+  - Flexible Perth Bookings
+  - Eco-friendly Options
+- The bubbles must feel like part of the design (decorative, 3D-ish, animated), and improve visibility of these points, without changing the overall layout or logic of the CTA.
+
+CONSTRAINTS
+- Do NOT remove or fundamentally redesign the existing CTA content.
+- Do NOT change the CTA copy, button destination, or form logic.
+- Only add a visual layer around the CTA section.
+- Use the existing design system (colors, fonts, spacing, Tailwind/CSS utilities).
+
+SECTION TO ENHANCE
+- Locate the CTA section on the Home page with heading text similar to:
+  - “Ready to experience a detailed professional clean?”
+- This section currently has a main text block and a primary button (e.g. “Book a Clean”).
+
+DESIGN OF TEXT BUBBLES
+
+Layout idea:
+- Wrap the CTA card in a relatively-positioned container.
+- Around this container, place 6 small “bubble” elements (absolute-positioned) containing the trust phrases.
+- The bubbles should:
+  - Have rounded-pill or circular shapes.
+  - Use brand colours (light blues / navy outlines) and soft shadows.
+  - Look like floating labels orbiting the CTA.
+
+Bubble content:
+- Each bubble displays one of:
+  - “Family-owned in Perth”
+  - “100% Satisfaction Guarantee”
+  - “Fully Insured & Checked”
+  - “Transparent Quotes”
+  - “Flexible Perth Bookings”
+  - “Eco-friendly Options”
+
+Styling:
+- Small to medium size, e.g. badge/pill style with:
+  - Rounded-full borders.
+  - Soft background (white/light-grey/light-blue).
+  - Thin border or subtle glow in brand blue.
+  - Text in dark/navy for readability.
+- Use slight variations in size and position so they don’t look too mechanical.
+
+Positioning:
+- Place bubbles around the CTA card (top-left, top-right, side, bottom corners), for example:
+  - Top-left: “Family-owned in Perth”
+  - Top-right: “100% Satisfaction Guarantee”
+  - Left middle: “Eco-friendly Options”
+  - Right middle: “Flexible Perth Bookings”
+  - Bottom-left: “Transparent Quotes”
+  - Bottom-right: “Fully Insured & Checked”
+- Use responsive behaviour:
+  - On desktop, position them as floating around the card.
+  - On mobile, stack some of them above/below or closer to the CTA to avoid overflow; they can form a wrap/cluster instead of full absolute positioning if necessary.
+
+ANIMATIONS & 3D FEEL
+
+Entrance animation:
+- Each bubble should use the existing RevealOnScroll or a similar entrance animation:
+  - Start slightly offset (e.g. `translateY(16px)` or `scale(0.95)` + low opacity).
+  - Animate into position with fade + rise when scrolled into view.
+
+Idle animation:
+- Add a very subtle floating effect:
+  - Very small up/down or side-to-side movement (1–4px) using CSS keyframes.
+  - Slight timing offsets per bubble, so they don’t all move identically.
+- Keep the motion slow and gentle to avoid distraction.
+
+Hover / focus:
+- On hover/focus, each bubble may:
+  - Slightly scale up (e.g. `scale(1.05)`).
+  - Add a tiny shadow or glow.
+- Make hover purely decorative (no click actions required, unless you want them to link to a trust/why-us page).
+
+ACCESSIBILITY & RESPONSIVENESS
+
+Accessibility:
+- These bubbles are decorative but meaningful.
+- Ensure text remains easily readable (good contrast and font size).
+- They should not block keyboard focus on the main CTA button.
+- They should not overlap the button or important text in a way that makes it hard to click.
+
+Responsiveness:
+- On smaller screens:
+  - Reduce the number of absolutely-positioned bubbles.
+  - Allow them to wrap around the CTA card (e.g. as a row above and a row below).
+  - Maintain readability and spacing (no overlapping text).
+
+IMPLEMENTATION DETAILS
+
+Code structure:
+- Create a small sub-component for the CTA section, if not already separated, e.g. `HomeCtaSection`.
+- Inside it:
+  - Wrap the CTA card in a `relative` container.
+  - Render an array of bubble objects (label + className/position).
+  - For desktop, use absolute positions with responsive Tailwind/CSS classes.
+  - For mobile, adjust layout via responsive classes or conditional rendering.
+
+Styling:
+- Use the existing Tailwind setup/utilities.
+- Keep spacing and margins consistent with the rest of the Home page.
+- Do not change the CTA heading or button copy.
+
+OUTPUT
+- The Home CTA section “Ready to experience a detailed professional clean?” should now:
+  - Have 6 animated text bubbles around it with the phrases:
+    - Family-owned in Perth
+    - 100% Satisfaction Guarantee
+    - Fully Insured & Checked
+    - Transparent Quotes
+    - Flexible Perth Bookings
+    - Eco-friendly Options
+  - Use subtle entrance + floating animations and 3D-ish pill styling.
+  - Improve visual emphasis on these trust points without disrupting layout, functionality, or overall design.
