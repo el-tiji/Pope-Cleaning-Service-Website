@@ -106,7 +106,7 @@ export function ServiceCollage({ serviceId, className = "" }: ServiceCollageProp
 
       <div 
         ref={containerRef}
-        className={`relative w-full aspect-square max-w-[800px] xl:max-w-[900px] mx-auto ${isMobile ? 'h-[450px] mb-24' : 'h-[600px] md:h-[750px]'}`}
+        className={`relative w-full aspect-square max-w-[720px] xl:max-w-[800px] mx-auto ${isMobile ? 'h-[400px] mb-24' : 'h-[540px] md:h-[650px]'}`}
         onMouseLeave={() => setActiveIndex(null)}
       >
         {images.map((img, idx) => {
@@ -146,8 +146,8 @@ export function ServiceCollage({ serviceId, className = "" }: ServiceCollageProp
                 mass: 1.5
               }}
               style={{
-                width: isMobile ? "85%" : "80%",
-                maxWidth: isMobile ? "320px" : "480px",
+                width: isMobile ? "76%" : "72%",
+                maxWidth: isMobile ? "290px" : "430px",
                 aspectRatio: "4/3",
               }}
             >
