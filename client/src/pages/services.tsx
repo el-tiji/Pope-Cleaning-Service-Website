@@ -83,9 +83,9 @@ export default function ServicesPage() {
   }, [location]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 pt-24">
+      <main className="flex-1 pt-24 overflow-x-hidden">
 
         {/* Services List with Collages */}
         <section className="py-20 md:py-32">
