@@ -18,14 +18,14 @@ export function Navbar() {
           </a>
         </Link>
         
-        <div className="hidden md:flex items-center gap-8">
-          <Link href="/"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Home</a></Link>
-          <Link href="/services"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Services</a></Link>
-          <Link href="/pricing"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Pricing Info</a></Link>
-          <Link href="/about"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">About Us</a></Link>
-          <Link href="/reviews"><a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Reviews</a></Link>
+        <div className="hidden md:flex items-center gap-4">
+          <Link href="/"><a className="text-sm font-bold text-secondary/80 bg-white/40 backdrop-blur-md border border-white/60 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-white hover:text-primary hover:scale-105 hover:border-primary/20 transition-all cursor-pointer">Home</a></Link>
+          <Link href="/services"><a className="text-sm font-bold text-secondary/80 bg-white/40 backdrop-blur-md border border-white/60 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-white hover:text-primary hover:scale-105 hover:border-primary/20 transition-all cursor-pointer">Services</a></Link>
+          <Link href="/pricing"><a className="text-sm font-bold text-secondary/80 bg-white/40 backdrop-blur-md border border-white/60 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-white hover:text-primary hover:scale-105 hover:border-primary/20 transition-all cursor-pointer">Pricing Info</a></Link>
+          <Link href="/about"><a className="text-sm font-bold text-secondary/80 bg-white/40 backdrop-blur-md border border-white/60 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-white hover:text-primary hover:scale-105 hover:border-primary/20 transition-all cursor-pointer">About Us</a></Link>
+          <Link href="/reviews"><a className="text-sm font-bold text-secondary/80 bg-white/40 backdrop-blur-md border border-white/60 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-white hover:text-primary hover:scale-105 hover:border-primary/20 transition-all cursor-pointer">Reviews</a></Link>
           <Link href="/book">
-            <Button className="rounded-full px-6 font-semibold shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all cursor-pointer">
+            <Button className="rounded-full px-6 py-2 h-auto font-semibold shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all cursor-pointer ml-2">
               Book Now
             </Button>
           </Link>
