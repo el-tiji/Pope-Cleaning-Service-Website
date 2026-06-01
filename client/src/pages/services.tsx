@@ -90,6 +90,18 @@ export default function ServicesPage() {
         {/* Services List with Collages */}
         <section className="py-20 md:py-32 overflow-x-clip">
           <div className="container mx-auto px-4 max-w-7xl">
+            
+            {/* Page Header */}
+            <div className="text-center mb-16 md:mb-24">
+              <RevealOnScroll variant="rise">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6">Our Services</h1>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Comprehensive, professional cleaning solutions tailored to your needs across Perth. 
+                  Experience the Pope Cleaning difference.
+                </p>
+              </RevealOnScroll>
+            </div>
+
             <div className="space-y-32 md:space-y-48">
               {servicesData.map((service, index) => {
                 const isEven = index % 2 === 0;
