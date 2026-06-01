@@ -1,0 +1,64 @@
+You previously created interactive collage components for each cleaning service category on the Services page (ServiceCollage with scattered images and hover/focus reorganisation).
+
+NEW GOAL
+- The collage images are currently too small.
+- Increase their visual size so each image is clearly visible and impactful, **without** breaking:
+  - The current layout,
+  - The hover/focus animations,
+  - The scattered/overlapping collage effect, or
+  - The responsiveness on mobile/tablet.
+
+CONSTRAINTS
+- Do NOT remove or redesign the collage component.
+- Do NOT change the number of images per collage or the interaction logic (active image, detailText overlay, etc.).
+- Only adjust sizing, spacing and, if necessary, container dimensions so that images display larger and clearer.
+
+SPECIFIC CHANGES
+
+1) Base image size
+- Increase the base width/height of each collage item:
+  - For example (you can adjust to fit the layout):
+    - Desktop: each image card roughly 180–220px wide (instead of very small thumbnails).
+    - Tablet: 150–180px.
+    - Mobile: 140–160px full-width or 2-column.
+- Use responsive Tailwind/CSS classes (e.g. `w-40 sm:w-44 md:w-48 lg:w-56`) or equivalent to scale up.
+
+2) Collage container
+- Ensure the collage container has enough height/width to let larger images overlap without clipping:
+  - Increase `min-height` or padding where needed.
+  - Keep `overflow: visible` for the collage wrapper so images that are slightly translated or rotated are not cut off.
+
+3) Maintain scattered layout
+- Keep the scattered / overlapping effect, but adjust offsets so that:
+  - Larger images still overlap in an intentional way.
+  - Important parts of images are not completely hidden behind others.
+- If you use `initialX` and `initialY` offsets, re-tune them for the new size (e.g. spread them a bit more).
+
+4) Hover/focus behaviour
+- Keep the existing transform logic (scale up, move to centre, show detailText overlay):
+  - Make sure the new larger size still looks good when scaled (e.g. 1.08–1.12).
+- If necessary, slightly reduce the scale factor so the enlarged image does not exceed the collage area too much.
+
+5) Mobile responsiveness
+- On small screens:
+  - Make the collage more vertical and reduce overlap to avoid images becoming too cramped.
+  - For example, use 2-column or 1-column stacked layout with mild rotation, instead of heavy overlap.
+- Ensure the text overlay/detail popover remains readable and does not go off screen.
+
+6) Alignment with current design
+- Keep existing border radius, polaroid-style white frame, shadows and brand-colour accents.
+- Do NOT change typography or detailText content.
+
+IMPLEMENTATION HINTS
+- Central place to change sizes:
+  - Update the CSS/Tailwind classes in the collage item wrapper (the div that wraps each `<img>`).
+  - Optionally, define size tokens (e.g. `COLLAGE_ITEM_SIZES`) so we can adjust later from one place.
+- After increasing sizes, quickly verify:
+  - Desktop: each collage clearly visible, with nice overlapping.
+  - Tablet/Mobile: images are bigger but layout is still usable and scrollable.
+
+OUTPUT
+- The ServiceCollage component for each service should now display noticeably larger images, while:
+  - Preserving hover/focus animations and detail text overlays,
+  - Maintaining the scattered collage aesthetic,
+  - Remaining fully responsive and visually consistent with the rest of the site.

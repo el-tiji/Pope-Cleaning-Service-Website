@@ -106,7 +106,7 @@ export function ServiceCollage({ serviceId, className = "" }: ServiceCollageProp
 
       <div 
         ref={containerRef}
-        className={`relative w-full aspect-square max-w-[500px] mx-auto ${isMobile ? 'h-[350px] mb-20' : 'h-[400px] md:h-[500px]'}`}
+        className={`relative w-full aspect-square max-w-[800px] xl:max-w-[900px] mx-auto ${isMobile ? 'h-[450px] mb-24' : 'h-[600px] md:h-[750px]'}`}
         onMouseLeave={() => setActiveIndex(null)}
       >
         {images.map((img, idx) => {
@@ -126,14 +126,14 @@ export function ServiceCollage({ serviceId, className = "" }: ServiceCollageProp
                 x: "-50%",
                 y: "-50%",
                 rotate: 0,
-                scale: isMobile ? 1.1 : 1.15,
+                scale: isMobile ? 1.05 : 1.1,
                 zIndex: 40,
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
               } : {
-                x: `calc(-50% + ${isMobile ? img.initialX * 0.6 : img.initialX}px)`,
-                y: `calc(-50% + ${isMobile ? img.initialY * 0.6 : img.initialY}px)`,
+                x: `calc(-50% + ${isMobile ? img.initialX * 1.2 : img.initialX * 1.8}px)`,
+                y: `calc(-50% + ${isMobile ? img.initialY * 1.2 : img.initialY * 1.8}px)`,
                 rotate: img.initialRotation,
-                scale: isOtherActive ? 0.9 : 1,
+                scale: isOtherActive ? 0.95 : 1,
                 zIndex: idx,
                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
                 opacity: isOtherActive ? 0.6 : 1,
@@ -146,7 +146,8 @@ export function ServiceCollage({ serviceId, className = "" }: ServiceCollageProp
                 mass: 1.5
               }}
               style={{
-                width: isMobile ? "65%" : "55%",
+                width: isMobile ? "85%" : "80%",
+                maxWidth: isMobile ? "320px" : "480px",
                 aspectRatio: "4/3",
               }}
             >
