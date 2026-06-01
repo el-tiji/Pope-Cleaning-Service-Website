@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/assets";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
@@ -16,14 +16,38 @@ export function Hero() {
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const autoPlayInterval = 5000; // 5 seconds
+  const progressUpdateInterval = 50; // Update progress bar every 50ms
+
+  useEffect(() => {
+    const progressTimer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          nextImage();
+          return 0;
+        }
+        return prev + (100 / (autoPlayInterval / progressUpdateInterval));
+      });
+    }, progressUpdateInterval);
+
+    return () => clearInterval(progressTimer);
+  }, [currentImageIndex]); // Reset timer when image changes manually
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    setProgress(0);
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+    setProgress(0);
   };
+  
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+    setProgress(0);
+  }
 
   return (
     <section className="relative pt-20 pb-32 overflow-hidden bg-background">
@@ -102,6 +126,14 @@ export function Hero() {
               </div>
               
               <div className="relative overflow-hidden rounded-[2rem] bg-muted/20 group">
+                {/* Progress Bar */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-white/20 z-10">
+                  <div 
+                    className="h-full bg-primary transition-all ease-linear"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+
                 <div 
                   className="flex transition-transform duration-500 ease-in-out" 
                   style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
@@ -129,7 +161,7 @@ export function Hero() {
                     {carouselImages.map((_, idx) => (
                       <button 
                         key={idx}
-                        onClick={() => setCurrentImageIndex(idx)}
+                        onClick={() => goToImage(idx)}
                         className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentImageIndex ? 'bg-primary' : 'bg-primary/20 hover:bg-primary/50'}`}
                       />
                     ))}
