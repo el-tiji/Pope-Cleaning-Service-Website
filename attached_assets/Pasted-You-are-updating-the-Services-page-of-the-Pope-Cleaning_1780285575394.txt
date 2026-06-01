@@ -1,0 +1,205 @@
+You are updating the Services page of the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- Add an interactive “collage” of service images for EACH cleaning category on the Services page.
+- The collage should look like a dynamic stack of photos (similar to scattered polaroids/collage examples), but styled to match the current Pope Cleaning design.
+- When the user hovers over one image in the collage:
+  1) That image should smoothly come into visual focus (scale up, move to a more central/ordered position, higher z-index).
+  2) The surrounding images should subtly reorganise to highlight the selected image while still keeping the collage feeling.
+  3) A DETAILED TEXT OVERLAY / POPOVER should appear, with more information about how that specific cleaning service (category) is performed.
+- This must be done for every main cleaning category:
+  - Residential Cleaning
+  - Spring Cleaning
+  - Vacate / End of Lease Cleaning
+  - Carpet & Upholstery Cleaning
+  - Tile & Grout Cleaning
+  - Office / Commercial Cleaning
+  - Pressure Cleaning
+  - Car Detailing (if present)
+- All images are placeholders that will be REPLACED later, so structure, animation and text behaviour matter more than the actual photos.
+
+CONSTRAINTS
+- Do NOT change the global layout, navbar, footer, pricing logic, or the core Services content structure.
+- Do NOT remove existing Services cards or text; the collages are an enhancement.
+- Use the existing design system:
+  - Colours based on Pope Cleaning’s brand blues.
+  - Current typography.
+  - Existing animation utilities (e.g. RevealOnScroll) where appropriate.
+- Keep performance and responsiveness high.
+
+COLLAGE POSITIONING / STRUCTURE
+
+Placement:
+- For each service category section or detailed service page:
+  - Place the collage near the descriptive text for that service.
+  - Options:
+    - Side-by-side with text on desktop (text left, collage right or vice versa).
+    - Stacked (text above, collage below) on mobile.
+
+Componentisation:
+- Create a reusable component, e.g. `ServiceCollage`, that receives:
+  - `serviceId` or `category` (e.g. "residential", "vacate").
+  - An array of image metadata (src, alt, initialRotation, initialPosition, detailText).
+- Reuse `ServiceCollage` for each category with different image arrays and detailed texts.
+
+COLLAGE LOOK & FEEL
+
+Style:
+- Collage should feel like overlapping photo cards:
+  - Each image inside a small “polaroid-style” frame:
+    - White border around the image.
+    - Slight shadow.
+    - Slight random rotation (e.g. -6° to +6°) at rest.
+- Use subtle 3D / tilt style that matches the rest of the site:
+  - Slight depth via box-shadows and transforms.
+
+Images:
+- Use temporary placeholder images (AI-generated or stock) that visually represent each cleaning category:
+  - Residential: tidy living rooms, kitchens, bedrooms being cleaned.
+  - Spring: detailed/“deep clean” shots (inside oven, behind furniture, detail work).
+  - Vacate: empty/near-empty rental with sparkling kitchen/bathroom.
+  - Carpet & Upholstery: close-up of carpet steam and couch cleaning.
+  - Tile & Grout: bathrooms, floors with visible grout lines.
+  - Office / Commercial: offices, desks, meeting rooms, hallways.
+  - Pressure: driveways, patios, exterior cleaning.
+  - Car Detailing: car interior seats, dashboard, upholstery being cleaned.
+- Use clear filenames so that we can replace them later:
+  - e.g. `/assets/collage/residential-1.jpg`, `/assets/collage/vacate-2.jpg`, etc.
+
+INTERACTION BEHAVIOUR (HOVER / FOCUS)
+
+Desktop hover:
+- When the cursor hovers over a specific collage image:
+  - ACTIVE IMAGE:
+    - Smoothly scales up (e.g. 1.08–1.12).
+    - Increases its z-index to appear on top.
+    - Moves towards a more central/visible position within the collage (e.g. using transform: translate).
+    - Reduces rotation towards 0° so it looks “aligned” and important.
+    - Shows a TEXT OVERLAY or POPOVER with detailed info about the service.
+  - OTHER IMAGES:
+    - Slightly scale down (e.g. 0.95–0.98).
+    - Fade slightly or reduce brightness, but remain visible in the background.
+
+Detailed text overlay / popover:
+- For each image, define a `detailText` that explains in more depth how the cleaning is done for that category.
+  - Example for Residential:
+    - “General tidy of all rooms, dusting of surfaces, vacuum and mop of floors, kitchen benches and stovetop, bathroom and toilet sanitising.”
+  - Example for Vacate:
+    - “Full bond-focused clean including kitchen, bathrooms, inside cupboards, skirtings, light switches, and optional carpets and windows for final inspection.”
+- UI options:
+  - Option 1: Overlay on the image:
+    - Semi-transparent dark or blue gradient at the bottom or full overlay with white text.
+  - Option 2: Small floating tooltip/popover near the image:
+    - Rounded card with brand colours and a small arrow pointing to the image.
+- The overlay/popover should:
+  - Appear on hover/focus with a fade + slight motion (e.g. rise).
+  - Be readable and not too big; keep to 2–4 lines.
+  - Disappear smoothly when hover ends.
+
+Keyboard accessibility:
+- Allow focus on each collage card (e.g. `tabIndex={0}`).
+- When a collage item receives keyboard focus:
+  - Apply the same focus effect as hover (scale, centre emphasis, show detail text).
+- On blur, return to normal.
+
+Mobile / touch:
+- For touch devices:
+  - On tap, treat it like hover:
+    - Focus one image, bring it to the front.
+    - Show the text overlay or a bottom sheet style text block with the detail description.
+  - A second tap elsewhere or a close icon can reset to the scattered state.
+  - Ensure interactions are not confusing and that the collage remains usable.
+
+ANIMATIONS & TIMING
+
+Entrance (scroll/RevealOnScroll):
+- Wrap the entire collage in the existing `RevealOnScroll` (or similar) so it appears with:
+  - Fade + rise OR a small scale-from-0.95 entrance.
+- Each category’s collage should animate into view as the user scrolls down.
+
+Hover/tap transitions:
+- Use smooth CSS transitions:
+  - Duration: 200–300ms for scale and transform.
+  - Easing: `ease-out` or a custom cubic-bezier for natural motion.
+- Keep animation subtle and performant:
+  - Use `transform` and `opacity` only.
+  - No layout thrashing (don’t animate width/height/margins).
+
+3D / depth:
+- Optionally add a small 3D tilt on hover for the active image:
+  - e.g. `rotateX(2deg)` or `rotateY(2deg)` combined with scale, but keep it very light.
+- Maintain a premium, professional feeling (no exaggerated motion).
+
+RESPONSIVENESS
+
+Desktop:
+- Collage can have 6–9 images per service, arranged in a visually pleasing cluster.
+- Enough space around the collage so images don’t feel cramped.
+- Adjust positions with CSS grid/flex + absolute offsets.
+
+Tablet:
+- Slightly reduce number of visible images or shrink the collage size.
+- Ensure hover/focus states still work.
+
+Mobile:
+- Consider:
+  - A simplified collage with fewer images per service (e.g. 3–5).
+  - A stacked or grid layout where tapping one image brings it forward and shows the detail text.
+- Maintain good touch targets and readability.
+
+ALIGNMENT WITH CURRENT PAGE STYLE
+
+- Use existing background colours and spacing to integrate the collage into the current Services design.
+- Match border radius and shadows with other cards in the site.
+- If the Services cards already have hover animations:
+  - Ensure collage hover does not conflict; the collage is part of the service detail, not a replacement.
+- Keep typography consistent (labels, alt text, overlays).
+
+IMPLEMENTATION DETAILS
+
+Data structure:
+- Create a `SERVICE_COLLAGES` config object that maps service IDs to image arrays:
+  - `residential`, `spring`, `vacate`, `carpet-upholstery`, `tile-grout`, `office`, `pressure`, `car-detailing`.
+  - Each array element:
+    - `src`: string
+    - `alt`: string
+    - `initialRotation`: number
+    - `initialX`, `initialY`: offsets for scattered layout
+    - `detailText`: string (short detailed explanation of that aspect of the service)
+
+Component:
+- `ServiceCollage` props:
+  - `serviceId` or `serviceKey`
+  - Optional `className`
+- Inside:
+  - Render all images based on config.
+  - Apply initial transform based on `initialRotation` and position.
+  - Track which image is “active” (hovered/focused/tapped) in a small `activeIndex` state.
+  - For the active image:
+    - Apply scale-up, central transform and show detail overlay/popover.
+  - For other images:
+    - Apply slightly reduced scale/brightness.
+
+Usage:
+- In the Services page:
+  - For each category section, insert:
+    - `<ServiceCollage serviceId="residential" />`
+    - `<ServiceCollage serviceId="vacate" />`
+    - etc.
+
+PERFORMANCE & ACCESSIBILITY
+
+- Minimise unnecessary re-renders:
+  - Use lightweight state inside the collage.
+- Respect `prefers-reduced-motion`:
+  - For users with reduced motion, show a static collage, and only simple opacity changes for the detail text (no big movements).
+- Ensure alt text and ARIA descriptions are meaningful:
+  - You can provide a general `aria-label` for the collage (e.g. “Residential cleaning results gallery”) and keep individual images marked as decorative if necessary.
+
+OUTPUT
+- The Services tab/page should have, for each cleaning category, an interactive collage of images that:
+  - Looks like a scattered photo layout integrated with the current site style.
+  - On hover/focus/tap, re-organises visually to highlight the selected image.
+  - Shows a detailed text overlay/popup explaining how that cleaning service works in more depth, depending on the category.
+  - Uses smooth animations, depth and motion in line with the rest of the site’s animations.
+  - Keeps the existing Services layout and content intact, simply adding a visually engaging, informative image experience per category.
