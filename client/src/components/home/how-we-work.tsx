@@ -21,9 +21,7 @@ export function HowWeWork() {
           
           <RevealOnScroll>
             <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">How We Work</h3>
-            <p className="text-xl font-medium text-secondary/80 mb-4 leading-relaxed max-w-3xl mx-auto">
-              Family-owned in Perth, delivering detailed residential and commercial cleaning with clear pricing and easy booking.
-            </p>
+            <p className="text-xl font-medium text-secondary/80 mb-4 leading-relaxed max-w-3xl mx-auto">Family-owned in Perth, delivering detailed residential and commercial cleaning with clear pricing and easy booking.  We focus on high-quality, detailed cleaning rather than rushing through jobs.</p>
           </RevealOnScroll>
         </div>
 
