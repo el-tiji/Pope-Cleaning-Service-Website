@@ -36,19 +36,22 @@ export function HowWeWork() {
           {/* Desktop Absolute Bubbles */}
           <div className="hidden lg:block">
             {[
-              { text: "Family-owned in Perth", className: "-top-6 -left-16", delay: 0 },
-              { text: "100% Satisfaction Guarantee", className: "-top-12 right-0", delay: 0.2 },
-              { text: "Eco-friendly Options", className: "top-1/2 -translate-y-1/2 -left-28", delay: 0.4 },
-              { text: "Flexible Perth Bookings", className: "top-1/2 -translate-y-1/2 -right-24", delay: 0.1 },
-              { text: "Transparent Quotes", className: "-bottom-6 left-4", delay: 0.5 },
-              { text: "Fully Insured & Checked", className: "-bottom-10 right-12", delay: 0.3 },
+              { text: "Family-owned in Perth", className: "-top-6 -left-16", delay: 0, icon: <Users className="w-4 h-4 text-primary" /> },
+              { text: "100% Satisfaction Guarantee", className: "-top-12 right-0", delay: 0.2, icon: <ThumbsUp className="w-4 h-4 text-primary" /> },
+              { text: "Eco-friendly Options", className: "top-1/2 -translate-y-1/2 -left-28", delay: 0.4, icon: <Leaf className="w-4 h-4 text-primary" /> },
+              { text: "Flexible Perth Bookings", className: "top-1/2 -translate-y-1/2 -right-24", delay: 0.1, icon: <MapPin className="w-4 h-4 text-primary" /> },
+              { text: "Transparent Quotes", className: "-bottom-6 left-4", delay: 0.5, icon: <FileText className="w-4 h-4 text-primary" /> },
+              { text: "Fully Insured & Checked", className: "-bottom-10 right-12", delay: 0.3, icon: <ShieldCheck className="w-4 h-4 text-primary" /> },
             ].map((bubble, idx) => (
               <RevealOnScroll key={idx} delay={bubble.delay} variant="zoom" className={`absolute z-20 ${bubble.className}`}>
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4 + (idx % 3), repeat: Infinity, ease: "easeInOut", delay: bubble.delay }}
-                  className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-primary/20 text-secondary font-bold text-sm hover:scale-110 hover:shadow-primary/20 transition-all cursor-default"
+                  className="group flex items-center gap-2 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-primary/20 text-secondary font-bold text-sm hover:scale-110 hover:shadow-primary/20 transition-all cursor-default overflow-hidden"
                 >
+                  <div className="w-0 opacity-0 group-hover:w-4 group-hover:opacity-100 group-hover:mr-1 transition-all duration-300 overflow-hidden flex items-center">
+                    {bubble.icon}
+                  </div>
                   {bubble.text}
                 </motion.div>
               </RevealOnScroll>
@@ -58,16 +61,19 @@ export function HowWeWork() {
           {/* Mobile Stacked Bubbles */}
           <div className="lg:hidden flex flex-wrap justify-center gap-3 mb-10">
             {[
-              "Family-owned in Perth",
-              "100% Satisfaction Guarantee",
-              "Eco-friendly Options",
-              "Flexible Perth Bookings",
-              "Transparent Quotes",
-              "Fully Insured & Checked"
-            ].map((text, idx) => (
+              { text: "Family-owned in Perth", icon: <Users className="w-3.5 h-3.5 text-primary" /> },
+              { text: "100% Satisfaction Guarantee", icon: <ThumbsUp className="w-3.5 h-3.5 text-primary" /> },
+              { text: "Eco-friendly Options", icon: <Leaf className="w-3.5 h-3.5 text-primary" /> },
+              { text: "Flexible Perth Bookings", icon: <MapPin className="w-3.5 h-3.5 text-primary" /> },
+              { text: "Transparent Quotes", icon: <FileText className="w-3.5 h-3.5 text-primary" /> },
+              { text: "Fully Insured & Checked", icon: <ShieldCheck className="w-3.5 h-3.5 text-primary" /> }
+            ].map((bubble, idx) => (
               <RevealOnScroll key={idx} delay={idx * 0.1} variant="zoom">
-                <div className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-primary/20 text-secondary font-bold text-xs text-center hover:scale-105 transition-transform">
-                  {text}
+                <div className="group flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-primary/20 text-secondary font-bold text-xs text-center hover:scale-105 transition-all overflow-hidden">
+                  <div className="w-0 opacity-0 group-hover:w-3.5 group-hover:opacity-100 transition-all duration-300 overflow-hidden flex items-center">
+                    {bubble.icon}
+                  </div>
+                  {bubble.text}
                 </div>
               </RevealOnScroll>
             ))}
