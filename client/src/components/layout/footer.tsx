@@ -61,11 +61,11 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-white">Services</h4>
             <ul className="space-y-3">
-              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Residential Cleaning</a></Link></li>
-              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Commercial Cleaning</a></Link></li>
-              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Vacate Cleaning</a></Link></li>
-              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Carpet & Upholstery</a></Link></li>
-              <li><Link href="/services"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Tile & Grout</a></Link></li>
+              <li><Link href="/services#service-residential"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Residential Cleaning</a></Link></li>
+              <li><Link href="/services#service-office"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Commercial Cleaning</a></Link></li>
+              <li><Link href="/services#service-vacate"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Vacate Cleaning</a></Link></li>
+              <li><Link href="/services#service-carpet"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Carpet & Upholstery</a></Link></li>
+              <li><Link href="/services#service-tile"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Tile & Grout</a></Link></li>
             </ul>
           </div>
           
