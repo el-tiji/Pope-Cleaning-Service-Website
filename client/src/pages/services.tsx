@@ -79,34 +79,6 @@ export default function ServicesPage() {
     <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
       <Navbar />
       <main className="flex-1 pt-24">
-        {/* Header Section */}
-        <section className="bg-primary/5 py-16 md:py-24 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
-          
-          <div className="container mx-auto px-4 relative z-10 text-center max-w-3xl">
-            <RevealOnScroll>
-              <h1 className="text-4xl md:text-6xl font-extrabold text-secondary mb-6 tracking-tight">
-                Our Cleaning <span className="text-primary">Services</span>
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
-                From regular residential upkeep to specialized deep cleaning and commercial spaces, Pope Cleaning Services delivers Perth's most thorough and reliable results.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link href="/book">
-                  <Button size="lg" className="rounded-full px-8 h-14 font-bold shadow-xl shadow-primary/20 hover:scale-105 transition-transform w-full sm:w-auto text-base text-primary-foreground bg-primary">
-                    Book a Service
-                  </Button>
-                </Link>
-                <a href="#services-custom-quote" className="w-full sm:w-auto">
-                  <Button size="lg" variant="outline" className="rounded-full px-8 h-14 font-bold bg-white/80 backdrop-blur-sm border-primary/20 hover:bg-primary/5 transition-colors w-full text-base">
-                    Request Custom Quote
-                  </Button>
-                </a>
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
 
         {/* Services List with Collages */}
         <section className="py-20 md:py-32">
