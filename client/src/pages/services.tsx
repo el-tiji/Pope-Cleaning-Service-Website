@@ -85,10 +85,10 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 pt-24 overflow-x-hidden animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <main className="flex-1 pt-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
 
         {/* Services List with Collages */}
-        <section className="py-20 md:py-32">
+        <section className="py-20 md:py-32 overflow-x-clip">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="space-y-32 md:space-y-48">
               {servicesData.map((service, index) => {
@@ -99,7 +99,7 @@ export default function ServicesPage() {
                     
                     {/* Text Content */}
                     <div className="w-full lg:w-1/2">
-                      <RevealOnScroll variant={isEven ? "slideRight" : "slideLeft"}>
+                      <RevealOnScroll variant={isEven ? "slide-right" : "slide-left"}>
                         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6 shadow-inner">
                           {service.icon}
                         </div>
