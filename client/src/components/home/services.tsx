@@ -82,6 +82,12 @@ export function ServicesBlock() {
                   <p className="text-white/90 text-sm leading-relaxed mb-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75">
                     {service.shortDescription}
                   </p>
+                  
+                  {/* Learn More CTA */}
+                  <div className="flex items-center text-accent font-semibold text-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 delay-100">
+                    <span>Learn more</span>
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </Card>
             </Link>
