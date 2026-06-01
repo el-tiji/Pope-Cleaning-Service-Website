@@ -1,0 +1,90 @@
+You are updating the routing and links between the HOME page and the SERVICES page of the Pope Cleaning Services website (Perth, Western Australia).
+
+GOAL
+- In the HOME tab, within the “How we work” section (or similar overview section), each mentioned service name should be a clickable hyperlink.
+- When a user clicks a service name on Home, they should be taken to the SERVICES tab and automatically scrolled to the corresponding service section title (even if it is in the middle or near the bottom of the Services page).
+- The behaviour must be smooth, intuitive and consistent with the current design and routing system (React/TypeScript).
+
+SERVICES TO LINK
+Make the following services in the HOME “How we work” section clickable, each pointing to its main section title on the Services page:
+
+- Residential Cleaning
+- Spring Cleaning
+- Vacate / End of Lease Cleaning
+- Carpet & Upholstery Cleaning
+- Tile & Grout Cleaning
+- Office / Commercial Cleaning
+- Pressure Cleaning
+- Car Detailing (if present as a separate service)
+
+(If any of these names differ slightly in the code, use the actual service keys/IDs used in the Services page.)
+
+ANCHORS ON THE SERVICES PAGE
+
+1) Add stable IDs to the main heading element for each service section on the Services page. For example:
+
+- `<section id="service-residential">` or `<h2 id="service-residential">Residential Cleaning</h2>`
+- `<section id="service-spring">` or `<h2 id="service-spring">Spring Cleaning</h2>`
+- `<section id="service-vacate">` or `<h2 id="service-vacate">Vacate / End of Lease Cleaning</h2>`
+- `<section id="service-carpet-upholstery">` or `<h2 id="service-carpet-upholstery">Carpet & Upholstery Cleaning</h2>`
+- `<section id="service-tile-grout">` or `<h2 id="service-tile-grout">Tile & Grout Cleaning</h2>`
+- `<section id="service-office">` or `<h2 id="service-office">Office / Commercial Cleaning</h2>`
+- `<section id="service-pressure">` or `<h2 id="service-pressure">Pressure Cleaning</h2>`
+- `<section id="service-car-detailing">` or `<h2 id="service-car-detailing">Car Detailing</h2>`
+
+Make sure these IDs are unique and not reused elsewhere.
+
+2) If your router supports hash/anchor navigation (e.g. `Link` with `href="/services#service-residential"`), use those IDs as the target hashes.
+
+LINKS FROM HOME → SERVICES
+
+In the HOME page “How we work” section:
+
+- Wrap each service name with a link component that navigates to the Services page and includes the corresponding hash, for example:
+
+  - Residential Cleaning → `/services#service-residential`
+  - Spring Cleaning → `/services#service-spring`
+  - Vacate / End of Lease Cleaning → `/services#service-vacate`
+  - Carpet & Upholstery Cleaning → `/services#service-carpet-upholstery`
+  - Tile & Grout Cleaning → `/services#service-tile-grout`
+  - Office / Commercial Cleaning → `/services#service-office`
+  - Pressure Cleaning → `/services#service-pressure`
+  - Car Detailing → `/services#service-car-detailing`
+
+- Use the project’s existing `Link` component (e.g. from Next.js or React Router), keeping typography and hover styles consistent with the rest of the Home page.
+
+SMOOTH SCROLL BEHAVIOUR
+
+On the Services page:
+
+- Implement smooth scrolling to the target section when a hash is present in the URL.
+  - Example: when route is `/services#service-residential`, automatically scroll to the element with that ID.
+- You can:
+  - Use `useEffect` in the Services page to detect `location.hash` or router `asPath`, then call `document.getElementById(hash)` and `scrollIntoView({ behavior: 'smooth', block: 'start' })`.
+- Ensure that:
+  - If the user is already on the Services page and clicks another service link (e.g. via internal navigation), the page scrolls smoothly to the new section instead of jumping abruptly.
+
+OFFSET FOR FIXED NAVBAR (IF NEEDED)
+
+- If the site uses a fixed/sticky navbar that might cover the top of headings:
+  - Adjust scroll behaviour to account for navbar height.
+  - For example, compute `element.offsetTop - navbarHeight` and scroll to that position using `window.scrollTo({ top, behavior: 'smooth' })`.
+
+ACCESSIBILITY & UX
+
+- Maintain good contrast and clear hover/focus states for the service links on Home.
+- Ensure links have descriptive text (the service name itself is good).
+- Do not change the text content of the “How we work” section; just turn the service names into links.
+
+CONSTRAINTS
+
+- Do NOT change the wording of the “How we work” copy, only wrap service names in links.
+- Do NOT move or redesign the Services sections; just give them IDs and create links to those IDs.
+- Keep routing as it is (Next.js/React Router/etc.), only add hash-based anchors and scroll behaviour.
+
+OUTPUT
+
+- After implementation:
+  - On the HOME “How we work” section, clicking any service name takes the user to the SERVICES tab.
+  - The Services page then smoothly scrolls to the corresponding main title/section for that service, even if that section is mid-page or near the bottom.
+  - The rest of the page layout and functionality remains unchanged.

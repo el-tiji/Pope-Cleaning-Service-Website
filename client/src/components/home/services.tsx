@@ -11,7 +11,7 @@ const services = [
     shortDescription: "Regular home cleaning for busy Perth households – kitchens, bathrooms, floors and surfaces kept consistently fresh.",
     image: "/assets/tiltshift/services/residential.png",
     alt: "Miniature living room being cleaned - Residential Cleaning service",
-    link: "/book",
+    link: "/services#service-residential",
   },
   {
     id: "spring",
@@ -19,7 +19,7 @@ const services = [
     shortDescription: "Deep, detail-focused cleaning for neglected areas, bringing back the sparkle to your entire home.",
     image: "/assets/tiltshift/services/spring.png",
     alt: "Deep spring cleaning scene - Spring Cleaning service",
-    link: "/book",
+    link: "/services#service-spring",
   },
   {
     id: "vacate",
@@ -27,7 +27,7 @@ const services = [
     shortDescription: "Detailed move-out cleaning designed to meet real estate inspection standards, ensuring you get your bond back.",
     image: "/assets/tiltshift/services/vacate.png",
     alt: "Clean empty apartment - Vacate / End of Lease cleaning service",
-    link: "/book",
+    link: "/services#service-vacate",
   },
   {
     id: "commercial",
@@ -35,7 +35,7 @@ const services = [
     shortDescription: "Maintain a pristine, professional workspace that leaves a lasting impression on clients and boosts employee morale.",
     image: "/assets/tiltshift/services/office.png",
     alt: "Spotless modern office - Commercial Cleaning service",
-    link: "/book",
+    link: "/services#service-office",
   },
   {
     id: "carpet",
@@ -43,7 +43,7 @@ const services = [
     shortDescription: "Deep steam cleaning to refresh fibers, remove stubborn stains, and eliminate hidden allergens.",
     image: "/assets/tiltshift/services/carpet.png",
     alt: "Clean carpet - Carpet & Upholstery cleaning service",
-    link: "/book",
+    link: "/services#service-carpet",
   },
   {
     id: "pressure",
@@ -51,7 +51,7 @@ const services = [
     shortDescription: "Transform driveways, patios, and outdoor exteriors with high-power, deep-cleaning washing.",
     image: "/assets/tiltshift/services/pressure.png",
     alt: "Outdoor patio pressure washing - Pressure Cleaning service",
-    link: "/book",
+    link: "/services#service-pressure",
   }
 ];
 
@@ -82,12 +82,6 @@ export function ServicesBlock() {
                   <p className="text-white/90 text-sm leading-relaxed mb-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75">
                     {service.shortDescription}
                   </p>
-                  
-                  {/* Learn More CTA */}
-                  <div className="flex items-center text-accent font-semibold text-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 delay-100">
-                    <span>Learn more</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </div>
                 </div>
               </Card>
             </Link>

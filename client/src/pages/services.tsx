@@ -65,13 +65,20 @@ export default function ServicesPage() {
   const [location] = useLocation();
 
   useEffect(() => {
-    if (window.location.hash === '#services-custom-quote') {
-      const element = document.getElementById('services-custom-quote');
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+    if (window.location.hash) {
+      const hash = window.location.hash;
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          // Calculate offset to prevent fixed navbar from hiding the title
+          const navbarHeight = 100;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - navbarHeight,
+            behavior: "smooth"
+          });
+        }
+      }, 100);
     }
   }, [location]);
 
@@ -88,7 +95,7 @@ export default function ServicesPage() {
                 const isEven = index % 2 === 0;
                 
                 return (
-                  <div key={service.id} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}>
+                  <div id={`service-${service.id}`} key={service.id} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20 scroll-mt-24`}>
                     
                     {/* Text Content */}
                     <div className="w-full lg:w-1/2">
