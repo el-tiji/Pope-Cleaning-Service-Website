@@ -25,6 +25,11 @@ export function HowWeWork() {
           </RevealOnScroll>
         </div>
 
+        {/* Our Services Block */}
+        <div className="mb-24">
+          <ServicesBlock />
+        </div>
+
         {/* Trust Badges */}
         <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-24">
           {[
@@ -42,11 +47,6 @@ export function HowWeWork() {
               </div>
             </RevealOnScroll>
           ))}
-        </div>
-
-        {/* Our Services Block */}
-        <div className="mb-24">
-          <ServicesBlock />
         </div>
 
         {/* Main CTA */}
