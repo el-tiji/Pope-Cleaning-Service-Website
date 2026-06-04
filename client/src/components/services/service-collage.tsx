@@ -44,6 +44,12 @@ export const SERVICE_COLLAGES: Record<string, CollageImage[]> = {
     { src: "/assets/collage/tile-3.jpg", alt: "Bathroom tiles", initialRotation: -2, initialX: -30, initialY: 40, detailText: "Removal of mold, mildew, and soap scum from bathroom wall and floor tiles." },
     { src: "/assets/collage/tile-4.jpg", alt: "Kitchen floors", initialRotation: 5, initialX: 20, initialY: 50, detailText: "Deep degreasing for kitchen floors to remove sticky residues." }
   ],
+  office: [
+    { src: "/assets/collage/office-1.jpg", alt: "Clean desks", initialRotation: 2, initialX: -30, initialY: -20, detailText: "Dusting and wiping down of all desks, monitors, and workstation areas." },
+    { src: "/assets/collage/office-2.jpg", alt: "Office kitchen", initialRotation: -4, initialX: 30, initialY: -10, detailText: "Sanitising communal kitchens, break rooms, microwaves, and fridges." },
+    { src: "/assets/collage/office-3.jpg", alt: "Meeting room", initialRotation: 3, initialX: -10, initialY: 40, detailText: "Preparation of meeting rooms, arranging chairs, and cleaning glass partitions." },
+    { src: "/assets/collage/office-4.jpg", alt: "Office floors", initialRotation: -2, initialX: 40, initialY: 30, detailText: "Thorough vacuuming of office carpets and mopping of hard floors." }
+  ],
   pressure: [
     { src: "/assets/collage/pressure-1.jpg", alt: "Driveway cleaning", initialRotation: -3, initialX: -20, initialY: -30, detailText: "High-pressure washing of concrete and paved driveways to remove oil and dirt." },
     { src: "/assets/collage/pressure-2.jpg", alt: "Patio washing", initialRotation: 4, initialX: 30, initialY: -10, detailText: "Revitalising outdoor entertainment areas, patios, and deckings." },

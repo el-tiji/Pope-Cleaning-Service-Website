@@ -46,6 +46,13 @@ const servicesData = [
     features: ["High-pressure heated washing", "Mould & mildew removal", "Grout colour restoration", "Kitchen & bathroom floors"]
   },
   {
+    id: "office",
+    title: "Office / Commercial Cleaning",
+    icon: <Building2 className="w-6 h-6" />,
+    description: "Maintain a professional, hygienic workplace for your staff and clients in Perth. Tailored schedules for your business needs.",
+    features: ["After-hours cleaning", "Desk & workstation sanitation", "Communal area cleaning", "Bathroom & kitchen maintenance"]
+  },
+  {
     id: "pressure",
     title: "Pressure Cleaning",
     icon: <Droplets className="w-6 h-6" />,

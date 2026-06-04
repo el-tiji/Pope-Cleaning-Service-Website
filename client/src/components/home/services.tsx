@@ -30,6 +30,14 @@ const services = [
     link: "/services#service-vacate",
   },
   {
+    id: "commercial",
+    title: "Office / Commercial",
+    shortDescription: "Maintain a pristine, professional workspace that leaves a lasting impression on clients and boosts employee morale.",
+    image: "/assets/tiltshift/services/office.png",
+    alt: "Spotless modern office - Commercial Cleaning service",
+    link: "/services#service-office",
+  },
+  {
     id: "carpet",
     title: "Carpet & Upholstery",
     shortDescription: "Deep steam cleaning to refresh fibers, remove stubborn stains, and eliminate hidden allergens.",
@@ -50,18 +58,9 @@ const services = [
 export function ServicesBlock() {
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
-          <RevealOnScroll 
-            key={service.id} 
-            delay={index * 0.1} 
-            variant="zoom"
-            className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] ${
-              index === 3 ? "sm:col-start-auto lg:ml-[16.666%] lg:mr-3" : ""
-            } ${
-              index === 4 ? "sm:col-start-auto lg:mr-[16.666%] lg:ml-3" : ""
-            }`}
-          >
+          <RevealOnScroll key={service.id} delay={index * 0.1} variant="zoom">
             <Link href={service.link}>
               <Card className="group relative overflow-hidden border border-border/50 rounded-3xl aspect-[4/3] cursor-pointer shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-primary/40 transition-all duration-500">
                 {/* Background Image (Top 70%) */}
