@@ -13,7 +13,6 @@ export function Contact() {
           
           <div>
             <RevealOnScroll delay={0.1}>
-              <h2 className="font-bold tracking-wider text-primary uppercase mb-3 text-[18px]">Get a Quote</h2>
               <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Need a custom cleaning solution?</h3>
               <p className="text-muted-foreground mb-10 text-[20px]">
                 While we offer standardized pricing for most residential and commercial properties, we know that some jobs require a tailored approach. Whether it's a post-renovation clean, a large warehouse, or a specific combination of services, we're here to help.
