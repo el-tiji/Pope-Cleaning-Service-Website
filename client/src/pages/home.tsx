@@ -15,15 +15,18 @@ export default function Home() {
         <RevealOnScroll variant="fade" delay={0.1}>
           <Hero />
         </RevealOnScroll>
-        <RevealOnScroll variant="rise" delay={0.2}>
-          <HowWeWork />
-        </RevealOnScroll>
-        <RevealOnScroll variant="slide-left" delay={0.2}>
-          <Contact />
-        </RevealOnScroll>
-        <RevealOnScroll variant="slide-right" delay={0.2}>
-          <FAQ />
-        </RevealOnScroll>
+        
+        <div className="space-y-24 md:space-y-32 mb-24 md:mb-32">
+          <RevealOnScroll variant="rise" delay={0.2}>
+            <HowWeWork />
+          </RevealOnScroll>
+          <RevealOnScroll variant="slide-left" delay={0.2}>
+            <Contact />
+          </RevealOnScroll>
+          <RevealOnScroll variant="slide-right" delay={0.2}>
+            <FAQ />
+          </RevealOnScroll>
+        </div>
       </main>
       <Footer />
       <Chatbot />
