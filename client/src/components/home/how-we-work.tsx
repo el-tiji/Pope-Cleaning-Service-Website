@@ -6,6 +6,33 @@ import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 import { ServicesBlock } from "./services";
 import { motion } from "framer-motion";
 
+const processSteps = [
+  {
+    title: "Tell us what you need",
+    description: "Choose a standard cleaning service, use our live estimator, or request a custom quote for a special job. Tell us about your property, suburb, timing and any areas that need extra attention.",
+    icon: <FileText className="w-7 h-7" />,
+    number: "01"
+  },
+  {
+    title: "Get a tailored estimate",
+    description: "We prepare an estimate based on your service type, property size, condition, extras and access requirements. For complex jobs, photos help us confirm the most accurate quote.",
+    icon: <Calculator className="w-7 h-7" />,
+    number: "02"
+  },
+  {
+    title: "We schedule your clean",
+    description: "Once the quote is confirmed, we arrange a suitable date and time across Perth metro. Our team arrives prepared with the equipment and products needed for the job.",
+    icon: <CalendarCheck className="w-7 h-7" />,
+    number: "03"
+  },
+  {
+    title: "We deliver the service",
+    description: "We complete the clean with attention to detail, focusing on the areas that matter most. If something reasonable is missed, our satisfaction guarantee means we'll work with you to make it right.",
+    icon: <Sparkles className="w-7 h-7" />,
+    number: "04"
+  }
+];
+
 export function HowWeWork() {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -26,7 +53,44 @@ export function HowWeWork() {
           </RevealOnScroll>
         </div>
 
-        {/* Our Services Block */}
+        {/* 4-Step Process Block */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-32">
+          {processSteps.map((step, index) => (
+            <RevealOnScroll key={index} delay={index * 0.15} variant="rise">
+              <div className="bg-white group h-full rounded-[2rem] p-8 border border-primary/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(47,127,209,0.12)] hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] transition-transform duration-500 group-hover:scale-110" />
+                
+                <div className="flex items-start justify-between mb-8 relative z-10">
+                  <div className="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-inner">
+                    {step.icon}
+                  </div>
+                  <span className="text-4xl font-display font-bold text-primary/10 group-hover:text-primary/20 transition-colors">
+                    {step.number}
+                  </span>
+                </div>
+                
+                <h4 className="text-xl font-bold text-secondary mb-4 relative z-10">
+                  {step.title}
+                </h4>
+                
+                <p className="text-muted-foreground leading-relaxed relative z-10 flex-grow">
+                  {step.description}
+                </p>
+                
+                {/* Decorative bottom border on hover */}
+                <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
+              </div>
+            </RevealOnScroll>
+          ))}
+        </div>
+
+        {/* Section transition for existing Services Block */}
+        <RevealOnScroll variant="fade" className="text-center mb-16">
+          <h3 className="text-3xl font-bold text-secondary mb-4">Our Cleaning Services at a Glance</h3>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Explore our main residential, commercial and specialty cleaning services below.</p>
+        </RevealOnScroll>
+
+        {/* Our Services Block (Existing) */}
         <div className="mb-32 md:mb-48">
           <ServicesBlock />
         </div>

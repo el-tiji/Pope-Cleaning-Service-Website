@@ -1,0 +1,142 @@
+You are updating the Home page of the Pope Cleaning Services website.
+
+GOAL
+Improve the existing “How We Work” section by adding a new explanatory 4-step process block directly under the “How We Work” heading and intro text, before the current service images/cards.
+
+IMPORTANT CONSTRAINTS
+
+* Do NOT remove the existing images/cards currently shown in the “How We Work” section.
+* Do NOT redesign the whole page.
+* Do NOT change the global navigation, footer, colours, typography or current layout style.
+* Keep the current Pope Cleaning Services visual identity:
+
+  * clean white/light background;
+  * navy and bright blue accents;
+  * rounded cards;
+  * soft shadows;
+  * premium, modern cleaning-service aesthetic;
+  * subtle 3D/tilt-shift style where appropriate.
+* The existing service images/cards currently inside “How We Work” must remain visible, but they should be moved lower on the page so the new 4-step process appears first.
+
+SECTION STRUCTURE
+
+Find the existing Home page section titled:
+
+“How We Work”
+
+Currently this section includes the title, intro text, and service image cards. Update it to this order:
+
+1. Section label / decorative icon if already present.
+2. H2 heading: “How We Work”
+3. Existing intro text, or improve slightly if needed:
+   “Family-owned in Perth, delivering detailed residential and commercial cleaning with clear pricing and easy booking. We focus on high-quality, detailed cleaning rather than rushing through jobs.”
+4. NEW 4-step process block.
+5. Existing service image/cards block, moved below the new process block.
+
+NEW 4-STEP PROCESS BLOCK
+
+Create a responsive 4-card process grid with these steps:
+
+Step 1 — Tell us what you need
+Copy:
+“Choose a standard cleaning service, use our live estimator, or request a custom quote for a special job. Tell us about your property, suburb, timing and any areas that need extra attention.”
+
+Step 2 — Get a tailored estimate
+Copy:
+“We prepare an estimate based on your service type, property size, condition, extras and access requirements. For complex jobs, photos help us confirm the most accurate quote.”
+
+Step 3 — We schedule your clean
+Copy:
+“Once the quote is confirmed, we arrange a suitable date and time across Perth metro. Our team arrives prepared with the equipment and products needed for the job.”
+
+Step 4 — We deliver the service
+Copy:
+“We complete the clean with attention to detail, focusing on the areas that matter most. If something reasonable is missed, our satisfaction guarantee means we’ll work with you to make it right.”
+
+VISUAL DESIGN REQUIREMENTS
+
+Design the 4-step process to match the current page style.
+
+Each step card should include:
+
+* A small step number badge, for example “01”, “02”, “03”, “04”.
+* A simple icon matching the step:
+
+  * Step 1: checklist / message / document icon.
+  * Step 2: calculator / quote / price tag icon.
+  * Step 3: calendar / clock icon.
+  * Step 4: sparkle / checkmark / clean house icon.
+* A bold title.
+* A short paragraph.
+* Rounded corners.
+* Soft shadow.
+* Light background.
+* Blue/navy text hierarchy.
+* Subtle hover effect:
+
+  * slight lift;
+  * shadow increase;
+  * optional blue border highlight.
+
+Layout:
+
+* Desktop: 4 cards in a row if space allows, or 2x2 grid if more balanced.
+* Tablet: 2 columns.
+* Mobile: 1 column stacked vertically.
+* Add enough spacing between the new process block and the existing service image/cards below.
+
+ANIMATION REQUIREMENTS
+
+Use the existing animation system if available, such as `RevealOnScroll`.
+
+* The new process block should animate in consistently with the rest of the Home page.
+* Each card may have a slight staggered reveal delay.
+* Do not add heavy animations.
+* Respect reduced motion settings if the project already supports them.
+
+EXISTING SERVICE IMAGES / CARDS
+
+After the new 4-step process block, keep the existing service image/cards that are already in the “How We Work” section.
+
+Before those existing cards, add a small transition heading or subheading such as:
+
+“Our Cleaning Services at a Glance”
+
+Optional supporting text:
+“Explore our main residential, commercial and specialty cleaning services below.”
+
+Do not rebuild those images/cards unless necessary. Reuse the current component, data, images and styling exactly as much as possible.
+
+CTA
+
+At the bottom of the whole “How We Work” section, keep or add the existing CTA area with the large centered button:
+
+“Book a Clean”
+
+Button behaviour:
+
+* It should link to the Book Now / estimator page.
+* Do not break any existing links.
+
+ACCESSIBILITY
+
+* Maintain proper heading hierarchy.
+* Icons should have accessible labels or be decorative with appropriate `aria-hidden`.
+* Cards should be readable with good colour contrast.
+* On mobile, text should remain comfortably readable.
+
+OUTPUT
+
+Update the Home page so the “How We Work” section appears in this order:
+
+1. “How We Work” heading and intro.
+2. New 4-step process cards:
+
+   * Tell us what you need
+   * Get a tailored estimate
+   * We schedule your clean
+   * We deliver the service
+3. Existing service images/cards moved below, not deleted.
+4. Existing or updated “Book a Clean” CTA.
+
+Make the update cleanly, without changing unrelated sections of the website.
