@@ -56,29 +56,47 @@ export function HowWeWork() {
         {/* 4-Step Process Block */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-32">
           {processSteps.map((step, index) => (
-            <RevealOnScroll key={index} delay={index * 0.15} variant="rise">
-              <div className="bg-white group h-full rounded-[2rem] p-8 border border-primary/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(47,127,209,0.12)] hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col">
+            <RevealOnScroll key={index} delay={index * 0.15} variant="rise" className="h-full">
+              <div 
+                className="bg-white group h-[300px] md:h-[350px] rounded-[2rem] p-8 border border-primary/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(47,127,209,0.12)] hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col justify-center items-center cursor-default"
+                tabIndex={0}
+              >
+                {/* Decorative background element */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] transition-transform duration-500 group-hover:scale-110" />
                 
-                <div className="flex items-start justify-between mb-8 relative z-10">
-                  <div className="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-inner">
-                    {step.icon}
-                  </div>
-                  <span className="text-4xl font-display font-bold text-primary/10 group-hover:text-primary/20 transition-colors">
-                    {step.number}
+                {/* DEFAULT STATE: Large Number (Centered) */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8 group-focus:opacity-0 group-focus:-translate-y-8 lg:block lg:flex hidden">
+                  <span className="text-[120px] font-black text-primary/10 tracking-tighter leading-none bg-clip-text text-transparent bg-gradient-to-b from-primary/30 to-primary/5 drop-shadow-sm">
+                    {step.number.replace('0', '')}
+                  </span>
+                  <span className="text-sm font-bold text-primary tracking-widest uppercase mt-4">
+                    Step {step.number.replace('0', '')}
                   </span>
                 </div>
-                
-                <h4 className="text-xl font-bold text-secondary mb-4 relative z-10">
-                  {step.title}
-                </h4>
-                
-                <p className="text-muted-foreground leading-relaxed relative z-10 flex-grow">
-                  {step.description}
-                </p>
+
+                {/* HOVER/MOBILE STATE: Content */}
+                <div className="flex flex-col h-full w-full relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] lg:opacity-0 lg:translate-y-12 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 lg:group-focus:opacity-100 lg:group-focus:translate-y-0">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-12 h-12 bg-blue-50 text-primary rounded-2xl flex items-center justify-center shadow-inner">
+                      {step.icon}
+                    </div>
+                    {/* Number badge for mobile view since the large number is hidden */}
+                    <span className="lg:hidden text-3xl font-display font-bold text-primary/20">
+                      {step.number}
+                    </span>
+                  </div>
+                  
+                  <h4 className="text-xl font-bold text-secondary mb-3">
+                    {step.title}
+                  </h4>
+                  
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
+                    {step.description}
+                  </p>
+                </div>
                 
                 {/* Decorative bottom border on hover */}
-                <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
+                <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full group-focus:w-full" />
               </div>
             </RevealOnScroll>
           ))}

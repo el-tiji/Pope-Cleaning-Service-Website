@@ -1,0 +1,243 @@
+You are updating the Home page of the Pope Cleaning Services website.
+
+GOAL
+Enhance the new “How We Work” 4-step process cards with an interactive hover animation.
+
+The cards should initially show a large central process number:
+1, 2, 3, 4
+
+When the user hovers over each card, the card should animate smoothly and reveal the step title and explanatory text.
+
+IMPORTANT CONSTRAINTS
+
+* Do NOT remove the existing “How We Work” section.
+* Do NOT remove the existing service images/cards below the process block.
+* Do NOT redesign the entire Home page.
+* Keep the current Pope Cleaning Services visual identity:
+
+  * white/light background;
+  * navy and blue accents;
+  * rounded cards;
+  * soft shadows;
+  * clean premium style;
+  * subtle 3D/tilt-shift feeling.
+* Only update the 4 process cards inside the “How We Work” section.
+
+TARGET SECTION
+Find the Home page section titled:
+
+“How We Work”
+
+Inside that section, locate the 4 process cards:
+
+1. Tell us what you need
+2. Get a tailored estimate
+3. We schedule your clean
+4. We deliver the service
+
+Update their visual and interaction behaviour as described below.
+
+CARD DEFAULT STATE
+
+Each card should initially show:
+
+* A large central number:
+
+  * Card 1: “1”
+  * Card 2: “2”
+  * Card 3: “3”
+  * Card 4: “4”
+* The number should be large, bold and centered.
+* Suggested style:
+
+  * font-size: 72px–110px on desktop;
+  * font-size: 56px–72px on mobile;
+  * font-weight: 800 or 900;
+  * colour: brand blue or navy;
+  * optional soft blue gradient;
+  * subtle shadow or glow;
+  * opacity high enough to be readable but still elegant.
+* Optionally include a small label under the number:
+
+  * “Step 1”
+  * “Step 2”
+  * “Step 3”
+  * “Step 4”
+* Keep the card background light, clean and consistent with the website.
+
+CARD HOVER STATE
+
+When the user hovers over a card on desktop:
+
+* Animate the large number out.
+* Reveal the step title and explanatory text.
+* The transition should feel premium and smooth.
+
+Use one of these animation approaches:
+
+Preferred option:
+
+* Number fades out and moves slightly upward.
+* Text fades in and rises into place from below.
+* Card slightly lifts upward.
+* Shadow becomes slightly stronger.
+* Optional thin blue border or soft blue glow appears.
+
+Suggested CSS behaviour:
+
+* default number:
+
+  * opacity: 1;
+  * transform: translateY(0) scale(1);
+* hover number:
+
+  * opacity: 0;
+  * transform: translateY(-16px) scale(0.92);
+* default content:
+
+  * opacity: 0;
+  * transform: translateY(18px);
+  * pointer-events: none;
+* hover content:
+
+  * opacity: 1;
+  * transform: translateY(0);
+  * pointer-events: auto;
+* card hover:
+
+  * transform: translateY(-6px);
+  * box-shadow stronger;
+  * border-color: brand blue / light blue.
+
+Animation duration:
+
+* 250–350ms.
+* Use ease-out or cubic-bezier for a smooth effect.
+* Avoid bouncy or distracting animations.
+
+TEXT CONTENT TO REVEAL ON HOVER
+
+Card 1
+Title:
+“Tell us what you need”
+
+Text:
+“Choose a standard service, use our live estimator, or request a custom quote. Tell us about your property, suburb, timing and any areas that need extra attention.”
+
+Card 2
+Title:
+“Get a tailored estimate”
+
+Text:
+“We prepare an estimate based on your service type, property size, condition, extras and access requirements. For complex jobs, photos help us quote more accurately.”
+
+Card 3
+Title:
+“We schedule your clean”
+
+Text:
+“Once your quote is confirmed, we arrange a suitable date and time across Perth metro. Our team arrives prepared with the right equipment and products.”
+
+Card 4
+Title:
+“We deliver the service”
+
+Text:
+“We complete the clean with attention to detail, focusing on the areas that matter most. Our satisfaction guarantee supports a reliable, high-quality result.”
+
+MOBILE / TOUCH BEHAVIOUR
+
+Because hover does not work reliably on mobile:
+
+* Do NOT hide the explanatory content completely on mobile.
+* On mobile, show the card title and text below the large number by default, or make the card expandable on tap.
+* Preferred mobile approach:
+
+  * Show the number at the top.
+  * Show title and short text below.
+  * No hover dependency.
+* Keep mobile layout clear and readable.
+
+LAYOUT REQUIREMENTS
+
+Desktop:
+
+* Use 4 cards in one row if space allows.
+* If the cards become too cramped, use a 2x2 grid.
+
+Tablet:
+
+* 2 columns.
+
+Mobile:
+
+* 1 column.
+
+Card style:
+
+* Rounded corners.
+* Soft shadow.
+* Light background.
+* Blue/navy typography.
+* Consistent spacing.
+* Minimum card height should be enough so the hover transition does not cause layout shift.
+* The card should not change height dramatically on hover.
+
+ACCESSIBILITY
+
+* The hover content should also be available on keyboard focus.
+* When a card receives focus via keyboard, reveal the text just like hover.
+* Use `:hover` and `:focus-within` states.
+* Do not rely only on mouse hover.
+* Respect `prefers-reduced-motion`.
+* If reduced motion is enabled, show content without animation or with minimal fade only.
+* Ensure colour contrast is readable.
+
+IMPLEMENTATION SUGGESTION
+
+If using React + Tailwind:
+
+* Create or update a reusable component:
+  `HowWeWorkStepCard`
+
+Props:
+
+* number
+* title
+* description
+* icon optional
+
+Render structure:
+
+* outer card container
+* default number layer
+* hover/focus content layer
+
+Use CSS classes or Tailwind group hover states:
+
+* `group`
+* `group-hover:opacity-0`
+* `group-hover:-translate-y-4`
+* `group-hover:opacity-100`
+* `group-hover:translate-y-0`
+* `group-focus-within:...`
+
+Make sure the animation is smooth and does not break existing RevealOnScroll animations.
+
+DO NOT CHANGE
+
+* Do not remove the current service images/cards below the How We Work process.
+* Do not change the Book a Clean CTA.
+* Do not change unrelated Home sections.
+* Do not change global branding.
+* Do not alter the calculator or other pages.
+
+OUTPUT
+
+Update the “How We Work” 4-step process so that:
+
+1. Each card initially displays a large central number.
+2. On hover/focus, the number transitions away.
+3. The step title and explanation animate into view.
+4. On mobile, users can still read the full content without needing hover.
+5. The design remains consistent with the existing Pope Cleaning Services website.
