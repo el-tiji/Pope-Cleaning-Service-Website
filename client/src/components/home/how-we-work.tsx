@@ -27,7 +27,7 @@ export function HowWeWork() {
         </div>
 
         {/* Our Services Block */}
-        <div className="mb-24">
+        <div className="mb-32 md:mb-48">
           <ServicesBlock />
         </div>
 
