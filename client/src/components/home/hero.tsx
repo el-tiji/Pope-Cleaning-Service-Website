@@ -68,8 +68,8 @@ export function Hero() {
             
             <RevealOnScroll delay={0.2}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-secondary leading-[1.1]">
-                Fresh. <span className="text-gradient">Spotless.</span> <br />
-                Perfectly Done.
+                Fresh, <span className="text-gradient">Spotless</span> <br />
+                Cleaning for Perth Homes & Businesses
               </h1>
             </RevealOnScroll>
             
