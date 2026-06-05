@@ -105,7 +105,7 @@ export function HowWeWork() {
         {/* Section transition for existing Services Block */}
         <RevealOnScroll variant="fade" className="text-center mb-16">
           <h3 className="font-bold text-secondary mb-4 text-[48px]">Our Cleaning Services at a Glance</h3>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Explore our main residential, commercial and specialty cleaning services below.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-[20px]">Explore our main residential, commercial and specialty cleaning services below.</p>
         </RevealOnScroll>
 
         {/* Our Services Block (Existing) */}
