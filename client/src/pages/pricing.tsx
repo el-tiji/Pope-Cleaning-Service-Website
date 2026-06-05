@@ -31,8 +31,8 @@ export default function PricingPage() {
         
         {/* 1) HERO SECTION */}
         <section className="container mx-auto px-4 pt-16 pb-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-            <RevealOnScroll className="order-2 lg:order-1">
+          <div className="max-w-4xl mx-auto text-center">
+            <RevealOnScroll>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-secondary mb-6 leading-tight">
                 How Our Cleaning Prices Are Calculated
               </h1>
@@ -42,16 +42,6 @@ export default function PricingPage() {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Every home or office is different. The live estimated price in our booking section uses the information you provide about size, rooms, extras and access to give you a customized, accurate quote before we even step through the door.
               </p>
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.2} className="order-1 lg:order-2 relative aspect-square md:aspect-[4/3] lg:aspect-square rounded-[2.5rem] overflow-hidden bg-muted/20 flex items-center justify-center shadow-2xl">
-              <img
-                src="/assets/tiltshift/pricing/hero.png"
-                alt="Bright, tilt-shift scene of a very clean Perth-style home with a timer representing efficiency"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80";
-                }}
-              />
             </RevealOnScroll>
           </div>
         </section>
