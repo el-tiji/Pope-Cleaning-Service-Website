@@ -9,23 +9,19 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/">
           <a className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary-foreground transform group-hover:rotate-12 transition-transform duration-300 overflow-hidden shadow-sm">
+            <div className="h-12 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
               <img 
                 src="/assets/brand/pope-cleaning-logo.png" 
                 alt="Pope Cleaning Services logo" 
-                className="w-full h-full object-contain p-1"
+                className="h-full w-auto object-contain"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';
                   (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
                 }}
               />
-              <div className="hidden w-full h-full bg-primary flex items-center justify-center text-primary-foreground">
+              <div className="hidden h-full aspect-square bg-primary flex items-center justify-center text-primary-foreground rounded-xl">
                 <span className="font-display font-bold text-xl">P</span>
               </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-xl leading-none tracking-tight text-secondary">Pope</span>
-              <span className="text-xs font-semibold text-primary uppercase tracking-wider">Cleaning Services</span>
             </div>
           </a>
         </Link>

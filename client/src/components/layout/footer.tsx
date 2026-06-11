@@ -27,24 +27,20 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
             <Link href="/">
-              <a className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+              <a className="flex items-center gap-2 mb-6 group">
+                <div className="h-14 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
                   <img 
                     src="/assets/brand/pope-cleaning-logo.png" 
                     alt="Pope Cleaning Services logo" 
-                    className="w-full h-full object-contain p-1"
+                    className="h-full w-auto object-contain bg-white rounded-lg p-1"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = 'none';
                       (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
                     }}
                   />
-                  <div className="hidden w-full h-full bg-primary flex items-center justify-center text-primary-foreground">
+                  <div className="hidden h-full aspect-square bg-primary flex items-center justify-center text-primary-foreground rounded-xl">
                     <span className="font-display font-bold text-2xl">P</span>
                   </div>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-display font-bold text-xl leading-none tracking-tight text-white">{businessInfo.businessName.split(' ')[0]}</span>
-                  <span className="text-xs font-semibold text-accent uppercase tracking-wider">Cleaning Services</span>
                 </div>
               </a>
             </Link>
