@@ -303,7 +303,7 @@ export default function PricingPage() {
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <RevealOnScroll>
-                <h2 className="text-3xl md:text-4xl font-bold mb-8">How to Get the Most Accurate Estimate</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#ffffff]">How to Get the Most Accurate Estimate</h2>
                 <ul className="space-y-6">
                   <li className="flex items-start gap-4">
                     <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><FileText className="w-4 h-4 text-accent" /></div>
