@@ -30,9 +30,9 @@ export function Footer() {
               <a className="flex items-center gap-2 mb-6 group">
                 <div className="h-14 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
                   <img 
-                    src="/assets/brand/pope-cleaning-logo.png" 
+                    src="/assets/brand/pope-cleaning-logo-white.png" 
                     alt="Pope Cleaning Services logo" 
-                    className="h-full w-auto object-contain bg-white rounded-lg p-1"
+                    className="h-full w-auto object-contain"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = 'none';
                       (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
