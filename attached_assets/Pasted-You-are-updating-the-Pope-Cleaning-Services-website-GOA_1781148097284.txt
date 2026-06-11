@@ -1,0 +1,230 @@
+You are updating the Pope Cleaning Services website.
+
+GOAL
+Update the website colour palette so it is more consistent with the official Pope Cleaning Services logo.
+
+The key colour to use is:
+
+`#00275F`
+
+This colour should become the main dark navy brand colour, especially for the footer background, so the footer matches the dark blue background/logo tone and does not appear as a different blue.
+
+IMPORTANT CONSTRAINTS
+
+* Do NOT redesign the whole website.
+* Do NOT change the layout, page structure, navigation, forms, cards or animations unless needed for colour consistency.
+* Do NOT replace the current clean blue/white brand style.
+* Only update colours where necessary to improve consistency with the logo.
+* Keep the website premium, clean, modern and trustworthy.
+
+PRIMARY CHANGE — FOOTER
+
+Find the Footer component.
+
+Update the footer background colour to:
+
+`#00275F`
+
+The current footer appears to use a different navy/blue, which makes the logo and footer feel visually disconnected. The new footer should use the same deep navy tone as the logo background.
+
+Footer requirements:
+
+* Footer background: `#00275F`
+* Footer text: white or very light blue/grey for readability.
+* Footer headings: white.
+* Footer links: light blue or white, with a hover state using the brand bright blue.
+* Icons: light blue or white.
+* Dividers/borders inside the footer: use a subtle transparent white or muted light blue.
+* Social icons: use white/light blue icons inside subtle rounded containers.
+* Make sure all text has strong contrast against `#00275F`.
+
+Suggested footer colours:
+
+* Background: `#00275F`
+* Main text: `#FFFFFF`
+* Secondary text: `#D8E9FF`
+* Muted text: `#B7D4F5`
+* Link hover: `#7EC8FF`
+* Footer border/divider: `rgba(255, 255, 255, 0.12)`
+
+GLOBAL PALETTE UPDATE
+
+Create or update a central colour system if the project has one.
+
+Use this refined palette:
+
+```ts
+const brandColors = {
+  navyDeep: "#00275F",
+  navy: "#004170",
+  bluePrimary: "#2F7FD1",
+  blueBright: "#2E86DE",
+  blueLight: "#7EC8FF",
+  blueSoft: "#EAF5FF",
+  background: "#FFFFFF",
+  sectionBackground: "#F5F7FA",
+  textPrimary: "#00275F",
+  textSecondary: "#004170",
+  borderLight: "#D8E9FF",
+  success: "#00C875",
+  warningSoft: "#FFE6CC"
+};
+```
+
+If the project uses Tailwind, add these colours to the Tailwind theme if appropriate, for example:
+
+* `brand-navy-deep: #00275F`
+* `brand-navy: #004170`
+* `brand-blue: #2F7FD1`
+* `brand-blue-light: #7EC8FF`
+* `brand-blue-soft: #EAF5FF`
+
+If the project does not use Tailwind theme tokens, define CSS variables globally:
+
+```css
+:root {
+  --brand-navy-deep: #00275F;
+  --brand-navy: #004170;
+  --brand-blue: #2F7FD1;
+  --brand-blue-bright: #2E86DE;
+  --brand-blue-light: #7EC8FF;
+  --brand-blue-soft: #EAF5FF;
+  --brand-bg: #FFFFFF;
+  --brand-section-bg: #F5F7FA;
+  --brand-text-primary: #00275F;
+  --brand-text-secondary: #004170;
+  --brand-border-light: #D8E9FF;
+}
+```
+
+Then replace scattered hardcoded dark blues with the new tokens only where needed.
+
+WHERE TO APPLY `#00275F`
+
+Use `#00275F` for:
+
+* Footer background.
+* Strong dark headings where appropriate.
+* Main brand text colour if currently inconsistent.
+* Dark navy cards such as pricing summary sidebars, but only if they currently clash with the logo.
+* Deep navy overlays on images if needed.
+
+Do NOT overuse `#00275F` everywhere. It should anchor the brand, not make the site feel too dark.
+
+WHERE TO KEEP BRIGHT BLUE
+
+Keep the brighter blue for:
+
+* Primary buttons.
+* CTA buttons.
+* Active navigation states.
+* Icons.
+* Progress bars.
+* Highlights.
+* Pills and badges.
+* Hover effects.
+
+Recommended CTA/button colour:
+
+* Primary button background: `#2F7FD1` or current bright blue if already working.
+* Primary button hover: slightly darker, such as `#1F6FC0`.
+* Text on buttons: white.
+
+WHERE TO KEEP LIGHT BLUE
+
+Use light blue for:
+
+* Icon backgrounds.
+* Soft section gradients.
+* Hover glows.
+* Small decorative bubbles/sparkles.
+* Borders on selected cards.
+* Background accents.
+
+Recommended light colours:
+
+* Soft background: `#EAF5FF`
+* Light border: `#D8E9FF`
+* Accent: `#7EC8FF`
+
+PAGE-WIDE CONSISTENCY CHECK
+
+After updating the footer, review the whole site for colour inconsistencies.
+
+Check:
+
+* Header/nav buttons.
+* Hero text.
+* CTA buttons.
+* Service cards.
+* Pricing Info dark sections.
+* Book Now calculator sidebar.
+* Reviews dark background.
+* About Us dark sections.
+* Footer.
+
+If any dark navy section uses a blue that visibly clashes with `#00275F`, update it to either:
+
+* `#00275F`, or
+* a subtle gradient using `#00275F` and `#004170`.
+
+Suggested dark gradient:
+
+```css
+background: linear-gradient(135deg, #00275F 0%, #004170 100%);
+```
+
+Use this gradient only for large dark premium sections where a flat colour feels too heavy.
+
+FOOTER SPECIFIC DESIGN POLISH
+
+In the footer:
+
+* Ensure the logo is clearly visible.
+* If the logo includes dark navy text that disappears on the dark background, use one of these approaches:
+
+  1. Place the logo inside a small white rounded container.
+  2. Use the icon/mark only with white text beside it.
+  3. Use a white/light version of the logo if available.
+* Do not place dark logo text directly on `#00275F` if it becomes unreadable.
+
+Footer layout should remain the same:
+
+* Brand column.
+* Services links.
+* Company links.
+* Contact details.
+* Social icons.
+* ABN / copyright area if present.
+
+ACCESSIBILITY
+
+Ensure all colour combinations pass readable contrast:
+
+* White text on `#00275F` is preferred.
+* Light blue text must remain readable.
+* Avoid low-contrast blue-on-navy combinations.
+* Footer links should be clearly visible.
+* Hover states should be obvious.
+
+DO NOT
+
+* Do not change the main layout.
+* Do not replace all blues randomly.
+* Do not make the website monochrome.
+* Do not change typography.
+* Do not remove animations.
+* Do not change business content.
+* Do not alter form logic.
+* Do not change pricing calculator behaviour.
+
+OUTPUT
+
+Implement:
+
+1. Footer background changed to `#00275F`.
+2. Footer text, links, icons and dividers adjusted for contrast.
+3. Central brand colour tokens or CSS variables updated.
+4. Any obviously clashing dark-blue sections adjusted to match the logo palette.
+5. CTA buttons and light-blue accents preserved.
+6. Final site remains visually consistent with the Pope Cleaning Services logo and current premium website design.

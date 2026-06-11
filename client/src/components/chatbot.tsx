@@ -191,7 +191,7 @@ export function Chatbot() {
         )}
       >
         {/* Header */}
-        <div className="bg-secondary p-4 flex items-center justify-between text-white">
+        <div className="p-4 flex items-center justify-between text-white" style={{ backgroundColor: 'var(--brand-navy-deep)' }}>
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center border border-white/20">
@@ -228,8 +228,8 @@ export function Chatbot() {
                   {/* Avatar */}
                   <div className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-auto",
-                    msg.type === "user" ? "bg-primary text-white" : "bg-secondary text-white"
-                  )}>
+                    msg.type === "user" ? "bg-primary text-white" : "text-white"
+                  )} style={msg.type !== "user" ? { backgroundColor: 'var(--brand-navy-deep)' } : undefined}>
                     {msg.type === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                   </div>
 

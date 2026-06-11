@@ -153,7 +153,7 @@ export default function PricingPage() {
         {/* 3) OUR STANDARD-BASED PRICE EXAMPLE */}
         <section className="container mx-auto px-4 py-24">
           <RevealOnScroll>
-            <div className="bg-secondary rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl max-w-5xl mx-auto">
+            <div className="rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl max-w-5xl mx-auto" style={{ background: 'linear-gradient(135deg, var(--brand-navy-deep) 0%, var(--brand-navy) 100%)' }}>
               {/* Background Accents */}
               <div className="absolute top-0 right-0 p-8 opacity-5 transform translate-x-8 -translate-y-8">
                 <Calculator className="w-64 h-64" />
@@ -299,7 +299,7 @@ export default function PricingPage() {
         </section>
 
         {/* 6) HOW TO GET THE MOST ACCURATE ESTIMATE */}
-        <section className="bg-secondary text-white py-24">
+        <section className="text-white py-24" style={{ background: 'linear-gradient(135deg, var(--brand-navy-deep) 0%, var(--brand-navy) 100%)' }}>
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <RevealOnScroll>

@@ -40,13 +40,26 @@
 
 /* LIGHT MODE ONLY - Brand colors applied */
 :root {
+  /* New Official Brand Palette */
+  --brand-navy-deep: #00275F;
+  --brand-navy: #004170;
+  --brand-blue: #2F7FD1;
+  --brand-blue-bright: #2E86DE;
+  --brand-blue-light: #7EC8FF;
+  --brand-blue-soft: #EAF5FF;
+  --brand-bg: #FFFFFF;
+  --brand-section-bg: #F5F7FA;
+  --brand-text-primary: #00275F;
+  --brand-text-secondary: #004170;
+  --brand-border-light: #D8E9FF;
+
   /* Brand Palettes */
   /* Primary blue (#2F7FD1) */
   --primary: 210 66% 50%;
   --primary-foreground: 0 0% 100%;
   
-  /* Dark navy/blue (#004170) */
-  --secondary: 205 100% 22%;
+  /* Dark navy/blue (#00275F) - Updated to match logo */
+  --secondary: 215 100% 19%;
   --secondary-foreground: 0 0% 100%;
   
   /* Light bubble blue (#7EC8FF) */
