@@ -1,0 +1,376 @@
+You are updating the Pope Cleaning Services website.
+
+GOAL
+Update the website with the official company information, main logo, owner/operator details, manager/operator details, contact details and business identity based on the provided Pope Cleaning Services documents.
+
+IMPORTANT CONSTRAINTS
+
+* Do NOT redesign the whole website.
+* Do NOT change the current visual identity, layout, colours, typography, cards, animations or page structure unless needed to correctly display the updated information.
+* Keep the current modern blue/white Pope Cleaning Services style.
+* Keep the current 3D / tilt-shift visual direction already used on the site.
+* Only update business information, logo placement, team/owner details, contact details and related content.
+* Use a single source of truth for company information so future updates are easy.
+
+SOURCE OF TRUTH
+Use the uploaded Pope Cleaning Services documents and business card information as the reference.
+
+OFFICIAL COMPANY DETAILS TO USE
+
+Business name:
+Pope Cleaning Services
+
+Location:
+Perth, Western Australia
+
+ABN:
+47 915 716 425
+
+Website:
+[www.popecleaningservices.com.au](http://www.popecleaningservices.com.au)
+
+Facebook:
+https://www.facebook.com/popecleaning
+
+Primary phone:
+0423 258 795
+
+Secondary phone:
+0431 450 293
+
+Email:
+Use `popecleaningservices@hotmail.com` as the main website email unless the business owner confirms otherwise.
+
+Important note:
+The business card may show a slightly different email (`popecleaning@hotmail.com`). Do not display both emails unless instructed. Add a TODO comment in the business info config reminding the admin to confirm the final email before production.
+
+PEOPLE / TEAM DETAILS
+
+Add or update the people in charge of the company:
+
+1. Kevin Pope
+   Role:
+   Owner / Operator
+
+Phone:
+0423 258 795
+
+Suggested short description:
+“Kevin Pope is the Owner and Operator of Pope Cleaning Services, coordinating professional cleaning work across Perth with a focus on quality, reliability and customer satisfaction.”
+
+Associated service strengths:
+
+* Carpet steam cleaning
+* Tile and grout cleaning
+* Couch and upholstery cleaning
+* Residential and commercial cleaning
+
+2. Genny Pope
+   Role:
+   Manager / Operator
+
+Phone:
+0431 450 293
+
+Suggested short description:
+“Genny Pope is the Manager and Operator of Pope Cleaning Services, helping coordinate bookings, customer communication and smooth service delivery for residential and commercial clients.”
+
+Associated service strengths:
+
+* Residential and commercial cleaning
+* Vacate / end of lease cleaning
+* Office cleaning
+* Customer coordination
+
+LOGO UPDATE
+
+Use the official Pope Cleaning Services logo from the uploaded company documents.
+
+Logo requirements:
+
+* Update the main site logo in:
+
+  * Navbar / header
+  * Footer
+  * About Us page
+  * Contact / Booking page
+  * Any business information cards
+  * Any printable or shareable sections if present
+* If the current logo is temporary, replace it with the official logo asset.
+* If the official logo file is not yet extracted, create a clear asset placeholder:
+  `/assets/brand/pope-cleaning-logo.png`
+* Make sure logo alt text is:
+  “Pope Cleaning Services logo”
+* Keep logo proportions correct.
+* Do not stretch or distort the logo.
+* Use the logo consistently across the website.
+
+CREATE A CENTRAL BUSINESS CONFIG FILE
+
+Create or update a single central file, for example:
+
+`client/src/config/businessInfo.ts`
+
+or the closest equivalent in the current codebase.
+
+The file should export an object similar to:
+
+```ts
+export const businessInfo = {
+  businessName: "Pope Cleaning Services",
+  location: "Perth, Western Australia",
+  serviceArea: "Perth metro and surrounding suburbs",
+  abn: "47 915 716 425",
+  website: "www.popecleaningservices.com.au",
+  facebookUrl: "https://www.facebook.com/popecleaning",
+  email: "popecleaningservices@hotmail.com",
+  phonePrimary: "0423 258 795",
+  phoneSecondary: "0431 450 293",
+  whatsappPrimary: "0423 258 795",
+  whatsappSecondary: "0431 450 293",
+  people: [
+    {
+      name: "Kevin Pope",
+      role: "Owner / Operator",
+      phone: "0423 258 795",
+      description:
+        "Kevin Pope is the Owner and Operator of Pope Cleaning Services, coordinating professional cleaning work across Perth with a focus on quality, reliability and customer satisfaction.",
+      focusAreas: [
+        "Carpet steam cleaning",
+        "Tile and grout cleaning",
+        "Couch and upholstery cleaning",
+        "Residential and commercial cleaning"
+      ]
+    },
+    {
+      name: "Genny Pope",
+      role: "Manager / Operator",
+      phone: "0431 450 293",
+      description:
+        "Genny Pope is the Manager and Operator of Pope Cleaning Services, helping coordinate bookings, customer communication and smooth service delivery for residential and commercial clients.",
+      focusAreas: [
+        "Residential and commercial cleaning",
+        "Vacate / end of lease cleaning",
+        "Office cleaning",
+        "Customer coordination"
+      ]
+    }
+  ]
+};
+```
+
+Then replace hardcoded placeholder business information across the site with values imported from this config.
+
+PAGES / SECTIONS TO UPDATE
+
+1. Navbar / Header
+
+* Use the official Pope Cleaning Services logo.
+* Keep the current navigation style.
+* Do not change the menu layout.
+* Ensure the logo links back to Home.
+
+2. Footer
+   Update all footer contact details:
+
+* Business name
+* ABN
+* Phone numbers
+* Email
+* Website
+* Facebook
+* Service area: Perth metro and surrounding suburbs
+
+Remove placeholder data such as:
+
+* 1300 000 000
+* [hello@popecleaning.com.au](mailto:hello@popecleaning.com.au)
+* fake social links
+* fake contact details
+
+3. About Us Page
+   Update the About Us page to include an official “Our Team” or “People Behind Pope Cleaning Services” section.
+
+Suggested section title:
+“Meet the People Behind Pope Cleaning Services”
+
+Suggested intro:
+“Pope Cleaning Services is a family-run cleaning business based in Perth, Western Australia. Kevin and Genny Pope coordinate the business with a focus on reliable service, detailed cleaning and customer satisfaction.”
+
+Create two team cards:
+
+Card 1:
+Kevin Pope
+Owner / Operator
+Phone: 0423 258 795
+Description:
+“Kevin leads the operational side of Pope Cleaning Services, helping deliver reliable carpet, tile, upholstery, residential and commercial cleaning services across Perth.”
+
+Card 2:
+Genny Pope
+Manager / Operator
+Phone: 0431 450 293
+Description:
+“Genny supports customer communication, booking coordination and smooth service delivery, helping clients receive a professional and stress-free cleaning experience.”
+
+Design:
+
+* Use the existing card style.
+* Rounded corners.
+* Soft shadows.
+* Blue/navy accents.
+* Optional circular avatar placeholder or initials:
+
+  * KP
+  * GP
+* Do not invent personal photos unless real photos are provided.
+* If no personal photos are available, use clean initials or professional icon placeholders.
+
+4. Contact / Booking Page
+   Update contact details:
+
+* Primary phone: 0423 258 795
+* Secondary phone: 0431 450 293
+* Email: [popecleaningservices@hotmail.com](mailto:popecleaningservices@hotmail.com)
+* Facebook: https://www.facebook.com/popecleaning
+* Website: [www.popecleaningservices.com.au](http://www.popecleaningservices.com.au)
+* ABN: 47 915 716 425
+
+If WhatsApp links are used:
+
+* Format phone numbers for Australian WhatsApp links:
+
+  * +61 423 258 795
+  * +61 431 450 293
+* Use proper clickable links:
+
+  * `https://wa.me/61423258795`
+  * `https://wa.me/61431450293`
+
+5. Book Now / Quote Forms
+   Where forms mention admin contact, notification email or customer support:
+
+* Use the email from the business config.
+* Use Pope Cleaning Services as sender/display name where possible.
+* Do not display fake admin emails.
+
+6. Reviews / Trust Sections
+   Where the website shows trust or company details, use verified wording:
+
+* “Family-run business in Perth”
+* “Owner-operated service”
+* “Residential and commercial cleaning”
+* “Serving Perth homes and businesses”
+* “Satisfaction guarantee”
+* “Obligation-free quotes”
+
+Avoid unverified numbers unless confirmed:
+
+* Do not display “500+ happy locals”
+* Do not display “2k+ homes cleaned”
+* Do not display incorrect years of experience unless confirmed.
+
+7. Services Information
+   Ensure the official services listed across the website include:
+
+* Residential cleaning
+* Commercial cleaning
+* Office cleaning
+* End of lease / vacate cleaning
+* Carpet steam cleaning
+* Tile and grout cleaning
+* Pressure cleaning
+* Couch and upholstery cleaning
+* Car detailing if still offered
+* Garden maintenance only if confirmed as part of end-of-lease or add-on services
+
+COPY UPDATES
+
+Replace old or unprofessional wording with polished website copy.
+
+Old concept:
+“WE MONEY BACK GUARANTEE ALL JOBS IF NOT SATISFIED”
+
+Use instead:
+“We offer a satisfaction guarantee. If something reasonable is missed, we’ll work with you to make it right.”
+
+Old concept:
+“Thanks in advance to choose Pope Cleaning”
+
+Use instead:
+“Thank you for choosing Pope Cleaning Services and for giving us the opportunity to earn your business.”
+
+Suggested About copy:
+“Pope Cleaning Services is a family-run cleaning business based in Perth, Western Australia. For over 7 years, the team has helped local homes and businesses keep their spaces clean, fresh and professionally maintained.”
+
+If the exact years of experience are not confirmed, use:
+“Pope Cleaning Services has built trusted cleaning experience across Perth homes and businesses.”
+
+DESIGN REQUIREMENTS
+
+Keep all new business/team information visually aligned with the current website:
+
+* Use navy headings.
+* Use brand blue accents.
+* Use light blue icon backgrounds.
+* Use rounded white cards.
+* Use soft shadows.
+* Maintain consistent spacing.
+* Use the same font family currently used across the site.
+* Cards should feel premium, modern and trustworthy.
+
+TEAM CARD DESIGN IDEA
+
+Each team card should include:
+
+* Initial badge or icon:
+
+  * KP for Kevin Pope
+  * GP for Genny Pope
+* Name
+* Role
+* Phone
+* Short description
+* Focus areas as small blue pill badges
+
+Example visual structure:
+
+[KP]
+Kevin Pope
+Owner / Operator
+0423 258 795
+
+Carpet steam cleaning · Tile & grout · Upholstery · Commercial cleaning
+
+ACCESSIBILITY
+
+* All phone numbers should be clickable on mobile.
+* Email should use `mailto:`.
+* Facebook should open correctly.
+* Logo must have alt text.
+* Team cards should be readable on mobile.
+* Ensure colour contrast remains strong.
+
+DO NOT
+
+* Do not invent new people.
+* Do not invent new numbers.
+* Do not invent new testimonials.
+* Do not invent awards, certifications or police checks unless already used and confirmed by the business owner.
+* Do not change the whole website structure.
+* Do not remove existing pages.
+* Do not replace the current modern style.
+
+OUTPUT
+
+Implement the following:
+
+1. Central business information config.
+2. Official logo replacement across navbar, footer and key pages.
+3. Updated footer contact information.
+4. Updated About Us team section with Kevin Pope and Genny Pope.
+5. Updated Contact / Booking details.
+6. Updated WhatsApp links.
+7. Removal of placeholder phone/email/contact data.
+8. Clean, professional copy aligned with the existing Pope Cleaning Services website.
+9. Consistent design using the current blue/white premium brand style.

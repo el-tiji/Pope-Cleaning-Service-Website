@@ -1,8 +1,9 @@
 import { ASSETS } from "@/lib/assets";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
+import { businessInfo } from "@/config/businessInfo";
 
 export function Contact() {
   return (
@@ -27,8 +28,40 @@ export function Contact() {
                   Tell us exactly what you need and our team will prepare a personalized estimate based on your specific requirements.
                 </p>
                 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                  <a href={`tel:${businessInfo.phonePrimary.replace(/\s+/g, '')}`} className="flex items-center gap-3 p-4 rounded-2xl bg-muted/30 border border-border hover:border-primary/30 transition-colors group">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground font-semibold">Call Kevin</p>
+                      <p className="font-bold text-secondary">{businessInfo.phonePrimary}</p>
+                    </div>
+                  </a>
+                  
+                  <a href={`tel:${businessInfo.phoneSecondary.replace(/\s+/g, '')}`} className="flex items-center gap-3 p-4 rounded-2xl bg-muted/30 border border-border hover:border-primary/30 transition-colors group">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground font-semibold">Call Genny</p>
+                      <p className="font-bold text-secondary">{businessInfo.phoneSecondary}</p>
+                    </div>
+                  </a>
+                  
+                  <a href={`mailto:${businessInfo.email}`} className="flex items-center gap-3 p-4 rounded-2xl bg-muted/30 border border-border hover:border-primary/30 transition-colors group sm:col-span-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground font-semibold">Email Us</p>
+                      <p className="font-bold text-secondary truncate">{businessInfo.email}</p>
+                    </div>
+                  </a>
+                </div>
+                
                 <Link href="/services#services-custom-quote">
-                  <Button className="w-full sm:w-auto h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2 hover:translate-y-[-2px] transition-transform group">
+                  <Button className="w-full h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2 hover:translate-y-[-2px] transition-transform group">
                     Go to Custom Quote Form <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -50,7 +83,7 @@ export function Contact() {
                   </div>
                   <h4 className="font-extrabold text-2xl mb-3 text-center text-primary">Service Area</h4>
                   <p className="text-secondary/80 text-center text-[16px] leading-relaxed font-medium">
-                    We proudly serve the entire <span className="text-primary font-bold">Perth</span> metropolitan area, from Joondalup to Mandurah.
+                    We proudly serve <span className="text-primary font-bold">{businessInfo.serviceArea}</span>.
                   </p>
                 </div>
               </div>

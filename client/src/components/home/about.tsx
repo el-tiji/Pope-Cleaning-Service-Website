@@ -1,6 +1,7 @@
 import { ASSETS } from "@/lib/assets";
 import { Check } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
+import { businessInfo } from "@/config/businessInfo";
 
 export function About() {
   return (
@@ -30,21 +31,21 @@ export function About() {
               <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6">A cleaner approach to your everyday life.</h3>
               
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Founded in Perth, Pope Cleaning Services began with a simple mission: to provide a level of cleanliness that feels genuinely refreshing. We don't just wipe surfaces; we restore environments.
+                {businessInfo.businessName} is a family-run cleaning business based in {businessInfo.location}. For over 7 years, the team has helped local homes and businesses keep their spaces clean, fresh and professionally maintained.
               </p>
               
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Our team consists of highly trained professionals who treat your space with the same respect and care as their own homes.
+                Our team consists of highly trained professionals who treat your space with the same respect and care as their own homes, ensuring satisfaction on every job.
               </p>
             </RevealOnScroll>
             
             <RevealOnScroll delay={0.3}>
               <ul className="space-y-4 mb-10">
                 {[
-                  "Fully insured and police-cleared team members",
-                  "Eco-friendly, safe cleaning products available",
-                  "Satisfaction guaranteed on every job",
-                  "Flexible scheduling to fit your lifestyle"
+                  "Family-run business in Perth",
+                  "Owner-operated service",
+                  "Residential and commercial cleaning",
+                  "Satisfaction guarantee"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="mt-1 bg-primary/10 p-1 rounded-full shrink-0">
@@ -59,12 +60,12 @@ export function About() {
             <RevealOnScroll delay={0.4}>
               <div className="grid grid-cols-2 gap-6 pt-8 border-t border-border">
                 <div>
-                  <h4 className="text-4xl font-display font-bold text-primary mb-1">5+</h4>
+                  <h4 className="text-4xl font-display font-bold text-primary mb-1">7+</h4>
                   <p className="text-sm text-muted-foreground font-medium">Years Experience</p>
                 </div>
                 <div>
-                  <h4 className="text-4xl font-display font-bold text-primary mb-1">2k+</h4>
-                  <p className="text-sm text-muted-foreground font-medium">Homes Cleaned</p>
+                  <h4 className="text-4xl font-display font-bold text-primary mb-1">100%</h4>
+                  <p className="text-sm text-muted-foreground font-medium">Satisfaction Focus</p>
                 </div>
               </div>
             </RevealOnScroll>

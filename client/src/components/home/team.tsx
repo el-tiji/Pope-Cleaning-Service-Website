@@ -1,63 +1,58 @@
-import { ASSETS } from "@/lib/assets";
-import { Button } from "@/components/ui/button";
+import { businessInfo } from "@/config/businessInfo";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
+import { Phone } from "lucide-react";
 
 export function Team() {
   return (
-    <section id="careers" className="py-24 bg-background relative overflow-hidden">
+    <section id="team" className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <RevealOnScroll>
-          <div className="bg-secondary text-white rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[100px] transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-              <div>
-                <h2 className="font-bold tracking-wider uppercase mb-3 text-[#ffffff] text-[24px]">Work With Us</h2>
-                <h3 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Join the Pope Cleaning Family</h3>
-                
-                <p className="text-lg text-white/80 mb-8 leading-relaxed">
-                  We're always looking for dedicated, detail-oriented individuals to join our growing team in Perth. We offer competitive rates, flexible hours, and a supportive environment where your hard work is truly valued.
-                </p>
-                
-                <ul className="space-y-4 mb-10">
-                  {[
-                    "Competitive hourly rates & bonuses",
-                    "Flexible scheduling (part-time & full-time)",
-                    "All equipment & eco-friendly supplies provided",
-                    "Comprehensive training program"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-accent shrink-0"></div>
-                      <span className="font-medium text-white/90">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <Button size="lg" className="bg-white text-secondary hover:bg-accent hover:text-secondary rounded-full h-14 px-8 text-base font-bold shadow-lg shadow-black/20 transition-all">
-                  View Open Positions
-                </Button>
-              </div>
-              
-              <div className="relative group">
-                <div className="absolute top-8 left-8 z-20 flex items-center gap-3 bg-white/90 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-2xl border border-white/50">
-                  <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
-                    <span className="font-display font-bold text-2xl">P</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-display font-bold text-xl leading-none tracking-tight text-secondary">Pope</span>
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Cleaning Services</span>
-                  </div>
-                </div>
-                <img 
-                  src={ASSETS.team.hero.src} 
-                  alt={ASSETS.team.hero.alt} 
-                  className="w-full h-auto object-cover rounded-[2rem] shadow-2xl transform transition-transform duration-700 group-hover:scale-[1.02]"
-                  loading="lazy"
-                />
-              </div>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="font-bold tracking-wider uppercase mb-3 text-primary text-[18px]">Our Team</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-6 leading-tight">Meet the People Behind Pope Cleaning Services</h3>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              {businessInfo.businessName} is a family-run cleaning business based in {businessInfo.location}. 
+              Kevin and Genny Pope coordinate the business with a focus on reliable service, detailed cleaning and customer satisfaction.
+            </p>
           </div>
         </RevealOnScroll>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          {businessInfo.people.map((person, index) => (
+            <RevealOnScroll key={person.id} delay={0.1 * (index + 1)} variant={index % 2 === 0 ? "slide-right" : "slide-left"}>
+              <div className="bg-white rounded-3xl p-8 shadow-xl border border-border flex flex-col h-full hover:shadow-2xl transition-shadow duration-300">
+                <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center mb-6 border-b border-border/50 pb-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 border border-primary/20">
+                    <span className="text-2xl font-display font-bold text-primary">{person.initials}</span>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-secondary mb-1">{person.name}</h4>
+                    <p className="text-accent font-semibold tracking-wide uppercase text-sm mb-2">{person.role}</p>
+                    <a href={`tel:${person.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                      <Phone className="w-4 h-4" />
+                      <span className="font-medium">{person.phone}</span>
+                    </a>
+                  </div>
+                </div>
+                
+                <p className="text-secondary/80 leading-relaxed mb-8 flex-grow">
+                  {person.description}
+                </p>
+                
+                <div>
+                  <h5 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Focus Areas</h5>
+                  <div className="flex flex-wrap gap-2">
+                    {person.focusAreas.map((area, i) => (
+                      <span key={i} className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-full border border-primary/10">
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
     </section>
   );

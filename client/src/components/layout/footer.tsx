@@ -1,5 +1,6 @@
-import { Sparkles, Phone, Mail, MapPin, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
 import { Link } from "wouter";
+import { businessInfo } from "@/config/businessInfo";
 
 // TikTok icon custom SVG component since it's not natively in lucide-react yet
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -27,33 +28,32 @@ export function Footer() {
           <div className="col-span-1 md:col-span-1">
             <Link href="/">
               <a className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
-                  <span className="font-display font-bold text-2xl">P</span>
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/assets/brand/pope-cleaning-logo.png" 
+                    alt="Pope Cleaning Services logo" 
+                    className="w-full h-full object-contain p-1"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                  <div className="hidden w-full h-full bg-primary flex items-center justify-center text-primary-foreground">
+                    <span className="font-display font-bold text-2xl">P</span>
+                  </div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-display font-bold text-xl leading-none tracking-tight text-white">Pope</span>
+                  <span className="font-display font-bold text-xl leading-none tracking-tight text-white">{businessInfo.businessName.split(' ')[0]}</span>
                   <span className="text-xs font-semibold text-accent uppercase tracking-wider">Cleaning Services</span>
                 </div>
               </a>
             </Link>
             <p className="text-secondary-foreground/70 text-sm mb-6 max-w-xs">
-              Premium residential and commercial cleaning services across the Perth metropolitan area. We bring the sparkle back to your space.
+              Premium residential and commercial cleaning services across the {businessInfo.location} area. We bring the sparkle back to your space.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
+              <a href={businessInfo.facebookUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
                 <Facebook className="w-5 h-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
-                <Instagram className="w-5 h-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
-                <Youtube className="w-5 h-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
-                <Twitter className="w-5 h-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors hover:scale-110 transform duration-300">
-                <TikTokIcon className="w-5 h-5 text-white" />
               </a>
             </div>
           </div>
@@ -75,7 +75,6 @@ export function Footer() {
               <li><Link href="/about"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">About Us</a></Link></li>
               <li><Link href="/reviews"><a className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Testimonials</a></Link></li>
               <li><a href="/#faq" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">FAQ</a></li>
-              <li><a href="/about" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Work With Us</a></li>
               <li><a href="#" className="text-secondary-foreground/70 hover:text-accent transition-colors text-sm">Privacy Policy</a></li>
             </ul>
           </div>
@@ -85,22 +84,25 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-secondary-foreground/70 text-sm">
                 <Phone className="w-5 h-5 text-accent shrink-0" />
-                <span>1300 000 000</span>
+                <div className="flex flex-col gap-1">
+                  <a href={`tel:${businessInfo.phonePrimary.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">{businessInfo.phonePrimary}</a>
+                  <a href={`tel:${businessInfo.phoneSecondary.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">{businessInfo.phoneSecondary}</a>
+                </div>
               </li>
               <li className="flex items-start gap-3 text-secondary-foreground/70 text-sm">
                 <Mail className="w-5 h-5 text-accent shrink-0" />
-                <span>hello@popecleaning.com.au</span>
+                <a href={`mailto:${businessInfo.email}`} className="hover:text-white transition-colors">{businessInfo.email}</a>
               </li>
               <li className="flex items-start gap-3 text-secondary-foreground/70 text-sm">
                 <MapPin className="w-5 h-5 text-accent shrink-0" />
-                <span>Servicing all of Perth Metropolitan area</span>
+                <span>{businessInfo.serviceArea}</span>
               </li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-secondary-foreground/50">
-          <p>&copy; {new Date().getFullYear()} Pope Cleaning Services. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {businessInfo.businessName}. ABN: {businessInfo.abn}. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Crafted for Perth with care.</p>
         </div>
       </div>
