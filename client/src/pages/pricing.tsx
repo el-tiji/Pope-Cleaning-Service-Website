@@ -439,7 +439,7 @@ export default function PricingPage() {
 
             <RevealOnScroll delay={0.4}>
               <div className="text-center">
-                <p className="text-white/80 mb-6 font-medium">Ready to experience a detailed, professional clean?</p>
+                <p className="text-white/80 mb-6 font-medium text-[20px]">Ready to experience a detailed, professional clean?</p>
                 <Link href="/book">
                   <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-accent text-secondary hover:bg-white transition-colors gap-2 group">
                     Request a Quote
