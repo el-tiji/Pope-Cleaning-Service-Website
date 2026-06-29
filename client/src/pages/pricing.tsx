@@ -393,25 +393,25 @@ export default function PricingPage() {
             </RevealOnScroll>
 
             {/* Floating Bubbles Section */}
-            <div className="relative h-[600px] md:h-[500px] w-full max-w-5xl mx-auto mb-16 overflow-hidden md:overflow-visible">
+            <div className="relative h-[650px] md:h-[600px] w-full max-w-5xl mx-auto mb-16 overflow-hidden md:overflow-visible">
               {[
-                { title: "Transparent Quote Process", size: "w-32 h-32 md:w-40 md:h-40", left: "20%", top: "15%", delay: 0 },
-                { title: "No Hidden Fees", size: "w-28 h-28 md:w-36 md:h-36", left: "50%", top: "10%", delay: 1.5 },
-                { title: "Quality-Focused Cleaning", size: "w-36 h-36 md:w-48 md:h-48", left: "80%", top: "25%", delay: 0.5 },
-                { title: "Family-Run Perth Business", size: "w-32 h-32 md:w-44 md:h-44", left: "25%", top: "50%", delay: 2 },
-                { title: "Flexible Service Options", size: "w-28 h-28 md:w-36 md:h-36", left: "55%", top: "45%", delay: 0.8 },
-                { title: "100% Satisfaction Guarantee", size: "w-36 h-36 md:w-44 md:h-44", left: "85%", top: "65%", delay: 2.5 },
-                { title: "Prepared For The Job", size: "w-32 h-32 md:w-40 md:h-40", left: "15%", top: "85%", delay: 1.2 },
-                { title: "Clear Communication", size: "w-32 h-32 md:w-44 md:h-44", left: "60%", top: "80%", delay: 0.3 }
+                { title: "Transparent Quote Process", size: "w-32 h-32 md:w-44 md:h-44", left: "5%", top: "5%", delay: 0 },
+                { title: "No Hidden Fees", size: "w-28 h-28 md:w-40 md:h-40", left: "40%", top: "0%", delay: 1.5 },
+                { title: "Quality-Focused Cleaning", size: "w-36 h-36 md:w-48 md:h-48", left: "75%", top: "15%", delay: 0.5 },
+                { title: "Family-Run Perth Business", size: "w-32 h-32 md:w-44 md:h-44", left: "10%", top: "45%", delay: 2 },
+                { title: "Flexible Service Options", size: "w-28 h-28 md:w-36 md:h-36", left: "45%", top: "35%", delay: 0.8 },
+                { title: "100% Satisfaction Guarantee", size: "w-36 h-36 md:w-52 md:h-52", left: "70%", top: "55%", delay: 2.5 },
+                { title: "Prepared For The Job", size: "w-32 h-32 md:w-40 md:h-40", left: "20%", top: "75%", delay: 1.2 },
+                { title: "Clear Communication", size: "w-32 h-32 md:w-48 md:h-48", left: "50%", top: "70%", delay: 0.3 }
               ].map((bubble, idx) => (
                 <motion.div
                   key={idx}
                   animate={{
-                    y: ["-50%", "-65%", "-35%", "-50%"],
-                    x: ["-50%", "-40%", "-60%", "-50%"],
+                    y: ["0%", "-15%", "5%", "0%"],
+                    x: ["0%", "10%", "-10%", "0%"],
                   }}
                   transition={{
-                    duration: 8 + (idx % 4) * 3,
+                    duration: 12 + (idx % 3) * 4,
                     repeat: Infinity,
                     ease: "easeInOut",
                     delay: bubble.delay,
