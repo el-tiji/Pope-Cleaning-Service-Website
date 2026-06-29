@@ -1,0 +1,562 @@
+Perfecto. Aquí tienes una **versión ampliada y optimizada del prompt anterior**, agregando elementos para que la pestaña **Pricing Info** no solo explique el quote, sino que también venda mejor el diferencial de Pope Cleaning Services frente a otras empresas.
+
+You are updating the Pope Cleaning Services website.
+
+TASK
+Update ONLY the “Pricing Info” page.
+
+IMPORTANT SCOPE LIMITATION
+
+* Do NOT modify the “Live Estimated Price Calculator” in the Booking / Book Now page.
+* Do NOT modify the Booking page.
+* Do NOT modify the calculator logic.
+* Do NOT modify pricing formulas.
+* Do NOT modify form steps, fields or summary panels in the Booking page.
+* Do NOT modify the Services page, Home page, About page, Reviews page, Footer or Navbar.
+* Only update the public-facing “Pricing Info” page content, layout and section wording.
+
+MAIN GOAL
+The Pricing Info page should clearly explain how Pope Cleaning Services prepares cleaning quotes, while also positioning the company as a trustworthy, high-quality and professional choice compared with other cleaning providers in Perth.
+
+This page must help customers understand:
+
+* what affects a quote;
+* what services Pope Cleaning Services can provide;
+* why quality, transparency and proper preparation matter;
+* why choosing Pope Cleaning Services is a safer and better option;
+* why there are no surprise charges when the customer provides accurate details;
+* why a tailored quote is better than a generic fixed price.
+
+The page should feel informative, dynamic, premium, easy to understand and commercially persuasive.
+
+DESIGN STYLE TO KEEP
+Maintain the current Pope Cleaning Services visual style:
+
+* clean white and light grey backgrounds;
+* deep navy headings using the brand colour `#00275F`;
+* bright blue CTA accents;
+* light blue icon backgrounds;
+* rounded cards;
+* soft shadows;
+* clean modern typography;
+* premium 3D / tilt-shift inspired visual style;
+* smooth reveal-on-scroll animations if already used;
+* responsive layout for desktop, tablet and mobile.
+
+Do not redesign the entire page. Improve the current Pricing Info layout while keeping it visually consistent with the rest of the website.
+
+MAIN PAGE TITLE
+Update the main Pricing Info heading to:
+
+“How Our Cleaning Quotes Are Prepared”
+
+Subheading:
+
+“Every property is different. Our quotes are tailored based on your service type, property details, extras, access requirements and cleaning frequency.”
+
+Supporting line:
+
+“We focus on fair, transparent quotes that match the real scope of work needed to clean your home, office or facility properly — with no hidden fees when the job matches the details provided.”
+
+HERO SECTION DESIGN
+Add or improve the hero area of the Pricing Info page.
+
+Hero content:
+
+* Left side: title, subheading, short explanation and CTA buttons.
+* Right side: keep or add a clean 3D / tilt-shift style illustration related to cleaning quotes, checklist, home/office, calendar and professional service.
+
+Suggested hero image concept:
+“A premium tilt-shift / 3D-style scene showing a clean Perth home and office side by side, with a checklist, calendar, cleaning tools and quote document icons, bright blue brand accents, clean white background, modern professional look.”
+
+Hero buttons:
+Primary:
+“Request a Quote”
+
+Secondary:
+“View Our Services”
+
+Do not modify the Booking page. Only link to it.
+
+SECTION 1 — QUOTE PROCESS OVERVIEW
+If there is an existing section called “Our Business Model – Simple & Transparent”, rename it to:
+
+“Our Quote Process – Simple & Transparent”
+
+Keep the current 4-step layout if already present.
+
+Update the 4 steps to:
+
+Step 1 — Choose your service
+“Select the type of cleaning you need, such as regular cleaning, spring cleaning, vacate cleaning, office cleaning or a custom service.”
+
+Step 2 — Share your property details
+“Tell us about the type of property, size, number of rooms, bathrooms, showers, kitchens and any additional areas.”
+
+Step 3 — Add extras and special requirements
+“Include any extras such as windows, oven, fridge, carpets, upholstery, outdoor areas, trash removal or other detailed cleaning tasks.”
+
+Step 4 — Receive a tailored quote
+“Our team reviews the details and prepares a quote that reflects the real time, effort and scope required.”
+
+Keep this section visually clean with numbered cards, icons and subtle animations.
+
+SECTION 2 — MAIN SECTION TO UPDATE
+Replace the current section title:
+
+“What Affects Your Live Estimated Price?”
+
+with:
+
+“What Affects Your Cleaning Quote?”
+
+Replace the intro text with:
+
+“Your cleaning quote is based on the information you provide and the level of work required. The more accurate the property details, extras and access information, the easier it is for our team to prepare a fair and reliable quote.”
+
+Create or update a dynamic card grid explaining the following factors.
+
+CARD 1 — Property or facility type
+Title:
+“Property or Facility Type”
+
+Text:
+“A house, apartment, townhouse, office, showroom, warehouse or commercial facility may require different cleaning methods, time and equipment.”
+
+Suggested icon:
+House / building icon.
+
+CARD 2 — Type of cleaning
+Title:
+“Type of Cleaning”
+
+Text:
+“Regular cleaning, spring cleaning, vacate cleaning, office cleaning, carpet cleaning, tile and grout cleaning or custom jobs each require a different level of detail.”
+
+Suggested icon:
+Checklist / sparkle icon.
+
+CARD 3 — Property size
+Title:
+“Size of the Property”
+
+Text:
+“The approximate internal area, number of floors and overall layout help determine the time and resources needed for the job.”
+
+Suggested icon:
+Floorplan / ruler icon.
+
+CARD 4 — Property characteristics
+Title:
+“Property Characteristics”
+
+Text:
+“Bedrooms, bathrooms, showers, toilets, kitchens, living areas, workstations and additional zones all influence the final scope of work.”
+
+Suggested icon:
+Rooms / grid icon.
+
+CARD 5 — Extras and additional cleaning
+Title:
+“Extras & Additional Cleaning”
+
+Text:
+“Extras such as oven cleaning, fridge cleaning, interior windows, exterior windows, carpet steam cleaning, upholstery, pressure cleaning, trash removal or garden tidy-up can be added to the quote.”
+
+Suggested icon:
+Plus / add-on icon.
+
+CARD 6 — Access and logistics
+Title:
+“Access & Logistics”
+
+Text:
+“Parking, stairs, lift access, pets, security entry, after-hours requirements, distance and special site conditions may affect scheduling and quote preparation.”
+
+Suggested icon:
+Location / access / vehicle icon.
+
+CARD 7 — Cleaning frequency
+Title:
+“Cleaning Frequency”
+
+Text:
+“Regular bookings such as weekly, twice-weekly, fortnightly or monthly cleaning may qualify for frequency-based discounts depending on the service type and schedule.”
+
+Suggested icon:
+Calendar / repeat icon.
+
+CARD 8 — Photos and notes
+Title:
+“Photos & Special Notes”
+
+Text:
+“Clear photos and detailed notes help us understand stains, priority areas, fragile items, access instructions and any special requirements before confirming your quote.”
+
+Suggested icon:
+Camera / note icon.
+
+DESIGN FOR THIS CARD GRID
+
+* Use 4 cards per row on large desktop if space allows.
+* Use 2 cards per row on tablets.
+* Use 1 card per row on mobile.
+* Use rounded white cards with soft shadows.
+* Add a subtle hover effect:
+
+  * slight lift;
+  * shadow increase;
+  * thin blue border highlight;
+  * icon background glow.
+* Keep text short and easy to scan.
+* Icons should match the current website style.
+
+SECTION 3 — SERVICES WE CAN QUOTE FOR
+Add a new section called:
+
+“Cleaning Services We Can Quote For”
+
+Purpose:
+Help customers quickly understand the full range of services the company can provide.
+
+Intro text:
+
+“Whether you need a regular clean, a detailed one-off service or a specialised commercial job, Pope Cleaning Services can prepare a tailored quote for the cleaning work you need.”
+
+Create a clean service summary grid with these service categories:
+
+1. Regular Home Cleaning
+   “Routine cleaning for kitchens, bathrooms, floors, dusting and general home maintenance.”
+
+2. Spring / Deep Cleaning
+   “A more detailed clean for hard-to-reach areas, built-up dust, neglected spaces and seasonal refreshes.”
+
+3. Vacate / End of Lease Cleaning
+   “Detailed move-out cleaning designed to prepare the property for inspection, including optional carpets and extras.”
+
+4. Office & Commercial Cleaning
+   “Professional cleaning for offices, workstations, meeting rooms, kitchens, bathrooms and shared workplace areas.”
+
+5. Carpet & Upholstery Steam Cleaning
+   “Steam cleaning for carpets, rugs, couches and upholstery to help remove dirt, odours and general build-up.”
+
+6. Tile & Grout Cleaning
+   “Detailed cleaning for tiled areas, grout lines, bathrooms, kitchens and hard floor surfaces.”
+
+7. Pressure Cleaning
+   “Outdoor cleaning for driveways, patios, paths, external surfaces and selected high-use areas.”
+
+8. Custom Cleaning Requests
+   “For special jobs, mixed services, workshops, warehouses, showrooms, facilities or cleaning needs not listed.”
+
+Design:
+
+* Use compact cards.
+* Each card should have a small icon.
+* Keep the text short.
+* Add a small CTA under the grid:
+  “Not sure which service you need? Send us a custom quote request.”
+
+Button:
+“Request a Custom Quote”
+
+Button link:
+Link to the current Booking / Book Now page or custom quote form if already available.
+
+SECTION 4 — WHY CHOOSE POPE CLEANING SERVICES
+Add a strong differentiation section called:
+
+“Why Choose Pope Cleaning Services?”
+
+This section should help the company stand out against competitors.
+
+Intro text:
+
+“When comparing cleaning companies, price matters — but reliability, preparation, communication and quality matter just as much. Pope Cleaning Services focuses on delivering a professional experience from quote to completion.”
+
+Create a trust/value grid with these points:
+
+1. Transparent quote process
+   “We explain what affects your quote so you understand what is included before confirming the service.”
+
+2. No hidden fees when details are accurate
+   “We aim to avoid surprise charges by asking for the right information before the booking. If the job matches the details provided, the quote is clear from the start.”
+
+3. Quality-focused cleaning
+   “We focus on doing the job properly, not rushing through the property. Time, detail and preparation are built into the quote.”
+
+4. Family-run Perth business
+   “Pope Cleaning Services is a local family-run business serving homes and businesses across Perth.”
+
+5. Flexible service options
+   “Choose one-off, regular, office, vacate, carpet, tile, upholstery or custom cleaning based on your needs.”
+
+6. Satisfaction guarantee
+   “If something reasonable is missed, we’ll work with you to make it right.”
+
+7. Equipment and products prepared for the job
+   “We review your request so the team can arrive with the right tools, products and plan.”
+
+8. Clear communication
+   “We make the process easier by confirming details, timing and requirements before the clean.”
+
+Design:
+
+* Use premium trust cards or horizontal feature blocks.
+* Use the brand navy `#00275F` for headings.
+* Use light blue icon circles.
+* Add subtle checkmark icons.
+* Keep it clean and not too text-heavy.
+
+SECTION 5 — NO HIDDEN FEES / CLEAR EXPECTATIONS
+Add a dedicated section called:
+
+“Clear Quotes. No Unnecessary Surprises.”
+
+Text:
+
+“Our goal is to prepare a quote that reflects the real job before arrival. That means we ask about property type, size, condition, extras and access requirements upfront. When the information provided is accurate and the property condition matches the request, the quote is designed to be clear and reliable.”
+
+Add a small clarification box:
+
+“Important: If the property condition, access or service requirements are significantly different from the submitted details, the quote may need to be reviewed before the service begins.”
+
+This protects the business while still sounding fair and professional.
+
+Design:
+
+* Use a highlighted card or banner.
+* Use soft blue background.
+* Use a small shield / checklist icon.
+* Keep the tone reassuring, not legalistic.
+
+SECTION 6 — STANDARD CLEANING REFERENCE
+If the current page includes “Our Standard-Based Price Benchmark”, update the title to:
+
+“Our Standard Cleaning Reference”
+
+Text:
+
+“To help customers understand how property details affect a quote, we use a standard reference clean as a guide. This does not mean every property will have the same quote.”
+
+Reference example:
+
+“A typical standard regular clean may be based on a single-level home with:”
+
+* 3 bedrooms
+* 2 bathrooms
+* 2 showers
+* 1 separate toilet
+* 1 kitchen
+* 1 floor / single level
+* normal property condition
+* approximately 2 hours under normal scope of work
+
+Add clarification:
+
+“This reference is only a guide. Larger homes, extra bathrooms, multiple floors, heavy dirt, additional areas or extra services may require more time and a different quote.”
+
+Important:
+
+* Do NOT present this as a fixed price.
+* Do NOT present this as a guaranteed quote.
+* Do NOT imply all homes with these details cost the same.
+
+SECTION 7 — HOW WE PREPARE YOUR QUOTE
+If there is a section currently called “How the Live Estimator Calculates Your Price”, rename it to:
+
+“How We Prepare Your Quote”
+
+Update the numbered steps to:
+
+Step 1 — Service type
+“We start with the cleaning service selected by the customer.”
+
+Step 2 — Property details
+“We review the type of property, size, layout, bedrooms, bathrooms, showers, kitchens and additional areas.”
+
+Step 3 — Extras
+“We add any selected extras such as oven, fridge, windows, carpets, upholstery, outdoor cleaning or trash removal.”
+
+Step 4 — Access and logistics
+“We consider parking, stairs, pets, access instructions, after-hours needs or special site conditions.”
+
+Step 5 — Frequency discounts
+“We consider whether the customer is requesting weekly, twice-weekly, fortnightly or monthly cleaning, as regular services may qualify for discounts.”
+
+Step 6 — Final quote review
+“Our team reviews all details and prepares a tailored quote before the booking is confirmed.”
+
+Remove or replace any public wording that says:
+
+* live estimated price;
+* instant price;
+* final calculated price;
+* automatic final quote;
+* live estimator calculates your price.
+
+Use instead:
+
+* cleaning quote;
+* tailored quote;
+* quote request;
+* quote preparation;
+* final quote review;
+* personalised quote.
+
+SECTION 8 — FREQUENCY-BASED CLEANING DISCOUNTS
+Add a new dynamic section called:
+
+“Frequency-Based Cleaning Discounts”
+
+Text:
+
+“Regular cleaning services can be more efficient to schedule and maintain. Depending on the service type and frequency, customers may be eligible for a discount when booking recurring cleaning.”
+
+Show a clean card or small table with example frequency labels:
+
+* Twice weekly — best for busy homes, offices and high-use spaces
+* Weekly — ideal for consistent home or workplace maintenance
+* Fortnightly — suitable for regular upkeep
+* Monthly — useful for light maintenance or smaller spaces
+* One-off — best for occasional or special cleaning needs
+
+Important:
+
+* Do NOT promise exact discount percentages unless already configured and confirmed.
+* Use wording such as “may qualify”, “depending on service type”, or “subject to confirmation”.
+
+Suggested disclaimer:
+
+“Frequency discounts depend on the service type, property size, location and schedule. Final discounts are confirmed as part of the quote.”
+
+SECTION 9 — WHAT CUSTOMERS SHOULD EXPECT
+Add a section called:
+
+“What You Can Expect From Us”
+
+Purpose:
+Reinforce trust and service quality.
+
+Use 4 expectation cards:
+
+1. Before the clean
+   “We review your request, clarify details if needed and prepare for the service.”
+
+2. During the clean
+   “Our team focuses on the agreed areas, service type and cleaning priorities.”
+
+3. After the clean
+   “We aim to leave your space fresh, organised and professionally cleaned.”
+
+4. If something needs attention
+   “Contact us and we’ll work with you to make it right where reasonable.”
+
+Design:
+
+* Use the same card style as the rest of the page.
+* Optional timeline layout.
+* Use icons: document, cleaning tools, sparkle, support/checkmark.
+
+SECTION 10 — WHY ACCURATE DETAILS MATTER
+Keep or create a section titled:
+
+“Why Accurate Details Matter”
+
+Text:
+
+“Accurate details help us prepare fairly, bring the right equipment and allow enough time to complete the clean properly. This helps avoid misunderstandings, rushed work or unexpected changes on the day of service.”
+
+Use three small cards:
+
+Card 1:
+“Better preparation”
+“We understand the job before arrival.”
+
+Card 2:
+“Fairer quotes”
+“The quote reflects the real scope of work.”
+
+Card 3:
+“Better results”
+“The team has the right time and equipment to clean properly.”
+
+SECTION 11 — CTA
+At the bottom of the Pricing Info page, add a clear call-to-action section.
+
+Heading:
+“Ready to Request Your Cleaning Quote?”
+
+Text:
+“Choose your service, share your property details and send us your request. Our team will review the information and get back to you with a tailored quote.”
+
+Primary button:
+“Request a Quote”
+
+Button link:
+Link to the current Booking / Book Now page.
+
+Secondary button:
+“View Our Services”
+
+Button link:
+Link to the Services page.
+
+Optional third link:
+“Need something custom?”
+
+Small text:
+“If your cleaning job does not fit one of our standard services, send us a custom request and we’ll review it personally.”
+
+LANGUAGE AND TONE
+Use professional, clear and customer-friendly English.
+
+Tone:
+
+* trustworthy;
+* transparent;
+* simple;
+* premium;
+* helpful;
+* local Perth business;
+* quality-focused;
+* not too technical.
+
+Avoid:
+
+* overpromising;
+* fake guarantees;
+* fake review claims;
+* confusing pricing language;
+* too much text;
+* aggressive sales language.
+
+ACCESSIBILITY
+
+* Keep heading hierarchy correct.
+* Use accessible buttons and links.
+* Ensure all text is readable on mobile.
+* Use enough contrast with `#00275F`.
+* Icons should be decorative with `aria-hidden` unless they add meaning.
+
+FINAL OUTPUT
+Update ONLY the Pricing Info page so it explains:
+
+1. What is considered when preparing a cleaning quote.
+2. Property or facility type.
+3. Type of cleaning.
+4. Size of the property.
+5. Property characteristics.
+6. Extras and additional cleaning.
+7. Access and logistics.
+8. Frequency-based discounts.
+9. The services Pope Cleaning Services can quote for.
+10. Why Pope Cleaning Services is a better choice.
+11. No hidden fees when details are accurate.
+12. Why accurate details matter.
+13. Clear CTA to request a quote.
+
+Do not modify the Live Estimated Price Calculator in Booking.
+Do not modify any other page.
+
+Este prompt deja la pestaña **Pricing Info** mucho más fuerte comercialmente: no solo explica precios, sino que también convierte la sección en un argumento de venta para que el cliente piense: “esta empresa es más clara, más profesional y más confiable que las demás”.

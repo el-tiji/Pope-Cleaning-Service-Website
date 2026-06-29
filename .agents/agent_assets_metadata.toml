@@ -144,6 +144,12 @@ uri = "file://client/public/assets/tiltshift/services/pressure.png"
 type = "image"
 title = "Realistic miniature patio pressure washing"
 
+[[generated]]
+id = "JKd8F4buv5uLtp45veaNk"
+uri = "file://client/public/images/pricing-hero.png"
+type = "image"
+title = "Tilt-shift cleaning quote scene"
+
 [[outputs]]
 id = "GUJB8YHIgyP2IRq8EcQm7"
 uri = "file://client/public/images/commercial-cleaning-team.jpg"
@@ -155,3 +161,9 @@ id = "iFegmE3a3vdYq-vhSPVtV"
 uri = "file://client/public/images/cleaning-supplies-quote.jpg"
 type = "image"
 title = "professional cleaning supplies tools equipment set up nicely bucket sprays"
+
+[[outputs]]
+id = "-435Ojs8Q2AUsZj6VI_S7"
+uri = "file://client/public/images/pricing-services-bg.jpg"
+type = "image"
+title = "professional cleaning services, clean sparkling living room house interior"

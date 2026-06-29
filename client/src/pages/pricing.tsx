@@ -30,18 +30,70 @@ export default function PricingPage() {
       <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
         
         {/* 1) HERO SECTION */}
-        <section className="container mx-auto px-4 pt-16 pb-20">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="container mx-auto px-4 pt-16 pb-20 relative overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <RevealOnScroll>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-secondary mb-6 leading-tight">
-                How Our Cleaning Prices Are Calculated
-              </h1>
-              <p className="text-xl text-primary font-medium mb-6">
-                Transparent pricing based on your home, the level of detail and the time it takes to clean properly – not just a generic flat rate.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Every home or office is different. The live estimated price in our booking section uses the information you provide about size, rooms, extras and access to give you a customized, accurate quote before we even step through the door.
-              </p>
+              <div className="text-left">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-secondary mb-6 leading-tight">
+                  How Our Cleaning Quotes Are Prepared
+                </h1>
+                <p className="text-xl text-primary font-medium mb-6">
+                  Every property is different. Our quotes are tailored based on your service type, property details, extras, access requirements and cleaning frequency.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  We focus on fair, transparent quotes that match the real scope of work needed to clean your home, office or facility properly — with no hidden fees when the job matches the details provided.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/book">
+                    <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg hover:shadow-xl transition-all group">
+                      Request a Quote
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                  <Link href="/#services">
+                    <Button variant="outline" size="lg" className="rounded-full h-14 px-8 text-lg font-bold border-2 border-primary/20 text-primary hover:bg-primary/5 transition-all">
+                      View Our Services
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </RevealOnScroll>
+            
+            <RevealOnScroll delay={0.2} variant="slide-left">
+              <div className="relative">
+                {/* Decorative background glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/20 blur-[80px] rounded-full -z-10"></div>
+                
+                <div className="rounded-3xl overflow-hidden border border-border shadow-2xl relative bg-white">
+                  <img 
+                    src="/images/pricing-hero.png" 
+                    alt="Premium 3D quote process illustration" 
+                    className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                  />
+                  
+                  {/* Floating badges */}
+                  <div className="absolute top-6 -left-4 bg-white px-4 py-3 rounded-2xl shadow-xl border border-border flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
+                    <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                      <ShieldCheck className="w-5 h-5 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Guarantee</p>
+                      <p className="text-sm font-bold text-secondary">No Hidden Fees</p>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute bottom-8 -right-4 bg-white px-4 py-3 rounded-2xl shadow-xl border border-border flex items-center gap-3 animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}>
+                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                      <Calculator className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Tailored</p>
+                      <p className="text-sm font-bold text-secondary">Accurate Quotes</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </RevealOnScroll>
           </div>
         </section>
@@ -49,7 +101,7 @@ export default function PricingPage() {
         {/* NEW) BUSINESS MODEL STEPS */}
         <section className="container mx-auto px-4 pb-24">
           <RevealOnScroll>
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary text-center mb-16">Our Business Model – Simple & Transparent</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary text-center mb-16">Our Quote Process – Simple & Transparent</h2>
           </RevealOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative max-w-7xl mx-auto">
             {/* Connecting line for desktop */}
@@ -58,23 +110,23 @@ export default function PricingPage() {
             {[
               {
                 icon: <FileText className="w-8 h-8" />,
-                title: "1. Tell us what you need",
-                desc: "Choose a standard service via our estimator or request a custom clean for personalized needs."
+                title: "1. Choose your service",
+                desc: "Select the type of cleaning you need, such as regular cleaning, spring cleaning, vacate cleaning, office cleaning or a custom service."
               },
               {
-                icon: <Calculator className="w-8 h-8" />,
-                title: "2. Tailored estimate",
-                desc: "We use details like property size and extra tasks to calculate a realistic estimated price."
+                icon: <Home className="w-8 h-8" />,
+                title: "2. Share your property details",
+                desc: "Tell us about the type of property, size, number of rooms, bathrooms, showers, kitchens and any additional areas."
               },
               {
-                icon: <CalendarCheck className="w-8 h-8" />,
-                title: "3. We schedule your clean",
-                desc: "We confirm a time. A trained, insured team arrives fully equipped across Perth metro."
+                icon: <PlusCircle className="w-8 h-8" />,
+                title: "3. Add extras and special requirements",
+                desc: "Include any extras such as windows, oven, fridge, carpets, upholstery, outdoor areas, trash removal or other detailed cleaning tasks."
               },
               {
                 icon: <CheckCircle className="w-8 h-8" />,
-                title: "4. Detailed, high-quality cleaning",
-                desc: "We focus on thorough work, backed by a satisfaction guarantee and responsive follow-up."
+                title: "4. Receive a tailored quote",
+                desc: "Our team reviews the details and prepares a quote that reflects the real time, effort and scope required."
               }
             ].map((step, idx) => (
               <RevealOnScroll key={idx} delay={idx * 0.15}>
@@ -91,67 +143,227 @@ export default function PricingPage() {
         </section>
 
         {/* 2) WHAT AFFECTS YOUR PRICE */}
-        <section className="bg-background py-24 border-y border-border/50">
-          <div className="container mx-auto px-4 max-w-7xl">
+        <section className="bg-background py-24 border-y border-border/50 relative overflow-hidden">
+          {/* Subtle background pattern */}
+          <div className="absolute inset-0 bg-pattern opacity-30 pointer-events-none"></div>
+          
+          <div className="container mx-auto px-4 max-w-7xl relative z-10">
             <RevealOnScroll>
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">What Affects Your Live Estimated Price?</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">What Affects Your Cleaning Quote?</h2>
                 <p className="text-lg text-muted-foreground">
-                  Our live estimated price combines all of these factors to give you a realistic estimate before we arrive, instead of a generic flat rate.
+                  Your cleaning quote is based on the information you provide and the level of work required. The more accurate the property details, extras and access information, the easier it is for our team to prepare a fair and reliable quote.
                 </p>
               </div>
             </RevealOnScroll>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Factor Cards */}
               <RevealOnScroll delay={0.1}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow h-full">
-                  <Home className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="text-xl font-bold text-secondary mb-3">Size of the property</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Number of bedrooms, bathrooms, showers and overall floor area.</p>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <Home className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Property or Facility Type</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">A house, apartment, townhouse, office, showroom, warehouse or commercial facility may require different cleaning methods, time and equipment.</p>
                 </div>
               </RevealOnScroll>
+              
               <RevealOnScroll delay={0.2}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow h-full">
-                  <ListChecks className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="text-xl font-bold text-secondary mb-3">Type of clean</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Regular Cleaning, Spring Cleaning, Vacate Cleaning or Office Cleaning.</p>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <Sparkles className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Type of Cleaning</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">Regular cleaning, spring cleaning, vacate cleaning, office cleaning, carpet cleaning, tile and grout cleaning or custom jobs each require a different level of detail.</p>
                 </div>
               </RevealOnScroll>
+              
               <RevealOnScroll delay={0.3}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow h-full">
-                  <Sparkles className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="text-xl font-bold text-secondary mb-3">Level of detail</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Standard maintenance clean vs deeper, detail-focused cleaning for neglected areas.</p>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <FileText className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Size of the Property</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">The approximate internal area, number of floors and overall layout help determine the time and resources needed for the job.</p>
                 </div>
               </RevealOnScroll>
+              
               <RevealOnScroll delay={0.4}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow h-full">
-                  <PlusCircle className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="text-xl font-bold text-secondary mb-3">Extras & additional zones</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Windows, oven, fridge, carpets, upholstery, outdoor areas, etc.</p>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <ListChecks className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Property Characteristics</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">Bedrooms, bathrooms, showers, toilets, kitchens, living areas, workstations and additional zones all influence the final scope of work.</p>
                 </div>
               </RevealOnScroll>
+              
               <RevealOnScroll delay={0.5}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow h-full">
-                  <CarFront className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="text-xl font-bold text-secondary mb-3">Access and logistics</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Stairs without lift, limited parking, heavy dust or construction residue, pets, etc.</p>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <PlusCircle className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Extras & Additional Cleaning</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">Extras such as oven cleaning, fridge cleaning, interior windows, exterior windows, carpet steam cleaning, upholstery, pressure cleaning, trash removal or garden tidy-up can be added to the quote.</p>
                 </div>
               </RevealOnScroll>
+              
               <RevealOnScroll delay={0.6}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow h-full">
-                  <Clock className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="text-xl font-bold text-secondary mb-3">Time required</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">The number of hours needed to clean properly to our high standards.</p>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <CarFront className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Access & Logistics</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">Parking, stairs, lift access, pets, security entry, after-hours requirements, distance and special site conditions may affect scheduling and quote preparation.</p>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.7}>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <CalendarCheck className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Cleaning Frequency</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">Regular bookings such as weekly, twice-weekly, fortnightly or monthly cleaning may qualify for frequency-based discounts depending on the service type and schedule.</p>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.8}>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <Camera className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-secondary mb-3">Photos & Special Notes</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">Clear photos and detailed notes help us understand stains, priority areas, fragile items, access instructions and any special requirements before confirming your quote.</p>
                 </div>
               </RevealOnScroll>
             </div>
           </div>
         </section>
 
-        {/* 3) OUR STANDARD-BASED PRICE EXAMPLE */}
-        <section className="container mx-auto px-4 py-24">
+        {/* 3) SERVICES WE CAN QUOTE FOR */}
+        <section className="bg-secondary text-white py-24 relative overflow-hidden">
+          {/* Subtle background overlay */}
+          <div className="absolute inset-0 z-0">
+             <img src="/images/pricing-services-bg.jpg" alt="Background" className="w-full h-full object-cover opacity-10" />
+             <div className="absolute inset-0 bg-secondary/90 mix-blend-multiply"></div>
+          </div>
+
+          <div className="container mx-auto px-4 max-w-7xl relative z-10">
+            <RevealOnScroll>
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Cleaning Services We Can Quote For</h2>
+                <p className="text-lg text-white/80">
+                  Whether you need a regular clean, a detailed one-off service or a specialised commercial job, Pope Cleaning Services can prepare a tailored quote for the cleaning work you need.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+              {[
+                { title: "Regular Home Cleaning", icon: <Home className="w-5 h-5" />, desc: "Routine cleaning for kitchens, bathrooms, floors, dusting and general home maintenance." },
+                { title: "Spring / Deep Cleaning", icon: <Sparkles className="w-5 h-5" />, desc: "A more detailed clean for hard-to-reach areas, built-up dust, neglected spaces and seasonal refreshes." },
+                { title: "Vacate / End of Lease", icon: <ListChecks className="w-5 h-5" />, desc: "Detailed move-out cleaning designed to prepare the property for inspection, including optional carpets and extras." },
+                { title: "Office & Commercial", icon: <FileText className="w-5 h-5" />, desc: "Professional cleaning for offices, workstations, meeting rooms, kitchens, bathrooms and shared workplace areas." },
+                { title: "Carpet & Upholstery", icon: <Droplets className="w-5 h-5" />, desc: "Steam cleaning for carpets, rugs, couches and upholstery to help remove dirt, odours and general build-up." },
+                { title: "Tile & Grout", icon: <PlusCircle className="w-5 h-5" />, desc: "Detailed cleaning for tiled areas, grout lines, bathrooms, kitchens and hard floor surfaces." },
+                { title: "Pressure Cleaning", icon: <Droplets className="w-5 h-5" />, desc: "Outdoor cleaning for driveways, patios, paths, external surfaces and selected high-use areas." },
+                { title: "Custom Cleaning", icon: <CheckCircle className="w-5 h-5" />, desc: "For special jobs, mixed services, workshops, warehouses, showrooms, facilities or cleaning needs not listed." }
+              ].map((service, idx) => (
+                <RevealOnScroll key={idx} delay={idx * 0.1}>
+                  <div className="bg-white/10 border border-white/20 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/20 transition-all h-full">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
+                        {service.icon}
+                      </div>
+                      <h3 className="font-bold text-white leading-tight">{service.title}</h3>
+                    </div>
+                    <p className="text-sm text-white/70">{service.desc}</p>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+
+            <RevealOnScroll delay={0.4}>
+              <div className="text-center">
+                <p className="text-white/80 mb-6 font-medium">Not sure which service you need? Send us a custom quote request.</p>
+                <Link href="/book">
+                  <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-accent text-secondary hover:bg-white transition-colors gap-2 group">
+                    Request a Custom Quote
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* 4) WHY CHOOSE POPE CLEANING SERVICES */}
+        <section className="bg-background py-24">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <RevealOnScroll>
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">Why Choose Pope Cleaning Services?</h2>
+                <p className="text-lg text-muted-foreground">
+                  When comparing cleaning companies, price matters — but reliability, preparation, communication and quality matter just as much. Pope Cleaning Services focuses on delivering a professional experience from quote to completion.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                { title: "Transparent quote process", desc: "We explain what affects your quote so you understand what is included before confirming the service." },
+                { title: "No hidden fees when details are accurate", desc: "We aim to avoid surprise charges by asking for the right information before the booking. If the job matches the details provided, the quote is clear from the start." },
+                { title: "Quality-focused cleaning", desc: "We focus on doing the job properly, not rushing through the property. Time, detail and preparation are built into the quote." },
+                { title: "Family-run Perth business", desc: "Pope Cleaning Services is a local family-run business serving homes and businesses across Perth." },
+                { title: "Flexible service options", desc: "Choose one-off, regular, office, vacate, carpet, tile, upholstery or custom cleaning based on your needs." },
+                { title: "Satisfaction guarantee", desc: "If something reasonable is missed, we’ll work with you to make it right." },
+                { title: "Equipment and products prepared for the job", desc: "We review your request so the team can arrive with the right tools, products and plan." },
+                { title: "Clear communication", desc: "We make the process easier by confirming details, timing and requirements before the clean." }
+              ].map((reason, idx) => (
+                <RevealOnScroll key={idx} delay={idx * 0.1}>
+                  <div className="flex gap-4 p-6 bg-white rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-secondary text-lg mb-2">{reason.title}</h3>
+                      <p className="text-muted-foreground text-sm">{reason.desc}</p>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5) NO HIDDEN FEES / CLEAR EXPECTATIONS */}
+        <section className="container mx-auto px-4 pb-24">
+          <RevealOnScroll>
+            <div className="bg-primary/5 border border-primary/20 rounded-3xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-6 shadow-sm">
+                <ShieldCheck className="w-8 h-8 text-primary" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-4">Clear Quotes. No Unnecessary Surprises.</h2>
+              <p className="text-lg text-secondary/80 mb-8 max-w-2xl mx-auto">
+                Our goal is to prepare a quote that reflects the real job before arrival. That means we ask about property type, size, condition, extras and access requirements upfront. When the information provided is accurate and the property condition matches the request, the quote is designed to be clear and reliable.
+              </p>
+              
+              <div className="bg-white p-6 rounded-2xl border border-border inline-block max-w-3xl text-left">
+                <div className="flex items-start gap-4">
+                  <AlertCircle className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                  <p className="text-sm text-secondary/70">
+                    <strong>Important:</strong> If the property condition, access or service requirements are significantly different from the submitted details, the quote may need to be reviewed before the service begins.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </RevealOnScroll>
+        </section>
+
+        {/* 6) OUR STANDARD-BASED PRICE EXAMPLE (Kept & Updated Title) */}
+        <section className="container mx-auto px-4 py-24 border-t border-border/50">
           <RevealOnScroll>
             <div className="rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl max-w-5xl mx-auto" style={{ background: 'linear-gradient(135deg, var(--brand-navy-deep) 0%, var(--brand-navy) 100%)' }}>
               {/* Background Accents */}
