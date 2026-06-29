@@ -94,8 +94,8 @@ export function CustomQuoteForm() {
 
             <RevealOnScroll delay={0.2} className="hidden lg:block relative mt-8 h-48 rounded-3xl overflow-hidden border border-border">
                <img 
-                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
-                 alt="Professional commercial cleaning setup"
+                 src="/images/commercial-cleaning-team.jpg" 
+                 alt="Professional commercial cleaning team"
                  className="w-full h-full object-cover"
                />
                <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>

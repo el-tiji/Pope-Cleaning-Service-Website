@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "q10yaEb8iS5jQ9Z_lsy-H"
@@ -144,3 +143,15 @@ id = "2oY144MQBp-CBmXYGntS3"
 uri = "file://client/public/assets/tiltshift/services/pressure.png"
 type = "image"
 title = "Realistic miniature patio pressure washing"
+
+[[outputs]]
+id = "GUJB8YHIgyP2IRq8EcQm7"
+uri = "file://client/public/images/commercial-cleaning-team.jpg"
+type = "image"
+title = "professional cleaning service team wiping desk office"
+
+[[outputs]]
+id = "iFegmE3a3vdYq-vhSPVtV"
+uri = "file://client/public/images/cleaning-supplies-quote.jpg"
+type = "image"
+title = "professional cleaning supplies tools equipment set up nicely bucket sprays"
