@@ -495,55 +495,6 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* 6) HOW TO GET THE MOST ACCURATE ESTIMATE */}
-        <section className="text-white py-24" style={{ background: 'linear-gradient(135deg, var(--brand-navy-deep) 0%, var(--brand-navy) 100%)' }}>
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <RevealOnScroll>
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#ffffff]">How to Get the Most Accurate Estimate</h2>
-                <ul className="space-y-6">
-                  <li className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><FileText className="w-4 h-4 text-accent" /></div>
-                    <p className="text-white/80">Fill in all the fields in the estimator carefully (rooms, extras, access conditions).</p>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-4 h-4 text-accent" /></div>
-                    <p className="text-white/80">Choose the cleaning type that best matches your needs (Regular vs Spring vs Vacate vs Office).</p>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><AlertCircle className="w-4 h-4 text-accent" /></div>
-                    <p className="text-white/80">Be honest about the condition of the property (light, standard or heavy).</p>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><Camera className="w-4 h-4 text-accent" /></div>
-                    <p className="text-white/80">Upload clear photos of key areas (kitchen, bathrooms, living room, bedrooms and any problem areas).</p>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><ListChecks className="w-4 h-4 text-accent" /></div>
-                    <p className="text-white/80">Use the notes box to tell us about stains, fragile items and priorities.</p>
-                  </li>
-                </ul>
-              </RevealOnScroll>
-              <RevealOnScroll delay={0.2}>
-                <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm text-center">
-                  <h3 className="text-2xl font-bold mb-4 text-[#ffffff]">Ready for your quote?</h3>
-                  <p className="text-white/70 mb-8">Take 2 minutes to fill out our interactive booking form and see your custom live estimate immediately.</p>
-                  <Link href="/book">
-                    <Button size="lg" className="w-full rounded-full h-14 text-lg font-bold bg-accent text-secondary hover:bg-white transition-colors gap-2 group">
-                      Open the Live Price Estimator
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                  <p className="text-xs text-white/50 mt-6">
-                    Have questions about your estimate? <br/>
-                    Contact us for a custom quote or message us on WhatsApp.
-                  </p>
-                </div>
-              </RevealOnScroll>
-            </div>
-          </div>
-        </section>
-
       </main>
       
       <Footer />
