@@ -1,0 +1,25 @@
+Quiero unificar completamente las secciones **Reviews** y **About Us** dentro de una sola experiencia visual en la página **About Us**.
+
+Toma todo el contenido actualmente existente en la pestaña **Reviews** —incluyendo testimonios, ratings, nombres, comentarios, estadísticas de satisfacción, elementos visuales, estrellas, quotes, cards y cualquier bloque relacionado con confianza social— y transfiérelo a la página **About Us**.
+
+**Importante:**
+El contenido actual de **About Us** no debe ser eliminado, reescrito ni modificado en su mensaje principal. Quiero conservar la información existente de About Us tal como está. El trabajo debe enfocarse únicamente en integrar, reorganizar y rediseñar el contenido proveniente de **Reviews** para que encaje de forma natural dentro de About Us.
+
+El objetivo es eliminar la sensación de que **Reviews** y **About Us** son dos páginas separadas, creando una página About Us más completa, coherente, profesional y comercial, donde la historia de la empresa, los valores, la experiencia del equipo y las opiniones de los clientes trabajen juntos como una sola narrativa.
+
+La nueva estructura de **About Us** debe mantener el contenido actual existente y añadir de forma integrada:
+
+1. Un bloque visual de testimonios dentro de About Us, no como una sección copiada y pegada, sino como parte natural del diseño.
+2. Una sección tipo **“Why clients trust us”**, **“Trusted by local Perth clients”** o similar, usando el contenido de Reviews para reforzar confianza.
+3. Las estadísticas, ratings, estrellas, quotes o cards de Reviews deben ser rediseñadas para mantener el estilo visual general del sitio.
+4. El contenido transferido desde Reviews debe complementar la información actual sobre Pope Cleaning Services, Kevin Pope, Genny Pope, los valores de la empresa y la experiencia local en Perth.
+5. Elimina repeticiones innecesarias entre lo que ya existe en About Us y lo que viene desde Reviews.
+6. Mantén un diseño limpio, moderno, corporativo y alineado con los colores actuales de la marca, especialmente el azul principal del logo.
+7. Conserva la estética actual del sitio, pero mejora la jerarquía visual, el espaciado, la composición y la coherencia entre bloques.
+8. Asegúrate de que el nuevo diseño sea completamente responsive para desktop, tablet y mobile.
+9. No rompas la estructura general del sitio ni elimines información importante.
+10. Reutiliza componentes visuales existentes si ya funcionan bien, pero mejora su integración para que todo se vea como una sola página profesional.
+
+No quiero simplemente copiar y pegar la pestaña **Reviews** dentro de **About Us**. Quiero que el contenido de Reviews se fusione visualmente con About Us mediante un nuevo diseño unificado, más profesional y convincente, que transmita confianza comercial y ayude a convertir visitantes en clientes.
+
+Después de este cambio, la página **Reviews** puede eliminarse del menú de navegación o redirigirse hacia la nueva sección integrada dentro de **About Us**, según sea más limpio para la estructura del sitio.
