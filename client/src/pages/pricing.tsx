@@ -51,7 +51,7 @@ export default function PricingPage() {
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
-                  <Link href="/#services">
+                  <Link href="/services">
                     <Button variant="outline" size="lg" className="rounded-full h-14 px-8 text-lg font-bold border-2 border-primary/20 text-primary hover:bg-primary/5 transition-all">
                       View Our Services
                     </Button>
