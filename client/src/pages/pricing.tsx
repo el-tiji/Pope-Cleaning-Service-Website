@@ -160,82 +160,213 @@ export default function PricingPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Factor Cards */}
               <RevealOnScroll delay={0.1}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <Home className="w-7 h-7 text-primary" />
+                <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  {/* Default State: Icon and Title (Centered) */}
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <Home className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Property or Facility Type</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Property or Facility Type</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">A house, apartment, townhouse, office, showroom, warehouse or commercial facility may require different cleaning methods, time and equipment.</p>
+                  
+                  {/* Hover State: Full Content */}
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <Home className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Property or Facility Type</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      A house, apartment, townhouse, office, showroom, warehouse or commercial facility may require different cleaning methods, time and equipment.
+                    </p>
+                  </div>
+                  
+                  {/* Decorative bottom border on hover */}
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
               
               <RevealOnScroll delay={0.2}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <Sparkles className="w-7 h-7 text-primary" />
+                <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <Sparkles className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Type of Cleaning</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Type of Cleaning</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Regular cleaning, spring cleaning, vacate cleaning, office cleaning, carpet cleaning, tile and grout cleaning or custom jobs each require a different level of detail.</p>
+                  
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <Sparkles className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Type of Cleaning</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Regular cleaning, spring cleaning, vacate cleaning, office cleaning, carpet cleaning, tile and grout cleaning or custom jobs each require a different level of detail.
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
               
               <RevealOnScroll delay={0.3}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <FileText className="w-7 h-7 text-primary" />
+                 <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <FileText className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Size of the Property</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Size of the Property</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">The approximate internal area, number of floors and overall layout help determine the time and resources needed for the job.</p>
+                  
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <FileText className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Size of the Property</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      The approximate internal area, number of floors and overall layout help determine the time and resources needed for the job.
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
               
               <RevealOnScroll delay={0.4}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <ListChecks className="w-7 h-7 text-primary" />
+                <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <ListChecks className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Property Characteristics</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Property Characteristics</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Bedrooms, bathrooms, showers, toilets, kitchens, living areas, workstations and additional zones all influence the final scope of work.</p>
+                  
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <ListChecks className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Property Characteristics</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Bedrooms, bathrooms, showers, toilets, kitchens, living areas, workstations and additional zones all influence the final scope of work.
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
               
               <RevealOnScroll delay={0.5}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <PlusCircle className="w-7 h-7 text-primary" />
+                <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <PlusCircle className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Extras & Additional Cleaning</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Extras & Additional Cleaning</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Extras such as oven cleaning, fridge cleaning, interior windows, exterior windows, carpet steam cleaning, upholstery, pressure cleaning, trash removal or garden tidy-up can be added to the quote.</p>
+                  
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <PlusCircle className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Extras & Additional Cleaning</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Extras such as oven cleaning, fridge cleaning, interior windows, exterior windows, carpet steam cleaning, upholstery, pressure cleaning, trash removal or garden tidy-up can be added to the quote.
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
               
               <RevealOnScroll delay={0.6}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <CarFront className="w-7 h-7 text-primary" />
+                <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <CarFront className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Access & Logistics</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Access & Logistics</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Parking, stairs, lift access, pets, security entry, after-hours requirements, distance and special site conditions may affect scheduling and quote preparation.</p>
+                  
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <CarFront className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Access & Logistics</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Parking, stairs, lift access, pets, security entry, after-hours requirements, distance and special site conditions may affect scheduling and quote preparation.
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.7}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <CalendarCheck className="w-7 h-7 text-primary" />
+                <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <CalendarCheck className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Cleaning Frequency</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Cleaning Frequency</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Regular bookings such as weekly, twice-weekly, fortnightly or monthly cleaning may qualify for frequency-based discounts depending on the service type and schedule.</p>
+                  
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <CalendarCheck className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Cleaning Frequency</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Regular bookings such as weekly, twice-weekly, fortnightly or monthly cleaning may qualify for frequency-based discounts depending on the service type and schedule.
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.8}>
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 h-full group hover:-translate-y-1 hover:border-primary/30">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <Camera className="w-7 h-7 text-primary" />
+                <div className="group relative overflow-hidden bg-white rounded-3xl shadow-sm border border-border h-[280px] cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center items-center text-center">
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-0 group-hover:-translate-y-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-sm border border-primary/20">
+                      <Camera className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary">Photos & Special Notes</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-secondary mb-3">Photos & Special Notes</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Clear photos and detailed notes help us understand stains, priority areas, fragile items, access instructions and any special requirements before confirming your quote.</p>
+                  
+                  <div className="flex flex-col h-full w-full p-8 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 text-left bg-white">
+                    <div className="flex items-start gap-4 mb-4 border-b border-border/50 pb-4">
+                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                         <Camera className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-lg font-bold text-secondary leading-tight">Photos & Special Notes</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Clear photos and detailed notes help us understand stains, priority areas, fragile items, access instructions and any special requirements before confirming your quote.
+                    </p>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
               </RevealOnScroll>
             </div>
