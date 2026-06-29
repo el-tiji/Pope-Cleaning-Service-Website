@@ -452,7 +452,7 @@ export default function PricingPage() {
         </section>
 
         {/* 5) NO HIDDEN FEES / CLEAR EXPECTATIONS */}
-        <section className="container mx-auto px-4 pb-24">
+        <section className="container mx-auto px-4 py-24">
           <RevealOnScroll>
             <div className="bg-primary/5 border border-primary/20 rounded-3xl p-8 md:p-12 text-center max-w-4xl mx-auto">
               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-6 shadow-sm">
