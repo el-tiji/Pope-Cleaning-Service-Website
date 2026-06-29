@@ -451,30 +451,6 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* 5) NO HIDDEN FEES / CLEAR EXPECTATIONS */}
-        <section className="container mx-auto px-4 py-24">
-          <RevealOnScroll>
-            <div className="bg-primary/5 border border-primary/20 rounded-3xl p-8 md:p-12 text-center max-w-4xl mx-auto">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-6 shadow-sm">
-                <ShieldCheck className="w-8 h-8 text-primary" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-4">Clear Quotes. No Unnecessary Surprises.</h2>
-              <p className="text-lg text-secondary/80 mb-8 max-w-2xl mx-auto">
-                Our goal is to prepare a quote that reflects the real job before arrival. That means we ask about property type, size, condition, extras and access requirements upfront. When the information provided is accurate and the property condition matches the request, the quote is designed to be clear and reliable.
-              </p>
-              
-              <div className="bg-white p-6 rounded-2xl border border-border inline-block max-w-3xl text-left">
-                <div className="flex items-start gap-4">
-                  <AlertCircle className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-                  <p className="text-sm text-secondary/70">
-                    <strong>Important:</strong> If the property condition, access or service requirements are significantly different from the submitted details, the quote may need to be reviewed before the service begins.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </section>
-
         {/* 6) OUR STANDARD-BASED PRICE EXAMPLE (Kept & Updated Title) */}
         <section className="container mx-auto px-4 py-24 border-t border-border/50">
           <RevealOnScroll>
