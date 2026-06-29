@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
+import { motion } from "framer-motion";
 import {
   Calculator,
   Home,
@@ -391,28 +392,48 @@ export default function PricingPage() {
               </div>
             </RevealOnScroll>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            {/* Floating Bubbles Section */}
+            <div className="relative h-[600px] md:h-[500px] w-full max-w-5xl mx-auto mb-16 overflow-hidden md:overflow-visible">
               {[
-                { title: "Transparent quote process", icon: <Calculator className="w-5 h-5" />, desc: "We explain what affects your quote so you understand what is included before confirming the service." },
-                { title: "No hidden fees when details are accurate", icon: <ShieldCheck className="w-5 h-5" />, desc: "We aim to avoid surprise charges by asking for the right information before the booking. If the job matches the details provided, the quote is clear from the start." },
-                { title: "Quality-focused cleaning", icon: <Sparkles className="w-5 h-5" />, desc: "We focus on doing the job properly, not rushing through the property. Time, detail and preparation are built into the quote." },
-                { title: "Family-run Perth business", icon: <Home className="w-5 h-5" />, desc: "Pope Cleaning Services is a local family-run business serving homes and businesses across Perth." },
-                { title: "Flexible service options", icon: <ListChecks className="w-5 h-5" />, desc: "Choose one-off, regular, office, vacate, carpet, tile, upholstery or custom cleaning based on your needs." },
-                { title: "Satisfaction guarantee", icon: <CheckCircle className="w-5 h-5" />, desc: "If something reasonable is missed, we’ll work with you to make it right." },
-                { title: "Prepared for the job", icon: <PlusCircle className="w-5 h-5" />, desc: "We review your request so the team can arrive with the right tools, products and plan." },
-                { title: "Clear communication", icon: <FileText className="w-5 h-5" />, desc: "We make the process easier by confirming details, timing and requirements before the clean." }
-              ].map((reason, idx) => (
-                <RevealOnScroll key={idx} delay={idx * 0.1}>
-                  <div className="bg-white/10 border border-white/20 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/20 transition-all h-full">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
-                        {reason.icon}
-                      </div>
-                      <h3 className="font-bold text-white leading-tight">{reason.title}</h3>
-                    </div>
-                    <p className="text-sm text-white/70">{reason.desc}</p>
-                  </div>
-                </RevealOnScroll>
+                { title: "Transparent Quote Process", size: "w-32 h-32 md:w-40 md:h-40", left: "20%", top: "15%", delay: 0 },
+                { title: "No Hidden Fees", size: "w-28 h-28 md:w-36 md:h-36", left: "50%", top: "10%", delay: 1.5 },
+                { title: "Quality-Focused Cleaning", size: "w-36 h-36 md:w-48 md:h-48", left: "80%", top: "25%", delay: 0.5 },
+                { title: "Family-Run Perth Business", size: "w-32 h-32 md:w-44 md:h-44", left: "25%", top: "50%", delay: 2 },
+                { title: "Flexible Service Options", size: "w-28 h-28 md:w-36 md:h-36", left: "55%", top: "45%", delay: 0.8 },
+                { title: "100% Satisfaction Guarantee", size: "w-36 h-36 md:w-44 md:h-44", left: "85%", top: "65%", delay: 2.5 },
+                { title: "Prepared For The Job", size: "w-32 h-32 md:w-40 md:h-40", left: "15%", top: "85%", delay: 1.2 },
+                { title: "Clear Communication", size: "w-32 h-32 md:w-44 md:h-44", left: "60%", top: "80%", delay: 0.3 }
+              ].map((bubble, idx) => (
+                <motion.div
+                  key={idx}
+                  animate={{
+                    y: ["-50%", "-65%", "-35%", "-50%"],
+                    x: ["-50%", "-40%", "-60%", "-50%"],
+                  }}
+                  transition={{
+                    duration: 8 + (idx % 4) * 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: bubble.delay,
+                  }}
+                  className={`absolute ${bubble.size} rounded-full bg-gradient-to-br from-white/30 to-white/5 backdrop-blur-md border border-white/40 flex items-center justify-center p-4 md:p-6 text-center hover:scale-110 transition-transform duration-300 cursor-default group z-10 shadow-2xl`}
+                  style={{
+                    left: bubble.left,
+                    top: bubble.top,
+                    boxShadow: "inset -5px -5px 15px rgba(255,255,255,0.1), inset 5px 5px 15px rgba(255,255,255,0.6), 0 10px 30px rgba(0,0,0,0.1)"
+                  }}
+                >
+                  <span className="font-bold text-white text-[13px] sm:text-sm md:text-base leading-tight drop-shadow-md z-10">
+                    {bubble.title}
+                  </span>
+                  
+                  {/* Bubble reflection/highlight */}
+                  <div className="absolute top-[15%] left-[20%] w-[30%] h-[15%] bg-white/60 rounded-full blur-[1px] transform -rotate-[30deg]"></div>
+                  <div className="absolute bottom-[15%] right-[20%] w-[15%] h-[10%] bg-white/30 rounded-full blur-[1px] transform -rotate-[30deg]"></div>
+                  
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                </motion.div>
               ))}
             </div>
 
