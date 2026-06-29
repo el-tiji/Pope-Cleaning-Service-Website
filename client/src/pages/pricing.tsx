@@ -373,7 +373,7 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* 3) SERVICES WE CAN QUOTE FOR */}
+        {/* 3) WHY CHOOSE POPE CLEANING SERVICES (Moved & Redesigned) */}
         <section className="bg-secondary text-white py-24 relative overflow-hidden">
           {/* Subtle background overlay */}
           <div className="absolute inset-0 z-0">
@@ -384,33 +384,33 @@ export default function PricingPage() {
           <div className="container mx-auto px-4 max-w-7xl relative z-10">
             <RevealOnScroll>
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Cleaning Services We Can Quote For</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Why Choose Pope Cleaning Services?</h2>
                 <p className="text-lg text-white/80">
-                  Whether you need a regular clean, a detailed one-off service or a specialised commercial job, Pope Cleaning Services can prepare a tailored quote for the cleaning work you need.
+                  When comparing cleaning companies, price matters — but reliability, preparation, communication and quality matter just as much. Pope Cleaning Services focuses on delivering a professional experience from quote to completion.
                 </p>
               </div>
             </RevealOnScroll>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
               {[
-                { title: "Regular Home Cleaning", icon: <Home className="w-5 h-5" />, desc: "Routine cleaning for kitchens, bathrooms, floors, dusting and general home maintenance." },
-                { title: "Spring / Deep Cleaning", icon: <Sparkles className="w-5 h-5" />, desc: "A more detailed clean for hard-to-reach areas, built-up dust, neglected spaces and seasonal refreshes." },
-                { title: "Vacate / End of Lease", icon: <ListChecks className="w-5 h-5" />, desc: "Detailed move-out cleaning designed to prepare the property for inspection, including optional carpets and extras." },
-                { title: "Office & Commercial", icon: <FileText className="w-5 h-5" />, desc: "Professional cleaning for offices, workstations, meeting rooms, kitchens, bathrooms and shared workplace areas." },
-                { title: "Carpet & Upholstery", icon: <Droplets className="w-5 h-5" />, desc: "Steam cleaning for carpets, rugs, couches and upholstery to help remove dirt, odours and general build-up." },
-                { title: "Tile & Grout", icon: <PlusCircle className="w-5 h-5" />, desc: "Detailed cleaning for tiled areas, grout lines, bathrooms, kitchens and hard floor surfaces." },
-                { title: "Pressure Cleaning", icon: <Droplets className="w-5 h-5" />, desc: "Outdoor cleaning for driveways, patios, paths, external surfaces and selected high-use areas." },
-                { title: "Custom Cleaning", icon: <CheckCircle className="w-5 h-5" />, desc: "For special jobs, mixed services, workshops, warehouses, showrooms, facilities or cleaning needs not listed." }
-              ].map((service, idx) => (
+                { title: "Transparent quote process", icon: <Calculator className="w-5 h-5" />, desc: "We explain what affects your quote so you understand what is included before confirming the service." },
+                { title: "No hidden fees when details are accurate", icon: <ShieldCheck className="w-5 h-5" />, desc: "We aim to avoid surprise charges by asking for the right information before the booking. If the job matches the details provided, the quote is clear from the start." },
+                { title: "Quality-focused cleaning", icon: <Sparkles className="w-5 h-5" />, desc: "We focus on doing the job properly, not rushing through the property. Time, detail and preparation are built into the quote." },
+                { title: "Family-run Perth business", icon: <Home className="w-5 h-5" />, desc: "Pope Cleaning Services is a local family-run business serving homes and businesses across Perth." },
+                { title: "Flexible service options", icon: <ListChecks className="w-5 h-5" />, desc: "Choose one-off, regular, office, vacate, carpet, tile, upholstery or custom cleaning based on your needs." },
+                { title: "Satisfaction guarantee", icon: <CheckCircle className="w-5 h-5" />, desc: "If something reasonable is missed, we’ll work with you to make it right." },
+                { title: "Prepared for the job", icon: <PlusCircle className="w-5 h-5" />, desc: "We review your request so the team can arrive with the right tools, products and plan." },
+                { title: "Clear communication", icon: <FileText className="w-5 h-5" />, desc: "We make the process easier by confirming details, timing and requirements before the clean." }
+              ].map((reason, idx) => (
                 <RevealOnScroll key={idx} delay={idx * 0.1}>
                   <div className="bg-white/10 border border-white/20 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/20 transition-all h-full">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
-                        {service.icon}
+                        {reason.icon}
                       </div>
-                      <h3 className="font-bold text-white leading-tight">{service.title}</h3>
+                      <h3 className="font-bold text-white leading-tight">{reason.title}</h3>
                     </div>
-                    <p className="text-sm text-white/70">{service.desc}</p>
+                    <p className="text-sm text-white/70">{reason.desc}</p>
                   </div>
                 </RevealOnScroll>
               ))}
@@ -418,54 +418,15 @@ export default function PricingPage() {
 
             <RevealOnScroll delay={0.4}>
               <div className="text-center">
-                <p className="text-white/80 mb-6 font-medium">Not sure which service you need? Send us a custom quote request.</p>
+                <p className="text-white/80 mb-6 font-medium">Ready to experience a detailed, professional clean?</p>
                 <Link href="/book">
                   <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-accent text-secondary hover:bg-white transition-colors gap-2 group">
-                    Request a Custom Quote
+                    Request a Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </div>
             </RevealOnScroll>
-          </div>
-        </section>
-
-        {/* 4) WHY CHOOSE POPE CLEANING SERVICES */}
-        <section className="bg-background py-24">
-          <div className="container mx-auto px-4 max-w-7xl">
-            <RevealOnScroll>
-              <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">Why Choose Pope Cleaning Services?</h2>
-                <p className="text-lg text-muted-foreground">
-                  When comparing cleaning companies, price matters — but reliability, preparation, communication and quality matter just as much. Pope Cleaning Services focuses on delivering a professional experience from quote to completion.
-                </p>
-              </div>
-            </RevealOnScroll>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                { title: "Transparent quote process", desc: "We explain what affects your quote so you understand what is included before confirming the service." },
-                { title: "No hidden fees when details are accurate", desc: "We aim to avoid surprise charges by asking for the right information before the booking. If the job matches the details provided, the quote is clear from the start." },
-                { title: "Quality-focused cleaning", desc: "We focus on doing the job properly, not rushing through the property. Time, detail and preparation are built into the quote." },
-                { title: "Family-run Perth business", desc: "Pope Cleaning Services is a local family-run business serving homes and businesses across Perth." },
-                { title: "Flexible service options", desc: "Choose one-off, regular, office, vacate, carpet, tile, upholstery or custom cleaning based on your needs." },
-                { title: "Satisfaction guarantee", desc: "If something reasonable is missed, we’ll work with you to make it right." },
-                { title: "Equipment and products prepared for the job", desc: "We review your request so the team can arrive with the right tools, products and plan." },
-                { title: "Clear communication", desc: "We make the process easier by confirming details, timing and requirements before the clean." }
-              ].map((reason, idx) => (
-                <RevealOnScroll key={idx} delay={idx * 0.1}>
-                  <div className="flex gap-4 p-6 bg-white rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <CheckCircle2 className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-secondary text-lg mb-2">{reason.title}</h3>
-                      <p className="text-muted-foreground text-sm">{reason.desc}</p>
-                    </div>
-                  </div>
-                </RevealOnScroll>
-              ))}
-            </div>
           </div>
         </section>
 
