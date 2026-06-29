@@ -36,6 +36,12 @@ export function Navbar() {
               Book Now
             </Button>
           </Link>
+          <div className="hidden lg:block w-px h-6 bg-border/60 mx-2"></div>
+          <Link href="/auth/login">
+            <Button variant="outline" className="hidden lg:flex rounded-full px-5 py-2 h-auto font-semibold border-primary/20 text-primary hover:bg-primary/5 transition-all cursor-pointer">
+              Log In
+            </Button>
+          </Link>
         </div>
 
         <Button variant="ghost" size="icon" className="md:hidden">

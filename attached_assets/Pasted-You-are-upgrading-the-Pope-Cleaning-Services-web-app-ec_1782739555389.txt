@@ -1,0 +1,702 @@
+You are upgrading the Pope Cleaning Services web + app ecosystem.
+
+GLOBAL OBJECTIVE
+Build a complete, production-ready authentication, authorization, customer portal and admin operations ecosystem without breaking the current public website.
+
+IMPORTANT CONSTRAINTS
+- Preserve the existing public site design, branding, colours, current page layout and current booking/public quote-request experience unless explicitly required for integration.
+- Do NOT create a public “admin signup”.
+- Do NOT rely only on frontend route hiding for permissions.
+- Do NOT store auth tokens in localStorage or sessionStorage.
+- Do NOT duplicate pricing logic in two different places.
+- Build this as a secure, scalable system with one identity layer and role-based / attribute-based access control.
+- Use the current stack if already present in the repo. If a component is missing, add the minimal robust solution that integrates cleanly with the existing codebase.
+
+PRIMARY PRODUCT DECISION
+Implement one shared authentication system with protected role-specific areas:
+
+1. Public website
+   - Existing marketing pages remain public.
+   - Existing public booking / quote request remains public unless already planned otherwise.
+   - Public users can create an account or sign in.
+
+2. Customer portal
+   - Authenticated customers see only their own properties, bookings, statuses, photos, quote history and communication preferences.
+   - Customers cannot see or enumerate any data from other users.
+
+3. Admin portal
+   - Admin users sign in through the same auth system but are redirected to a protected admin application area.
+   - Admin must have stronger security controls than customers.
+   - Admin can review quote requests, bookings, customer profiles, property details, uploaded photos, payment states and internal pricing suggestions.
+
+AUTHENTICATION ARCHITECTURE
+Implement a unified auth subsystem with:
+- signup
+- login
+- email verification
+- forgot password
+- reset password
+- sign out
+- session refresh / session validation
+- role-aware redirect
+- account lock / throttling protections
+- MFA support
+
+PASSWORD AND ACCOUNT RULES
+- Passwords must be hashed with Argon2id.
+- If Argon2id is not available in the project stack, use scrypt.
+- Never store passwords in plaintext.
+- Password policy:
+  - if an account uses password-only auth, require a strong minimum length;
+  - if admin MFA is mandatory, password length can be adjusted accordingly, but keep it strong.
+- Allow long passwords and do not force fragile composition rules.
+- Add server-side rate limiting for:
+  - login
+  - signup
+  - forgot password
+  - reset password
+  - MFA verification
+- Prevent user enumeration:
+  - login, forgot password and account recovery responses must not reveal whether an email exists.
+- Forgot password tokens must be:
+  - cryptographically random
+  - single-use
+  - expiry-limited
+  - stored securely
+- Do not automatically log the user in right after reset; require normal login flow.
+
+SESSION AND TOKEN SECURITY
+Use secure server-backed session handling or HttpOnly cookie-based auth:
+- cookies must be:
+  - HttpOnly
+  - Secure
+  - SameSite=Lax or Strict depending on route needs
+- regenerate session ID after:
+  - login
+  - privilege change
+  - password change
+  - important account-security changes
+- do not store auth credentials in localStorage
+- implement server-side session invalidation on logout
+- allow “log out all sessions” from account security settings
+
+ROLES AND AUTHORIZATION
+Create a role and permission system with:
+- super_admin
+- admin
+- customer
+- optional future role placeholder: staff / cleaner / manager
+
+Use hybrid access control:
+- RBAC for broad system roles
+- ABAC / ownership rules for resource-level permissions
+
+Examples:
+- customer can only read and manage:
+  - their own profile
+  - their own properties
+  - their own bookings
+  - their own uploaded files / photos
+  - their own quotes / invoices
+  - their own communication preferences
+  - their own consent settings
+- admin can:
+  - review quote requests
+  - create / edit quotes
+  - view customer and property records
+  - view payment status
+  - edit booking status
+  - send quote responses
+  - access dashboard statistics
+- only super_admin can:
+  - manage admin users
+  - assign or revoke admin roles
+  - change sensitive system settings
+  - view full audit logs if desired
+
+Authorization rules MUST be enforced on the backend for every protected request.
+Do not trust route guards alone.
+
+PUBLIC SIGNUP / LOGIN EXPERIENCE
+Create a new public tab or entry point:
+- “Log In / Sign Up”
+
+Within this area:
+- customer signup
+- customer login
+- forgot password
+- email verification prompt
+- optional “Continue with Google” only if the current project already supports or can safely support social auth
+- no admin signup visible publicly
+
+SIGNUP FIELDS FOR CUSTOMERS
+Customer signup should minimally capture:
+- first name
+- last name
+- email
+- mobile / phone
+- password
+- confirm password
+- suburb / optional
+- accepted terms checkbox
+- privacy policy acknowledgment checkbox
+- optional marketing consent checkboxes separated from required terms
+
+Do not pre-tick marketing checkboxes.
+
+ADMIN ACCOUNT CREATION
+Do NOT expose public admin registration.
+
+Implement one of these secure flows:
+- initial admin bootstrap script with environment-seeded email
+- migration / seeding command to create the first admin
+- super_admin invitation flow for additional admins
+
+Require MFA for admin accounts:
+- preferred methods:
+  - passkey / WebAuthn
+  - TOTP authenticator app
+- SMS only as fallback, not as the primary admin factor
+
+CUSTOMER PORTAL
+Build a protected customer area with the existing site visual identity adapted into an account/dashboard experience.
+
+Required sections:
+- Dashboard
+  - summary of next cleaning
+  - outstanding quote or invoice summary if applicable
+  - quick status cards
+- My Properties
+  - list of properties linked to the customer
+  - add / edit property details
+  - mark default property
+- My Bookings
+  - upcoming
+  - in progress
+  - completed
+  - cancelled / rescheduled
+- Booking Details
+  - service type
+  - scheduled date and time
+  - address / property
+  - status timeline
+  - notes
+  - photos when available
+  - quote summary if applicable
+- My Quotes
+  - pending quote requests
+  - sent quotes
+  - accepted / rejected / expired
+- Communication Preferences
+  - preferred operational contact channel:
+    - email
+    - sms
+    - whatsapp
+    - phone
+- Marketing Preferences
+  - promotions
+  - refer-a-friend
+  - seasonal offers
+  - reactivation offers
+- Account Settings
+  - profile update
+  - password change
+  - MFA optional for customers
+  - logout all sessions
+
+PROPERTY MODEL
+Each customer can have one or more properties.
+
+Each property record should support:
+- property ID
+- customer ID
+- property type
+  - house
+  - apartment
+  - townhouse
+  - office
+  - commercial facility
+  - showroom
+  - warehouse
+  - other
+- address fields
+- suburb
+- postcode
+- optional access notes
+- optional parking notes
+- optional gate / alarm instructions
+- size reference
+- room counts
+- bathroom counts
+- shower counts
+- kitchen counts
+- additional areas
+- archived flag
+
+BOOKING STATUS MODEL
+Implement booking statuses with history tracking:
+- quote_requested
+- quote_under_review
+- quote_sent
+- awaiting_customer_response
+- booked
+- confirmed
+- rescheduled
+- in_progress
+- completed
+- follow_up_required
+- cancelled
+- no_access
+- payment_pending
+- paid
+- overdue
+
+Store status history in a separate timeline table with:
+- old status
+- new status
+- changed by
+- changed at
+- optional reason / note
+
+ADMIN PORTAL
+Build a protected admin application area with the same brand palette but a more operational layout.
+
+Required admin modules:
+
+Admin Dashboard
+- bookings this month
+- quote requests this month
+- quotes sent this month
+- accepted quotes
+- rejected / expired quotes
+- total booked value
+- total invoiced value
+- total paid
+- total pending
+- overdue amounts
+- service distribution
+- recurring vs one-off jobs
+- top suburbs / service areas
+- upcoming cleans
+- recent changes / alerts
+
+Bookings Queue
+- searchable list of:
+  - new quote requests
+  - pending review
+  - awaiting customer response
+  - booked
+  - in progress
+  - completed
+  - cancelled
+- filters by:
+  - date
+  - service type
+  - suburb
+  - payment status
+  - booking status
+  - recurring frequency
+  - assigned staff placeholder
+
+Booking / Quote Detail View
+- customer summary
+- property summary
+- uploaded photos
+- requested services
+- extras
+- access and logistics
+- preferred communication channel
+- internal pricing suggestion panel
+- editable quote builder
+- quote version history
+- send quote action
+- communication log
+- payment summary
+- status transition controls
+
+CUSTOMER REGISTRY
+Create an admin customer registry with:
+- name
+- email
+- phone
+- account status
+- verified email status
+- number of properties
+- number of bookings
+- latest booking status
+- outstanding balance
+- consent flags
+- last contact timestamp
+
+INTERNAL LIVE ESTIMATED PRICE CALCULATOR FOR ADMIN
+Move the pricing engine into an admin-use operational flow.
+
+CRITICAL RULE:
+The pricing calculation logic must exist in a shared backend service so it can be called consistently.
+
+Admin pricing workflow:
+1. Admin opens a quote request / booking
+2. System reads:
+   - property type
+   - cleaning type
+   - size
+   - characteristics
+   - extras
+   - access / logistics
+   - cleaning frequency
+3. System runs the internal estimator
+4. System shows:
+   - suggested base amount
+   - line items / factors
+   - frequency effects
+   - any surcharge suggestions
+   - notes explaining the suggestion
+5. Admin can:
+   - accept the suggestion
+   - override the amount
+   - edit line items
+   - add notes
+6. Final quote version is saved
+7. Admin chooses delivery channel
+8. System sends quote and stores communication log
+
+The estimator suggestion must be editable, but all changes must be auditable.
+
+QUOTE VERSIONING
+Create quote version history:
+- quote_request_id
+- version_number
+- suggested_amount
+- edited_amount
+- currency
+- gst amount if applicable
+- discount amount
+- pricing notes
+- created_by
+- created_at
+- delivery_status
+- accepted / rejected / expired status
+
+Never overwrite a quote without history.
+
+COMMUNICATION DELIVERY
+When the admin sends a quote or booking response, allow delivery via:
+- email
+- sms
+- whatsapp
+- phone note only / manual follow-up
+
+The channel used must depend on:
+- customer preferred communication method
+- admin override if needed
+- available contact details
+- messaging consent rules
+
+Store message delivery records:
+- message type
+  - quote
+  - reminder
+  - booking confirmation
+  - reschedule notice
+  - completion message
+  - invoice / payment notice
+  - marketing message
+- channel
+- destination
+- template used
+- sent_at
+- delivery result
+- failure reason if any
+- linked booking / quote ID
+
+VERY IMPORTANT:
+Operational / transactional messages must be separated from marketing messages in both templates and consent logic.
+
+PAYMENTS AND FINANCIAL DASHBOARD
+Create internal operations-level financial reporting based on bookings, quotes, invoices and payments.
+
+Minimum financial dashboard widgets:
+- booked revenue this month
+- invoiced revenue this month
+- paid revenue this month
+- outstanding receivables
+- overdue receivables
+- amount by service type
+- revenue by recurring frequency
+- quote-to-booking conversion rate
+- cancelled value
+- rescheduled jobs count
+
+Important:
+- Treat this as internal operating reporting unless a full accounting integration exists.
+- Support payment statuses:
+  - unpaid
+  - partially_paid
+  - paid
+  - overdue
+  - waived
+  - refunded
+
+DATA MODEL
+Implement or extend the database with a schema similar to:
+
+users
+roles
+user_roles
+auth_identities
+customer_profiles
+admin_profiles
+properties
+property_contacts
+service_requests
+quote_requests
+quote_versions
+quote_line_items
+bookings
+booking_status_history
+booking_photos
+invoices
+payments
+payment_events
+communication_preferences
+marketing_consents
+notifications
+message_deliveries
+audit_logs
+pricing_estimator_runs
+
+PUBLIC IDS
+- Use UUID or ULID for externally exposed resource IDs.
+- Do not expose internal sequential numeric IDs in customer-facing routes.
+
+FILES AND PHOTOS
+Implement secure file upload for:
+- property photos
+- cleaning result photos
+- optional quote support photos
+
+File upload safeguards:
+- allowlist extensions only
+- check MIME type
+- validate file signature if possible
+- rename files on upload
+- size limits
+- private storage
+- signed URLs or protected download endpoints
+- access control by ownership / role
+- optional antivirus scan if available in stack
+
+Do not leave customer or property photos publicly accessible by raw predictable URL.
+
+CONSENT AND MARKETING PREFERENCES
+Implement granular consent records.
+
+Separate categories:
+1. Required service communications
+   - quote replies
+   - booking confirmations
+   - reminders
+   - status updates
+   - payment notices
+   - support messages
+
+2. Optional marketing
+   - promotions
+   - discounts
+   - refer-a-friend offers
+   - new services
+   - seasonal campaigns
+
+Track consent by channel:
+- email
+- sms
+- whatsapp
+
+Store for each consent:
+- consent type
+- channel
+- granted true/false
+- timestamp
+- source page / form
+- user ID
+- IP / user agent if appropriate and lawful
+- proof text or consent version
+- withdrawn timestamp if revoked
+
+Implement unsubscribe / opt-out:
+- easy for the user to update
+- reflected in future sends
+- suppression-aware for marketing sends
+- marketing opt-out must never block necessary service communications
+
+COMPLIANCE-SAFE MESSAGING LOGIC
+Rules:
+- transactional messages may be sent when necessary for the service relationship
+- promotional / referral / discount messages must obey explicit consent setup
+- do not include marketing content inside purely transactional templates unless compliant handling is in place
+- keep operational templates and promotional templates separate in code and UI
+
+AUDIT LOGGING
+Create admin audit logs for:
+- login success/failure
+- MFA enrollment / reset
+- role changes
+- quote edits
+- quote sends
+- booking status changes
+- payment status changes
+- consent changes
+- manual data exports
+- admin impersonation if ever implemented later
+
+Do NOT log:
+- plaintext passwords
+- session tokens
+- access tokens
+- raw secrets
+- sensitive personal data unnecessarily
+
+SECURITY MIDDLEWARE
+Implement:
+- auth middleware
+- role/permission middleware
+- CSRF protection where relevant
+- rate limiting
+- request validation
+- input sanitization
+- brute-force protection
+- bot mitigation on signup/login/reset endpoints if stack supports it
+- consistent security headers
+
+ADMIN MFA ENFORCEMENT
+For admin:
+- MFA mandatory
+- preferred:
+  - WebAuthn / passkeys
+  - TOTP
+- fallback:
+  - recovery codes
+- admin factor changes require:
+  - reauthentication
+  - audit log
+  - out-of-band notification
+  - optional delay for high-risk accounts
+
+CUSTOMER MFA
+For customers:
+- MFA optional at launch
+- if implemented:
+  - TOTP or passkeys preferred
+  - recovery codes available
+- high-risk actions can trigger step-up verification later
+
+ACCOUNT RECOVERY
+Implement safe recovery:
+- uniform responses
+- rate limiting
+- single-use reset tokens
+- expiry
+- secure email-side flow
+- session invalidation after password reset option
+- no disclosure of whether a user exists
+
+API DESIGN
+Create secure APIs or server actions for:
+- auth
+- customer profile
+- properties
+- bookings
+- quotes
+- pricing suggestion
+- payments
+- preferences
+- consents
+- files
+- admin dashboard stats
+
+Every protected endpoint must validate:
+- authenticated session
+- role
+- ownership / object access
+
+UI / UX REQUIREMENTS
+Maintain the Pope Cleaning Services brand:
+- existing premium blue/white palette
+- `#00275F` deep navy anchor colour
+- rounded cards
+- soft shadows
+- modern, trustworthy style
+- responsive design
+- reuse current typography and design language
+
+New account areas should feel part of the same brand, not like a separate template.
+
+ROUTING
+Create route groups such as:
+- /login
+- /signup
+- /forgot-password
+- /reset-password
+- /portal
+- /portal/properties
+- /portal/bookings
+- /portal/quotes
+- /portal/settings
+- /admin
+- /admin/bookings
+- /admin/customers
+- /admin/quotes
+- /admin/payments
+- /admin/analytics
+- /admin/settings
+
+Use route guards plus backend authorization.
+
+SEEDING AND MIGRATION
+Add:
+- migration scripts
+- initial role seed
+- initial admin bootstrap command
+- status enums / status seed
+- development-safe demo data optional
+
+TESTING REQUIREMENTS
+Implement automated tests for:
+- signup
+- login
+- logout
+- forgot password
+- reset password
+- MFA enrollment / verification
+- role-based route protection
+- customer cannot access other customer’s records
+- customer cannot access admin routes
+- admin estimator works on quote request detail
+- quote version history persists edits
+- consent opt-in / opt-out affects send eligibility
+- file access ownership checks
+- booking status transitions
+- analytics calculations basic correctness
+
+ACCEPTANCE CRITERIA
+The implementation is complete only when:
+- customer signup/login works
+- admin login works with MFA
+- no public admin signup exists
+- customer portal shows only owned data
+- admin portal shows operational dashboard
+- admin can open a booking and get internal price suggestion
+- admin can modify and send the quote
+- system stores communication history
+- consent settings are granular and enforced
+- payments / outstanding status can be tracked
+- secure session handling is in place
+- audit logs are stored
+- existing public site remains functional and stylistically consistent
+
+DELIVERY STYLE
+Implement this carefully and incrementally inside the existing project.
+Do not ship placeholder security.
+Do not use fake data in production-facing UI.
+Prefer robust backend enforcement over quick frontend shortcuts.
+If any existing public pricing or booking logic depends on the old architecture, preserve compatibility while moving toward the new shared backend pricing service.
