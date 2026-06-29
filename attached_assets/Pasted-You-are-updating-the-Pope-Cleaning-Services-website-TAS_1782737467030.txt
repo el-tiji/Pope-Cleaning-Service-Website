@@ -1,0 +1,246 @@
+You are updating the Pope Cleaning Services website.
+
+TASK
+Move the existing sections currently located on the “Pricing Info” page:
+
+1. “Our Standard-Based Price Benchmark”
+2. “How the Live Estimator Calculates Your Price”
+
+These sections should be transferred to the beginning of the “Book Now” page and used as the general explanation/introduction for the “Live Estimated Price Calculator”.
+
+IMPORTANT SCOPE
+
+* Do NOT modify the Live Estimated Price Calculator logic.
+* Do NOT modify pricing formulas.
+* Do NOT modify calculator fields, steps, conditions, discounts, GST logic or submit behaviour.
+* Do NOT redesign the whole Book Now page.
+* Do NOT redesign the whole Pricing Info page.
+* Only move these explanatory sections from Pricing Info to Book Now and adjust their presentation so they fit naturally above the calculator.
+
+GOAL
+The Book Now page should start with a clear, professional explanation of how the Live Estimated Price Calculator works before the user begins selecting services.
+
+The new Book Now page order should be:
+
+1. Book Now hero / page title.
+2. New intro section explaining the Live Estimated Price Calculator.
+3. “Our Standard-Based Price Benchmark” section.
+4. “How the Live Estimator Calculates Your Price” section.
+5. Existing Live Estimated Price Calculator.
+6. Existing footer / remaining Book Now content.
+
+The calculator itself must remain unchanged.
+
+BOOK NOW PAGE INTRODUCTION
+
+At the beginning of the Book Now page, before the calculator, add a short introductory section.
+
+Suggested heading:
+
+“Plan Your Clean with Our Live Estimated Price Calculator”
+
+Suggested subheading:
+
+“Use our calculator to select your service, add property details, choose extras and receive a helpful estimate before requesting your booking.”
+
+Suggested supporting text:
+
+“Our live estimate is designed to help customers understand how property size, service type, extras, access and cleaning frequency can affect the expected cost. The final confirmation may vary after reviewing photos, access details or if the property condition is significantly different from the information provided.”
+
+Design:
+
+* Use the current Book Now style.
+* Keep the same blue/white premium design.
+* Use brand navy `#00275F` for strong headings.
+* Use bright blue for CTA accents.
+* Use light blue background highlights.
+* Add a soft 3D / tilt-shift style visual if the page already uses one.
+* Keep the section clean and not too text-heavy.
+
+SECTION 1 TO MOVE — STANDARD-BASED PRICE BENCHMARK
+
+Move the existing “Our Standard-Based Price Benchmark” section from Pricing Info to Book Now.
+
+Rename it slightly if needed to better fit Book Now:
+
+Preferred title:
+
+“Our Standard-Based Price Benchmark”
+
+Alternative title:
+
+“Our Standard Cleaning Benchmark”
+
+Keep or update the text to explain:
+
+“To make the live estimate easier to understand, the calculator uses a standard cleaning reference as a starting point. This benchmark helps explain how property details can affect the estimated price.”
+
+Use the current benchmark details:
+
+* 3 bedrooms
+* 2 bathrooms
+* 2 showers
+* 1 separate toilet
+* 1 floor / single level
+* Standard property condition
+* Approx. 2 hours under normal cleaning scope
+
+Add a clear note:
+
+“This benchmark is only a reference. Larger properties, additional bathrooms, multiple floors, heavy dirt, extra services or access conditions may increase the estimated time and price.”
+
+Important:
+
+* Do NOT present this benchmark as a fixed public price.
+* Do NOT imply that all 3-bedroom homes will cost the same.
+* Do NOT change the pricing calculation logic.
+
+Design:
+
+* Use a highlighted card or banner.
+* Use icons for bedrooms, bathrooms, showers, toilet, floor and time.
+* Use the current Book Now palette.
+* Use `#00275F` for the heading.
+* Use white/light grey card backgrounds.
+* Use light blue icon circles.
+* Keep rounded corners and soft shadows.
+* Make it responsive.
+
+SECTION 2 TO MOVE — HOW THE LIVE ESTIMATOR CALCULATES YOUR PRICE
+
+Move the existing “How the Live Estimator Calculates Your Price” section from Pricing Info to Book Now.
+
+Keep the title or slightly refine it to:
+
+“How the Live Estimated Price Calculator Works”
+
+Use a clear step-by-step layout.
+
+Suggested content:
+
+Step 1 — Choose your service
+“The estimate starts with the cleaning service selected, such as Regular Cleaning, Spring Cleaning, Vacate Cleaning or Office Cleaning.”
+
+Step 2 — Add property details
+“The calculator considers the type of property, property size, floors, bedrooms, bathrooms, showers, toilets, kitchens and other relevant areas.”
+
+Step 3 — Select extras
+“Extras such as oven cleaning, fridge cleaning, windows, carpet steam cleaning, upholstery, pressure cleaning, trash removal or garden tidy-up can affect the estimate.”
+
+Step 4 — Include access and logistics
+“Parking, stairs, pets, access instructions, after-hours requirements and other site conditions may affect the estimated work required.”
+
+Step 5 — Apply frequency options
+“Recurring bookings such as weekly, twice-weekly, fortnightly or monthly cleaning may include frequency-based adjustments where applicable.”
+
+Step 6 — Review your estimate
+“The calculator shows an estimated price before final confirmation. The final quote may be reviewed if photos, access or property condition differ from the submitted details.”
+
+Design:
+
+* Use numbered cards or a horizontal/vertical timeline.
+* Desktop: 3 cards per row or 2x3 grid.
+* Tablet: 2 columns.
+* Mobile: 1 column.
+* Use the current Book Now design system.
+* Use rounded cards, soft shadows and light blue accents.
+* Use subtle reveal-on-scroll animations if already available.
+* Keep the text short and easy to scan.
+
+PLACEMENT ON BOOK NOW
+
+Place these sections above the existing calculator.
+
+The final Book Now structure should feel like this:
+
+Hero:
+“Book Your Clean”
+
+Intro:
+“Plan Your Clean with Our Live Estimated Price Calculator”
+
+Benchmark section:
+“Our Standard-Based Price Benchmark”
+
+Estimator explanation:
+“How the Live Estimated Price Calculator Works”
+
+Existing calculator:
+Do not modify the existing calculator.
+
+CTA / transition before calculator:
+Add a small transition line before the calculator:
+
+“Ready to start? Select your service below and complete the steps to request your clean.”
+
+Optional button/anchor:
+“Start Estimate”
+
+If the calculator is on the same page below, this button should scroll smoothly to the calculator section.
+
+PRICING INFO PAGE CLEANUP
+
+After moving the two sections to Book Now:
+
+* Remove these two sections from Pricing Info to avoid duplication.
+* Do not leave empty spacing where they were removed.
+* Pricing Info should remain focused on general quote explanation, what affects a quote, services, trust, no hidden fees and frequency discounts.
+* Do not remove other Pricing Info content unless it directly duplicates the moved sections.
+
+If removing these sections causes layout gaps, adjust spacing only within Pricing Info.
+
+DESIGN CONSISTENCY
+
+When adapting these moved sections to Book Now, use the Book Now page design style:
+
+Colour palette:
+
+* Deep navy: `#00275F`
+* Secondary navy: `#004170`
+* Primary blue: `#2F7FD1`
+* Light blue: `#7EC8FF`
+* Soft blue background: `#EAF5FF`
+* Main background: white / light grey
+
+Visual style:
+
+* Clean and premium.
+* Rounded cards.
+* Soft shadows.
+* Strong heading hierarchy.
+* Light blue icon badges.
+* Good whitespace.
+* Consistent typography.
+* Subtle animations only.
+
+Make sure the moved sections visually match the Book Now page and do not look copied from another page.
+
+ACCESSIBILITY
+
+* Keep heading hierarchy correct.
+* Use readable contrast.
+* Make icons decorative with `aria-hidden` unless they provide meaning.
+* Ensure the layout is fully responsive.
+* Ensure the “Start Estimate” button, if added, is keyboard accessible.
+
+DO NOT
+
+* Do not modify calculator logic.
+* Do not modify calculator pricing config.
+* Do not modify form validation.
+* Do not modify Booking form fields.
+* Do not modify Booking submit behaviour.
+* Do not modify GST calculations.
+* Do not modify discounts.
+* Do not modify other pages except removing the transferred sections from Pricing Info.
+* Do not redesign the full site.
+
+OUTPUT
+Implement the update so that:
+
+1. “Our Standard-Based Price Benchmark” is moved from Pricing Info to the top of Book Now.
+2. “How the Live Estimator Calculates Your Price” is moved from Pricing Info to the top of Book Now.
+3. The moved sections become the general explanation for the Live Estimated Price Calculator.
+4. The sections are redesigned only as needed to match the Book Now page style and brand palette.
+5. Pricing Info no longer contains those two sections.
+6. The existing Live Estimated Price Calculator remains unchanged and appears below the moved explanatory content.

@@ -9,7 +9,7 @@ import {
   Check, Sparkles, Calendar, Clock, ArrowRight, ArrowLeft, 
   ShieldCheck, Briefcase, Home, Building, Plus, Minus, 
   Camera, MapPin, CheckCircle2, User, Mail, Phone, UploadCloud, Info,
-  Users, Building2, Layers, Store, Warehouse, Factory, Landmark, Dumbbell, HelpCircle
+  Users, Building2, Layers, Store, Warehouse, Factory, Landmark, Dumbbell, HelpCircle, Droplets
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
@@ -363,15 +363,116 @@ export default function Booking() {
           
           {/* Header */}
           <RevealOnScroll>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Get your custom quote</h1>
-              <p className="text-lg text-muted-foreground">
-                Every property in Perth is unique. Use our interactive estimator to find the right plan and calculate your price instantly.
-              </p>
+            <div className="text-center max-w-3xl mx-auto mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#00275F] mb-6">Book Your Clean</h1>
             </div>
           </RevealOnScroll>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Intro Section */}
+          <RevealOnScroll delay={0.1}>
+            <div className="bg-[#EAF5FF] rounded-3xl p-8 md:p-12 mb-16 text-center max-w-5xl mx-auto border border-[#7EC8FF]/30 shadow-sm">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#00275F] mb-4">Plan Your Clean with Our Live Estimated Price Calculator</h2>
+              <p className="text-lg text-[#004170] mb-6 font-medium">
+                Use our calculator to select your service, add property details, choose extras and receive a helpful estimate before requesting your booking.
+              </p>
+              <p className="text-[#004170]/80 mb-8 max-w-3xl mx-auto">
+                Our live estimate is designed to help customers understand how property size, service type, extras, access and cleaning frequency can affect the expected cost. The final confirmation may vary after reviewing photos, access details or if the property condition is significantly different from the information provided.
+              </p>
+              <Button onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })} size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-[#2F7FD1] text-white hover:bg-[#00275F] transition-colors shadow-lg shadow-[#2F7FD1]/20">
+                Start Estimate
+              </Button>
+            </div>
+          </RevealOnScroll>
+
+          {/* Benchmark Section */}
+          <RevealOnScroll delay={0.2}>
+            <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-border max-w-5xl mx-auto mb-16 relative overflow-hidden">
+              {/* Soft background highlight */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#EAF5FF] rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 opacity-70"></div>
+              
+              <div className="text-center mb-10 relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#00275F] mb-4">Our Standard-Based Price Benchmark</h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  To make the live estimate easier to understand, the calculator uses a standard cleaning reference as a starting point. This benchmark helps explain how property details can affect the estimated price.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 items-center bg-gray-50 rounded-3xl p-8 border border-gray-100 mb-8 relative z-10">
+                <div>
+                  <h3 className="font-bold text-xl mb-6 text-[#00275F]">The Base Scenario Includes:</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-[#EAF5FF] flex items-center justify-center text-[#2F7FD1] shrink-0"><Home className="w-5 h-5" /></div>
+                      <span className="font-medium">3 Bedrooms</span>
+                    </li>
+                    <li className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-[#EAF5FF] flex items-center justify-center text-[#2F7FD1] shrink-0"><Droplets className="w-5 h-5" /></div>
+                      <span className="font-medium">2 Bathrooms & 2 Showers</span>
+                    </li>
+                    <li className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-[#EAF5FF] flex items-center justify-center text-[#2F7FD1] shrink-0"><CheckCircle2 className="w-5 h-5" /></div>
+                      <span className="font-medium">1 Separate Toilet</span>
+                    </li>
+                    <li className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-[#EAF5FF] flex items-center justify-center text-[#2F7FD1] shrink-0"><Layers className="w-5 h-5" /></div>
+                      <span className="font-medium">1 Floor (Single Level)</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex flex-col justify-center items-center text-center p-8 bg-white rounded-2xl border border-gray-100 shadow-sm h-full">
+                  <Clock className="w-16 h-16 text-[#2F7FD1] mb-4" />
+                  <h4 className="text-2xl font-bold mb-2 text-[#00275F]">Approx. 2 Hours</h4>
+                  <p className="text-sm text-gray-500">For this benchmark property, a standard clean is assumed to take approximately 2 hours with our normal scope of work.</p>
+                </div>
+              </div>
+
+              <div className="bg-[#EAF5FF]/50 p-6 rounded-2xl border border-[#7EC8FF]/30 flex items-start gap-4 relative z-10">
+                <Info className="w-6 h-6 text-[#2F7FD1] shrink-0 mt-0.5" />
+                <p className="text-sm text-[#004170]/80 leading-relaxed">
+                  <strong className="text-[#00275F]">Note:</strong> This benchmark is only a reference. Larger properties, additional bathrooms, multiple floors, heavy dirt, extra services or access conditions may increase the estimated time and price.
+                </p>
+              </div>
+            </div>
+          </RevealOnScroll>
+
+          {/* Estimator Explanation Section */}
+          <RevealOnScroll delay={0.3}>
+            <div className="max-w-5xl mx-auto mb-20">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#00275F] mb-6">How the Live Estimated Price Calculator Works</h2>
+              </div>
+              
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { step: 1, title: "Choose your service", desc: "The estimate starts with the cleaning service selected, such as Regular Cleaning, Spring Cleaning, Vacate Cleaning or Office Cleaning." },
+                  { step: 2, title: "Add property details", desc: "The calculator considers the type of property, property size, floors, bedrooms, bathrooms, showers, toilets, kitchens and other relevant areas." },
+                  { step: 3, title: "Select extras", desc: "Extras such as oven cleaning, fridge cleaning, windows, carpet steam cleaning, upholstery, pressure cleaning, trash removal or garden tidy-up can affect the estimate." },
+                  { step: 4, title: "Include access and logistics", desc: "Parking, stairs, pets, access instructions, after-hours requirements and other site conditions may affect the estimated work required." },
+                  { step: 5, title: "Apply frequency options", desc: "Recurring bookings such as weekly, twice-weekly, fortnightly or monthly cleaning may include frequency-based adjustments where applicable." },
+                  { step: 6, title: "Review your estimate", desc: "The calculator shows an estimated price before final confirmation. The final quote may be reviewed if photos, access or property condition differ." }
+                ].map((s, i) => (
+                  <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-all relative overflow-hidden group">
+                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#EAF5FF] rounded-full -z-10 transition-transform duration-500 group-hover:scale-150"></div>
+                    <div className="w-12 h-12 rounded-xl bg-[#2F7FD1] text-white flex items-center justify-center font-bold text-xl mb-6 shadow-md">
+                      {s.step}
+                    </div>
+                    <h3 className="text-lg font-bold text-[#00275F] mb-3">{s.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={0.4}>
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <div className="w-24 h-1 bg-[#2F7FD1]/20 mx-auto rounded-full mb-8"></div>
+              <h3 className="text-2xl font-bold text-[#00275F] mb-2">Ready to start?</h3>
+              <p className="text-lg text-muted-foreground">Select your service below and complete the steps to request your clean.</p>
+            </div>
+          </RevealOnScroll>
+
+          <div id="calculator" className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto scroll-mt-24">
             
             {/* Form Area */}
             <div className="lg:col-span-2">
