@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer";
 import { About } from "@/components/home/about";
 import { Team } from "@/components/home/team";
 import { Reviews } from "@/components/home/reviews";
+import { WorkWithUs } from "@/components/home/work-with-us";
 import { Chatbot } from "@/components/chatbot";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
@@ -19,6 +20,9 @@ export default function AboutPage() {
         </RevealOnScroll>
         <RevealOnScroll delay={0.3} variant="slide-up">
           <Reviews />
+        </RevealOnScroll>
+        <RevealOnScroll delay={0.4} variant="slide-up">
+          <WorkWithUs />
         </RevealOnScroll>
       </main>
       <Footer />
