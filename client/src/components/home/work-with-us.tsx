@@ -29,7 +29,7 @@ export function WorkWithUs() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#00275F]/80 to-transparent"></div>
             <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
               <span className="inline-block px-4 py-1.5 bg-[#2F7FD1] text-white text-sm font-bold rounded-full mb-3 shadow-lg">Our Team</span>
-              <h3 className="text-2xl md:text-4xl font-bold text-white max-w-lg">Become part of the most meticulous team in Perth</h3>
+              <h3 className="text-2xl md:text-4xl font-bold text-white max-w-lg">POPE Cleaning Services</h3>
             </div>
           </div>
         </RevealOnScroll>
