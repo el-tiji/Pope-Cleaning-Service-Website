@@ -150,6 +150,12 @@ uri = "file://client/public/images/pricing-hero.png"
 type = "image"
 title = "Tilt-shift cleaning quote scene"
 
+[[generated]]
+id = "MZgl718KRLZmBnGnMlzgd"
+uri = "file://client/src/assets/images/team-van-miniature.png"
+type = "image"
+title = "Tilt-shift cleaning team and van"
+
 [[outputs]]
 id = "GUJB8YHIgyP2IRq8EcQm7"
 uri = "file://client/public/images/commercial-cleaning-team.jpg"

@@ -1,6 +1,7 @@
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, Heart, Star } from "lucide-react";
+import teamVanMiniature from "@/assets/images/team-van-miniature.png";
 
 export function WorkWithUs() {
   return (
@@ -17,6 +18,21 @@ export function WorkWithUs() {
             </p>
           </RevealOnScroll>
         </div>
+
+        <RevealOnScroll delay={0.1}>
+          <div className="relative w-full h-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden mb-16 shadow-2xl border-4 border-white">
+            <img 
+              src={teamVanMiniature} 
+              alt="Pope Cleaning Services team and van in miniature style" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#00275F]/80 to-transparent"></div>
+            <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
+              <span className="inline-block px-4 py-1.5 bg-[#2F7FD1] text-white text-sm font-bold rounded-full mb-3 shadow-lg">Our Team</span>
+              <h3 className="text-2xl md:text-4xl font-bold text-white max-w-lg">Become part of the most meticulous team in Perth</h3>
+            </div>
+          </div>
+        </RevealOnScroll>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <RevealOnScroll delay={0.1}>
