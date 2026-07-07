@@ -1,0 +1,837 @@
+You are updating the Pope Cleaning Services website.
+
+MAIN TASK
+Update ONLY the public “Book Now” page so it becomes a polished, customer-friendly “Request a Cleaning Quote” experience.
+
+The public customer must NOT see the Live Estimated Price Calculator, estimated total, live pricing logic, frequency discount calculations, GST breakdown or any internal pricing suggestion.
+
+The purpose of the public Book Now page is now:
+
+* collect the minimum useful information from the customer;
+* let the customer select the service they need;
+* understand the property or workplace details;
+* allow photos and notes where helpful;
+* collect preferred date/time and contact method;
+* submit a clean quote request to be reviewed by Pope Cleaning Services;
+* avoid overwhelming the customer with unnecessary fields;
+* preserve trust, visual quality and high conversion.
+
+IMPORTANT STRATEGIC DECISION
+The Live Estimated Price Calculator should become an ADMIN-only tool in the future.
+
+Do NOT build the admin login now.
+Do NOT build the admin dashboard now.
+Do NOT build the customer portal now.
+Do NOT create authentication now unless it already exists and is required by the current app.
+Do NOT expose the calculator publicly.
+
+For now, preserve the calculator logic/code if it already exists, but remove it from the public Book Now UI. It may be reused later inside an admin quote assistant.
+
+Add a developer-only comment near the calculator/pricing logic:
+
+“Future feature: this pricing estimator should be used inside an admin-only quote assistant. Public customers should submit quote requests without seeing internal suggested prices.”
+
+CURRENT PROBLEM TO FIX
+The Book Now page currently shows public-facing language such as:
+
+* “Live Estimated Price Calculator”
+* “Start Estimate”
+* “Estimated Total”
+* price value such as `$84.15`
+* frequency discount visible to the customer
+* benchmark explanation designed around the calculator
+* “How the Live Estimated Price Calculator Works”
+
+This no longer matches the desired customer experience.
+
+Replace the public Book Now experience with a quote request flow.
+
+DO NOT
+
+* Do not change the Home page.
+* Do not change Services.
+* Do not change Pricing Info.
+* Do not change About Us.
+* Do not change Reviews.
+* Do not change the Footer or Navbar unless the Book Now label/link must stay consistent.
+* Do not delete pricing logic from the codebase.
+* Do not break the existing design system.
+* Do not make the form longer than necessary.
+* Do not show any estimated price to the customer.
+
+PAGE TITLE AND POSITIONING
+
+Change the main page title from:
+
+“Book Your Clean”
+
+to:
+
+“Request Your Cleaning Quote”
+
+Subheading:
+
+“Tell us what you need, share a few property details and our team will review your request before confirming your quote.”
+
+Optional supporting line:
+
+“No instant guesswork. No unnecessary surprises. Just a clear quote based on your service, property and cleaning needs.”
+
+Keep the navbar button text as “Book Now” if currently used, but the page itself should explain that this is a quote request before booking confirmation.
+
+HERO SECTION
+
+Replace the current “Plan Your Clean with Our Live Estimated Price Calculator” card with a new customer-focused intro card.
+
+New card heading:
+
+“Get a Tailored Cleaning Quote”
+
+Card text:
+
+“Select your service, add the key details and send your request. We’ll review your property, extras, access notes and photos before confirming the final quote.”
+
+Add 3 small trust badges inside or below the hero card:
+
+1. “Fast quote review”
+2. “No hidden fees when details are accurate”
+3. “Flexible Perth bookings”
+
+CTA button:
+
+“Start Quote Request”
+
+Button action:
+Smooth scroll to the quote form.
+
+Visual style:
+
+* Use the current Pope Cleaning Services design system.
+* White/light blue card.
+* Rounded corners.
+* Soft shadow.
+* Deep navy `#00275F` heading.
+* Brand blue CTA.
+* Light blue icon badges.
+* Keep the design premium, clean and modern.
+
+PUBLIC FORM STRUCTURE
+
+Replace the public calculator layout with a progressive quote request form.
+
+The form should feel simple and easy to complete.
+
+Recommended public form steps:
+
+1. Service
+2. Property
+3. Extras
+4. Schedule
+5. Contact
+6. Review & Submit
+
+Keep the stepper/progress bar style already used if present, but rename the steps to be clearer and less technical.
+
+Suggested step labels:
+
+* Service
+* Property
+* Extras
+* Schedule
+* Contact
+* Submit
+
+UX PRINCIPLE
+Only ask for what is necessary at each point.
+
+Use conditional fields:
+
+* Do not show bedrooms for office/commercial cleaning unless relevant.
+* Do not show workstations for residential cleaning.
+* Do not show all extras as mandatory.
+* Do not make photos mandatory.
+* Do not ask the same information twice.
+
+The form should feel like it takes 2–3 minutes, not like a long admin questionnaire.
+
+STEP 1 — SERVICE
+
+Heading:
+“What type of cleaning do you need?”
+
+Short helper text:
+“Choose the service that best matches your request. If you’re unsure, select Custom Cleaning Request.”
+
+Service cards:
+
+1. Regular Home Cleaning
+   “Routine cleaning for ongoing home maintenance.”
+
+2. Spring / Deep Cleaning
+   “Detailed cleaning for built-up dust, neglected areas or seasonal refresh.”
+
+3. Vacate / End of Lease Cleaning
+   “Move-out cleaning to help prepare the property for inspection.”
+
+4. Office / Commercial Cleaning
+   “Cleaning for offices, workplaces and commercial spaces.”
+
+5. Carpet & Upholstery Cleaning
+   “Steam cleaning for carpets, rugs, couches or upholstery.”
+
+6. Tile & Grout Cleaning
+   “Detailed cleaning for tiles, grout lines, bathrooms and hard floors.”
+
+7. Pressure Cleaning
+   “Outdoor cleaning for driveways, patios, paths and selected surfaces.”
+
+8. Custom Cleaning Request
+   “For mixed services, special jobs, warehouses, workshops, showrooms or anything not listed.”
+
+Design:
+
+* Use visual cards with icons.
+* Selected card should have blue border and soft blue background.
+* Avoid showing prices.
+* Remove “Starting from $...” labels from public view.
+
+Frequency selector:
+Ask:
+
+“How often do you need cleaning?”
+
+Options:
+
+* One-off
+* Weekly
+* Fortnightly
+* Monthly
+* Twice weekly
+* Not sure yet
+
+Use simple pill buttons.
+
+Important:
+Do NOT show discount values publicly.
+Instead show small neutral helper text:
+
+“Recurring services may qualify for a tailored frequency discount after review.”
+
+STEP 2 — PROPERTY
+
+Heading:
+“Tell us about the property”
+
+Helper text:
+“These details help us understand the size and type of work required.”
+
+First field:
+Property / facility type
+
+Options:
+
+* House
+* Apartment / Unit
+* Townhouse
+* Office
+* Retail / Showroom
+* Warehouse / Workshop
+* Commercial Facility
+* Other
+
+Conditional residential fields:
+Show only for House, Apartment, Townhouse or residential-related services:
+
+* Approximate internal area:
+
+  * Under 120 sqm
+  * 121–180 sqm
+  * 181–250 sqm
+  * 251–350 sqm
+  * 350+ sqm
+  * Not sure
+
+* Bedrooms
+
+* Bathrooms
+
+* Separate showers
+
+* Separate toilets
+
+* Kitchens
+
+* Floors / levels
+
+* Additional living areas / optional
+
+Conditional office/commercial fields:
+Show only for Office, Retail, Warehouse, Commercial Facility or Office Cleaning:
+
+* Approximate internal area:
+
+  * Under 100 sqm
+  * 100–250 sqm
+  * 251–500 sqm
+  * 501–1000 sqm
+  * 1000+ sqm
+  * Not sure
+
+* Workstations / desks
+
+* Bathrooms / toilets
+
+* Kitchens / break rooms
+
+* Meeting rooms
+
+* Reception or customer areas
+
+* Warehouse / workshop area if applicable
+
+* After-hours cleaning needed? Yes / No / Not sure
+
+Address fields:
+Ask only for:
+
+* Suburb
+* Postcode
+
+Do NOT ask full street address at this stage unless necessary.
+Full address can be collected after quote confirmation or in a later booking confirmation step.
+
+This reduces friction and privacy concerns.
+
+STEP 3 — EXTRAS
+
+Heading:
+“Any extras or special areas?”
+
+Helper text:
+“Select only what applies. You can skip this step if you only need a standard clean.”
+
+Use checkbox cards:
+
+* Interior windows
+* Exterior windows
+* Oven cleaning
+* Fridge inside
+* Cabinets inside
+* Wall spot cleaning
+* Blinds dusting/wipe
+* Carpet steam cleaning
+* Upholstery / couches
+* Tile & grout cleaning
+* Pressure cleaning
+* Balcony / patio
+* Garage sweep/clean
+* Trash removal
+* Garden tidy-up
+* Pet hair focus
+* Heavy dust / neglected areas
+* Post-renovation dust
+* Other
+
+Each option should be optional.
+
+If “Other” is selected, show a short text input:
+“Tell us what else you need”
+
+Do NOT show prices or extra charges.
+
+Add a reassuring note:
+
+“Extras help us prepare the right quote. We’ll confirm what is included before booking.”
+
+STEP 4 — SCHEDULE AND ACCESS
+
+Heading:
+“When would you like the clean?”
+
+Helper text:
+“Choose your preferred timing. Final availability will be confirmed by our team.”
+
+Fields:
+
+* Preferred date
+
+* Preferred time window:
+
+  * Morning
+  * Afternoon
+  * Evening
+  * Anytime
+  * After-hours
+  * Not sure
+
+* How soon do you need it?
+
+  * As soon as possible
+  * This week
+  * Next week
+  * Specific date
+  * Flexible
+
+Access and logistics:
+
+* Parking:
+
+  * Easy
+  * Limited
+  * Paid parking
+  * Street parking
+  * Not sure
+
+* Stairs or lift access:
+
+  * Ground floor
+  * Stairs
+  * Lift available
+  * Multiple levels
+  * Not sure
+
+* Pets on property?
+
+  * No
+  * Yes, friendly
+  * Yes, needs instructions
+
+* Access notes / optional:
+  Placeholder:
+  “Tell us about stairs, parking, pets, fragile items, security access or priority areas.”
+
+Photo upload:
+Make photos optional but recommended.
+
+Section title:
+“Photos help us quote accurately”
+
+Text:
+“Upload photos of key areas if you can. This is optional, but it helps us understand the job before arrival.”
+
+Upload requirements:
+
+* optional
+* allow multiple images
+* max 10MB each or existing project limit
+* accepted formats: JPG, PNG, HEIC if supported
+* show clear upload state
+* show remove file option
+
+Do not force uploads.
+
+STEP 5 — CONTACT
+
+Heading:
+“How should we contact you?”
+
+Helper text:
+“We’ll use these details to review your request and send your quote.”
+
+Required fields:
+
+* First name
+* Last name
+* Email
+* Phone / WhatsApp
+
+Preferred contact method:
+
+* Email
+* Phone call
+* SMS
+* WhatsApp
+
+Optional field:
+
+* Company name, only if Office / Commercial is selected.
+
+Consent checkboxes:
+
+Required checkbox:
+“I understand this is a quote request and the final quote will be confirmed after review.”
+
+Required privacy acknowledgment:
+“I agree that Pope Cleaning Services may use my details to contact me about this quote request.”
+
+Optional marketing consent, not pre-selected:
+“I would like to receive occasional promotions, cleaning offers or refer-a-friend discounts.”
+
+Important:
+
+* Keep marketing consent separate from service communication.
+* Do not pre-tick marketing consent.
+* The quote request must work even if marketing consent is not selected.
+
+STEP 6 — REVIEW & SUBMIT
+
+Heading:
+“Review your quote request”
+
+Show a clean summary without price.
+
+Rename the current right-side pricing panel from:
+
+“Estimated Total”
+
+to:
+
+“Quote Request Summary”
+
+The summary should show:
+
+* Selected service
+* Frequency
+* Property/facility type
+* Suburb/postcode
+* Key property details
+* Selected extras
+* Preferred date/time
+* Preferred contact method
+* Photos uploaded count
+
+Do NOT show:
+
+* estimated total
+* GST
+* discount amount
+* starting price
+* internal line items
+* calculated values
+* admin suggested price
+
+Summary helper text:
+
+“Our team will review your request and contact you with a tailored quote before confirming your booking.”
+
+Submit button:
+“Send My Quote Request”
+
+Secondary button:
+“Back”
+
+After submission success message:
+
+“Thanks — your quote request has been sent.”
+
+Supporting text:
+
+“Our team will review the details and contact you using your preferred method. If we need more information, we’ll let you know before confirming your quote.”
+
+Optional next steps:
+
+* “Check your email for confirmation.”
+* “You may be contacted by phone, SMS or WhatsApp depending on your selected preference.”
+
+RIGHT SIDE PANEL UPDATE
+
+The current blue sidebar with estimated total should become a trust and summary panel.
+
+Desktop sidebar title:
+“Your Quote Request”
+
+Content before final step:
+
+* “No public instant pricing”
+* “Reviewed by our team”
+* “Tailored to your property”
+* “Photos help improve accuracy”
+* “No hidden fees when details are accurate”
+* “Flexible Perth bookings”
+
+Content during form completion:
+Show a live non-price summary of user selections.
+
+Example:
+
+Service: Regular Home Cleaning
+Frequency: Weekly
+Property: House
+Area: Under 120 sqm
+Extras: Oven, Interior Windows
+Preferred contact: WhatsApp
+
+Footer note:
+“Final quote confirmed after review.”
+
+Mobile:
+
+* Do not make the sidebar take too much space.
+* Collapse it into a sticky bottom summary or an expandable “View request summary” card.
+* Keep mobile flow clean and fast.
+
+VISUAL DESIGN REQUIREMENTS
+
+The form must look premium and highly trustworthy.
+
+Use:
+
+* Deep navy `#00275F` for headings.
+* Bright blue for primary buttons.
+* Light blue for selected states and icon backgrounds.
+* White cards.
+* Rounded corners.
+* Soft shadows.
+* Clear spacing.
+* Short paragraphs.
+* Large readable labels.
+* Smooth progress indicator.
+* Subtle reveal animations.
+* Strong mobile layout.
+
+Avoid:
+
+* dense text blocks;
+* too many fields visible at once;
+* technical pricing language;
+* scary disclaimers;
+* public price calculations.
+
+FORM CONVERSION REQUIREMENTS
+
+The form should reduce abandonment.
+
+Implement these UX principles:
+
+1. Progressive disclosure
+   Only show the next relevant information. Do not expose the entire form at once.
+
+2. Conditional fields
+   Show residential fields only for residential services. Show commercial fields only for office/commercial services.
+
+3. Optional extras
+   Do not make extras feel mandatory.
+
+4. Optional photos
+   Encourage but do not require photos.
+
+5. Clear progress
+   Show step number and progress bar.
+
+6. Trust reminders
+   Use small trust notes:
+
+* “Reviewed by our team”
+* “No hidden fees when details are accurate”
+* “Quote before booking confirmation”
+* “Local Perth family-run business”
+
+7. Friendly validation
+   Use inline validation messages, not native browser popups.
+
+Example:
+Instead of native “Please fill in this field”, show:
+“Please enter your first name so we know who to contact.”
+
+8. Save user progress in the current session
+   If possible, preserve form entries while moving between steps.
+
+9. Keep CTA visible
+   On desktop, button at bottom of form card.
+   On mobile, sticky bottom action button can be used if it does not cover content.
+
+10. Do not ask unnecessary information
+    Do not ask full address, payment details or account creation during quote request.
+
+CURRENT CALCULATOR HANDLING
+
+Preserve the existing calculator code for future admin use, but remove it from public UI.
+
+Implementation options:
+
+* Extract current calculator logic into a reusable internal module, for example:
+  `pricingEstimator.ts`
+  `calculateCleaningEstimate()`
+* Keep current UI components only if needed later, but do not render them publicly.
+* Rename public-facing components to avoid confusion.
+
+Suggested component structure:
+
+* `BookNowPage.tsx`
+* `QuoteRequestForm.tsx`
+* `QuoteRequestSummary.tsx`
+* `ServiceSelectionStep.tsx`
+* `PropertyDetailsStep.tsx`
+* `ExtrasStep.tsx`
+* `ScheduleAccessStep.tsx`
+* `ContactDetailsStep.tsx`
+* `ReviewSubmitStep.tsx`
+* `pricingEstimator.ts` for future internal admin use only
+
+Add a comment:
+
+“Do not render pricingEstimator output in the public Book Now page. This is reserved for future admin quote assistant functionality.”
+
+COPY REPLACEMENTS
+
+Replace:
+“Book Your Clean”
+
+With:
+“Request Your Cleaning Quote”
+
+Replace:
+“Plan Your Clean with Our Live Estimated Price Calculator”
+
+With:
+“Get a Tailored Cleaning Quote”
+
+Replace:
+“Start Estimate”
+
+With:
+“Start Quote Request”
+
+Replace:
+“Estimated Total”
+
+With:
+“Quote Request Summary”
+
+Replace:
+“Review your estimate”
+
+With:
+“Review your quote request”
+
+Replace:
+“Submit Quote Request”
+
+With:
+“Send My Quote Request”
+
+Remove from public UI:
+
+* “Our Standard-Based Price Benchmark”
+* “How the Live Estimated Price Calculator Works”
+* “Live Estimated Price Calculator”
+* displayed price values
+* GST breakdown
+* frequency discount dollar amount
+* starting price labels if they imply a quote
+
+If any public pricing labels remain, remove or replace them with neutral text such as:
+“Quote prepared after review.”
+
+DATA TO COLLECT ON SUBMISSION
+
+The quote request submission should collect:
+
+Customer:
+
+* first name
+* last name
+* email
+* phone
+* preferred contact method
+* marketing consent yes/no
+* quote consent acknowledgment
+
+Service:
+
+* selected service
+* frequency
+* extras
+* custom notes
+
+Property:
+
+* property/facility type
+* suburb
+* postcode
+* approximate size
+* residential details or commercial details depending on selected type
+
+Schedule:
+
+* preferred date
+* preferred time window
+* urgency
+* access/logistics notes
+* pets
+* parking
+* stairs/lift
+
+Files:
+
+* uploaded photo references if available
+
+Metadata:
+
+* submitted at
+* source page: Book Now
+* initial status: quote_requested
+
+Initial status:
+`quote_requested`
+
+Do not collect payment data at this stage.
+
+ADMIN FUTURE READINESS
+
+Do not build the admin interface now, but structure the data so that a future admin dashboard can show:
+
+* quote request details
+* selected service
+* selected extras
+* property details
+* photos
+* preferred contact method
+* internal suggested price
+* admin edited quote
+* status updates
+* communication history
+
+Add a developer comment:
+
+“Future admin workflow: admin opens this quote request, runs internal estimator, adjusts price if needed, then sends quote via email/SMS/WhatsApp according to preferred contact method.”
+
+ACCESSIBILITY
+
+* Proper heading hierarchy.
+* Labels connected to inputs.
+* Keyboard accessible cards.
+* Selected state visible without relying only on colour.
+* Good colour contrast.
+* Error messages should be readable.
+* Buttons must be reachable by keyboard.
+* Mobile layout must be comfortable.
+
+RESPONSIVE DESIGN
+
+Desktop:
+
+* Main form card on the left.
+* Quote request summary/trust panel on the right.
+* Wide cards and comfortable spacing.
+
+Tablet:
+
+* Form full width or two-column where appropriate.
+* Summary below or collapsible.
+
+Mobile:
+
+* Single column.
+* Large tap targets.
+* Progress bar visible.
+* Short steps.
+* Summary collapsible.
+* Sticky bottom “Continue” button if suitable.
+
+FINAL ACCEPTANCE CRITERIA
+
+The update is complete when:
+
+1. Public Book Now no longer shows estimated prices.
+2. Public Book Now no longer shows the Live Estimated Price Calculator.
+3. The page is now titled and positioned as a quote request flow.
+4. The customer can select services, property details, extras, schedule and contact details.
+5. The form does not feel too long or overwhelming.
+6. Residential and commercial fields are conditional.
+7. Photos are optional but encouraged.
+8. The right-side panel shows summary/trust information, not price.
+9. Submit sends a quote request with status `quote_requested`.
+10. The existing calculator logic is preserved for future admin use but hidden from public UI.
+11. The design remains consistent with Pope Cleaning Services branding.
+12. The page feels polished, premium and trustworthy enough for customers to complete the request.
