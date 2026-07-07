@@ -279,7 +279,7 @@ export function CustomQuoteForm() {
                   <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full h-16 text-lg font-bold rounded-xl bg-accent text-secondary hover:bg-primary hover:text-primary-foreground shadow-lg transition-all"
+                    className="w-full h-16 text-lg font-bold rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transition-colors"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Submitting..." : "Request Custom Quote"}
