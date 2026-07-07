@@ -99,50 +99,6 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* NEW) BUSINESS MODEL STEPS */}
-        <section className="container mx-auto px-4 pb-24">
-          <RevealOnScroll>
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary text-center mb-16">Our Quote Process – Simple & Transparent</h2>
-          </RevealOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative max-w-7xl mx-auto">
-            {/* Connecting line for desktop */}
-            <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-1 bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 -z-10 rounded-full"></div>
-            
-            {[
-              {
-                icon: <FileText className="w-8 h-8" />,
-                title: "1. Choose your service",
-                desc: "Select the type of cleaning you need, such as regular cleaning, spring cleaning, vacate cleaning, office cleaning or a custom service."
-              },
-              {
-                icon: <Home className="w-8 h-8" />,
-                title: "2. Share your property details",
-                desc: "Tell us about the type of property, size, number of rooms, bathrooms, showers, kitchens and any additional areas."
-              },
-              {
-                icon: <PlusCircle className="w-8 h-8" />,
-                title: "3. Add extras and special requirements",
-                desc: "Include any extras such as windows, oven, fridge, carpets, upholstery, outdoor areas, trash removal or other detailed cleaning tasks."
-              },
-              {
-                icon: <CheckCircle className="w-8 h-8" />,
-                title: "4. Receive a tailored quote",
-                desc: "Our team reviews the details and prepares a quote that reflects the real time, effort and scope required."
-              }
-            ].map((step, idx) => (
-              <RevealOnScroll key={idx} delay={idx * 0.15}>
-                <div className="relative flex flex-col items-center text-center group">
-                  <div className="w-20 h-20 rounded-2xl bg-white border-4 border-muted flex items-center justify-center text-primary mb-6 shadow-lg z-10 group-hover:border-primary/50 group-hover:-translate-y-2 transition-all duration-300">
-                    {step.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-secondary mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">{step.desc}</p>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </section>
-
         {/* 2) WHAT AFFECTS YOUR PRICE */}
         <section className="bg-background py-24 border-y border-border/50 relative overflow-hidden">
           {/* Subtle background pattern */}
