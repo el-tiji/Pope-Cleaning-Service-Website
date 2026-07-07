@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AnimatePresence, motion } from "framer-motion";
 import Home from "@/pages/home";
 import Booking from "@/pages/booking";
+import QuotePage from "@/pages/quote";
 import ServicesPage from "@/pages/services";
 import AboutPage from "@/pages/about";
 import PricingPage from "@/pages/pricing";
@@ -44,6 +45,7 @@ function Router() {
           <Switch location={location}>
             <Route path="/" component={Home}/>
             <Route path="/book" component={Booking}/>
+            <Route path="/quote" component={QuotePage}/>
             <Route path="/services" component={ServicesPage}/>
             <Route path="/about" component={AboutPage}/>
             <Route path="/pricing" component={PricingPage}/>

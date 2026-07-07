@@ -251,7 +251,7 @@ export default function Booking() {
                     <span className="flex items-center gap-2 bg-[#EAF5FF] text-[#2F7FD1] px-3 py-1 rounded-full text-sm font-bold"><ShieldCheck className="w-4 h-4"/> No hidden fees when details are accurate</span>
                     <span className="flex items-center gap-2 bg-[#EAF5FF] text-[#2F7FD1] px-3 py-1 rounded-full text-sm font-bold"><CalendarCheck className="w-4 h-4"/> Flexible Perth bookings</span>
                 </div>
-                <Button onClick={() => document.getElementById('quote-form')?.scrollIntoView({ behavior: 'smooth' })} size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-[#2F7FD1] text-white hover:bg-[#00275F] transition-colors shadow-lg">
+                <Button onClick={() => window.open('/quote', '_blank')} size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-[#2F7FD1] text-white hover:bg-[#00275F] transition-colors shadow-lg">
                   Start Quote Request
                 </Button>
               </div>
