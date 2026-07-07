@@ -96,6 +96,17 @@ export default function AdminDashboard() {
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     <tr className="hover:bg-gray-50">
+                      <td className="px-6 py-4 font-medium text-gray-900">John Doe</td>
+                      <td className="px-6 py-4 text-gray-600">Regular Home Cleaning</td>
+                      <td className="px-6 py-4 text-gray-600">TBD</td>
+                      <td className="px-6 py-4">
+                        <span className="px-2.5 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">New</span>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <Button variant="outline" size="sm">Review</Button>
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
                       <td className="px-6 py-4 font-medium text-gray-900">Emma Watson</td>
                       <td className="px-6 py-4 text-gray-600">Vacate Clean</td>
                       <td className="px-6 py-4 text-gray-600">$480</td>

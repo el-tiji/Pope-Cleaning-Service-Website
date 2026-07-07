@@ -177,6 +177,11 @@ export default function Booking() {
         return;
     }
     setIsSubmitting(true);
+    
+    // Simulate sending an email and adding to admin dashboard
+    console.log("Sending email to popecleaningservices@hotmail.com with data:", formData);
+    console.log("Saving quote request to Admin Dashboard...");
+    
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
