@@ -228,9 +228,9 @@ export default function QuotePage() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen flex flex-col bg-[#F5F8FC] pt-[88px]">
+      <div className="min-h-screen flex flex-col bg-[#F5F8FC]">
         <Navbar />
-        <main className="flex-1 flex items-center justify-center p-4 py-24">
+        <main className="flex-1 flex items-center justify-center p-4 py-24 pt-[100px]">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }} 
             animate={{ opacity: 1, scale: 1 }} 
@@ -256,9 +256,9 @@ export default function QuotePage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F5F8FC]">
       <Navbar />
-      <main className="flex-1 pb-32 pt-[88px]">
+      <main className="flex-1 pb-32 pt-[100px] md:pt-[120px]">
         <div ref={topRef} className="absolute top-0 opacity-0 pointer-events-none" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           
           <RevealOnScroll>
             <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
