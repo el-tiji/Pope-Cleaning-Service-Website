@@ -1,0 +1,291 @@
+You are updating the Pope Cleaning Services website.
+
+TASK
+Improve ONLY the navbar/header visual design, especially the “Log In” and “Book Now” buttons.
+
+The current navbar looks too flat and the last two buttons both appear as strong blue CTAs, which makes the visual hierarchy unclear. The goal is to make the menu look more polished, premium, balanced and aligned with the Pope Cleaning Services brand.
+
+IMPORTANT SCOPE
+
+* Do NOT redesign the whole website.
+* Do NOT change page content.
+* Do NOT change routing.
+* Do NOT modify forms, admin dashboard, booking logic or pricing logic.
+* Only improve the navbar/header styling and button presentation.
+* Keep all existing navigation links:
+
+  * Home
+  * Services
+  * Pricing Info
+  * About Us
+  * Log In
+  * Book Now
+
+MAIN VISUAL GOAL
+Create a more premium, less flat navbar with better depth, clearer hierarchy and stronger visual balance.
+
+The navbar should feel:
+
+* clean;
+* modern;
+* professional;
+* trustworthy;
+* slightly elevated;
+* consistent with the Pope Cleaning Services logo and brand palette.
+
+BRAND PALETTE
+Use the current brand colours:
+
+Deep navy:
+`#00275F`
+
+Secondary navy:
+`#004170`
+
+Primary blue:
+`#2F7FD1`
+
+Bright blue:
+`#2E86DE`
+
+Light blue:
+`#7EC8FF`
+
+Soft blue:
+`#EAF5FF`
+
+White:
+`#FFFFFF`
+
+Light background:
+`#F5F7FA`
+
+NAVBAR DESIGN REQUIREMENTS
+
+Update the navbar/header to have more visual depth.
+
+Recommended navbar style:
+
+* White or very light translucent background.
+* Subtle glass effect if supported:
+
+  * `backdrop-filter: blur(12px);`
+  * background: `rgba(255, 255, 255, 0.88)`
+* Soft bottom border:
+
+  * `1px solid rgba(0, 39, 95, 0.08)`
+* Subtle shadow:
+
+  * `0 8px 24px rgba(0, 39, 95, 0.06)`
+* Slightly more vertical padding than current if needed.
+* Keep it sticky/fixed if already implemented.
+* Ensure it does not feel heavy or bulky.
+
+The navbar should not look like a plain flat white strip.
+
+LOGO AREA
+Improve logo presentation if needed:
+
+* Keep the logo on the left.
+* Ensure logo is vertically centered.
+* Ensure it has enough breathing room.
+* Do not stretch or distort the logo.
+* If the logo appears too small or too close to the top edge, adjust size/padding slightly.
+* Logo should link to Home.
+
+MENU LINKS
+Home, Services, Pricing Info and About Us should remain as clean secondary navigation items.
+
+Recommended style:
+
+* White or very light pill background.
+* Navy text.
+* Rounded pill shape.
+* Light border.
+* Soft shadow.
+* Smooth hover effect.
+
+Default link style:
+
+* Text colour: `#00275F` or `#004170`
+* Background: `rgba(255, 255, 255, 0.75)`
+* Border: `1px solid rgba(0, 39, 95, 0.08)`
+* Border radius: full pill / 999px
+* Box shadow: subtle
+
+Hover state:
+
+* Background: `#EAF5FF`
+* Text colour: `#00275F`
+* Border colour: `rgba(47, 127, 209, 0.25)`
+* Slight upward movement:
+
+  * `transform: translateY(-1px)`
+* Slight shadow increase.
+
+Active page state:
+
+* Background: `#EAF5FF`
+* Text colour: `#00275F`
+* Optional small bottom glow or border accent.
+
+BUTTON HIERARCHY
+The most important change:
+
+Do NOT make “Log In” and “Book Now” look equally important.
+
+Book Now must be the primary CTA.
+Log In must be secondary.
+
+LOG IN BUTTON DESIGN
+Change “Log In” from a solid blue button to a secondary/outline button.
+
+Recommended Log In style:
+
+* Background: white or `#F5F7FA`
+* Text: `#00275F`
+* Border: `1px solid rgba(0, 39, 95, 0.14)`
+* Border radius: 999px
+* Soft shadow:
+
+  * `0 4px 12px rgba(0, 39, 95, 0.08)`
+* Optional small lock/user icon if already using icons, but do not add clutter.
+* Hover:
+
+  * background: `#EAF5FF`
+  * border colour: `#2F7FD1`
+  * text colour: `#00275F`
+  * transform: `translateY(-1px)`
+
+Purpose:
+Log In should look clickable and polished, but not as dominant as Book Now.
+
+BOOK NOW BUTTON DESIGN
+Keep “Book Now” as the strongest CTA.
+
+Recommended Book Now style:
+
+* Background: linear gradient using brand blues:
+
+  * `linear-gradient(135deg, #2F7FD1 0%, #2E86DE 100%)`
+* Text: white
+* Border: none or very subtle blue border
+* Border radius: 999px
+* Stronger shadow than other menu items:
+
+  * `0 8px 20px rgba(47, 127, 209, 0.28)`
+* Hover:
+
+  * slightly darker gradient:
+    `linear-gradient(135deg, #1F6FC0 0%, #2F7FD1 100%)`
+  * transform: `translateY(-2px)`
+  * stronger shadow:
+    `0 12px 28px rgba(47, 127, 209, 0.34)`
+* Active/click:
+
+  * transform: `translateY(0)`
+  * shadow slightly reduced.
+
+Optional:
+Add a subtle sparkle/check icon only if it matches the current visual style and does not make the button crowded.
+
+VISUAL HIERARCHY RULE
+The CTA order should feel like this:
+
+1. Book Now — primary action, strongest visual emphasis.
+2. Log In — secondary access action.
+3. Home / Services / Pricing Info / About Us — navigation links.
+
+SPACING AND ALIGNMENT
+Improve spacing between nav items:
+
+* Keep equal spacing between normal nav links.
+* Add slightly more separation before Log In and Book Now.
+* The two action buttons should feel grouped but visually distinct.
+* Use consistent height for all pills/buttons.
+* Suggested height:
+
+  * 40–44px desktop.
+* Suggested horizontal padding:
+
+  * nav links: 18–22px.
+  * Log In: 20–24px.
+  * Book Now: 24–28px.
+
+The buttons should align perfectly on the same baseline.
+
+MOBILE RESPONSIVENESS
+Ensure the improved navbar works on mobile.
+
+If the site already has a mobile menu:
+
+* Keep the current mobile behaviour.
+* Apply the same visual hierarchy inside mobile menu:
+
+  * Book Now as primary full-width CTA.
+  * Log In as secondary outline button.
+* Do not overcrowd the mobile header.
+* Logo should remain clear.
+* Menu button should be easy to tap.
+
+If mobile menu is missing or broken:
+
+* Do not build a complex new system unless necessary.
+* At minimum, keep mobile layout clean and avoid horizontal overflow.
+
+ACCESSIBILITY
+
+* Ensure all buttons and links have good contrast.
+* Maintain keyboard focus styles.
+* Add visible focus ring:
+
+  * blue outline or soft glow.
+* Do not rely only on colour to show focus/active state.
+* Keep text readable.
+* Do not reduce font size too much.
+
+MICROINTERACTIONS
+Add subtle transitions:
+
+* Duration: 180–250ms.
+* Use ease-out.
+* Avoid exaggerated animations.
+* Hover should feel premium, not playful.
+
+Suggested transition:
+`transition: all 200ms ease-out;`
+
+DO NOT
+
+* Do not make both Log In and Book Now solid blue.
+* Do not use harsh shadows.
+* Do not use too many gradients.
+* Do not make the navbar too tall.
+* Do not change the route destinations.
+* Do not remove any menu item.
+* Do not make the design look like a generic template.
+* Do not add unnecessary icons everywhere.
+
+FINAL DESIGN INTENT
+The final navbar should look like a polished premium service website header.
+
+It should have:
+
+* better depth;
+* clearer button hierarchy;
+* stronger CTA design;
+* less flat appearance;
+* improved balance between logo, menu links and action buttons;
+* visual consistency with the Pope Cleaning Services brand.
+
+ACCEPTANCE CRITERIA
+The update is complete when:
+
+1. The navbar no longer looks flat.
+2. The header has subtle depth through shadow, border and/or glass effect.
+3. Log In is visually secondary, not a strong blue CTA.
+4. Book Now is the only dominant blue CTA.
+5. All nav links remain readable and aligned.
+6. The design works on desktop and mobile.
+7. The layout remains consistent with the existing website.
+8. No unrelated sections or logic are changed.
