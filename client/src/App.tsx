@@ -16,6 +16,8 @@ import Login from "@/pages/auth/login";
 import Signup from "@/pages/auth/signup";
 import CustomerDashboard from "@/pages/portal/dashboard";
 import AdminDashboard from "@/pages/admin/dashboard";
+import AdminQuotes from "@/pages/admin/quotes";
+import AdminQuoteDetail from "@/pages/admin/quotes/detail";
 
 function ScrollToTop() {
   const [pathname] = useLocation();
@@ -51,8 +53,12 @@ function Router() {
             <Route path="/pricing" component={PricingPage}/>
             <Route path="/auth/login" component={Login}/>
             <Route path="/auth/signup" component={Signup}/>
+            <Route path="/login" component={Login}/>
             <Route path="/portal/dashboard" component={CustomerDashboard}/>
+            <Route path="/admin" component={AdminDashboard}/>
             <Route path="/admin/dashboard" component={AdminDashboard}/>
+            <Route path="/admin/quotes" component={AdminQuotes}/>
+            <Route path="/admin/quotes/:id" component={AdminQuoteDetail}/>
             <Route component={NotFound} />
           </Switch>
         </motion.div>

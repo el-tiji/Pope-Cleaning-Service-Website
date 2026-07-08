@@ -25,11 +25,11 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 flex items-center justify-center p-4 py-20">
+      <main className="flex-1 flex items-center justify-center p-4 py-20 mt-[88px]">
         <div className="w-full max-w-md bg-white rounded-[2rem] p-8 shadow-xl border border-border">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-secondary mb-2">Welcome Back</h1>
-            <p className="text-muted-foreground">Log in to manage your bookings and quotes.</p>
+            <h1 className="text-3xl font-bold text-[#00275F] mb-2">Admin Login</h1>
+            <p className="text-muted-foreground">Access the Pope Cleaning Services admin dashboard.</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
@@ -42,7 +42,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10 h-12 rounded-xl" 
-                  placeholder="you@example.com" 
+                  placeholder="admin@popecleaning.com" 
                   required 
                 />
               </div>
@@ -51,7 +51,7 @@ export default function Login() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <Label>Password</Label>
-                <a href="#" className="text-sm text-primary hover:underline font-medium">Forgot password?</a>
+                <a href="#" className="text-sm text-[#2F7FD1] hover:underline font-medium">Forgot password?</a>
               </div>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -66,20 +66,16 @@ export default function Login() {
               </div>
             </div>
 
-            <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold" variant="default">
+            <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold bg-[#2F7FD1] hover:bg-[#00275F] text-white" variant="default">
               Log In
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             
-            <div className="text-center mt-6 text-sm text-muted-foreground">
-              Tip: Use <span className="font-bold">admin@pope.com</span> to see the Admin Portal, or any other email for the Customer Portal.
+            <div className="text-center mt-6 text-sm text-muted-foreground bg-[#EAF5FF] p-3 rounded-lg border border-[#2F7FD1]/20">
+              <span className="font-bold text-[#00275F]">Prototype Mode:</span> Use any email containing "admin" to access the Admin Portal.
             </div>
           </form>
 
-          <div className="mt-8 text-center text-sm">
-            <span className="text-muted-foreground">Don't have an account? </span>
-            <Link href="/auth/signup"><span className="text-primary font-bold hover:underline cursor-pointer">Sign up</span></Link>
-          </div>
         </div>
       </main>
       <Footer />

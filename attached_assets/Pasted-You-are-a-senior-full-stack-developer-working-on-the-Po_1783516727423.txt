@@ -1,0 +1,1139 @@
+You are a senior full-stack developer working on the Pope Cleaning Services website/app.
+
+MAIN OBJECTIVE
+Build a complete, secure and functional ADMIN dashboard ecosystem for Pope Cleaning Services.
+
+The current public website already has a Book Now / Request a Cleaning Quote form where customers submit their cleaning request without seeing prices. Now we need an ADMIN-only system where the business can manage those quote requests, generate internal price suggestions, respond to customers, schedule jobs, track payments and view operational/financial statistics.
+
+This ADMIN system is critical for the business. It must help Pope Cleaning Services avoid losing quote requests, respond faster, convert leads into paid jobs and manage operations more professionally.
+
+IMPORTANT BUSINESS CONTEXT
+Pope Cleaning Services is a cleaning business based in Perth, Western Australia.
+
+Core services:
+
+* Regular Home Cleaning
+* Spring / Deep Cleaning
+* Vacate / End of Lease Cleaning
+* Office / Commercial Cleaning
+* Carpet & Upholstery Steam Cleaning
+* Tile & Grout Cleaning
+* Pressure Cleaning
+* Custom Cleaning Requests
+
+Public customers should NOT see internal price calculations.
+
+The ADMIN should be able to:
+
+* Review quote requests.
+* Use an internal estimator based on the existing pricing calculator logic.
+* Adjust the suggested price manually.
+* Save a final quote.
+* Contact the customer by their preferred method.
+* Convert accepted quotes into bookings.
+* Track service status.
+* Track payment status.
+* View revenue and operational statistics.
+
+CRITICAL SCOPE RULES
+Build ADMIN login and ADMIN dashboard.
+
+Do NOT expose admin pricing publicly.
+Do NOT show internal estimated prices to public customers.
+Do NOT change the public Book Now customer experience unless required to connect data properly.
+Do NOT build the customer portal yet.
+Do NOT build customer login yet.
+Do NOT implement online payments yet unless already present.
+Do NOT implement paid SMS or WhatsApp APIs unless credentials already exist.
+Do NOT hardcode credentials or secrets.
+
+Use the existing design system and Pope Cleaning Services branding.
+
+BRAND / UI STYLE
+Maintain the current website visual identity:
+
+* Deep navy: #00275F
+* Secondary navy: #004170
+* Primary blue: #2F7FD1
+* Bright blue: #2E86DE
+* Soft blue: #EAF5FF
+* White / light grey backgrounds
+* Rounded cards
+* Soft shadows
+* Clean modern typography
+* Professional premium service-business look
+* Responsive layout
+* Clear visual hierarchy
+* Polished dashboard UI
+
+The ADMIN dashboard should feel operational, clean and professional, not like a generic template.
+
+PHASE 1 — ADMIN AUTHENTICATION
+
+Create secure ADMIN login.
+
+Route:
+`/login`
+
+Page title:
+“Admin Login”
+
+Subtitle:
+“Access the Pope Cleaning Services admin dashboard.”
+
+Fields:
+
+* Email
+* Password
+
+Actions:
+
+* Log In
+* Forgot Password placeholder if supported
+
+After successful ADMIN login:
+Redirect to:
+`/admin/dashboard`
+
+Create role-based access control.
+
+Roles:
+
+* `admin`
+* `customer` as future placeholder only
+
+Only users with role `admin` can access:
+
+* `/admin`
+* `/admin/dashboard`
+* `/admin/quotes`
+* `/admin/quotes/:id`
+* `/admin/bookings`
+* `/admin/calendar`
+* `/admin/customers`
+* `/admin/finance`
+* `/admin/reports`
+* `/admin/marketing`
+* `/admin/settings`
+
+If no user is logged in:
+Redirect to `/login`.
+
+If logged-in user is not admin:
+Show:
+“You do not have permission to access this area.”
+
+Then redirect to home or login.
+
+AUTH IMPLEMENTATION
+Inspect the current project stack first.
+
+If Supabase is already used:
+
+* Use Supabase Auth.
+* Create/use a `profiles` table.
+* Store role in profile.
+* Protect admin routes by checking role = `admin`.
+* Use Supabase Row Level Security where applicable.
+
+If Firebase is already used:
+
+* Use Firebase Auth.
+* Store role in Firestore or custom claims.
+* Protect admin reads/writes with security rules.
+
+If Node/Express backend exists:
+
+* Implement secure session or JWT auth.
+* Hash passwords with bcrypt or equivalent.
+* Protect admin API routes server-side.
+
+If no auth/backend exists:
+
+* Implement a secure scalable auth approach compatible with the current project.
+* Prefer Supabase Auth + Postgres if feasible.
+* Otherwise create backend auth with secure password hashing and protected routes.
+
+SECURITY REQUIREMENTS
+
+* Do not hardcode admin passwords in frontend.
+* Do not expose secrets in frontend code.
+* Use environment variables / Replit Secrets.
+* Verify admin role server-side.
+* Protect all admin data endpoints.
+* Add logout.
+* Add session persistence.
+* Add loading state while checking auth.
+* Add error states for failed login.
+* Add visible but clean validation.
+
+FIRST ADMIN SETUP
+Create a safe first-admin setup approach.
+
+Acceptable:
+
+* Manual admin creation through Supabase/Firebase dashboard.
+* Protected seed script.
+* Environment variable for initial admin email.
+* Clear setup note in README.
+
+Do NOT create public admin registration.
+
+PHASE 2 — ADMIN LAYOUT
+
+Create a separate ADMIN layout.
+
+Admin layout should include:
+
+* Sidebar navigation on desktop.
+* Collapsible sidebar or top menu on mobile.
+* Header with page title, admin account info and logout.
+* Main content area.
+* Consistent spacing and cards.
+
+Admin menu:
+
+1. Dashboard
+2. Quote Requests
+3. Bookings
+4. Calendar
+5. Customers
+6. Finance
+7. Reports
+8. Marketing
+9. Settings
+10. Logout
+
+For this phase, fully implement:
+
+* Dashboard
+* Quote Requests
+* Quote Request Detail
+* Basic Bookings
+* Basic Finance
+* Basic Customers
+
+Other sections can be structured placeholders if needed, but should not look broken.
+
+PHASE 3 — ADMIN DASHBOARD HOME
+
+Route:
+`/admin/dashboard`
+
+Title:
+“Admin Dashboard”
+
+Subtitle:
+“Manage quote requests, bookings, payments and service activity.”
+
+This page must answer quickly:
+
+* What needs attention today?
+* How many new requests came in?
+* Which quotes need response?
+* What is scheduled today?
+* What payments are pending?
+* How much revenue is expected this month?
+
+Dashboard metric cards:
+
+1. New Quote Requests
+   Count quote requests with status `quote_requested`.
+
+2. Quotes Needing Response
+   Count statuses:
+
+* `quote_requested`
+* `reviewing`
+* `quote_draft`
+* `need_more_info`
+
+3. Quotes Sent
+   Count status `quote_sent`.
+
+4. Accepted Quotes
+   Count status `quote_accepted`.
+
+5. Today’s Jobs
+   Bookings scheduled for today.
+
+6. This Week’s Jobs
+   Bookings scheduled for current week.
+
+7. Completed This Month
+   Bookings with status `completed`.
+
+8. Pending Payments
+   Bookings or quotes with payment status:
+
+* `unpaid`
+* `payment_pending`
+
+9. Paid This Month
+   Sum paid jobs in current month.
+
+10. Expected Revenue
+    Sum final quote values for accepted/scheduled jobs not cancelled.
+
+11. Quote Conversion Rate
+    Accepted quotes divided by quotes sent.
+
+12. Average Job Value
+    Average final quote amount for accepted/completed jobs.
+
+Use real data from database. If no data exists, show clean empty states. Do not use fake production data.
+
+Dashboard sections:
+
+* Recent Quote Requests
+* Jobs Today
+* Payments Pending
+* Quick Actions
+
+Quick actions:
+
+* View Quote Requests
+* View Bookings
+* View Finance
+* Add Internal Note / placeholder if needed
+
+PHASE 4 — QUOTE REQUESTS LIST
+
+Route:
+`/admin/quotes`
+
+Title:
+“Quote Requests”
+
+Subtitle:
+“Review customer requests, prepare quotes and convert accepted jobs into bookings.”
+
+Display all public quote requests submitted from Book Now.
+
+Use table on desktop and card list on mobile.
+
+Columns:
+
+* Request ID
+* Customer name
+* Service type
+* Frequency
+* Property/facility type
+* Suburb / postcode
+* Preferred date
+* Preferred contact method
+* Photos count
+* Status
+* Submitted date
+* Final quote amount, admin-only if available
+* Payment status if available
+* Actions
+
+Actions:
+
+* View
+* Mark Reviewing
+* Generate Estimate
+* Prepare Response
+* Archive
+
+Filters:
+
+* All
+* New
+* Reviewing
+* Need More Info
+* Quote Drafted
+* Quote Sent
+* Accepted
+* Declined
+* Scheduled
+* Completed
+* Payment Pending
+* Paid
+* Cancelled
+* Archived
+
+Search:
+
+* Customer name
+* Email
+* Phone
+* Suburb
+* Postcode
+* Service type
+
+Sort:
+
+* Newest first
+* Oldest first
+* Preferred date
+* Status
+* Service type
+
+Status badges:
+
+* New: blue
+* Reviewing: amber
+* Need More Info: orange
+* Quote Sent: purple/blue
+* Accepted: green
+* Scheduled: blue
+* Completed: green
+* Payment Pending: amber
+* Paid: green
+* Declined/Cancelled: red/grey
+* Archived: grey
+
+PHASE 5 — QUOTE REQUEST DETAIL
+
+Route:
+`/admin/quotes/:id`
+
+Title:
+“Quote Request Details”
+
+Layout:
+
+* Left/main area: customer and request details.
+* Right/sidebar: Admin Quote Assistant.
+* On mobile, stack sections vertically.
+
+SECTION A — CUSTOMER DETAILS
+Show:
+
+* First name
+* Last name
+* Email
+* Phone / WhatsApp
+* Preferred contact method
+* Company name if provided
+* Business role if provided
+* Marketing consent: yes/no
+* Service contact consent: yes/no
+* Submitted date/time
+
+Actions:
+
+* Email customer
+* Call customer
+* Open WhatsApp
+* Prepare SMS
+
+SECTION B — SERVICE DETAILS
+Show:
+
+* Selected service
+* Frequency
+* Extras selected
+* Other extras description
+* Custom notes
+* Service category:
+
+  * Residential
+  * Commercial
+  * Specialty
+  * Custom
+
+SECTION C — PROPERTY DETAILS
+Residential fields:
+
+* Property type
+* Suburb
+* Postcode
+* Approximate size
+* Bedrooms
+* Bathrooms
+* Showers
+* Toilets
+* Kitchens
+* Floors
+* Living areas
+* Beds to make/change
+
+Commercial fields:
+
+* Facility type
+* Suburb
+* Postcode
+* Approximate size
+* Workstations / desks
+* Bathrooms / toilets
+* Kitchens / break rooms
+* Meeting rooms
+* Reception / customer areas
+* Shared areas
+* Warehouse / workshop area
+* After-hours required
+
+Custom property description if available.
+
+SECTION D — SCHEDULE & ACCESS
+Show:
+
+* Preferred date
+* Preferred time window
+* Urgency
+* Parking
+* Stairs / lift access
+* Pets
+* Access notes
+* Fragile items / priority areas if included
+* Security instructions if included
+
+SECTION E — PHOTOS
+Show:
+
+* Uploaded photo thumbnails
+* File names
+* Uploaded timestamps
+* Click to preview larger image
+* If no photos:
+  “No photos uploaded.”
+
+SECTION F — INTERNAL NOTES
+Admin-only notes.
+
+Features:
+
+* Add internal note.
+* Save note.
+* Show note history if possible.
+* Notes must never be visible to public customers.
+
+PHASE 6 — ADMIN QUOTE ASSISTANT
+
+This is the internal version of the old Live Estimated Price Calculator.
+
+It must be visible only to ADMIN users.
+
+Panel title:
+“Admin Quote Assistant”
+
+Description:
+“Suggested price based on submitted customer details. Review and adjust before sending a final quote.”
+
+Functionality:
+
+* Read data from the selected quote request.
+* Pre-fill estimator inputs internally.
+* Generate a suggested internal price.
+* Show internal breakdown only to admin.
+* Allow manual override.
+* Save final quote amount.
+
+Admin quote assistant fields:
+
+* Base service
+* Frequency
+* Property type
+* Approximate size
+* Bedrooms
+* Bathrooms
+* Showers
+* Toilets
+* Kitchens
+* Floors
+* Workstations
+* Meeting rooms
+* Break rooms
+* Extras
+* Access/logistics
+* Frequency adjustment if applicable
+* GST handling if configured
+* Suggested total
+* Estimated time required
+* Admin manual adjustment
+* Adjustment reason
+* Discount
+* Final quote amount
+* GST included/excluded
+* Quote expiry date
+* Internal quote note
+
+Buttons:
+
+* Generate Suggested Estimate
+* Recalculate
+* Save Draft Quote
+* Save Final Quote
+* Mark Quote as Sent
+* Mark Accepted
+* Convert to Booking
+
+Important:
+
+* Suggested price is internal only.
+* Final quote is sent only after admin chooses to send/prepare response.
+* Never expose this panel publicly.
+
+If existing pricing estimator logic exists:
+
+* Reuse it.
+* Extract it into reusable internal function/module if needed.
+* Do not render its output on public pages.
+
+Suggested developer comment:
+“Internal estimator only. Do not expose suggested price or breakdown to public customers.”
+
+PHASE 7 — STATUS WORKFLOW
+
+Support these quote/request statuses:
+
+* `quote_requested`
+* `reviewing`
+* `need_more_info`
+* `quote_draft`
+* `quote_sent`
+* `quote_accepted`
+* `quote_declined`
+* `scheduled`
+* `rescheduled`
+* `in_progress`
+* `completed`
+* `payment_pending`
+* `paid`
+* `cancelled`
+* `archived`
+
+Admin must be able to change status.
+
+Every status change should save:
+
+* previous status
+* new status
+* admin user ID
+* timestamp
+* optional note
+
+Activity log entries:
+
+* request created
+* status changed
+* quote generated
+* final quote saved
+* quote sent
+* internal note added
+* booking created
+* payment marked paid
+* booking rescheduled
+* job completed
+* job cancelled
+
+PHASE 8 — CUSTOMER COMMUNICATION
+
+In quote detail page, create a section:
+
+“Contact Customer”
+
+Use customer’s preferred contact method.
+
+If preferred contact method is Email:
+
+* Show “Prepare Email Quote”
+* Use email draft or backend email if configured.
+
+If WhatsApp:
+
+* Show “Open WhatsApp Message”
+* Use:
+  `https://wa.me/[formatted-phone]?text=[encoded-message]`
+
+If SMS:
+
+* Show “Prepare SMS”
+* Use `sms:` link or placeholder if no SMS provider.
+
+If Phone:
+
+* Show “Call Customer”
+* Use `tel:` link.
+
+Do NOT automatically send SMS/WhatsApp through paid APIs unless credentials already exist.
+
+EMAIL QUOTE TEMPLATE
+
+Subject:
+“Your Pope Cleaning Services Quote”
+
+Body:
+“Hi [First Name],
+
+Thank you for sending your cleaning request.
+
+We have reviewed the details provided for your [Service Type] in [Suburb].
+
+Your tailored quote is: [Final Quote Amount]
+
+Request summary:
+
+* Service: [Service Type]
+* Frequency: [Frequency]
+* Preferred date: [Preferred Date]
+* Extras: [Selected Extras]
+
+This quote is based on the information provided. It may be reviewed if the actual property condition, access or service requirements differ significantly from the submitted details.
+
+Please reply to confirm your booking or ask any questions.
+
+Kind regards,
+Pope Cleaning Services”
+
+WHATSAPP / SMS TEMPLATE
+
+“Hi [First Name], thanks for requesting a cleaning quote with Pope Cleaning Services. We reviewed your request for [Service Type] in [Suburb]. Your tailored quote is [Final Quote Amount], based on the details provided. Please reply to confirm or ask any questions. – Pope Cleaning Services”
+
+PHASE 9 — BOOKINGS
+
+Route:
+`/admin/bookings`
+
+A booking should be created when a quote is accepted or admin clicks “Convert to Booking”.
+
+Booking fields:
+
+* Booking ID
+* Linked quote request ID
+* Linked admin quote ID
+* Customer name
+* Customer email
+* Customer phone
+* Service type
+* Frequency
+* Scheduled date
+* Scheduled time window
+* Confirmed address, optional
+* Suburb/postcode
+* Status
+* Final quote amount
+* Payment status
+* Notes
+* Assigned cleaner placeholder
+* Created at
+* Updated at
+
+Booking statuses:
+
+* `scheduled`
+* `rescheduled`
+* `in_progress`
+* `completed`
+* `cancelled`
+
+Payment statuses:
+
+* `unpaid`
+* `payment_pending`
+* `paid`
+* `refunded`
+* `cancelled`
+
+Bookings page should show:
+
+* upcoming bookings;
+* today’s bookings;
+* completed bookings;
+* payment status;
+* ability to update status.
+
+PHASE 10 — CALENDAR
+
+Route:
+`/admin/calendar`
+
+Initial version:
+
+* Display bookings by date.
+* Monthly or weekly view if feasible.
+* If calendar library is not present, create a simple date-grouped list.
+
+Show:
+
+* scheduled date;
+* time window;
+* customer;
+* service;
+* suburb;
+* status.
+
+PHASE 11 — FINANCE DASHBOARD
+
+Route:
+`/admin/finance`
+
+Purpose:
+Help admin understand money and payment status.
+
+Metrics:
+
+* Revenue this month
+* Expected revenue this month
+* Paid this month
+* Pending payment
+* Unpaid completed jobs
+* Average job value
+* Quotes accepted
+* Quotes declined
+* Quote conversion rate
+* Revenue by service type
+* Jobs by payment status
+
+Tables:
+
+* Pending payments
+* Recently paid jobs
+* High-value quotes
+* Cancelled jobs
+
+Do not integrate payment gateway yet unless already configured.
+
+PHASE 12 — CUSTOMERS
+
+Route:
+`/admin/customers`
+
+Create customer list from quote requests and bookings.
+
+Fields:
+
+* Name
+* Email
+* Phone
+* Suburb
+* Preferred contact method
+* Number of requests
+* Number of bookings
+* Total quoted value
+* Total paid value if available
+* Last request date
+* Marketing consent
+* Customer type:
+
+  * New
+  * Returning
+  * Recurring
+  * Commercial
+  * High-value
+
+Customer detail page can be placeholder if needed.
+
+PHASE 13 — MARKETING CONSENT
+
+Route:
+`/admin/marketing`
+
+Initial functionality:
+
+* Show customers who opted into marketing.
+* Show customers who did not opt in.
+* Filter by:
+
+  * residential
+  * commercial
+  * service type
+  * suburb
+  * recurring
+  * inactive
+  * high-value
+
+Do not send campaigns yet unless email marketing provider exists.
+
+Store marketing consent separately from service communication.
+
+Marketing consent must include:
+
+* consent value
+* consent timestamp
+* consent source
+* consent text version
+
+Never send marketing to customers who did not consent.
+
+PHASE 14 — REPORTS
+
+Route:
+`/admin/reports`
+
+Reports to prepare:
+
+* Daily Operations Report
+* Weekly Jobs Report
+* Monthly Revenue Report
+* Quote Conversion Report
+* Service Demand Report
+* Outstanding Payments Report
+* Recurring Clients Report
+* Marketing Leads Report
+
+Initial version can show report cards with basic calculated data and placeholders for export.
+
+PHASE 15 — SETTINGS
+
+Route:
+`/admin/settings`
+
+Settings should include:
+
+* Business information
+* Admin users placeholder
+* Services list
+* Pricing configuration placeholder
+* Notification settings placeholder
+* Email provider setup placeholder
+
+Do not expose secrets in UI.
+
+DATABASE REQUIREMENTS
+
+Create or update schema.
+
+Recommended tables/collections:
+
+1. users / profiles
+
+* id
+* auth_user_id
+* email
+* role
+* first_name
+* last_name
+* phone
+* created_at
+* updated_at
+
+2. quote_requests
+
+* id
+* customer_first_name
+* customer_last_name
+* customer_email
+* customer_phone
+* preferred_contact_method
+* company_name
+* business_role
+* service_contact_consent
+* marketing_consent
+* service_type
+* frequency
+* property_type
+* suburb
+* postcode
+* approximate_size
+* bedrooms
+* bathrooms
+* showers
+* toilets
+* kitchens
+* floors
+* living_areas
+* beds_to_make
+* workstations
+* meeting_rooms
+* break_rooms
+* reception_areas
+* shared_areas
+* warehouse_workshop_area
+* after_hours_required
+* extras
+* other_extra_description
+* custom_notes
+* preferred_date
+* preferred_time_window
+* urgency
+* parking
+* stairs_lift_access
+* pets
+* access_notes
+* status
+* submitted_at
+* updated_at
+* admin_reviewed
+
+3. quote_photos
+
+* id
+* quote_request_id
+* file_url
+* file_name
+* file_type
+* uploaded_at
+
+4. admin_quotes
+
+* id
+* quote_request_id
+* suggested_amount
+* estimated_time
+* manual_adjustment
+* adjustment_reason
+* discount_amount
+* final_quote_amount
+* gst_amount
+* gst_included
+* quote_status
+* quote_expiry_date
+* internal_notes
+* created_by
+* created_at
+* updated_at
+
+5. bookings
+
+* id
+* quote_request_id
+* admin_quote_id
+* customer_name
+* customer_email
+* customer_phone
+* service_type
+* frequency
+* scheduled_date
+* scheduled_time_window
+* confirmed_address
+* suburb
+* postcode
+* status
+* final_amount
+* payment_status
+* assigned_cleaner
+* notes
+* created_at
+* updated_at
+
+6. payments
+
+* id
+* booking_id
+* amount
+* status
+* payment_method
+* paid_at
+* created_at
+* updated_at
+
+7. activity_logs
+
+* id
+* entity_type
+* entity_id
+* action
+* previous_value
+* new_value
+* performed_by
+* note
+* created_at
+
+8. customer_consents
+
+* id
+* quote_request_id
+* customer_email
+* customer_phone
+* marketing_consent
+* consent_source
+* consent_text_version
+* consent_timestamp
+
+Use JSON fields if needed for extras and complex details, but keep main dashboard fields queryable.
+
+DATA PRIVACY
+
+* Public users can submit quote requests.
+* Public users cannot read all quote requests.
+* Admin can read and manage all quote requests.
+* Protect uploaded photos.
+* Protect personal customer information.
+* Do not log sensitive customer data unnecessarily.
+* Do not expose database IDs unnecessarily in public UI.
+
+ERROR HANDLING
+Add loading, empty and error states.
+
+Empty states:
+
+* “No quote requests yet.”
+* “No bookings scheduled.”
+* “No payment data available.”
+* “No customers found.”
+
+Error states:
+
+* “Could not load quote requests.”
+* “Could not save quote.”
+* “Could not update status.”
+* “Could not load photos.”
+* “Login failed. Please check your details.”
+
+Loading states:
+
+* Dashboard loading
+* Quote list loading
+* Quote detail loading
+* Saving quote
+* Updating status
+* Preparing message
+
+ACCESSIBILITY
+
+* Use semantic headings.
+* Tables must be readable.
+* Buttons keyboard accessible.
+* Status badges readable.
+* Forms have labels.
+* Focus rings visible.
+* Responsive layout.
+* Admin pages usable on tablet/mobile.
+
+TESTING REQUIREMENTS
+After implementation:
+
+* Run lint/typecheck/build/test commands available in project.
+* Test admin login.
+* Test non-admin access denied.
+* Test quote request list loading.
+* Test quote request detail.
+* Test internal estimator panel.
+* Test manual final quote save.
+* Test status changes.
+* Test converting quote to booking.
+* Test finance metrics.
+* Test mobile admin layout.
+* Confirm public customers cannot access admin pages.
+* Confirm public UI does not show internal pricing.
+
+FINAL RESPONSE REQUIREMENTS
+When finished, report:
+
+* Files changed
+* Database/schema changes
+* Auth changes
+* New routes created
+* Environment variables / Replit Secrets required
+* Test commands run and results
+* Known limitations
+* Next recommended phase
+
+ACCEPTANCE CRITERIA
+The ADMIN dashboard is complete when:
+
+1. Secure admin login exists.
+2. Admin routes are protected.
+3. Admin dashboard displays key metrics.
+4. Admin can view quote requests.
+5. Admin can open quote request details.
+6. Admin can see customer, service, property, extras, schedule, photos and contact details.
+7. Admin can generate an internal suggested price.
+8. Admin can manually adjust and save final quote.
+9. Admin can prepare customer response by email, WhatsApp, SMS or phone.
+10. Admin can update statuses.
+11. Admin can convert accepted quote into booking.
+12. Admin can track payment status.
+13. Finance page shows basic revenue and pending payment metrics.
+14. Customers page lists customer records.
+15. Marketing consent is stored and visible.
+16. Public users cannot see admin data or internal prices.
+17. Existing public quote form continues working.
+18. The system is responsive, polished and aligned with the Pope Cleaning Services brand.
+
+FINAL GOAL
+Build a functional ADMIN control center that helps Pope Cleaning Services receive quote requests, respond quickly, prepare accurate quotes, manage jobs, track payments and understand business performance.
