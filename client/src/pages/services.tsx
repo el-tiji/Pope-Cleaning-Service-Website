@@ -129,9 +129,9 @@ export default function ServicesPage() {
                           ))}
                         </div>
                         
-                        <Link href={`/book?service=${service.id}`}>
-                          <Button className="rounded-full px-8 h-12 shadow-md hover:shadow-lg transition-all group text-primary-foreground" style={{ backgroundColor: 'var(--brand-navy-deep)' }}>
-                            Book {service.title}
+                        <Link href="/quote" target="_blank">
+                          <Button className="rounded-full px-8 h-12 shadow-md hover:shadow-lg transition-all group text-primary-foreground" variant="default">
+                            Request Quote
                             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                           </Button>
                         </Link>

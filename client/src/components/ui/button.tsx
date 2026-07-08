@@ -5,33 +5,32 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:scale-[1.03] hover:shadow-md active:scale-[0.97]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-full font-bold",
   {
     variants: {
       variant: {
         default:
-           // @replit: no hover, and add primary border
-           "bg-primary text-primary-foreground border border-primary-border",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm border-destructive-border",
-        outline:
-          // @replit Shows the background color of whatever card / sidebar / accent background it is inside of.
-          // Inherits the current text color. Uses shadow-xs. no shadow on active
-          // No hover state
-          " border [border-color:var(--button-outline)] shadow-xs active:shadow-none ",
+          "bg-gradient-to-br from-[#2F7FD1] to-[#2E86DE] text-white shadow-[0_8px_20px_rgba(47,127,209,0.28)] hover:from-[#1F6FC0] hover:to-[#2F7FD1] hover:-translate-y-[2px] hover:shadow-[0_12px_28px_rgba(47,127,209,0.34)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(47,127,209,0.2)]",
         secondary:
-          // @replit border, no hover, no shadow, secondary border.
-          "border bg-secondary text-secondary-foreground border border-secondary-border ",
-        // @replit no hover, transparent border
-        ghost: "border border-transparent",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-white text-[#00275F] border border-[#00275F]/[0.16] shadow-[0_4px_12px_rgba(0,39,95,0.08)] hover:bg-[#EAF5FF] hover:border-[#2F7FD1]/[0.35] hover:-translate-y-[1px] hover:shadow-[0_8px_18px_rgba(0,39,95,0.12)]",
+        outline:
+          "bg-[rgba(255,255,255,0.72)] text-[#00275F] border border-[#00275F]/[0.12] shadow-sm hover:bg-[#EAF5FF] hover:border-[#2F7FD1]/[0.28] hover:-translate-y-[1px]",
+        ghost: 
+          "hover:bg-[#EAF5FF] hover:text-[#00275F] text-muted-foreground",
+        destructive:
+          "bg-white text-[#D9534F] border border-[#D9534F]/[0.32] hover:bg-red-50",
+        link: 
+          "text-[#2F7FD1] underline-offset-4 hover:underline hover:text-[#00275F] bg-transparent !shadow-none !p-0 !h-auto",
+        adminPrimary:
+          "bg-gradient-to-br from-[#2F7FD1] to-[#2E86DE] text-white shadow-sm hover:opacity-90 active:scale-95",
+        adminSecondary:
+          "bg-white text-[#00275F] border border-[#00275F]/[0.16] hover:bg-gray-50",
       },
       size: {
-        // @replit changed sizes
-        default: "min-h-9 px-4 py-2",
-        sm: "min-h-8 rounded-md px-3 text-xs",
-        lg: "min-h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        default: "h-[42px] px-[24px]",
+        sm: "h-[36px] px-[16px] text-xs",
+        lg: "h-[50px] px-[32px] text-base",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {

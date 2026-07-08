@@ -60,8 +60,8 @@ export function Contact() {
                   </a>
                 </div>
                 
-                <Link href="/services#services-custom-quote">
-                  <Button className="w-full h-14 px-8 text-base font-bold rounded-xl shadow-md shadow-primary/20 gap-2 hover:translate-y-[-2px] transition-transform group">
+                <Link href="/quote">
+                  <Button className="w-full h-14 px-8 text-base font-bold rounded-xl shadow-md gap-2 hover:translate-y-[-2px] transition-transform group" variant="default">
                     Go to Custom Quote Form <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>

@@ -46,14 +46,14 @@ export default function PricingPage() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/book">
-                    <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg hover:shadow-xl transition-all group">
+                  <Link href="/quote" target="_blank">
+                    <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg hover:shadow-xl transition-all group" variant="default">
                       Request a Quote
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                   <Link href="/services">
-                    <Button variant="outline" size="lg" className="rounded-full h-14 px-8 text-lg font-bold border-2 border-primary/20 text-primary hover:bg-primary/5 transition-all">
+                    <Button variant="outline" size="lg" className="rounded-full h-14 px-8 text-lg font-bold transition-all">
                       View Our Services
                     </Button>
                   </Link>

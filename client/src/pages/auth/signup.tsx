@@ -74,7 +74,7 @@ export default function Signup() {
               </label>
             </div>
 
-            <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold mt-4">
+            <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold mt-4" variant="default">
               Create Account
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>

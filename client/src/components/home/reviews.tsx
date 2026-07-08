@@ -238,7 +238,7 @@ export function Reviews() {
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-accent text-secondary hover:bg-primary/80 font-bold rounded-full h-10 gap-2"
+                    className="w-full"
                     disabled={!formData.name || !formData.serviceType || !formData.text}
                   >
                     <Send className="w-4 h-4" />

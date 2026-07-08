@@ -94,7 +94,7 @@ export default function CustomerDashboard() {
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase tracking-wider">Confirmed</span>
-                <Button variant="outline" size="sm">Manage</Button>
+                <Button variant="outline" size="sm" className="transition-all hover:bg-gray-100">Manage</Button>
               </div>
             </div>
           </div>

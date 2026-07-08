@@ -39,9 +39,9 @@ export function CustomQuoteForm() {
             <Button size="lg" variant="outline" className="rounded-full px-8 h-14" onClick={() => setIsSuccess(false)}>
               Submit Another Request
             </Button>
-            <Link href="/book">
+            <Link href="/quote">
               <Button size="lg" className="rounded-full px-8 h-14 bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
-                Go to Plans & Pricing <ArrowRight className="w-5 h-5" />
+                Request a Custom Quote <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
           </div>

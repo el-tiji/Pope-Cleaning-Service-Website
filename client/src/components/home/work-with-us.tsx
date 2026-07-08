@@ -84,7 +84,7 @@ export function WorkWithUs() {
                 Send us your resume and a brief introduction about why you'd be a great fit for Pope Cleaning Services.
               </p>
               <a href="mailto:popecleaningservices@hotmail.com?subject=Job Application - Pope Cleaning Services">
-                <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-[#2F7FD1] text-white hover:bg-white hover:text-[#00275F] transition-colors gap-2 group border-0 shadow-lg">
+                <Button size="lg" variant="secondary" className="gap-2 group">
                   Apply Now
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>

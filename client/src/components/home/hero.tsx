@@ -81,14 +81,14 @@ export function Hero() {
             
             <RevealOnScroll delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Link href="/services">
-                  <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-primary/25 w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                    View Our Services
+                <Link href="/quote">
+                  <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-primary/25 w-full sm:w-auto transition-colors" variant="default">
+                    Get an Instant Quote <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link href="/about">
-                  <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-black/5 w-full sm:w-auto bg-white/80 backdrop-blur-md text-secondary hover:bg-white hover:text-primary hover:border-primary/30 transition-all">
-                    About Us
+                <Link href="/services">
+                  <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base font-semibold shadow-lg shadow-black/5 w-full sm:w-auto transition-all">
+                    View Our Services
                   </Button>
                 </Link>
               </div>

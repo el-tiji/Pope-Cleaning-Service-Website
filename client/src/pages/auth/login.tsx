@@ -66,7 +66,7 @@ export default function Login() {
               </div>
             </div>
 
-            <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold">
+            <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold" variant="default">
               Log In
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>

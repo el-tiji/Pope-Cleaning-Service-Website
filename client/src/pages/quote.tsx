@@ -215,7 +215,7 @@ export default function Booking() {
             <p className="text-muted-foreground mb-8">
               Thank you, {formData.customer.firstName}! We've received your request for a {PLANS.find(p => p.id === formData.plan)?.title}. Our team will review your details and send a tailored quote to your email shortly.
             </p>
-            <Button onClick={() => window.close()} className="w-full h-14 rounded-xl text-lg font-bold bg-[#2F7FD1] text-white">
+            <Button onClick={() => window.close()} className="w-full h-14 rounded-xl text-lg font-bold" variant="default">
               Close Tab
             </Button>
           </div>

@@ -52,7 +52,7 @@ export default function AdminDashboard() {
               <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
               <p className="text-sm text-gray-500">Overview for October 2026</p>
             </div>
-            <Button className="bg-[#2F7FD1] hover:bg-[#00275F] text-white">Create Quote</Button>
+            <Button className="transition-all shadow-md text-primary-foreground" variant="default">Create Quote</Button>
           </div>
           
           {/* Stats Row */}

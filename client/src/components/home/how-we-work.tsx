@@ -171,7 +171,7 @@ export function HowWeWork() {
                 <h3 className="text-3xl md:text-4xl font-extrabold text-secondary mb-4">Ready to experience a detailed, professional clean?</h3>
                 <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">Let's make your home or workplace feel like new.</p>
                 <Link href="/book">
-                  <Button size="lg" className="rounded-full h-16 px-12 text-lg font-bold shadow-xl shadow-primary/30 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all">
+                  <Button size="lg" className="w-full sm:w-auto">
                     Book a Clean
                   </Button>
                 </Link>

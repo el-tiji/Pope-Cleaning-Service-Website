@@ -1,0 +1,571 @@
+You are updating the Pope Cleaning Services website.
+
+TASK
+Create and apply a consistent button design system across the entire website.
+
+The goal is to make all buttons visually uniform, professional and aligned with the updated navbar button hierarchy.
+
+IMPORTANT SCOPE
+
+* Do NOT redesign the entire website.
+* Do NOT change page content unless a button label is clearly inconsistent.
+* Do NOT change routes, form logic, booking logic, admin logic, pricing logic or database logic.
+* Only update button styling, button hierarchy and reusable button components/classes.
+* Apply the updated button system across all pages:
+
+  * Home
+  * Services
+  * Pricing Info
+  * About Us
+  * Reviews
+  * Book Now / Quote Request
+  * Log In
+  * Admin pages if they exist
+  * Footer CTAs if present
+
+MAIN GOAL
+The website should have a unified button system where every button clearly belongs to one of these categories:
+
+1. Primary CTA
+   Used for the most important action on a page.
+
+2. Secondary CTA
+   Used for supportive actions.
+
+3. Outline / Ghost button
+   Used for lower-priority navigation or secondary actions.
+
+4. Form action button
+   Used for Continue, Back, Submit and Save actions.
+
+5. Admin action button
+   Used inside the admin dashboard for operational actions.
+
+BRAND COLOUR PALETTE
+Use the Pope Cleaning Services colour system:
+
+Deep navy:
+`#00275F`
+
+Secondary navy:
+`#004170`
+
+Primary blue:
+`#2F7FD1`
+
+Bright blue:
+`#2E86DE`
+
+Light blue:
+`#7EC8FF`
+
+Soft blue:
+`#EAF5FF`
+
+White:
+`#FFFFFF`
+
+Light background:
+`#F5F7FA`
+
+Success green:
+`#00C875`
+
+Warning amber:
+`#F5A623`
+
+Danger red:
+`#D9534F`
+
+GLOBAL BUTTON DESIGN PRINCIPLES
+All buttons should feel:
+
+* rounded;
+* clean;
+* premium;
+* consistent;
+* easy to identify;
+* accessible;
+* not overly flat;
+* not overly heavy.
+
+Use:
+
+* border-radius: 999px for pill buttons;
+* consistent height;
+* consistent padding;
+* consistent font weight;
+* subtle shadows;
+* smooth hover transitions;
+* clear focus states.
+
+Suggested global button settings:
+
+* Font weight: 600 or 700.
+* Border radius: 999px.
+* Transition: all 200ms ease-out.
+* Desktop height: 42–48px.
+* Small button height: 36–40px.
+* Large CTA height: 50–56px.
+* Horizontal padding:
+
+  * small: 16–20px;
+  * medium: 22–28px;
+  * large: 30–36px.
+
+PRIMARY BUTTON STYLE
+Use for the main conversion action on each page.
+
+Examples:
+
+* Book Now
+* Request a Quote
+* Start Quote Request
+* Send My Quote Request
+* Book a Clean
+* View Our Services when it is the main CTA
+* Save / Submit admin action when it is the main action
+
+Style:
+
+* Background:
+  `linear-gradient(135deg, #2F7FD1 0%, #2E86DE 100%)`
+* Text:
+  `#FFFFFF`
+* Border:
+  none or `1px solid rgba(255,255,255,0.18)`
+* Shadow:
+  `0 8px 20px rgba(47, 127, 209, 0.28)`
+* Hover background:
+  `linear-gradient(135deg, #1F6FC0 0%, #2F7FD1 100%)`
+* Hover transform:
+  `translateY(-2px)`
+* Hover shadow:
+  `0 12px 28px rgba(47, 127, 209, 0.34)`
+* Active:
+  `translateY(0)`
+* Disabled:
+  muted blue/grey, no strong shadow, cursor not-allowed.
+
+SECONDARY BUTTON STYLE
+Use for important but secondary actions.
+
+Examples:
+
+* About Us
+* View Services
+* View Our Services
+* Learn More
+* Back to Services
+* Request Custom Quote when not the main page CTA
+
+Style:
+
+* Background:
+  `#FFFFFF`
+* Text:
+  `#00275F`
+* Border:
+  `1px solid rgba(0, 39, 95, 0.16)`
+* Shadow:
+  `0 4px 12px rgba(0, 39, 95, 0.08)`
+* Hover background:
+  `#EAF5FF`
+* Hover border:
+  `1px solid rgba(47, 127, 209, 0.35)`
+* Hover transform:
+  `translateY(-1px)`
+* Hover shadow:
+  `0 8px 18px rgba(0, 39, 95, 0.12)`
+
+OUTLINE / GHOST BUTTON STYLE
+Use for low-priority actions or navigation-style actions.
+
+Examples:
+
+* Log In
+* Back
+* Cancel
+* View Details
+* Secondary admin actions
+* Filter buttons
+* Optional actions
+
+Style:
+
+* Background:
+  `rgba(255, 255, 255, 0.72)`
+* Text:
+  `#00275F`
+* Border:
+  `1px solid rgba(0, 39, 95, 0.12)`
+* Shadow:
+  subtle or none depending on location
+* Hover background:
+  `#EAF5FF`
+* Hover border:
+  `1px solid rgba(47, 127, 209, 0.28)`
+* Hover transform:
+  `translateY(-1px)`
+
+TEXT LINK BUTTON STYLE
+Use only where a button should look minimal.
+
+Examples:
+
+* Learn more
+* Change selection
+* Remove photo
+* Edit details
+
+Style:
+
+* Background: transparent.
+* Text: `#2F7FD1`.
+* Hover text: `#00275F`.
+* Add underline only on hover or focus.
+* Do not use heavy shadows.
+
+FORM BUTTONS
+Unify all form buttons across Book Now, Log In and Admin forms.
+
+Continue button:
+
+* Use Primary button style.
+* Label:
+  “Continue”
+
+Submit button:
+
+* Use Primary button style.
+* Labels depending on context:
+
+  * “Send My Quote Request”
+  * “Submit”
+  * “Save Changes”
+  * “Send Quote”
+
+Back button:
+
+* Use Ghost button style.
+* Include arrow icon only if already used in the project.
+* Should not look stronger than Continue.
+
+Cancel button:
+
+* Use Ghost button style.
+* Never use red unless the action is destructive.
+
+Disabled form button:
+
+* Background: `#B7D4F5` or muted grey-blue.
+* Text: white or muted navy depending on contrast.
+* No hover transform.
+* No strong shadow.
+
+NAVBAR BUTTON RULES
+Keep the updated navbar hierarchy:
+
+Log In:
+
+* Secondary / outline button.
+* Not solid blue.
+
+Book Now:
+
+* Primary blue gradient button.
+* Strongest CTA in navbar.
+
+Normal nav links:
+
+* Soft pill style.
+* Not as strong as Log In or Book Now.
+
+HOME PAGE BUTTONS
+Hero section:
+
+* “View Our Services” should be Primary if it is the main first action.
+* “About Us” should be Secondary.
+
+If there is a stronger conversion CTA such as “Book a Clean” in the same area, then:
+
+* “Book a Clean” should be Primary.
+* “View Our Services” should be Secondary.
+
+How We Work / CTA section:
+
+* “Book a Clean” should be Primary.
+* Any supporting button should be Secondary.
+
+SERVICES PAGE BUTTONS
+Service cards/buttons:
+
+* “Book Residential Cleaning”
+* “Book Spring Cleaning”
+* “Book Vacate Cleaning”
+* “Book Office Cleaning”
+* “Book Carpet & Upholstery”
+* “Book Pressure Cleaning”
+
+These should use a consistent Primary or Secondary style depending on section context.
+
+Recommended:
+
+* Use Primary style for service booking buttons.
+* If there are many buttons repeated down the page, use a slightly smaller primary button:
+
+  * same gradient;
+  * lower shadow;
+  * consistent width.
+* Do not mix dark navy buttons, bright blue buttons and random styles.
+* Remove inconsistent button colours if they exist.
+
+PRICING INFO PAGE BUTTONS
+Main CTA:
+
+* “Request a Quote” should be Primary.
+  Secondary CTA:
+* “View Our Services” should be Secondary.
+
+Any cards or links:
+
+* Use text link or ghost style.
+
+BOOK NOW / QUOTE REQUEST PAGE BUTTONS
+Primary buttons:
+
+* “Start Quote Request”
+* “Continue”
+* “Send My Quote Request”
+
+Secondary buttons:
+
+* “Back”
+* “Edit”
+* “View Request Summary”
+
+Do not use pricing-style green or discount colours for public CTAs.
+
+Selected service cards are not buttons visually, but their selected state should use:
+
+* Border: `#2F7FD1`
+* Background: `#EAF5FF`
+* Checkmark: `#2F7FD1`
+* Light shadow.
+
+LOG IN PAGE BUTTONS
+Login submit:
+
+* Primary button.
+  Forgot password:
+* Text link button.
+  Back to website:
+* Secondary or ghost button.
+
+ADMIN DASHBOARD BUTTONS
+Admin primary actions:
+
+* “Save Draft Quote”
+* “Send Quote”
+* “Convert to Booking”
+* “Save Changes”
+
+Use Primary style.
+
+Admin secondary actions:
+
+* “View Details”
+* “Edit”
+* “Recalculate”
+* “Mark as Reviewing”
+
+Use Secondary style.
+
+Admin destructive actions:
+
+* “Cancel Booking”
+* “Archive”
+* “Delete”
+
+Use a restrained danger style:
+
+* Background: white;
+* Text: `#D9534F`;
+* Border: `1px solid rgba(217, 83, 79, 0.32)`;
+* Hover background: soft red tint;
+* Do not use large solid red unless confirming a destructive action.
+
+FOOTER BUTTONS
+If footer includes CTA buttons:
+
+* Primary footer CTA should still use the blue gradient if placed on a light background.
+* If placed on deep navy footer `#00275F`, use:
+
+  * white button with navy text, or
+  * bright blue button with white text.
+* Ensure contrast is strong.
+
+REUSABLE COMPONENT REQUIREMENT
+If the project has reusable components, create or update a single button component.
+
+Recommended component:
+`Button`
+or
+`AppButton`
+
+Supported variants:
+
+* `primary`
+* `secondary`
+* `ghost`
+* `text`
+* `danger`
+* `success`
+* `adminPrimary`
+* `adminSecondary`
+
+Supported sizes:
+
+* `sm`
+* `md`
+* `lg`
+
+Supported states:
+
+* default
+* hover
+* active
+* disabled
+* loading
+
+If Tailwind is used, create consistent class names or a button utility function.
+
+Example conceptual API:
+
+```tsx id="9mn2ws"
+<Button variant="primary" size="lg">
+  Request a Quote
+</Button>
+
+<Button variant="secondary" size="md">
+  View Services
+</Button>
+
+<Button variant="ghost" size="md">
+  Back
+</Button>
+```
+
+If the project does not use a reusable component, create global CSS classes:
+
+* `.btn`
+* `.btn-primary`
+* `.btn-secondary`
+* `.btn-ghost`
+* `.btn-text`
+* `.btn-danger`
+* `.btn-sm`
+* `.btn-md`
+* `.btn-lg`
+* `.btn-disabled`
+
+Then replace scattered hardcoded button styles across the project with these classes.
+
+CONSISTENCY CLEANUP
+Search the project for inconsistent button styles and replace them.
+
+Look for:
+
+* hardcoded blue backgrounds;
+* dark navy buttons that do not match the new system;
+* different border-radius values;
+* random shadows;
+* inconsistent hover effects;
+* buttons with no hover state;
+* buttons with poor contrast;
+* multiple gradient styles;
+* inconsistent padding/height.
+
+Unify all of them using the new button system.
+
+VISUAL HIERARCHY RULE
+Each page should have only one dominant primary CTA in a major visual area.
+
+Avoid having too many solid blue buttons competing in the same section.
+
+When several actions appear together:
+
+* Main action: Primary.
+* Secondary action: Secondary.
+* Optional action: Ghost or text.
+
+ACCESSIBILITY
+
+* Maintain visible keyboard focus.
+* Use focus ring:
+  `0 0 0 3px rgba(126, 200, 255, 0.55)`
+* Ensure contrast passes readable standards.
+* Disabled buttons should be visually distinct.
+* Loading buttons should show spinner or loading text.
+* Buttons must remain keyboard accessible.
+* Do not remove semantic `<button>` for form actions.
+* Use `<a>` only for navigation links.
+
+MOBILE REQUIREMENTS
+
+* Buttons should have comfortable tap targets.
+* Minimum height: 44px.
+* Avoid tiny inline buttons on mobile.
+* Full-width primary buttons are acceptable in mobile forms.
+* Keep spacing between buttons clear.
+* If two buttons appear side by side on mobile and feel cramped, stack them.
+
+MICROINTERACTIONS
+Use subtle consistent animation:
+
+* Transition duration: 180–220ms.
+* Ease-out.
+* Small lift on hover.
+* No aggressive bounce.
+* No large scaling.
+* Respect `prefers-reduced-motion`.
+
+IMPLEMENTATION STEPS
+
+1. Identify existing button components or repeated button classes.
+2. Create/update the global button design system.
+3. Apply variants across all pages.
+4. Update navbar buttons using the same system.
+5. Replace inconsistent button colours/styles.
+6. Test desktop, tablet and mobile.
+7. Ensure no layout breaks.
+8. Ensure forms still work.
+9. Ensure links still navigate correctly.
+10. Ensure public and admin CTAs have correct hierarchy.
+
+DO NOT
+
+* Do not change business content.
+* Do not change page logic.
+* Do not remove buttons.
+* Do not change routes.
+* Do not expose admin functionality.
+* Do not modify database.
+* Do not change quote request logic.
+* Do not change pricing logic.
+* Do not make every button blue.
+* Do not make the design overly colourful.
+
+FINAL ACCEPTANCE CRITERIA
+The update is complete when:
+
+1. All website buttons follow one consistent design system.
+2. Primary, secondary, ghost, text and danger buttons are visually distinct.
+3. Book Now remains the strongest CTA in the navbar.
+4. Log In remains secondary.
+5. Form buttons are consistent across pages.
+6. Service buttons match the same style.
+7. Admin buttons, if present, follow the same hierarchy.
+8. Button colours match the Pope Cleaning Services palette.
+9. Hover, focus, active and disabled states are consistent.
+10. The full website feels visually uniform and more premium.
