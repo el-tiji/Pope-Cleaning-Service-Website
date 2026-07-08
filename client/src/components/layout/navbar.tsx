@@ -11,7 +11,7 @@ export function Navbar() {
           <a className="flex items-center gap-2 group">
             <div className="h-14 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-200 ease-out">
               <img 
-                src="/assets/brand/pope-cleaning-logo.png" 
+                src="/assets/brand/pope-cleaning-logo-transparent.png" 
                 alt="Pope Cleaning Services logo" 
                 className="h-full w-auto object-contain"
                 onError={(e) => {
