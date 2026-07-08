@@ -458,7 +458,7 @@ export default function Booking() {
                         <label 
                           key={extra.id}
                           className={cn(
-                            "cursor-pointer rounded-xl p-4 border transition-all flex items-start gap-3",
+                            "cursor-pointer rounded-xl p-4 border transition-all flex items-start gap-3 select-none",
                             formData.extras[extra.id]
                               ? "border-primary bg-primary/5 shadow-sm" 
                               : "border-border hover:border-primary/30 hover:bg-muted"
@@ -476,6 +476,12 @@ export default function Booking() {
                           )}>
                             {extra.label}
                           </span>
+                          <input 
+                               type="checkbox" 
+                               className="sr-only" 
+                               checked={formData.extras[extra.id] || false}
+                               onChange={(e) => updateExtra(extra.id, e.target.checked)}
+                          />
                         </label>
                       ))}
                     </div>
