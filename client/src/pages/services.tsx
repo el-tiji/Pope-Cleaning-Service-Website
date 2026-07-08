@@ -129,7 +129,7 @@ export default function ServicesPage() {
                           ))}
                         </div>
                         
-                        <Link href="/quote" target="_blank">
+                        <Link href="/quote">
                           <Button className="rounded-full px-8 h-12 shadow-md hover:shadow-lg transition-all group text-primary-foreground" variant="default">
                             Request Quote
                             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

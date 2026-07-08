@@ -251,7 +251,7 @@ export default function Booking() {
                     <span className="flex items-center gap-2 bg-[#EAF5FF] text-[#2F7FD1] px-3 py-1 rounded-full text-sm font-bold"><ShieldCheck className="w-4 h-4"/> No hidden fees when details are accurate</span>
                     <span className="flex items-center gap-2 bg-[#EAF5FF] text-[#2F7FD1] px-3 py-1 rounded-full text-sm font-bold"><CalendarCheck className="w-4 h-4"/> Flexible Perth bookings</span>
                 </div>
-                <Button onClick={() => window.open('/quote', '_blank')} size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg transition-all" variant="default">
+                <Button onClick={() => window.location.href = '/quote'} size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg transition-all" variant="default">
                   Start Quote Request
                 </Button>
               </div>

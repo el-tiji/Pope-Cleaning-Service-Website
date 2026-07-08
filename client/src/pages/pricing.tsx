@@ -46,7 +46,7 @@ export default function PricingPage() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/quote" target="_blank">
+                  <Link href="/quote">
                     <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg hover:shadow-xl transition-all group" variant="default">
                       Request a Quote
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
