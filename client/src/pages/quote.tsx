@@ -228,7 +228,7 @@ export default function Booking() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pt-20">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-1 pt-8 pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
