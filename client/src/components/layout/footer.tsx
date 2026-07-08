@@ -57,19 +57,19 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-white">Services</h4>
             <ul className="space-y-3">
-              <li><Link href="/services#service-residential"><a className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Residential Cleaning</a></Link></li>
-              <li><Link href="/services#service-office"><a className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Commercial Cleaning</a></Link></li>
-              <li><Link href="/services#service-vacate"><a className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Vacate Cleaning</a></Link></li>
-              <li><Link href="/services#service-carpet"><a className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Carpet & Upholstery</a></Link></li>
-              <li><Link href="/services#service-tile"><a className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Tile & Grout</a></Link></li>
+              <li><Link href="/services#service-residential"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Residential Cleaning</span></Link></li>
+              <li><Link href="/services#service-office"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Commercial Cleaning</span></Link></li>
+              <li><Link href="/services#service-vacate"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Vacate Cleaning</span></Link></li>
+              <li><Link href="/services#service-carpet"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Carpet & Upholstery</span></Link></li>
+              <li><Link href="/services#service-tile"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Tile & Grout</span></Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-white">Company</h4>
             <ul className="space-y-3">
-              <li><Link href="/about"><a className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">About Us</a></Link></li>
-              <li><Link href="/reviews"><a className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Testimonials</a></Link></li>
+              <li><Link href="/about"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">About Us</span></Link></li>
+              <li><Link href="/reviews"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Testimonials</span></Link></li>
               <li><a href="/#faq" className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">FAQ</a></li>
               <li><a href="#" className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Privacy Policy</a></li>
             </ul>

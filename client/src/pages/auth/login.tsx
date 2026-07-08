@@ -78,7 +78,7 @@ export default function Login() {
 
           <div className="mt-8 text-center text-sm">
             <span className="text-muted-foreground">Don't have an account? </span>
-            <Link href="/auth/signup"><a className="text-primary font-bold hover:underline">Sign up</a></Link>
+            <Link href="/auth/signup"><span className="text-primary font-bold hover:underline cursor-pointer">Sign up</span></Link>
           </div>
         </div>
       </main>

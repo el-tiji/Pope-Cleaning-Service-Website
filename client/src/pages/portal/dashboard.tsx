@@ -33,7 +33,7 @@ export default function CustomerDashboard() {
           </nav>
           
           <div className="pt-6 border-t border-gray-200">
-            <Link href="/auth/login"><a className="text-sm font-medium text-red-500 hover:text-red-700">Log out</a></Link>
+            <Link href="/auth/login"><span className="text-sm font-medium text-red-500 hover:text-red-700 cursor-pointer">Log out</span></Link>
           </div>
         </aside>
 

@@ -41,7 +41,7 @@ export default function AdminDashboard() {
           </nav>
           
           <div className="p-4 border-t border-gray-200">
-            <Link href="/auth/login"><a className="text-sm font-medium text-red-500 hover:text-red-700">Exit Admin</a></Link>
+            <Link href="/auth/login"><span className="text-sm font-medium text-red-500 hover:text-red-700 cursor-pointer">Exit Admin</span></Link>
           </div>
         </aside>
 

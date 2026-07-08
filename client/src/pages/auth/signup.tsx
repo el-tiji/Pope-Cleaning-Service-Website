@@ -82,7 +82,7 @@ export default function Signup() {
 
           <div className="mt-8 text-center text-sm">
             <span className="text-muted-foreground">Already have an account? </span>
-            <Link href="/auth/login"><a className="text-primary font-bold hover:underline">Log in</a></Link>
+            <Link href="/auth/login"><span className="text-primary font-bold hover:underline cursor-pointer">Log in</span></Link>
           </div>
         </div>
       </main>
