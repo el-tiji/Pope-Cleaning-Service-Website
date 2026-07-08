@@ -209,7 +209,7 @@ export default function Booking() {
     return (
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
-        <main className="flex-1 flex items-center justify-center p-4 py-24">
+        <main className="flex-1 flex items-center justify-center p-4 py-24 pt-[88px]">
           <div className="max-w-lg w-full bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-border text-center animate-in zoom-in-95 duration-500">
             <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 className="w-12 h-12 text-green-600" />
@@ -230,8 +230,8 @@ export default function Booking() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 pt-8 pb-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 pb-32 pt-[88px]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8">
           
           <RevealOnScroll>
             <div className="text-center max-w-3xl mx-auto mb-12">

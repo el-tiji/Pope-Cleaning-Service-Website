@@ -1,0 +1,681 @@
+You are working on the Pope Cleaning Services Replit project.
+
+MAIN TASK
+Build and finalize a production-ready “Request a Cleaning Quote” form for the public Book Now page.
+
+This form is the operational backbone of the business. It must reliably collect customer information, service details, property details, extras, access notes, photos and contact preferences so Pope Cleaning Services can review the request, prepare a quote and contact the customer.
+
+The public customer must NOT see prices, GST, discounts, estimated totals or internal calculator output.
+
+The Live Estimated Price Calculator must remain hidden from the public and reserved for future admin-only use.
+
+Do not modify unrelated pages unless required to keep navigation working.
+
+CURRENT PUBLIC FLOW
+The public Book Now page should work as a quote request form, not a public pricing calculator.
+
+The customer should:
+
+1. Select the service they need.
+2. Add property or facility details.
+3. Select extras if needed.
+4. Add schedule and access information.
+5. Upload photos optionally.
+6. Add contact details and preferred communication method.
+7. Review the request.
+8. Submit the quote request.
+
+After submission, the business must be able to access the saved request from the admin-accessible database or backend.
+
+Do not collect payment information.
+Do not require account creation.
+Do not ask for full street address too early.
+Do not expose internal admin pricing fields.
+
+DESIGN REQUIREMENTS
+The form must match the Pope Cleaning Services visual identity:
+
+* Deep navy: #00275F
+* Primary blue: #2F7FD1
+* Bright blue: #2E86DE
+* Soft blue: #EAF5FF
+* White cards
+* Rounded corners
+* Soft shadows
+* Premium cleaning-service design
+* Clear step-by-step layout
+* Polished desktop and mobile experience
+* Large readable labels
+* Smooth transitions
+* Strong visual hierarchy
+
+The form should feel easy, modern and professional. It must not look like a long technical questionnaire.
+
+Use progressive disclosure so customers only see relevant fields at each step.
+
+FORM STRUCTURE
+Create or finalize a multi-step form with these steps:
+
+1. Service
+2. Property
+3. Extras
+4. Schedule & Access
+5. Contact
+6. Review & Submit
+
+Use a visible progress bar or stepper.
+
+Desktop layout:
+
+* Main form card on the left.
+* Non-price quote request summary panel on the right.
+
+Mobile layout:
+
+* Single column.
+* Large touch targets.
+* Clear Continue and Back buttons.
+* Summary collapsible or placed before final submit.
+
+STEP 1 — SERVICE
+Heading:
+“What type of cleaning do you need?”
+
+Helper text:
+“Choose the service that best matches your request. If you’re unsure, select Custom Cleaning Request.”
+
+Create selectable service cards for:
+
+1. Regular Home Cleaning
+   “Routine cleaning for ongoing home maintenance.”
+
+2. Spring / Deep Cleaning
+   “Detailed cleaning for built-up dust, neglected areas or seasonal refresh.”
+
+3. Vacate / End of Lease Cleaning
+   “Move-out cleaning to help prepare the property for inspection.”
+
+4. Office / Commercial Cleaning
+   “Cleaning for offices, workplaces and commercial spaces.”
+
+5. Carpet & Upholstery Cleaning
+   “Steam cleaning for carpets, rugs, couches or upholstery.”
+
+6. Tile & Grout Cleaning
+   “Detailed cleaning for tiles, grout lines, bathrooms and hard floors.”
+
+7. Pressure Cleaning
+   “Outdoor cleaning for driveways, patios, paths and selected surfaces.”
+
+8. Custom Cleaning Request
+   “For mixed services, special jobs, warehouses, workshops, showrooms or anything not listed.”
+
+Selected card requirements:
+
+* Blue border
+* Soft blue background
+* Checkmark
+* Keyboard accessible
+* Strong focus state
+* No prices shown
+
+Frequency question:
+“How often do you need cleaning?”
+
+Options:
+
+* One-off
+* Twice weekly
+* Weekly
+* Fortnightly
+* Monthly
+* Not sure yet
+
+Helper note:
+“Recurring services may qualify for a tailored frequency discount after review.”
+
+Do not show public discount percentages or dollar values.
+
+STEP 2 — PROPERTY
+Heading:
+“Tell us about the property”
+
+Helper text:
+“These details help us understand the size and type of work required.”
+
+Required fields:
+
+* Property / facility type
+* Suburb
+* Postcode
+
+Property / facility type options:
+
+* House
+* Apartment / Unit
+* Townhouse
+* Office
+* Retail / Showroom
+* Warehouse / Workshop
+* Commercial Facility
+* Other
+
+Residential conditional fields:
+Show only when the selected service or property type is residential.
+
+Fields:
+
+* Approximate internal area:
+
+  * Under 120 sqm
+  * 121–180 sqm
+  * 181–250 sqm
+  * 251–350 sqm
+  * 350+ sqm
+  * Not sure
+* Bedrooms
+* Bathrooms
+* Separate showers
+* Separate toilets
+* Kitchens
+* Floors / levels
+* Additional living areas, optional
+* Beds to make/change, optional
+
+Commercial conditional fields:
+Show only when Office / Commercial Cleaning or a commercial property type is selected.
+
+Fields:
+
+* Approximate internal area:
+
+  * Under 100 sqm
+  * 100–250 sqm
+  * 251–500 sqm
+  * 501–1000 sqm
+  * 1000+ sqm
+  * Not sure
+* Workstations / desks
+* Bathrooms / toilets
+* Kitchens / break rooms
+* Meeting rooms
+* Reception / customer areas
+* Shared areas
+* Warehouse / workshop area
+* After-hours cleaning required:
+
+  * Yes
+  * No
+  * Not sure
+
+If “Other” property type is selected, show:
+“Describe the property or facility”
+
+Do not ask for full street address at this stage unless the current backend already requires it. Suburb and postcode are sufficient for quote request.
+
+STEP 3 — EXTRAS
+Heading:
+“Any extras or special areas?”
+
+Helper text:
+“Select only what applies. You can skip this step if you only need a standard clean.”
+
+Create optional checkbox cards for:
+
+* Interior windows
+* Exterior windows
+* Oven cleaning
+* Fridge inside
+* Cabinets inside
+* Wall spot cleaning
+* Blinds dusting / wipe
+* Carpet steam cleaning
+* Upholstery / couches
+* Tile & grout cleaning
+* Pressure cleaning
+* Balcony / patio
+* Garage sweep / clean
+* Trash removal
+* Garden tidy-up
+* Pet hair focus
+* Heavy dust / neglected areas
+* Post-renovation dust
+* High-touch surface sanitation
+* Other
+
+If “Other” is selected, show:
+“Tell us what else you need”
+
+Extras must be optional.
+Do not show prices.
+Do not make extras feel mandatory.
+
+Add this note:
+“Extras help us prepare the right quote. We’ll confirm what is included before booking.”
+
+STEP 4 — SCHEDULE & ACCESS
+Heading:
+“When would you like the clean?”
+
+Helper text:
+“Choose your preferred timing. Final availability will be confirmed by our team.”
+
+Fields:
+
+* Preferred date
+* Preferred time window:
+
+  * Morning
+  * Afternoon
+  * Evening
+  * Anytime
+  * After-hours
+  * Not sure
+* Urgency:
+
+  * As soon as possible
+  * This week
+  * Next week
+  * Specific date
+  * Flexible
+
+Access and logistics:
+
+* Parking:
+
+  * Easy
+  * Limited
+  * Paid parking
+  * Street parking
+  * Not sure
+* Stairs or lift access:
+
+  * Ground floor
+  * Stairs
+  * Lift available
+  * Multiple levels
+  * Not sure
+* Pets on property:
+
+  * No
+  * Yes, friendly
+  * Yes, needs instructions
+
+Optional access notes placeholder:
+“Tell us about stairs, parking, pets, fragile items, security access, priority areas or anything important.”
+
+Photo upload section:
+Title:
+“Photos help us quote accurately”
+
+Text:
+“Upload photos of key areas if you can. This is optional, but it helps us understand the job before arrival.”
+
+Photo requirements:
+
+* Optional upload
+* Allow multiple images
+* Max 10MB each unless existing backend limit is lower
+* Accept JPG, PNG, WEBP and HEIC if supported
+* Show upload progress if possible
+* Show uploaded file previews
+* Allow removing selected files before submission
+* Validate file size and file type
+* Store photo links or uploaded photo references with the quote request
+
+Do not make photos mandatory.
+
+STEP 5 — CONTACT
+Heading:
+“How should we contact you?”
+
+Helper text:
+“We’ll use these details to review your request and send your quote.”
+
+Required fields:
+
+* First name
+* Last name
+* Email
+* Phone / WhatsApp
+
+Preferred contact method:
+
+* Email
+* Phone call
+* SMS
+* WhatsApp
+
+Conditional fields:
+If Office / Commercial Cleaning or commercial property type is selected, show:
+
+* Company name, optional
+* Business role / position, optional
+
+Consent checkboxes:
+
+Required:
+“I understand this is a quote request and the final quote will be confirmed after review.”
+
+Required:
+“I agree that Pope Cleaning Services may use my details to contact me about this quote request.”
+
+Optional marketing consent:
+“I would like to receive occasional promotions, cleaning offers or refer-a-friend discounts.”
+
+Marketing consent must:
+
+* Not be pre-selected
+* Be optional
+* Be stored separately from service contact consent
+* Not block quote request submission if not selected
+
+STEP 6 — REVIEW & SUBMIT
+Heading:
+“Review your quote request”
+
+Show a clean non-price summary.
+
+Summary must include:
+
+* Selected service
+* Frequency
+* Property / facility type
+* Suburb
+* Postcode
+* Key property details
+* Extras
+* Preferred date/time
+* Access notes
+* Photo links or uploaded photo count
+* Customer name
+* Email
+* Phone
+* Preferred contact method
+* Submitted timestamp after successful submission
+
+Do NOT show:
+
+* Estimated total
+* GST
+* Discounts
+* Starting prices
+* Internal calculator output
+* Admin suggested price
+
+Final note:
+“Our team will review your request and contact you with a tailored quote before confirming your booking.”
+
+Submit button:
+“Send My Quote Request”
+
+Success message:
+“Thanks — your quote request has been sent.”
+
+Success supporting text:
+“Our team will review the details and contact you using your preferred method. If we need more information, we’ll let you know before confirming your quote.”
+
+RIGHT SIDE SUMMARY PANEL
+Replace any pricing panel with a non-price “Quote Request Summary” panel.
+
+Panel title:
+“Your Quote Request”
+
+Before the user enters details, show trust points:
+
+* Reviewed by our team
+* Tailored to your property
+* Photos help improve accuracy
+* No hidden fees when details are accurate
+* Flexible Perth bookings
+* Local family-run business
+
+As the user completes the form, show dynamic non-price summary:
+
+* Service
+* Frequency
+* Property type
+* Suburb/postcode
+* Key property details
+* Extras
+* Preferred date/time
+* Preferred contact method
+* Uploaded photo count
+
+Footer note:
+“Final quote confirmed after review.”
+
+Do not show pricing.
+
+BACKEND / DATABASE REQUIREMENTS
+The form must submit data to a real backend or database. Do not fake submission only in frontend state. Do not rely only on localStorage.
+
+Create or update a backend endpoint or database integration for quote requests.
+
+Recommended initial status:
+`quote_requested`
+
+Saved data must include:
+
+Customer:
+
+* firstName
+* lastName
+* email
+* phone
+* preferredContactMethod
+* companyName, optional
+* businessRole, optional
+* serviceContactConsent
+* marketingConsent
+* consentTimestamp
+
+Service:
+
+* serviceType
+* frequency
+* extras
+* otherExtraDescription
+* customNotes
+
+Property:
+
+* propertyType
+* suburb
+* postcode
+* approximateSize
+* bedrooms
+* bathrooms
+* showers
+* toilets
+* kitchens
+* floors
+* livingAreas
+* bedsToMake
+* workstations
+* meetingRooms
+* breakRooms
+* receptionAreas
+* sharedAreas
+* warehouseWorkshopArea
+* afterHoursRequired
+* customPropertyDescription
+
+Schedule:
+
+* preferredDate
+* preferredTimeWindow
+* urgency
+* parking
+* stairsLiftAccess
+* pets
+* accessNotes
+
+Files:
+
+* photoUrls or uploaded file references
+* file names
+* file types
+* uploaded timestamps
+
+Metadata:
+
+* sourcePage: “Book Now”
+* status: “quote_requested”
+* submittedAt
+* updatedAt
+* adminReviewed: false
+
+If using Supabase:
+
+* Save quote request data in `quote_requests`.
+* Save photo metadata in `quote_photos`.
+* Store images in a secure storage bucket.
+* Public users can submit only.
+* Only admins can read all quote requests.
+
+If using Firebase:
+
+* Use Firestore for quote requests.
+* Use Firebase Storage for photos.
+* Use security rules to prevent public reading of submitted requests.
+
+If using Node/Express:
+
+* Create or update:
+
+  * `POST /api/quote-requests`
+  * photo upload endpoint if needed
+* Validate server-side.
+* Store records in the project database.
+* Return success response with request ID.
+
+If no email provider is configured:
+
+* Create a backend-ready notification function with clear TODO comments.
+* Save the submission in the admin-accessible database.
+* Show a development-only warning that email is not configured.
+* Do not pretend an email was sent.
+
+NOTIFICATION REQUIREMENTS
+The business must be notified when a quote request is submitted.
+
+Preferred notification:
+Email to the business admin email from the business config.
+
+Email subject:
+“New Cleaning Quote Request — [Service Type] — [Suburb]”
+
+Email body must include:
+
+* Customer name
+* Phone
+* Email
+* Preferred contact method
+* Service type
+* Frequency
+* Property type
+* Suburb/postcode
+* Key property details
+* Extras
+* Preferred date/time
+* Access notes
+* Photo links or uploaded photo count
+* Submitted timestamp
+
+If no real email provider is configured:
+
+* Save the submission.
+* Create a notification function stub.
+* Add TODO comments explaining required environment variables or Replit Secrets.
+* Display a development-only warning.
+* Do not show the customer a false message saying email was sent.
+* The customer may still see that the quote request was submitted successfully if the database save worked.
+
+Do not implement paid SMS or WhatsApp APIs unless credentials/providers already exist.
+
+SECURITY
+
+* Validate client-side and server-side.
+* Sanitize free-text inputs.
+* Protect uploaded files.
+* Do not expose secrets in frontend code.
+* Do not store passwords or payment data.
+* Add rate limiting if the backend supports it.
+* Prevent duplicate rapid submissions.
+* Add a honeypot anti-spam field if practical.
+* Use environment variables / Replit Secrets for email and API secrets.
+* Avoid unnecessary logging of customer details.
+
+ACCESSIBILITY
+
+* Every input must have a label.
+* Buttons and selectable cards must be keyboard accessible.
+* Error messages must be readable and associated with fields.
+* Selected states must not rely only on color.
+* Focus ring must be visible.
+* Mobile tap targets must be at least 44px.
+* Form must work with screen readers.
+
+UX REQUIREMENTS
+Implement:
+
+* Step-by-step progress
+* Clear Continue / Back buttons
+* Edit controls from the review step
+* Saved form data between steps
+* Conditional residential/commercial fields
+* Optional extras
+* Optional photos
+* Inline validation
+* Clear review before submit
+* Success confirmation
+
+Avoid:
+
+* Payment collection
+* Account creation
+* Full street address too early
+* Prices
+* Complex technical language
+* Showing every field at once
+
+ADMIN READINESS
+Structure the saved data so an admin dashboard can later:
+
+* View quote requests
+* Open request details
+* View photos
+* Run an internal estimator
+* Set suggested price
+* Edit final quote
+* Contact customer
+* Update status
+* Convert request to booking
+
+Do not expose admin pricing fields to the public form.
+
+TESTING AND VERIFICATION
+After implementation:
+
+* Run the available lint/typecheck/build/test commands for this project.
+* Manually test the full form flow in Replit preview.
+* Test residential and commercial conditional paths.
+* Test required validation.
+* Test photo validation and removal.
+* Test submit success.
+* Confirm the saved database record has `status: "quote_requested"`.
+* Confirm the public UI never displays pricing, GST, discounts or internal calculator output.
+* Confirm mobile layout works.
+
+FINAL RESPONSE FROM REPLIT
+When finished, report:
+
+* Files changed
+* Backend/database/storage changes
+* Environment variables or Replit Secrets required
+* Test commands run and results
+* Any email provider limitation or TODO if email cannot actually send yet
+
+FINAL RESULT
+The final result must be a polished, responsive, production-ready quote request form that works end-to-end in this Replit project.

@@ -5,7 +5,7 @@ import { businessInfo } from "@/config/businessInfo";
 
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[rgba(255,255,255,0.88)] backdrop-blur-[12px] border-b border-[#00275F]/[0.08] shadow-[0_8px_24px_rgba(0,39,95,0.06)]">
+    <nav className="fixed top-0 z-50 w-full bg-[rgba(255,255,255,0.88)] backdrop-blur-[12px] border-b border-[#00275F]/[0.08] shadow-[0_8px_24px_rgba(0,39,95,0.06)]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-[88px] flex items-center justify-between">
         <Link href="/">
           <a className="flex items-center gap-2 group">
