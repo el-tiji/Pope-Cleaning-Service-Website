@@ -260,15 +260,6 @@ export default function QuotePage() {
         <div ref={topRef} className="absolute top-0 opacity-0 pointer-events-none" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           
-          <RevealOnScroll>
-            <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-              <h1 className="text-4xl md:text-5xl font-bold text-[#00275F] mb-4 tracking-tight">Request Your Cleaning Quote</h1>
-              <p className="text-lg text-[#00275F]/70">
-                Tell us what you need, share a few property details and our team will review your request before confirming your quote.
-              </p>
-            </div>
-          </RevealOnScroll>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
             
             {/* MAIN FORM COLUMN */}

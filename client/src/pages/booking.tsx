@@ -228,40 +228,6 @@ export default function Booking() {
       <Navbar />
       <main className="flex-1 pt-[100px] md:pt-[120px] pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <RevealOnScroll>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-[#00275F] mb-4">Request Your Cleaning Quote</h1>
-              <p className="text-lg text-muted-foreground">
-                Tell us what you need, share a few property details and our team will review your request before confirming your quote.
-              </p>
-              <p className="text-sm font-medium text-[#2F7FD1] mt-2">No instant guesswork. No unnecessary surprises. Just a clear quote based on your service, property and cleaning needs.</p>
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll delay={0.1}>
-            <div className="bg-white rounded-3xl p-8 md:p-12 mb-16 max-w-5xl mx-auto border border-border shadow-xl relative overflow-hidden flex flex-col md:flex-row gap-8 items-center">
-              <div className="flex-1 relative z-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#00275F] mb-4">Get a Tailored Cleaning Quote</h2>
-                <p className="text-lg text-muted-foreground mb-6">
-                  Select your service, add the key details and send your request. We’ll review your property, extras, access notes and photos before confirming the final quote.
-                </p>
-                <div className="flex flex-wrap gap-4 mb-8">
-                    <span className="flex items-center gap-2 bg-[#EAF5FF] text-[#2F7FD1] px-3 py-1 rounded-full text-sm font-bold"><Clock className="w-4 h-4"/> Fast quote review</span>
-                    <span className="flex items-center gap-2 bg-[#EAF5FF] text-[#2F7FD1] px-3 py-1 rounded-full text-sm font-bold"><ShieldCheck className="w-4 h-4"/> No hidden fees when details are accurate</span>
-                    <span className="flex items-center gap-2 bg-[#EAF5FF] text-[#2F7FD1] px-3 py-1 rounded-full text-sm font-bold"><CalendarCheck className="w-4 h-4"/> Flexible Perth bookings</span>
-                </div>
-                <Button onClick={() => window.location.href = '/quote'} size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg transition-all" variant="default">
-                  Start Quote Request
-                </Button>
-              </div>
-              <div className="hidden md:block w-1/3 relative">
-                 <div className="absolute inset-0 bg-[#EAF5FF] rounded-full blur-3xl -z-10"></div>
-                 <img src="/images/pricing-hero.png" alt="Pope Cleaning Services Team" className="relative z-10 object-contain max-h-64 drop-shadow-2xl hover:scale-105 transition-transform duration-500" />
-              </div>
-            </div>
-          </RevealOnScroll>
-
 
           <div id="quote-form" className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto scroll-mt-24">
             
