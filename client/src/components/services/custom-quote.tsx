@@ -104,7 +104,7 @@ export function CustomQuoteForm() {
                 <ul className="space-y-2 text-sm text-secondary/70">
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>Response within 24 business hours</li>
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>Fully insured & police-cleared team</li>
-                  <li className="flex justify-start items-start gap-[8px] flex-row mt-[0px] mb-[0px]"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>Flexible scheduling to suit your operations</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>Flexible scheduling to suit your operations</li>
                 </ul>
               </div>
             </RevealOnScroll>
