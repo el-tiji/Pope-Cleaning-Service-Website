@@ -92,13 +92,23 @@ export function CustomQuoteForm() {
               </div>
             </RevealOnScroll>
 
-            <RevealOnScroll delay={0.2} className="hidden lg:block relative mt-8 h-48 rounded-3xl overflow-hidden border border-border">
-               <img 
-                 src="/images/commercial-cleaning-team.jpg" 
-                 alt="Professional commercial cleaning team"
-                 className="w-full h-full object-cover"
-               />
-               <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+            <RevealOnScroll delay={0.2} className="hidden lg:block">
+              <div className="rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/5 to-primary/10 p-6 space-y-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">Our commitment</p>
+                <p className="text-secondary font-semibold text-lg leading-snug">
+                  Every quote is reviewed by a real team member — no automated estimates, no hidden fees.
+                </p>
+                <div className="flex items-center gap-3 pt-1">
+                  <div className="flex-1 h-px bg-primary/20"></div>
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                  <div className="flex-1 h-px bg-primary/20"></div>
+                </div>
+                <ul className="space-y-2 text-sm text-secondary/70">
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>Response within 24 business hours</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>Fully insured & police-cleared team</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>Flexible scheduling to suit your operations</li>
+                </ul>
+              </div>
             </RevealOnScroll>
           </div>
 
