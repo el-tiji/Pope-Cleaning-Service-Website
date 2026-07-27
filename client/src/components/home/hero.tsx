@@ -159,6 +159,7 @@ export function Hero() {
                 <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button 
                     onClick={prevImage}
+                    aria-label="Previous image"
                     className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-secondary hover:bg-white hover:text-primary transition-colors cursor-pointer"
                   >
                     <ChevronLeft className="w-5 h-5" />
@@ -168,12 +169,14 @@ export function Hero() {
                       <button 
                         key={idx}
                         onClick={() => goToImage(idx)}
+                        aria-label={`Go to image ${idx + 1}`}
                         className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentImageIndex ? 'bg-primary' : 'bg-primary/20 hover:bg-primary/50'}`}
                       />
                     ))}
                   </div>
                   <button 
                     onClick={nextImage}
+                    aria-label="Next image"
                     className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-secondary hover:bg-white hover:text-primary transition-colors cursor-pointer"
                   >
                     <ChevronRight className="w-5 h-5" />

@@ -134,7 +134,11 @@ export const quoteSubmissionSchema = z.object({
   otherPropertyType: z.string().default(""),
   area: z.string().default(""),
   suburb: z.string().default(""),
-  postcode: z.string().default(""),
+  postcode: z
+    .string()
+    .regex(/^\d{4}$/, "Postcode must be a 4-digit number")
+    .or(z.literal(""))
+    .default(""),
   rooms: z.record(z.number()).optional(),
   commercial: z.record(z.unknown()).optional(),
   extras: z.array(z.string()).default([]),

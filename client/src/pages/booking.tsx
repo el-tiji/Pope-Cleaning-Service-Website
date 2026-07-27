@@ -177,7 +177,23 @@ export default function Booking() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.customer.consentQuote || !formData.customer.consentPrivacy) {
-        alert("Please accept the required terms.");
+        setSubmitError("Please accept the required consent terms to continue.");
+        return;
+    }
+    if (!formData.customer.firstName.trim() || !formData.customer.email.trim() || !formData.customer.phone.trim()) {
+        setSubmitError("Please provide your name, email and phone number.");
+        return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.customer.email.trim())) {
+        setSubmitError("Please enter a valid email address.");
+        return;
+    }
+    if (formData.customer.phone.replace(/\D/g, "").length < 8) {
+        setSubmitError("Please enter a valid phone number.");
+        return;
+    }
+    if (formData.postcode.trim() && !/^\d{4}$/.test(formData.postcode.trim())) {
+        setSubmitError("Please enter a valid 4-digit postcode.");
         return;
     }
     if (isSubmitting) return;
@@ -194,22 +210,28 @@ export default function Booking() {
         area: formData.area,
         suburb: formData.suburb,
         postcode: formData.postcode,
-        rooms: {
-          bedrooms: formData.bedrooms,
-          bathrooms: formData.bathrooms,
-          showers: formData.showers,
-          toilets: formData.toilets,
-          kitchens: formData.kitchens,
-          floors: formData.floors,
-          livingAreas: formData.livingAreas,
-        },
-        commercial: {
-          workstations: formData.workstations,
-          meetingRooms: formData.meetingRooms,
-          receptionAreas: formData.receptionAreas,
-          warehouseArea: formData.warehouseArea,
-          afterHours: formData.afterHours,
-        },
+        // Only send the fields relevant to the chosen path so stale values
+        // from a previously selected property type are not submitted.
+        rooms: isResidential
+          ? {
+              bedrooms: formData.bedrooms,
+              bathrooms: formData.bathrooms,
+              showers: formData.showers,
+              toilets: formData.toilets,
+              kitchens: formData.kitchens,
+              floors: formData.floors,
+              livingAreas: formData.livingAreas,
+            }
+          : {},
+        commercial: isCommercial
+          ? {
+              workstations: formData.workstations,
+              meetingRooms: formData.meetingRooms,
+              receptionAreas: formData.receptionAreas,
+              warehouseArea: formData.warehouseArea,
+              afterHours: formData.afterHours,
+            }
+          : {},
         extras: Object.entries(formData.extras)
           .filter(([, selected]) => selected)
           .map(([id]) => id),

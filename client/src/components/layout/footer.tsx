@@ -27,7 +27,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
             <Link href="/">
-              <a className="flex items-center gap-2 mb-6 group">
+              <span className="flex items-center gap-2 mb-6 group cursor-pointer">
                 <div className="h-14 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
                   <img 
                     src="/assets/brand/pope-cleaning-logo-white.png" 
@@ -42,7 +42,7 @@ export function Footer() {
                     <span className="font-display font-bold text-2xl">P</span>
                   </div>
                 </div>
-              </a>
+              </span>
             </Link>
             <p className="text-[#D8E9FF] text-sm mb-6 max-w-xs">
               Premium residential and commercial cleaning services across the {businessInfo.location} area. We bring the sparkle back to your space.
@@ -69,9 +69,9 @@ export function Footer() {
             <h4 className="font-display font-bold text-lg mb-6 text-white">Company</h4>
             <ul className="space-y-3">
               <li><Link href="/about"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">About Us</span></Link></li>
-              <li><Link href="/reviews"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Testimonials</span></Link></li>
+              <li><a href="/#reviews" className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Testimonials</a></li>
               <li><a href="/#faq" className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">FAQ</a></li>
-              <li><a href="#" className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm">Privacy Policy</a></li>
+              <li><Link href="/privacy"><span className="text-[#B7D4F5] hover:text-[var(--brand-blue-light)] transition-colors text-sm cursor-pointer">Privacy Policy</span></Link></li>
             </ul>
           </div>
           

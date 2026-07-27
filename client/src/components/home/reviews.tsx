@@ -134,6 +134,7 @@ export function Reviews() {
                     <button 
                       key={idx}
                       onClick={() => setCurrentVideoIndex(idx)}
+                      aria-label={`Go to video ${idx + 1}`}
                       className={`w-2 h-2 rounded-full transition-all cursor-pointer ${idx === currentVideoIndex ? 'bg-primary w-4' : 'bg-white/30 hover:bg-white/60'}`}
                     />
                   ))}
@@ -142,12 +143,14 @@ export function Reviews() {
 
               <button 
                 onClick={prevVideo}
+                aria-label="Previous video"
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur shadow-md flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:border-primary transition-colors cursor-pointer opacity-0 group-hover:opacity-100"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button 
                 onClick={nextVideo}
+                aria-label="Next video"
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur shadow-md flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:border-primary transition-colors cursor-pointer opacity-0 group-hover:opacity-100"
               >
                 <ChevronRight className="w-6 h-6" />

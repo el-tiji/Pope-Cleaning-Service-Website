@@ -168,22 +168,35 @@ export default function QuotePage() {
 
   const handleNext = () => {
     if (currentStep === 0 && !formData.plan) {
-      alert("Please select a service type to continue.");
+      setSubmitError("Please select a service type to continue.");
       return;
     }
-    if (currentStep === 1 && (!formData.propertyType || !formData.suburb || !formData.postcode)) {
-      alert("Please provide the property type, suburb, and postcode to continue.");
+    if (currentStep === 1 && (!formData.propertyType || !formData.suburb.trim() || !formData.postcode.trim())) {
+      setSubmitError("Please provide the property type, suburb, and postcode to continue.");
       return;
     }
-    if (currentStep === 4 && (!formData.customer.firstName || !formData.customer.lastName || !formData.customer.email || !formData.customer.phone)) {
-      alert("Please provide your required contact details to continue.");
+    if (currentStep === 1 && !/^\d{4}$/.test(formData.postcode.trim())) {
+      setSubmitError("Please enter a valid 4-digit postcode.");
+      return;
+    }
+    if (currentStep === 4 && (!formData.customer.firstName.trim() || !formData.customer.lastName.trim() || !formData.customer.email.trim() || !formData.customer.phone.trim())) {
+      setSubmitError("Please provide your required contact details to continue.");
+      return;
+    }
+    if (currentStep === 4 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.customer.email.trim())) {
+      setSubmitError("Please enter a valid email address.");
+      return;
+    }
+    if (currentStep === 4 && formData.customer.phone.replace(/\D/g, "").length < 8) {
+      setSubmitError("Please enter a valid phone number.");
       return;
     }
     if (currentStep === 4 && (!formData.customer.consentQuote || !formData.customer.consentService)) {
-      alert("Please accept the required consent terms to continue.");
+      setSubmitError("Please accept the required consent terms to continue.");
       return;
     }
     if (currentStep < STEPS.length - 1) {
+      setSubmitError(null);
       setCurrentStep(prev => prev + 1);
       scrollToTop();
     }
@@ -191,6 +204,7 @@ export default function QuotePage() {
 
   const handleBack = () => {
     if (currentStep > 0) {
+      setSubmitError(null);
       setCurrentStep(prev => prev - 1);
       scrollToTop();
     }
@@ -212,24 +226,30 @@ export default function QuotePage() {
         area: formData.area,
         suburb: formData.suburb,
         postcode: formData.postcode,
-        rooms: {
-          bedrooms: formData.bedrooms,
-          bathrooms: formData.bathrooms,
-          showers: formData.showers,
-          toilets: formData.toilets,
-          kitchens: formData.kitchens,
-          floors: formData.floors,
-          livingAreas: formData.livingAreas,
-          bedsToMake: formData.bedsToMake,
-        },
-        commercial: {
-          workstations: formData.workstations,
-          meetingRooms: formData.meetingRooms,
-          receptionAreas: formData.receptionAreas,
-          sharedAreas: formData.sharedAreas,
-          warehouseArea: formData.warehouseArea,
-          afterHours: formData.afterHours,
-        },
+        // Only send the fields relevant to the chosen path so stale values
+        // from a previously selected property type are not submitted.
+        rooms: isResidential
+          ? {
+              bedrooms: formData.bedrooms,
+              bathrooms: formData.bathrooms,
+              showers: formData.showers,
+              toilets: formData.toilets,
+              kitchens: formData.kitchens,
+              floors: formData.floors,
+              livingAreas: formData.livingAreas,
+              bedsToMake: formData.bedsToMake,
+            }
+          : {},
+        commercial: isCommercial
+          ? {
+              workstations: formData.workstations,
+              meetingRooms: formData.meetingRooms,
+              receptionAreas: formData.receptionAreas,
+              sharedAreas: formData.sharedAreas,
+              warehouseArea: formData.warehouseArea,
+              afterHours: formData.afterHours,
+            }
+          : {},
         extras: Object.entries(formData.extras)
           .filter(([, selected]) => selected)
           .map(([id]) => id),

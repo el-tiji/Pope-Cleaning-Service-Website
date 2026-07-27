@@ -1,10 +1,10 @@
 ---
 name: requestSecrets ends the turn
-description: Sequencing rule for asking the user for secrets/env vars mid-task.
+description: Sequencing rule for requestSecrets/requestEnvVars calls.
 ---
 
-Rule: `requestSecrets(...)` / `requestEnvVars(...)` stop the current turn — nothing after them runs until the user responds in a future turn.
+Rule: `requestSecrets` / `requestEnvVars` end the current turn. Sequence all edits, tests, and docs first and make the secrets request the final action of a turn.
 
-**Why:** planning around this avoided a stalled build: all code, schema push, workflow switch, smoke tests and docs were completed first, and the secrets request was issued as the very last action.
+**Why:** anything queued after the request will not run until the user responds.
 
-**How to apply:** when a task needs user-provided secrets, front-load every step that doesn't depend on the secret; call requestSecrets as the final callback of the turn, and plan a follow-up turn for the steps that need the secret (e.g. ingestion/e2e tests that call the paid API).
+**How to apply:** whenever a task needs new secrets or env vars from the user.

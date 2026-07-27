@@ -1,10 +1,10 @@
 ---
 name: Express 5 req.params typing
-description: Why tsc rejects req.params.id as string|string[] in this repo and how to handle it.
+description: How @types/express v5 types route params and how to consume them safely.
 ---
 
-Rule: with Express 5 + `@types/express` v5, `req.params.<name>` is typed `string | string[]`, so passing it straight into a `(id: string)` helper fails `npm run check`.
+Rule: with @types/express v5, `req.params.x` is typed `string | string[]`. Wrap in `String(req.params.x)` before passing to helpers that expect `string`.
 
-**Why:** hit this in the quotes admin routes — 4 tsc errors (`TS2345 string | string[]`) on otherwise-correct code.
+**Why:** tsc fails otherwise; runtime value is a string for normal routes, so `String()` is safe.
 
-**How to apply:** coerce at the call site (`String(req.params.id)`) or narrow with `typeof`. Same applies to `req.query` values (`typeof q === "string" ? q : undefined`).
+**How to apply:** any new Express 5 route handler that reads `req.params`.
