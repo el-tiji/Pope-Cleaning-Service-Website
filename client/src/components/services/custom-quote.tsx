@@ -95,9 +95,7 @@ export function CustomQuoteForm() {
             <RevealOnScroll delay={0.2} className="hidden lg:block">
               <div className="rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/5 to-primary/10 p-6 space-y-4">
                 <p className="text-xs font-semibold uppercase tracking-widest text-primary">Our commitment</p>
-                <p className="text-secondary font-semibold text-lg leading-snug">
-                  Every quote is reviewed by a real team member — no automated estimates, no hidden fees.
-                </p>
+                <p className="text-secondary font-semibold text-lg leading-snug">Every quote is reviewed by a real team member. No hidden fees.</p>
                 <div className="flex items-center gap-3 pt-1">
                   <div className="flex-1 h-px bg-primary/20"></div>
                   <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
