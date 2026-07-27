@@ -25,22 +25,73 @@ const AdminDashboard = lazy(() => import("@/pages/admin/dashboard"));
 const AdminQuotes = lazy(() => import("@/pages/admin/quotes"));
 const AdminQuoteDetail = lazy(() => import("@/pages/admin/quotes/detail"));
 
-const PAGE_TITLES: Record<string, string> = {
-  "/": "Pope Cleaning Services | Professional Cleaning in Perth, WA",
-  "/services": "Our Services | Pope Cleaning Services",
-  "/pricing": "Pricing Info | Pope Cleaning Services",
-  "/about": "About Us | Pope Cleaning Services",
-  "/book": "Book Now | Pope Cleaning Services",
-  "/quote": "Request a Quote | Pope Cleaning Services",
-  "/privacy": "Privacy Policy | Pope Cleaning Services",
+const SITE_URL = "https://www.popecleaningservices.com.au";
+
+const PAGE_META: Record<string, { title: string; description: string }> = {
+  "/": {
+    title: "Pope Cleaning Services | Professional Cleaning in Perth, WA",
+    description:
+      "Family-owned residential and commercial cleaning in Perth, Western Australia. Regular, deep, vacate, carpet, tile and pressure cleaning — request your free quote today.",
+  },
+  "/services": {
+    title: "Our Services | Pope Cleaning Services",
+    description:
+      "Residential, commercial, vacate, carpet, upholstery, tile & grout and pressure cleaning services across Perth. See what Pope Cleaning Services can do for you.",
+  },
+  "/pricing": {
+    title: "Pricing Info | Pope Cleaning Services",
+    description:
+      "How quoting works at Pope Cleaning Services: tell us about your property and we prepare a personalised cleaning quote — no obligation.",
+  },
+  "/about": {
+    title: "About Us | Pope Cleaning Services",
+    description:
+      "Meet the family team behind Pope Cleaning Services, providing reliable cleaning across Perth, Western Australia.",
+  },
+  "/book": {
+    title: "Book Now | Pope Cleaning Services",
+    description:
+      "Request your cleaning quote in minutes. Tell us about your home or business in Perth and we'll get back to you with a personalised quote.",
+  },
+  "/quote": {
+    title: "Request a Quote | Pope Cleaning Services",
+    description:
+      "Get a free personalised cleaning quote for your Perth home or business from Pope Cleaning Services.",
+  },
+  "/privacy": {
+    title: "Privacy Policy | Pope Cleaning Services",
+    description: "How Pope Cleaning Services collects, uses and protects your information.",
+  },
 };
+
+function setMetaTag(selector: string, attr: string, value: string, create: () => HTMLElement) {
+  let el = document.head.querySelector<HTMLElement>(selector);
+  if (!el) {
+    el = create();
+    document.head.appendChild(el);
+  }
+  el.setAttribute(attr, value);
+}
 
 function ScrollToTop() {
   const [pathname] = useLocation();
   
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = PAGE_TITLES[pathname] ?? "Pope Cleaning Services";
+    const meta = PAGE_META[pathname];
+    document.title = meta?.title ?? "Pope Cleaning Services";
+    if (meta) {
+      setMetaTag('meta[name="description"]', "content", meta.description, () => {
+        const m = document.createElement("meta");
+        m.setAttribute("name", "description");
+        return m;
+      });
+      setMetaTag('link[rel="canonical"]', "href", `${SITE_URL}${pathname === "/" ? "/" : pathname}`, () => {
+        const l = document.createElement("link");
+        l.setAttribute("rel", "canonical");
+        return l;
+      });
+    }
   }, [pathname]);
   
   return null;

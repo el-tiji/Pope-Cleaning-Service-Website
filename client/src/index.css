@@ -125,3 +125,9 @@
   box-shadow: 0 20px 40px -10px hsl(var(--primary) / 0.2);
   transform: translateY(-4px);
 }
+
+/* Anchored home sections: offset for the fixed 88px navbar so hash links
+   (e.g. /#faq, /#reviews) don't hide under the header. */
+section[id] {
+  scroll-margin-top: 110px;
+}

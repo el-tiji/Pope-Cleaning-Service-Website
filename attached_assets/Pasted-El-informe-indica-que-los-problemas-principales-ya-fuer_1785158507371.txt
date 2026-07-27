@@ -1,0 +1,778 @@
+El informe indica que los problemas principales ya fueron corregidos. El siguiente prompt debe servir para que Replit haga una segunda pasada, confirme que las correcciones son reales, elimine los problemas menores restantes y deje la versión preparada para publicación sin introducir regresiones.
+
+```text
+You are working on the Pope Cleaning Services Replit project.
+
+MAIN TASK
+
+Perform a final production-readiness correction and verification pass based on the completed QA audit.
+
+The previous audit returned:
+
+“READY WITH MINOR ISSUES”
+
+Several critical, high and medium-priority problems were already corrected. Your task is now to:
+
+1. Verify every reported correction in the actual running application.
+2. Detect and correct any remaining minor issues.
+3. Prevent regressions in the corrected areas.
+4. Add or improve automated tests for the critical customer workflows.
+5. Confirm the final production build is stable on desktop, tablet and mobile.
+6. Produce a final release report with an honest deployment recommendation.
+
+Do not redesign unrelated sections.
+Do not change business rules.
+Do not modify pricing logic.
+Do not expose admin or internal pricing features publicly.
+Do not remove working features.
+
+PROJECT CONTEXT
+
+Website:
+Pope Cleaning Services
+
+Primary public purpose:
+- present cleaning services;
+- build customer trust;
+- allow customers to submit cleaning quote requests;
+- notify the business of new requests.
+
+The public Book Now page is a quote request form.
+
+Public users must not see:
+- estimated prices;
+- GST calculations;
+- discounts;
+- internal calculator output;
+- admin tools;
+- private customer information.
+
+PREVIOUS AUDIT FINDINGS
+
+The following issues were reported as corrected:
+
+1. Mobile menu did not work.
+2. Nested anchor hydration error in footer.
+3. Dead footer links.
+4. Missing title, meta description and correct Open Graph metadata.
+5. Missing robots.txt and sitemap.xml.
+6. Admin, auth, portal and API routes were not blocked from search engines.
+7. Stale commercial form data could be submitted after switching to residential.
+8. Validation used alert() and did not validate email, phone or postcode.
+9. Initial JavaScript bundle was approximately 812 KB.
+10. Admin, login and portal pages were changed to lazy loading, reducing the bundle.
+11. Carousel controls lacked accessible labels.
+12. Quote request end-to-end submission was verified.
+
+Do not assume these corrections are complete merely because they appear in the report. Inspect and test them again.
+
+SECTION 1 — VERIFY MOBILE NAVIGATION
+
+Test the mobile navbar at:
+
+- 320px
+- 360px
+- 375px
+- 390px
+- 414px
+- 480px
+- 768px
+
+Verify:
+
+- hamburger button is visible;
+- hamburger button opens the menu;
+- button has an accurate accessible label;
+- menu closes when the button is pressed again;
+- menu closes after selecting a navigation item;
+- menu closes when pressing Escape;
+- page scrolling is disabled while the menu is open;
+- scrolling is restored after closing;
+- focus behaviour remains usable;
+- no invisible overlay blocks the page after closing;
+- Book Now is visible and functional;
+- phone contact action is functional;
+- no horizontal overflow appears;
+- menu does not render underneath the page content;
+- sticky navbar does not obscure the first page section.
+
+Check iOS-style viewport behaviour where possible.
+
+If body scroll locking is implemented, confirm it is removed when:
+- the menu closes;
+- the route changes;
+- the component unmounts.
+
+SECTION 2 — VERIFY FOOTER HTML AND LINKS
+
+Inspect the footer component.
+
+Confirm:
+
+- no nested anchor tags;
+- no React hydration warning;
+- no anchor placed inside another link component;
+- no invalid interactive nesting;
+- no console errors on any page.
+
+Verify all footer links:
+
+- Home
+- Services
+- Pricing Info
+- About Us
+- Testimonials / Reviews
+- Privacy Policy
+- Book Now
+- Phone
+- Email
+- Facebook
+- Website-related links
+
+Requirements:
+
+- internal links use the project router correctly;
+- external links use valid URLs;
+- external links opening a new tab include secure rel attributes;
+- phone uses a valid `tel:` URI;
+- email uses a valid `mailto:` URI;
+- Testimonials goes to the intended reviews section or route;
+- Privacy Policy opens `/privacy`;
+- no link uses `href="#"`;
+- no link points to a missing route.
+
+If Testimonials links to a Home page section:
+- confirm the section has a stable ID;
+- confirm the page scrolls correctly;
+- account for the sticky header offset;
+- confirm direct navigation from another route works.
+
+SECTION 3 — VERIFY PRIVACY POLICY PAGE
+
+Confirm `/privacy`:
+
+- exists;
+- renders without errors;
+- has a correct page title;
+- has a meta description;
+- is linked from the footer;
+- works on mobile;
+- uses readable typography;
+- has correct heading hierarchy;
+- does not contain placeholder content;
+- explains collection of quote request data;
+- explains contact details and photo uploads where applicable;
+- separates service communication from optional marketing consent;
+- provides business contact information;
+- contains a current “last updated” date only if maintained accurately.
+
+Do not invent legal guarantees.
+
+Flag any policy wording that requires business/legal review rather than silently presenting it as legal advice.
+
+SECTION 4 — VERIFY SEO METADATA
+
+Inspect metadata on every public page.
+
+Pages may include:
+
+- Home
+- Services
+- Pricing Info
+- About Us
+- Book Now / Request Quote
+- Privacy Policy
+- Reviews if it has a route
+- Not Found
+
+Each public page must have:
+
+- unique `<title>`;
+- unique meta description;
+- canonical URL if production domain configuration exists;
+- Open Graph title;
+- Open Graph description;
+- Open Graph URL;
+- Open Graph image;
+- Twitter card metadata;
+- correct favicon;
+- correct language declaration.
+
+Remove any remaining:
+
+- Replit placeholder title;
+- Replit-branded social image;
+- generic “Vite App” title;
+- duplicate descriptions;
+- development URL in production metadata;
+- placeholder canonical domain.
+
+Use the configured production domain when available.
+
+Preferred business domain:
+`https://www.popecleaningservices.com.au`
+
+Do not hardcode the domain in many files if a shared site configuration can be used.
+
+Create or use a central site metadata configuration.
+
+Suggested values:
+
+Business name:
+“Pope Cleaning Services”
+
+Location:
+“Perth, Western Australia”
+
+Avoid unverified claims such as:
+- number of customers;
+- guaranteed bond return;
+- guaranteed lowest prices;
+- unsupported star ratings.
+
+SECTION 5 — VERIFY ROBOTS.TXT AND SITEMAP
+
+Confirm:
+
+`/robots.txt`
+
+must:
+
+- allow public pages;
+- block private/internal routes where appropriate;
+- reference sitemap;
+- not accidentally block the whole website.
+
+Private routes to exclude or disallow:
+
+- `/admin`
+- `/admin/*`
+- `/auth`
+- `/auth/*`
+- `/portal`
+- `/portal/*`
+- `/api`
+- `/api/*`
+- internal preview/debug routes if present.
+
+Confirm:
+
+`/sitemap.xml`
+
+must:
+
+- contain only valid public canonical URLs;
+- exclude admin/login/private/API routes;
+- exclude duplicate routes;
+- exclude nonexistent pages;
+- use the intended production domain;
+- contain valid XML;
+- return correct content type if controlled by the app.
+
+If the deployment URL is not yet final:
+- use a documented site URL environment variable;
+- do not permanently generate a sitemap using a Replit preview URL.
+
+Suggested environment variable:
+
+`SITE_URL=https://www.popecleaningservices.com.au`
+
+SECTION 6 — VERIFY CONDITIONAL FORM DATA
+
+This is a high-priority business workflow.
+
+Test this exact scenario:
+
+1. Open Book Now.
+2. Select Office / Commercial Cleaning.
+3. Fill commercial fields:
+   - workstations;
+   - meeting rooms;
+   - break rooms;
+   - reception areas;
+   - commercial size;
+   - after-hours requirement.
+4. Return to service/property selection.
+5. Change to Regular Home Cleaning and House.
+6. Fill residential fields.
+7. Review request.
+8. Submit.
+
+Confirm:
+
+- commercial fields are not shown in review;
+- commercial values are not submitted;
+- commercial values are not stored in the database;
+- only relevant residential values are submitted.
+
+Repeat in reverse:
+
+1. Select residential.
+2. Fill bedrooms, bathrooms and residential size.
+3. Change to commercial.
+4. Submit.
+
+Confirm residential-only values are removed or normalized before submission.
+
+Apply this principle to all conditional fields:
+
+- residential vs commercial;
+- “Other” service descriptions;
+- “Other” property descriptions;
+- “Other” extras;
+- company fields;
+- after-hours fields;
+- optional date-specific fields.
+
+When a controlling choice changes:
+- clear irrelevant dependent values;
+- or remove them during payload normalization;
+- preferably do both where safe.
+
+Do not display irrelevant stale values in the review summary.
+
+SECTION 7 — VERIFY CLIENT AND SERVER VALIDATION
+
+Client-side validation must be user-friendly.
+
+Server-side validation must be authoritative.
+
+Test:
+
+- empty required fields;
+- invalid email;
+- invalid phone;
+- invalid postcode;
+- postcode with fewer than 4 digits;
+- postcode with more than 4 digits;
+- letters in postcode;
+- whitespace-only names;
+- very long notes;
+- invalid consent state;
+- manipulated request payload;
+- omitted service type;
+- invalid enum value;
+- unsupported file type.
+
+Australian postcode validation:
+
+- exactly 4 numeric digits for the current form requirement;
+- normalize surrounding spaces;
+- do not accept arbitrary letters.
+
+Phone validation:
+
+- accept reasonable Australian phone formats;
+- allow spaces, parentheses and country code where supported;
+- normalize before saving if the application already has a normalization strategy;
+- do not reject legitimate Australian formats unnecessarily.
+
+Email validation:
+
+- trim whitespace;
+- normalize case where appropriate;
+- reject clearly invalid syntax.
+
+Error UX:
+
+- no `alert()`;
+- inline error text;
+- error associated with field;
+- first invalid field receives focus;
+- entered data remains;
+- error summary may be used for accessibility;
+- hidden fields do not generate validation errors.
+
+Server response:
+
+- return structured validation errors;
+- do not return raw stack traces;
+- do not reveal database details;
+- do not show a success message when database save fails.
+
+SECTION 8 — VERIFY QUOTE SUBMISSION END TO END
+
+Run a fresh end-to-end quote submission test.
+
+Do not rely only on the previously created `QR-1046` record.
+
+Test at least:
+
+1. Residential request.
+2. Commercial request.
+3. Request with extras.
+4. Request with optional photos if upload is implemented.
+5. Request without photos.
+6. Request with marketing consent false.
+7. Request with marketing consent true.
+
+Confirm the database record includes:
+
+- unique request ID;
+- status `quote_requested`;
+- correct customer information;
+- service type;
+- property type;
+- suburb;
+- postcode;
+- relevant property details;
+- extras;
+- preferred date/time;
+- access notes;
+- preferred contact method;
+- service contact consent;
+- marketing consent;
+- submitted timestamp;
+- photo references or photo count where applicable.
+
+Confirm:
+
+- submit button enters loading state;
+- double-click does not create duplicate records;
+- failed request does not clear the entire form;
+- successful request shows confirmation;
+- customer is not told an email was sent unless it actually was;
+- admin-accessible data is saved correctly.
+
+Delete test records afterward only if there is an established safe test cleanup process.
+
+Do not delete real customer data.
+
+SECTION 9 — BUNDLE AND PERFORMANCE REVIEW
+
+The reported bundle decreased from approximately:
+
+- 812 KB
+to
+- 730 KB
+- approximately 212 KB gzip
+
+Verify current build output.
+
+Identify the largest chunks and dependencies.
+
+Do not perform a risky rewrite solely to reduce bundle size.
+
+Safely consider:
+
+- route-level lazy loading;
+- lazy loading admin/login/portal modules;
+- dynamic import for large non-critical components;
+- lazy loading chatbot if present;
+- lazy loading video/review carousels;
+- deferring non-critical libraries;
+- removing unused imports;
+- removing duplicate icon packages;
+- removing unused dependencies;
+- optimizing large images;
+- using modern image formats;
+- preventing entire libraries from being imported when only one function is needed.
+
+Ensure public critical pages do not depend on admin modules.
+
+Keep the quote form reliable.
+
+Record:
+
+- total build size;
+- largest JS chunks;
+- largest image assets;
+- gzip size if reported;
+- changes applied;
+- changes deliberately not applied due to risk.
+
+SECTION 10 — ACCESSIBILITY RECHECK
+
+Run automated accessibility testing if available.
+
+Prefer:
+
+- axe-core;
+- Playwright accessibility integration;
+- Lighthouse accessibility.
+
+Verify:
+
+- mobile menu button has `aria-expanded`;
+- mobile menu button has `aria-controls`;
+- carousel controls have unique labels;
+- icon-only buttons have accessible names;
+- focus rings are visible;
+- heading hierarchy is logical;
+- form fields have labels;
+- errors are associated with fields;
+- selected service cards work with keyboard;
+- colour contrast is acceptable;
+- links are distinguishable;
+- tap targets are at least 44px;
+- success/error updates use an appropriate live region;
+- reduced motion is respected.
+
+Do not add redundant ARIA where semantic HTML is sufficient.
+
+SECTION 11 — RESPONSIVE VISUAL CHECK
+
+Test:
+
+- 320×568
+- 360×800
+- 375×812
+- 390×844
+- 414×896
+- 768×1024
+- 820×1180
+- 1024×768
+- 1280×720
+- 1440×900
+- 1920×1080
+
+Inspect all main pages.
+
+Check for:
+
+- horizontal scroll;
+- clipped text;
+- broken cards;
+- oversized images;
+- navbar overlap;
+- footer overflow;
+- progress stepper overflow;
+- buttons wrapping incorrectly;
+- unbalanced spacing;
+- modal overflow;
+- form field misalignment;
+- sticky CTA covering content;
+- review summary becoming unreadable;
+- desktop-only controls appearing incorrectly on mobile.
+
+Correct safe layout issues.
+
+Preserve the Pope Cleaning Services design system.
+
+SECTION 12 — CROSS-BROWSER REVIEW
+
+Inspect or test compatibility with:
+
+- Chrome;
+- Edge;
+- Firefox;
+- Safari;
+- iOS Safari;
+- Android Chrome.
+
+Pay particular attention to:
+
+- mobile menu scroll lock;
+- `100vh` behaviour;
+- backdrop filters;
+- date inputs;
+- sticky elements;
+- file uploads;
+- HEIC handling;
+- CSS grid/flex;
+- autofill;
+- viewport safe areas.
+
+Add safe fallbacks where necessary.
+
+SECTION 13 — CONSOLE AND NETWORK CLEANLINESS
+
+Visit every public route and interact with main controls while monitoring:
+
+- JavaScript console;
+- React warnings;
+- hydration warnings;
+- failed network requests;
+- missing assets;
+- API errors;
+- unhandled promises;
+- CORS issues;
+- duplicate key warnings;
+- invalid DOM nesting.
+
+The final public flow should have no unresolved critical console errors.
+
+Do not suppress errors merely to make the console appear clean.
+
+Fix root causes.
+
+SECTION 14 — AUTOMATED REGRESSION TESTS
+
+Add or improve Playwright end-to-end tests if Playwright is already installed or can be added without destabilizing the project.
+
+Critical regression tests:
+
+1. Mobile menu opens and closes.
+2. Mobile menu closes after route navigation.
+3. Escape closes mobile menu.
+4. Footer links navigate correctly.
+5. Privacy page renders.
+6. Every main public route renders.
+7. Book Now opens.
+8. Residential flow submits valid data.
+9. Commercial flow submits valid data.
+10. Switching commercial to residential removes stale commercial data.
+11. Switching residential to commercial removes stale residential data.
+12. Invalid email is rejected.
+13. Invalid phone is rejected.
+14. Invalid postcode is rejected.
+15. Server rejects invalid postcode.
+16. Review summary matches active fields.
+17. Double-click does not duplicate submission.
+18. Public pages do not display price, GST or discounts.
+19. Disabled admin/login routes are not publicly exposed.
+20. Carousel buttons have accessible names.
+
+Use stable accessible selectors.
+
+Do not use fragile CSS selectors where labels or roles are available.
+
+SECTION 15 — VISUAL REGRESSION BASELINE
+
+If practical, create stable screenshots for:
+
+- Home desktop;
+- Home mobile;
+- Services desktop;
+- Book Now service step;
+- Book Now property step residential;
+- Book Now property step commercial;
+- Book Now review step;
+- Privacy page;
+- mobile menu open;
+- footer mobile;
+- success confirmation.
+
+Avoid timestamps or dynamic request IDs in screenshot comparison areas unless masked.
+
+SECTION 16 — SAFE CORRECTIONS
+
+Apply automatically only where risk is low or medium.
+
+Safe examples:
+
+- broken internal links;
+- missing accessible labels;
+- invalid HTML nesting;
+- inconsistent mobile spacing;
+- overflow corrections;
+- metadata corrections;
+- route lazy loading;
+- stale conditional form normalization;
+- validation UX;
+- missing loading state;
+- double-submit prevention;
+- missing focus state;
+- sitemap/robots corrections;
+- console warning fixes.
+
+Document before modifying:
+
+- database schema;
+- authentication;
+- notification providers;
+- business workflow;
+- pricing logic;
+- legal wording;
+- major package replacement;
+- production environment configuration.
+
+SECTION 17 — RELEASE CONFIGURATION
+
+Verify production-related environment variables.
+
+Possible variables:
+
+- `SITE_URL`
+- `ENABLE_ADMIN_LOGIN`
+- `VITE_ENABLE_ADMIN_LOGIN`
+- `DATABASE_URL`
+- `ADMIN_NOTIFICATION_EMAIL`
+- email provider credentials;
+- file storage credentials.
+
+Public release mode should keep unfinished login/admin functionality hidden.
+
+Do not print secret values.
+
+Report only variable names and whether they are present.
+
+SECTION 18 — FINAL TEST COMMANDS
+
+Run the project’s available commands, such as:
+
+- lint;
+- typecheck;
+- build;
+- unit tests;
+- integration tests;
+- Playwright tests;
+- dependency audit if available.
+
+Do not claim a command passed unless it was actually run successfully.
+
+If a command does not exist, report that accurately.
+
+FINAL RESPONSE FORMAT
+
+When finished, provide:
+
+1. Final verdict:
+   - READY FOR PRODUCTION
+   - READY WITH MINOR KNOWN ISSUES
+   - NOT READY FOR PRODUCTION
+
+2. Corrections verified.
+
+3. Additional corrections applied.
+
+4. Remaining issues.
+
+5. Routes tested.
+
+6. Devices/viewports tested.
+
+7. Form scenarios tested.
+
+8. Database submission results.
+
+9. Accessibility results.
+
+10. Performance/build results.
+
+11. Console/network results.
+
+12. Files changed.
+
+13. Environment variables required.
+
+14. Exact test commands run and their results.
+
+15. Recommended next action before publishing.
+
+FINAL ACCEPTANCE CRITERIA
+
+The task is complete only when:
+
+- mobile menu works reliably;
+- footer produces no hydration errors;
+- all public links work;
+- Privacy Policy is accessible;
+- titles and metadata are correct;
+- robots.txt and sitemap.xml are valid;
+- private routes are not indexed;
+- conditional form data does not leak between paths;
+- validation works client-side and server-side;
+- quote submission works end to end;
+- duplicate submissions are prevented;
+- public pricing remains hidden;
+- build and typecheck pass;
+- no critical console errors remain;
+- desktop, tablet and mobile layouts are usable;
+- automated regression coverage exists for critical flows;
+- the final report accurately states any remaining limitations.
+
+FINAL GOAL
+
+Move the Pope Cleaning Services website from “READY WITH MINOR ISSUES” to a verified, stable and well-tested production release without introducing regressions or changing unrelated business functionality.
+```

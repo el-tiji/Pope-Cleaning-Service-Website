@@ -110,6 +110,7 @@ export function Navbar() {
           className="md:hidden text-[#00275F]"
           aria-label={isMobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileOpen}
+          aria-controls="mobile-menu"
           onClick={() => setIsMobileOpen((v) => !v)}
           data-testid="button-mobile-menu"
         >
@@ -119,6 +120,7 @@ export function Navbar() {
 
       {/* Mobile Menu Panel */}
       <div
+        id="mobile-menu"
         className={cn(
           "md:hidden overflow-hidden transition-all duration-300 bg-white/95 backdrop-blur border-b border-[#00275F]/[0.08] shadow-lg",
           isMobileOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0 pointer-events-none",
