@@ -85,10 +85,10 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700 pt-[104px] md:pt-[120px]">
 
         {/* Services List with Collages */}
-        <section className="py-12 md:py-20 overflow-x-clip">
+        <section className="pb-12 md:pb-20 overflow-x-clip">
           <div className="container mx-auto px-4 max-w-7xl">
             
             {/* Page Header */}

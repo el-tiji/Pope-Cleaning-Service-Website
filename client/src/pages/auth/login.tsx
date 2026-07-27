@@ -25,7 +25,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 flex items-center justify-center p-4 py-20 mt-[88px]">
+      <main className="flex-1 flex items-center justify-center p-4 pt-[112px] pb-20">
         <div className="w-full max-w-md bg-white rounded-[2rem] p-8 shadow-xl border border-border">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-[#00275F] mb-2">Admin Login</h1>

@@ -28,10 +28,10 @@ export default function PricingPage() {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       
-      <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <main className="flex-1 animate-in fade-in slide-in-from-bottom-8 duration-700 pt-[104px] md:pt-[120px]">
         
         {/* 1) HERO SECTION */}
-        <section className="container mx-auto px-4 pt-16 pb-20 relative overflow-hidden">
+        <section className="container mx-auto px-4 pb-20 relative overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <RevealOnScroll>
               <div className="text-left">

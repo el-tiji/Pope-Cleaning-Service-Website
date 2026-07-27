@@ -18,7 +18,7 @@ export default function Signup() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 flex items-center justify-center p-4 py-20">
+      <main className="flex-1 flex items-center justify-center p-4 pt-[112px] pb-20">
         <div className="w-full max-w-lg bg-white rounded-[2rem] p-8 shadow-xl border border-border">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-secondary mb-2">Create an Account</h1>
