@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { businessInfo } from "@/config/businessInfo";
+import { ENABLE_ADMIN_LOGIN } from "@/config/featureFlags";
 
 export function Navbar() {
   return (
@@ -37,14 +38,18 @@ export function Navbar() {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3">
-            <Link href="/auth/login">
-              <Button 
-                variant="outline"
-                className="bg-[#F5F7FA] text-[#00275F] border-[#00275F]/[0.14] rounded-full px-[22px] h-[42px] font-bold shadow-[0_4px_12px_rgba(0,39,95,0.08)] hover:bg-[#EAF5FF] hover:border-[#2F7FD1] hover:text-[#00275F] hover:-translate-y-[1px] transition-all duration-200 ease-out cursor-pointer focus-visible:ring-2 focus-visible:ring-[#2F7FD1]/50"
-              >
-                Log In
-              </Button>
-            </Link>
+            {/* Admin login is temporarily hidden for public release.
+                Re-enable with VITE_ENABLE_ADMIN_LOGIN=true. */}
+            {ENABLE_ADMIN_LOGIN && (
+              <Link href="/auth/login">
+                <Button 
+                  variant="outline"
+                  className="bg-[#F5F7FA] text-[#00275F] border-[#00275F]/[0.14] rounded-full px-[22px] h-[42px] font-bold shadow-[0_4px_12px_rgba(0,39,95,0.08)] hover:bg-[#EAF5FF] hover:border-[#2F7FD1] hover:text-[#00275F] hover:-translate-y-[1px] transition-all duration-200 ease-out cursor-pointer focus-visible:ring-2 focus-visible:ring-[#2F7FD1]/50"
+                >
+                  Log In
+                </Button>
+              </Link>
+            )}
             <Link href="/book">
               <Button 
                 className="bg-gradient-to-br from-[#2F7FD1] to-[#2E86DE] text-white border-none rounded-full px-[26px] h-[42px] font-bold shadow-[0_8px_20px_rgba(47,127,209,0.28)] hover:from-[#1F6FC0] hover:to-[#2F7FD1] hover:-translate-y-[2px] hover:shadow-[0_12px_28px_rgba(47,127,209,0.34)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(47,127,209,0.2)] transition-all duration-200 ease-out cursor-pointer focus-visible:ring-2 focus-visible:ring-[#2F7FD1]/50"

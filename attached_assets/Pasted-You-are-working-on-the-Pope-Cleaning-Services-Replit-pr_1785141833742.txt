@@ -1,0 +1,280 @@
+You are working on the Pope Cleaning Services Replit project.
+
+MAIN TASK
+Prepare the website for public release by hiding the Log In / Admin functionality from the public website while preserving all existing login/admin code so it can be continued later.
+
+The website must be published as an operational public business website without the Log In button, without visible admin access, and without any public action connected to the Log In feature.
+
+CRITICAL REQUIREMENT
+Do NOT delete the login/admin work.
+
+The login/admin system is still needed for a future phase. It should be hidden, disabled from public navigation, and preserved safely for later development.
+
+PUBLIC RELEASE GOAL
+The public version should show only the customer-facing website:
+
+* Home
+* Services
+* Pricing Info
+* About Us
+* Reviews, if currently active
+* Book Now / Request Quote
+* Contact / Footer information
+
+The public version should NOT show:
+
+* Log In button
+* Admin Login link
+* Admin dashboard link
+* Admin-only buttons
+* Admin route links
+* Internal estimator access
+* Any unfinished login/admin feature
+
+FEATURE FLAG REQUIREMENT
+Create or use a feature flag to control whether admin/login functionality is visible.
+
+Recommended environment variable:
+
+`VITE_ENABLE_ADMIN_LOGIN=false`
+
+or, if the project does not use Vite:
+
+`ENABLE_ADMIN_LOGIN=false`
+
+Behaviour:
+
+When the feature flag is false:
+
+* Hide the Log In button from the navbar.
+* Hide any login-related CTA from the footer or public pages.
+* Hide any admin dashboard navigation.
+* Prevent public access to `/login`.
+* Prevent public access to `/admin`.
+* Prevent public access to `/admin/dashboard`.
+* Prevent public access to all `/admin/*` routes.
+* Keep the public website fully functional.
+* Keep Book Now / Request Quote fully functional.
+
+When the feature flag is true:
+
+* Restore the Log In button.
+* Restore access to `/login`.
+* Restore admin routes for development.
+* Keep existing admin/login functionality available for future work.
+
+If the project already has a different feature flag system, use the existing system instead of creating a duplicate.
+
+NAVBAR REQUIREMENTS
+Remove or hide the “Log In” button from the public navbar.
+
+Do not leave empty spacing where the button was.
+
+The navbar should remain visually balanced.
+
+The main visible CTA should remain:
+
+“Book Now”
+
+Book Now should still route to the public quote request form.
+
+The final public navbar should include only the active public navigation items.
+
+Example public navbar:
+
+* Home
+* Services
+* Pricing Info
+* About Us
+* Book Now
+
+If Reviews is already in the navbar and active, keep it. If it is not currently active, do not add it.
+
+DO NOT
+
+* Do not delete the Log In component.
+* Do not delete Admin Dashboard components.
+* Do not delete admin routes permanently.
+* Do not delete auth files.
+* Do not delete database/admin schema.
+* Do not remove future admin TODO comments.
+* Do not change the public quote request form logic.
+* Do not expose pricing calculator publicly.
+* Do not modify unrelated pages.
+
+ROUTE PROTECTION / DISABLED ROUTES
+When admin/login is disabled for public release:
+
+If a user manually visits `/login`, show either:
+
+* a clean 404 / Not Found page, or
+* redirect to Home.
+
+Preferred public behaviour:
+Redirect `/login` to Home or show Not Found.
+
+If a user manually visits `/admin` or any `/admin/*` route:
+
+* Do not show admin UI.
+* Do not show unfinished dashboard.
+* Redirect to Home or show Not Found.
+
+Do not show messages like:
+“Admin coming soon”
+unless the design already supports it. The public website should not advertise unfinished internal systems.
+
+PRESERVE ADMIN WORK FOR LATER
+Keep the existing admin/login code in the project.
+
+Add clear developer comments where appropriate:
+
+“Admin login is temporarily hidden for public release. Re-enable with ENABLE_ADMIN_LOGIN=true.”
+
+“Admin dashboard is preserved for future development and should not be exposed publicly until ready.”
+
+If possible, create or update documentation:
+
+File suggestion:
+`ADMIN_RELEASE_NOTES.md`
+
+Include:
+
+* Admin/login functionality has been hidden for public release.
+* Feature flag used to re-enable it.
+* Routes affected.
+* Files/components preserved.
+* Next steps for future admin dashboard work.
+
+If the project uses Git:
+
+* Create a checkpoint or commit before making changes if possible.
+* Suggested checkpoint name:
+  “Public release without admin login”
+* Do not rely only on memory. Leave clear documentation inside the project.
+
+PUBLIC WEBSITE FUNCTIONALITY TO VERIFY
+After hiding login/admin:
+
+Verify that these public pages still work:
+
+* Home
+* Services
+* Pricing Info
+* About Us
+* Book Now / Request Quote
+* Footer links
+* Contact buttons
+* Mobile menu
+* Navbar responsiveness
+
+Verify that:
+
+* The Log In button is not visible on desktop.
+* The Log In button is not visible on mobile.
+* No admin link is visible in footer.
+* No admin link is visible in CTA sections.
+* `/login` does not expose login UI when public release mode is disabled.
+* `/admin` does not expose admin UI.
+* `/admin/dashboard` does not expose admin UI.
+* Book Now still works.
+* Quote request form still submits.
+* The public UI still does not show internal pricing.
+
+DESIGN REQUIREMENTS
+After removing the Log In button, adjust navbar spacing so it remains polished.
+
+Important:
+
+* Do not leave awkward gaps.
+* Keep Book Now as the strongest CTA.
+* Keep button hierarchy consistent.
+* Maintain the existing Pope Cleaning Services brand style.
+* Navbar should look intentional, not like something was removed.
+
+Book Now should remain:
+
+* Primary CTA
+* Blue gradient button
+* Rounded pill
+* Visually prominent
+
+Normal menu links should remain:
+
+* Clean
+* Secondary
+* Balanced
+* Easy to read
+
+MOBILE MENU REQUIREMENTS
+Check the mobile menu separately.
+
+When admin/login is disabled:
+
+* Remove Log In from the mobile menu.
+* Keep Book Now visible.
+* Ensure mobile menu height and spacing still look clean.
+* Ensure there is no hidden but clickable empty area.
+
+ENVIRONMENT / REPLIT SECRETS
+If using environment variables, document the required value:
+
+For public release:
+`ENABLE_ADMIN_LOGIN=false`
+
+For future admin development:
+`ENABLE_ADMIN_LOGIN=true`
+
+If using Vite:
+`VITE_ENABLE_ADMIN_LOGIN=false`
+
+Do not expose sensitive environment values in the frontend.
+
+TESTING REQUIREMENTS
+After implementation, run the available project commands:
+
+* lint
+* typecheck
+* build
+* test, if available
+
+Then manually test in Replit preview:
+
+1. Desktop navbar.
+2. Mobile navbar.
+3. Home page.
+4. Services page.
+5. Pricing Info page.
+6. About Us page.
+7. Book Now quote request form.
+8. Quote request submission.
+9. Direct visit to `/login`.
+10. Direct visit to `/admin`.
+11. Direct visit to `/admin/dashboard`.
+
+FINAL RESPONSE FROM REPLIT
+When finished, report:
+
+* Files changed
+* Feature flag created or used
+* Public routes confirmed active
+* Admin/login routes hidden
+* How to re-enable admin/login later
+* Test commands run and results
+* Any known limitations
+
+ACCEPTANCE CRITERIA
+The task is complete when:
+
+1. The public website no longer shows the Log In button.
+2. The public website no longer exposes admin/login access.
+3. Book Now remains visible and functional.
+4. The quote request form remains functional.
+5. Admin/login code is preserved for future work.
+6. Admin/login can be re-enabled later using a documented feature flag.
+7. The navbar looks balanced after removing Log In.
+8. Desktop and mobile navigation both work correctly.
+9. Public release mode is clean, professional and ready to publish.
+10. No internal pricing/admin functionality is exposed publicly.
+
+FINAL GOAL
+Publish a clean operational public version of the Pope Cleaning Services website now, while safely preserving the Log In/Admin Dashboard work for future development.
