@@ -95,6 +95,8 @@ export default function Booking() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitReference, setSubmitReference] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -172,18 +174,81 @@ export default function Booking() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.customer.consentQuote || !formData.customer.consentPrivacy) {
         alert("Please accept the required terms.");
         return;
     }
+    if (isSubmitting) return;
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    try {
+      const { consentPrivacy, ...customerRest } = formData.customer;
+      const payload = {
+        source: "booking_form",
+        plan: formData.plan,
+        frequency: formData.frequency,
+        propertyType: formData.propertyType,
+        area: formData.area,
+        suburb: formData.suburb,
+        postcode: formData.postcode,
+        rooms: {
+          bedrooms: formData.bedrooms,
+          bathrooms: formData.bathrooms,
+          showers: formData.showers,
+          toilets: formData.toilets,
+          kitchens: formData.kitchens,
+          floors: formData.floors,
+          livingAreas: formData.livingAreas,
+        },
+        commercial: {
+          workstations: formData.workstations,
+          meetingRooms: formData.meetingRooms,
+          receptionAreas: formData.receptionAreas,
+          warehouseArea: formData.warehouseArea,
+          afterHours: formData.afterHours,
+        },
+        extras: Object.entries(formData.extras)
+          .filter(([, selected]) => selected)
+          .map(([id]) => id),
+        otherExtras: formData.otherExtras,
+        schedule: {
+          preferredDate: formData.preferredDate,
+          timeWindow: formData.timeWindow,
+          howSoon: formData.howSoon,
+          parking: formData.parking,
+          stairsLift: formData.stairsLift,
+          pets: formData.pets,
+          accessNotes: formData.accessNotes,
+        },
+        customer: { ...customerRest, consentService: consentPrivacy },
+      };
+
+      const res = await fetch("/api/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok) {
+        throw new Error(
+          data?.message || "We couldn't send your request. Please try again, or contact us on WhatsApp +61 423 258 795.",
+        );
+      }
+      setSubmitReference(data?.reference ?? null);
       setIsSuccess(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1500);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error && err.message
+          ? err.message
+          : "We couldn't send your request. Please try again, or contact us on WhatsApp +61 423 258 795.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isCommercial = ['office', 'retail', 'warehouse', 'commercial'].includes(formData.propertyType) || formData.plan === 'office';
@@ -210,6 +275,11 @@ export default function Booking() {
               <CheckCircle2 className="w-12 h-12 text-green-600" />
             </div>
             <h2 className="text-3xl font-bold text-secondary mb-4">Quote Request Sent!</h2>
+            {submitReference && (
+              <div className="inline-flex items-center gap-2 bg-[#EAF5FF] border border-[#2F7FD1]/30 text-[#00275F] font-bold px-4 py-2 rounded-full mb-4" data-testid="text-quote-reference">
+                Reference: {submitReference}
+              </div>
+            )}
             <p className="text-muted-foreground mb-8">
               Thank you, {formData.customer.firstName}! We've received your request for a {PLANS.find(p => p.id === formData.plan)?.title}. Our team will review your details and send a tailored quote to your email shortly.
             </p>
@@ -704,6 +774,11 @@ export default function Booking() {
                     </Button>
                   )}
                 </div>
+                {submitError && (
+                  <div className="mt-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl p-3 font-medium" data-testid="text-submit-error">
+                    {submitError}
+                  </div>
+                )}
               </div>
             </div>
 

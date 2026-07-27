@@ -43,9 +43,20 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev:client"
+args = "npm run dev"
 waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
 
 [agent]
 stack = "MOCKUP_JS"
 mockupState = "MOCKUP"
+
+[userenv]
+
+[userenv.development]
+VITE_ENABLE_ADMIN_LOGIN = "true"
+
+[userenv.shared]
+ADMIN_EMAIL = "popecleaningservices@hotmail.com"

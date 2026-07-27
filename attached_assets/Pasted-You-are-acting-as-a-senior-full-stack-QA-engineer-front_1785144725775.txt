@@ -1,0 +1,957 @@
+You are acting as a senior full-stack QA engineer, frontend architect, accessibility specialist and responsive design auditor for the Pope Cleaning Services website.
+
+PRIMARY OBJECTIVE
+
+Perform a complete technical, visual and functional diagnostic of the entire Pope Cleaning Services website.
+
+The purpose of this audit is to identify and correct:
+
+- broken buttons;
+- buttons without actions;
+- broken navigation links;
+- incorrect routes;
+- forms that do not submit;
+- missing validation;
+- mobile responsiveness problems;
+- visual inconsistencies;
+- overlapping elements;
+- horizontal scrolling;
+- inaccessible controls;
+- layout bugs;
+- typography inconsistencies;
+- colour inconsistencies;
+- missing loading states;
+- missing error states;
+- browser compatibility issues;
+- performance problems;
+- SEO problems;
+- accessibility failures;
+- public exposure of unfinished admin/login functionality;
+- any issue that could prevent a customer from requesting a cleaning quote.
+
+This website is a critical customer-acquisition system. The public quote request form, Book Now actions and business contact links must work reliably.
+
+Do not treat this as a superficial visual review. Inspect the full codebase, application routes, components, interactions, forms, backend connections and responsive behaviour.
+
+PROJECT CONTEXT
+
+Business:
+Pope Cleaning Services
+
+Location:
+Perth, Western Australia
+
+Primary public purpose:
+- explain the cleaning services;
+- build customer trust;
+- allow customers to submit a cleaning quote request;
+- collect relevant service and property information;
+- notify the business about new requests.
+
+Core public pages may include:
+- Home
+- Services
+- Pricing Info
+- About Us
+- Reviews
+- Book Now / Request a Cleaning Quote
+- Privacy Policy
+- Contact information
+- Footer links
+
+The public website must not expose:
+- internal pricing calculations;
+- admin-only estimator output;
+- unfinished admin dashboards;
+- hidden development tools;
+- private customer records;
+- inactive login features when the public-release feature flag is disabled.
+
+BRAND SYSTEM
+
+Preserve the current Pope Cleaning Services brand identity.
+
+Primary colours:
+- Deep navy: #00275F
+- Secondary navy: #004170
+- Primary blue: #2F7FD1
+- Bright blue: #2E86DE
+- Light blue: #7EC8FF
+- Soft blue: #EAF5FF
+- White: #FFFFFF
+- Light grey: #F5F7FA
+
+The design should remain:
+- professional;
+- clean;
+- premium;
+- trustworthy;
+- modern;
+- consistent;
+- easy to understand;
+- responsive;
+- appropriate for a cleaning services business.
+
+Do not redesign the website into an unrelated style.
+
+EXECUTION MODE
+
+Complete this work in two stages.
+
+STAGE 1 — DIAGNOSTIC ONLY
+
+First inspect and test the complete application without making changes.
+
+Produce an audit report that identifies:
+- issue;
+- page or component;
+- severity;
+- how to reproduce it;
+- likely cause;
+- recommended correction;
+- whether the correction is safe to apply automatically.
+
+Do not begin broad corrections until the initial diagnostic is complete.
+
+STAGE 2 — SAFE CORRECTIONS
+
+After documenting the diagnostic:
+- automatically correct low-risk and medium-risk issues;
+- preserve business content and functionality;
+- do not silently alter business rules;
+- do not change pricing logic;
+- do not delete features that may be required later;
+- do not change database structures unless clearly necessary;
+- do not modify authentication or security architecture without documenting the reason.
+
+For high-risk issues:
+- document them clearly;
+- explain the recommended change;
+- avoid destructive implementation unless required to make the public website operational.
+
+SEVERITY LEVELS
+
+Classify every issue using:
+
+CRITICAL
+Prevents customers from accessing the website, navigating, submitting a quote request, or causes customer data loss or security exposure.
+
+HIGH
+Major feature is broken, a primary CTA does not work, mobile experience is unusable, or important information is inaccessible.
+
+MEDIUM
+Visual inconsistency, layout problem, accessibility issue, weak validation, unclear interaction or degraded usability.
+
+LOW
+Minor spacing, typography, animation, alignment or cosmetic issue that does not block a customer.
+
+AUDIT AREA 1 — APPLICATION ROUTES
+
+Inspect every route defined in the application.
+
+Confirm:
+- route exists;
+- page renders;
+- route does not crash;
+- navigation points to the correct route;
+- browser refresh works on the route;
+- direct URL access works;
+- unknown routes show a proper 404 page;
+- disabled routes are not publicly exposed;
+- no route contains unfinished placeholder content unless intentionally documented.
+
+Test public routes such as:
+- /
+- /services
+- /pricing-info
+- /about
+- /reviews
+- /book-now
+- /request-quote
+- /privacy
+- /contact
+
+Also inspect:
+- /login
+- /admin
+- /admin/dashboard
+- all /admin/* routes
+
+When the admin/login feature flag is disabled:
+- Log In must not appear in navigation;
+- admin pages must not be accessible;
+- direct visits should redirect safely or show Not Found;
+- unfinished admin UI must not be exposed.
+
+Do not delete preserved admin code.
+
+AUDIT AREA 2 — NAVBAR
+
+Inspect desktop, tablet and mobile navigation.
+
+Verify:
+- logo links to Home;
+- every menu item opens the intended page;
+- Book Now opens the quote request page;
+- active page state is correct;
+- no duplicate buttons;
+- no dead links;
+- no clickable empty areas;
+- sticky header does not cover content;
+- mobile menu opens and closes;
+- mobile menu closes after navigation;
+- keyboard navigation works;
+- Escape closes mobile menu if appropriate;
+- focus remains visible;
+- body scrolling behaves correctly when mobile menu is open.
+
+Check visual consistency:
+- button heights;
+- padding;
+- border radius;
+- spacing;
+- shadows;
+- alignment;
+- hover states;
+- focus states;
+- selected states.
+
+Book Now must remain the primary CTA.
+
+Log In, if enabled, must remain visually secondary.
+
+AUDIT AREA 3 — ALL BUTTONS AND ACTIONS
+
+Search the full codebase for:
+- buttons;
+- links styled as buttons;
+- clickable divs;
+- cards with click handlers;
+- icons with actions;
+- submit controls;
+- CTA components.
+
+Create an inventory of every interactive control.
+
+For each control, verify:
+- it has a valid action;
+- it links to the correct route;
+- it does not use placeholder href="#";
+- it does not point to javascript:void(0);
+- it has no empty onClick handler;
+- it does not generate console errors;
+- it is keyboard accessible;
+- it has an accessible label;
+- disabled state works;
+- loading state prevents duplicate actions;
+- hover and focus states are visible;
+- mobile tap target is at least 44px.
+
+Identify buttons with misleading labels.
+
+Examples:
+- “Book Now” must open the quote request experience.
+- “Request a Quote” must open or scroll to the correct form.
+- “View Services” must navigate to Services.
+- “Call Us” must use a valid tel: link.
+- “Email Us” must use a valid mailto: link.
+- WhatsApp actions must use a correctly formatted link.
+- “Continue” must validate the current form step.
+- “Back” must preserve entered data.
+- “Send My Quote Request” must submit exactly once.
+
+Correct safe broken links and missing handlers.
+
+AUDIT AREA 4 — QUOTE REQUEST FORM
+
+Treat the public quote request form as the highest-priority workflow.
+
+Test the entire flow from beginning to end.
+
+Expected steps:
+1. Service
+2. Property
+3. Extras
+4. Schedule & Access
+5. Contact
+6. Review & Submit
+
+Verify:
+- step navigation works;
+- progress indicator updates;
+- current step is clear;
+- Continue validates only relevant fields;
+- Back preserves information;
+- review page accurately shows the entered information;
+- edit controls return to the correct step;
+- form state is not lost unexpectedly;
+- optional fields remain optional;
+- conditional fields display correctly;
+- hidden fields do not block submission;
+- hidden stale values do not corrupt the submitted record.
+
+Test every service:
+- Regular Home Cleaning
+- Spring / Deep Cleaning
+- Vacate / End of Lease Cleaning
+- Office / Commercial Cleaning
+- Carpet & Upholstery Cleaning
+- Tile & Grout Cleaning
+- Pressure Cleaning
+- Custom Cleaning Request
+
+Test residential conditional paths:
+- House
+- Apartment / Unit
+- Townhouse
+
+Test commercial conditional paths:
+- Office
+- Retail / Showroom
+- Warehouse / Workshop
+- Commercial Facility
+
+Verify fields such as:
+- property type;
+- suburb;
+- postcode;
+- property size;
+- bedrooms;
+- bathrooms;
+- showers;
+- toilets;
+- kitchens;
+- floors;
+- workstations;
+- meeting rooms;
+- break rooms;
+- reception areas;
+- extras;
+- preferred date;
+- preferred time;
+- urgency;
+- parking;
+- stairs/lift;
+- pets;
+- access notes;
+- customer name;
+- email;
+- phone;
+- preferred contact method;
+- consent fields.
+
+Confirm:
+- no price is visible;
+- no GST is visible;
+- no frequency discount amount is visible;
+- no internal estimator output is visible;
+- no admin pricing fields appear in the public form.
+
+AUDIT AREA 5 — FORM VALIDATION
+
+Inspect client-side and server-side validation.
+
+Test:
+- empty form;
+- partial form;
+- invalid email;
+- invalid postcode;
+- incomplete phone number;
+- excessive text length;
+- special characters;
+- whitespace-only values;
+- duplicate submission;
+- rapid repeated clicks;
+- browser back/forward behaviour.
+
+Validation requirements:
+- errors appear close to the relevant field;
+- errors are readable;
+- errors are associated with inputs;
+- the first invalid field receives focus;
+- validation does not erase data;
+- optional fields do not produce errors;
+- required consent is enforced;
+- optional marketing consent is not required;
+- native browser error popups are not the only validation method.
+
+Check server-side validation independently. Do not trust only frontend validation.
+
+AUDIT AREA 6 — SUBMISSION AND DATABASE
+
+Confirm that submitting the quote form:
+
+- calls the intended backend endpoint;
+- creates one database record;
+- stores status as `quote_requested`;
+- stores the correct customer information;
+- stores service details;
+- stores property details;
+- stores extras;
+- stores schedule/access details;
+- stores consent values;
+- stores timestamps;
+- stores uploaded photo references if applicable;
+- returns a reliable success response.
+
+Verify that a failed backend request:
+- does not show a false success state;
+- displays a clear retry message;
+- does not lose all user-entered information;
+- logs an appropriate development error without exposing personal data.
+
+Verify duplicate protection:
+- disable the submit button while sending;
+- prevent double-click duplicates;
+- use idempotency or duplicate checks if supported;
+- do not create multiple records from one request.
+
+AUDIT AREA 7 — FILE AND PHOTO UPLOADS
+
+Test:
+- JPG
+- PNG
+- WEBP
+- HEIC if supported
+- unsupported file type
+- oversized file
+- multiple files
+- removing files
+- upload failure
+- slow upload
+- zero-byte file
+
+Verify:
+- preview appears;
+- filename appears;
+- uploaded file can be removed before submit;
+- upload status is understandable;
+- errors do not block the rest of the form unnecessarily;
+- file size limits are explained;
+- private files are not publicly indexed;
+- uploaded files use safe filenames or generated IDs;
+- no executable files are accepted;
+- signed/private access is used where appropriate.
+
+AUDIT AREA 8 — RESPONSIVE DESIGN
+
+Test the website at representative viewport sizes.
+
+Required minimum test widths:
+- 320px
+- 360px
+- 375px
+- 390px
+- 414px
+- 480px
+- 768px
+- 820px
+- 1024px
+- 1280px
+- 1440px
+- 1920px
+
+Also test landscape orientation for common mobile/tablet sizes.
+
+Check:
+- horizontal overflow;
+- cut-off text;
+- overlapping cards;
+- buttons outside the viewport;
+- form labels wrapping poorly;
+- tables overflowing;
+- image distortion;
+- excessive empty space;
+- content hidden under sticky navbar;
+- footer alignment;
+- modal width;
+- dropdown positioning;
+- progress stepper overflow;
+- right-side summary panel behaviour;
+- mobile keyboard covering fields or submit controls.
+
+The site must remain usable when:
+- text is zoomed to 200%;
+- browser width is narrow;
+- system font scaling is increased;
+- reduced motion is enabled.
+
+Do not simply hide content to solve responsive problems unless it is nonessential.
+
+AUDIT AREA 9 — CROSS-BROWSER COMPATIBILITY
+
+Test or inspect compatibility for:
+- Chrome
+- Safari
+- Firefox
+- Edge
+- iOS Safari
+- Android Chrome
+
+Look for:
+- backdrop-filter fallbacks;
+- date input behaviour;
+- sticky positioning;
+- flex/grid inconsistencies;
+- HEIC upload support;
+- autofill styling;
+- viewport height issues;
+- mobile keyboard/layout problems;
+- CSS features that require fallback.
+
+AUDIT AREA 10 — VISUAL DESIGN CONSISTENCY
+
+Audit the entire design system.
+
+Check:
+- colour tokens;
+- button variants;
+- border radius;
+- shadows;
+- spacing scale;
+- card styling;
+- icon sizes;
+- heading hierarchy;
+- paragraph widths;
+- font weights;
+- line heights;
+- section spacing;
+- form field styling;
+- selected states;
+- error states;
+- success states;
+- status badges.
+
+Find hardcoded styles that conflict with the global design system.
+
+Look for:
+- random shades of blue;
+- different button gradients;
+- inconsistent corners;
+- inconsistent shadows;
+- multiple font sizes for the same hierarchy;
+- inconsistent field heights;
+- text with poor contrast;
+- excessive visual effects;
+- flat or unfinished-looking components.
+
+Use the existing reusable button and design-system components where available.
+
+Do not make every button primary blue.
+
+Maintain hierarchy:
+- primary action;
+- secondary action;
+- ghost action;
+- text action;
+- danger action.
+
+AUDIT AREA 11 — IMAGES AND MEDIA
+
+Verify:
+- image files load;
+- no broken image icons;
+- no stretched images;
+- width and height are specified where possible;
+- aspect ratios are preserved;
+- large images are optimized;
+- lazy loading is used appropriately;
+- meaningful images have alt text;
+- decorative images have empty alt text;
+- hero images do not cause layout shifts;
+- mobile crops remain visually acceptable;
+- tilt-shift service images remain consistent with the visual identity.
+
+Flag excessively large assets.
+
+Do not significantly reduce visible quality.
+
+AUDIT AREA 12 — ACCESSIBILITY
+
+Run an accessibility audit targeting WCAG 2.2 AA where practical.
+
+Inspect:
+- semantic HTML;
+- heading order;
+- landmarks;
+- input labels;
+- button names;
+- link names;
+- keyboard navigation;
+- visible focus;
+- focus order;
+- colour contrast;
+- form error association;
+- aria-live for success/error messages;
+- modal focus trapping;
+- skip navigation link;
+- screen-reader status messages;
+- touch target sizes;
+- reduced motion;
+- icon-only controls.
+
+Use automated tools if compatible:
+- axe-core
+- @axe-core/playwright
+- Lighthouse accessibility checks
+
+Do not fix accessibility by adding unnecessary ARIA where semantic HTML is sufficient.
+
+AUDIT AREA 13 — PERFORMANCE
+
+Run performance diagnostics.
+
+Check:
+- initial JavaScript bundle size;
+- unused code;
+- image sizes;
+- font loading;
+- render-blocking resources;
+- repeated network requests;
+- unnecessary re-renders;
+- large dependencies;
+- layout shifts;
+- slow API calls;
+- loading states;
+- lazy-loaded routes;
+- caching opportunities.
+
+Measure or review:
+- Largest Contentful Paint
+- Interaction to Next Paint
+- Cumulative Layout Shift
+- First Contentful Paint
+- Total Blocking Time where available
+
+Use Lighthouse if the environment supports it.
+
+Do not pursue small performance gains that break functionality.
+
+AUDIT AREA 14 — SEO AND PUBLIC METADATA
+
+Inspect:
+- unique page titles;
+- meta descriptions;
+- canonical URL;
+- Open Graph metadata;
+- social sharing image;
+- favicon;
+- robots.txt;
+- sitemap.xml;
+- heading hierarchy;
+- indexability;
+- local business content;
+- meaningful image alt text;
+- clean URLs.
+
+Ensure public pages are indexable.
+
+Ensure admin, login, internal APIs and private files are not indexed.
+
+Verify business name consistency:
+“Pope Cleaning Services”
+
+Verify service location:
+“Perth, Western Australia”
+
+Do not add unverified business claims or statistics.
+
+AUDIT AREA 15 — CONSOLE AND NETWORK ERRORS
+
+Open every main page and interaction while monitoring:
+- browser console;
+- failed network requests;
+- React warnings;
+- hydration warnings;
+- missing keys;
+- unhandled promise rejections;
+- 404 assets;
+- API 4xx/5xx responses;
+- CORS problems;
+- deprecated API warnings.
+
+Resolve all safe and relevant console errors.
+
+Do not ignore repeated warnings that could indicate unstable behaviour.
+
+AUDIT AREA 16 — LOADING, EMPTY, ERROR AND SUCCESS STATES
+
+Inspect every data-dependent component.
+
+Ensure it has:
+- loading state;
+- empty state;
+- error state;
+- success state where applicable.
+
+Examples:
+- quote request submission;
+- photo upload;
+- service cards;
+- database requests;
+- future admin data;
+- chatbot if present;
+- contact actions.
+
+Do not leave blank white areas while data is loading or failing.
+
+AUDIT AREA 17 — SECURITY BASELINE
+
+Perform a basic application-security review.
+
+Check:
+- frontend secrets;
+- hardcoded API keys;
+- exposed admin routes;
+- public database reads;
+- unsafe HTML rendering;
+- unsanitized text;
+- unsafe file uploads;
+- missing rate limiting;
+- missing CSRF protection where applicable;
+- insecure cookies;
+- overly permissive CORS;
+- verbose production errors;
+- sensitive console logging;
+- vulnerable dependencies if package audit is available.
+
+Do not display raw customer information in logs.
+
+Do not make destructive security changes without explaining them.
+
+AUDIT AREA 18 — AUTOMATED TESTING
+
+Use the testing tools already in the project where possible.
+
+If no browser test framework exists and adding one is compatible, prefer Playwright for end-to-end testing.
+
+Create tests for critical public workflows:
+
+1. Home page renders.
+2. Navbar links work.
+3. Mobile menu works.
+4. Book Now opens.
+5. Residential quote flow works.
+6. Commercial quote flow works.
+7. Validation prevents invalid submission.
+8. Optional extras work.
+9. Photo selection/removal works.
+10. Review summary matches form inputs.
+11. Form submits once.
+12. Success state appears after database save.
+13. Public UI does not display pricing.
+14. Login/admin routes are hidden when disabled.
+15. Main contact links work.
+
+Use stable selectors such as:
+- data-testid
+- accessible roles
+- labels
+
+Avoid brittle selectors based only on CSS class names.
+
+VISUAL REGRESSION TESTING
+
+If practical, create screenshots for major pages at:
+- mobile width;
+- tablet width;
+- desktop width.
+
+Recommended pages:
+- Home
+- Services
+- Pricing Info
+- About Us
+- Book Now step 1
+- Book Now property step
+- Book Now review step
+- Book Now success state
+- Mobile navbar open
+
+Use visual comparisons to detect:
+- unexpected spacing changes;
+- overflow;
+- clipped text;
+- missing images;
+- broken cards;
+- inconsistent button styling.
+
+Do not commit unstable screenshots containing timestamps or dynamic values without masking them.
+
+RECOMMENDED TOOLS
+
+Use existing project tools first.
+
+When compatible, use:
+- TypeScript compiler
+- ESLint
+- project build command
+- project test command
+- Playwright
+- axe-core
+- Lighthouse
+- npm audit or equivalent
+- browser developer tools
+- responsive screenshots
+
+Do not install large or conflicting tooling without checking the project stack.
+
+AUTOMATIC CORRECTION RULES
+
+Safe to correct automatically:
+- broken internal links with an obvious intended route;
+- buttons missing an obvious handler;
+- missing button type attributes;
+- inconsistent button classes;
+- missing alt attributes;
+- spacing/overflow problems;
+- accessible labels;
+- focus states;
+- mobile stacking;
+- duplicate submit prevention;
+- loading indicators;
+- clear validation messages;
+- minor console warnings;
+- missing empty/error states;
+- unused placeholder links;
+- incorrect responsive classes.
+
+Require caution and documentation:
+- database migrations;
+- authentication changes;
+- business workflow changes;
+- pricing logic;
+- consent wording;
+- deleting routes;
+- replacing major dependencies;
+- changes to production data;
+- changes to notification providers;
+- changing existing API contracts.
+
+BACKUP AND CHANGE SAFETY
+
+Before applying corrections:
+- inspect current Git status;
+- preserve existing work;
+- create a checkpoint or commit if Git is available;
+- do not overwrite unrelated user changes;
+- do not reset the repository;
+- do not remove unfinished admin work;
+- keep changes focused and reversible.
+
+Suggested checkpoint:
+“Pre-release full website diagnostic”
+
+POST-CORRECTION VERIFICATION
+
+After applying corrections:
+
+1. Run lint.
+2. Run typecheck.
+3. Run build.
+4. Run unit tests.
+5. Run end-to-end tests.
+6. Re-run accessibility scan.
+7. Re-test responsive layouts.
+8. Re-test quote submission.
+9. Confirm no public pricing appears.
+10. Confirm no public admin access appears.
+11. Review browser console.
+12. Review failed network requests.
+13. Confirm production build starts correctly.
+
+Do not report success if critical tests fail.
+
+FINAL REPORT
+
+When finished, create a concise but complete diagnostic report.
+
+Report sections:
+
+1. Executive Summary
+- overall health;
+- production readiness;
+- critical risks.
+
+2. Issues Found
+For each issue include:
+- severity;
+- page/component;
+- description;
+- reproduction;
+- resolution.
+
+3. Corrections Applied
+- exact type of correction;
+- affected page;
+- risk level.
+
+4. Remaining Issues
+- items requiring manual decision;
+- external provider limitations;
+- environment limitations.
+
+5. Responsive Results
+- mobile;
+- tablet;
+- desktop;
+- cross-browser limitations.
+
+6. Accessibility Results
+- major fixes;
+- remaining WCAG concerns.
+
+7. Performance Results
+- main bottlenecks;
+- fixes applied.
+
+8. Functional Verification
+- routes tested;
+- buttons tested;
+- forms tested;
+- database submission tested;
+- uploads tested.
+
+9. Commands and Tests
+- commands run;
+- pass/fail results.
+
+10. Files Changed
+- list of modified files;
+- new test files;
+- configuration changes.
+
+11. Production Readiness Decision
+Return one of:
+- READY FOR PUBLIC RELEASE
+- READY WITH MINOR KNOWN ISSUES
+- NOT READY FOR PUBLIC RELEASE
+
+Include the reasons.
+
+FINAL ACCEPTANCE CRITERIA
+
+The diagnostic and correction task is complete only when:
+
+1. All public navigation links have valid actions.
+2. No primary CTA is broken.
+3. Book Now opens the correct form.
+4. The quote request flow works from start to finish.
+5. Form validation works.
+6. Submission creates a valid backend/database record.
+7. Duplicate submissions are prevented.
+8. Public pricing is not exposed.
+9. Disabled login/admin features are not publicly accessible.
+10. The website has no horizontal overflow at common screen sizes.
+11. Mobile navigation works.
+12. Buttons remain accessible by keyboard.
+13. Forms work with screen readers at a reasonable baseline.
+14. Major browser console errors are resolved.
+15. Production build succeeds.
+16. Main public pages render correctly on mobile, tablet and desktop.
+17. A prioritized diagnostic report is delivered.
+18. No unrelated business logic was changed.
+
+FINAL GOAL
+
+Deliver a stable, polished and production-ready Pope Cleaning Services website that customers can use reliably on desktop, tablet and mobile, with working navigation, functional buttons, a dependable quote request form, consistent visual design and no publicly exposed unfinished internal features.

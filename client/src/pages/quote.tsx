@@ -79,6 +79,8 @@ export default function QuotePage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitReference, setSubmitReference] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
 
   // Form State
@@ -194,18 +196,80 @@ export default function QuotePage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
-    
-    // Simulate backend submission
-    console.log("Submitting Quote Request:", formData);
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    try {
+      const payload = {
+        source: "quote_form",
+        plan: formData.plan,
+        frequency: formData.frequency,
+        propertyType: formData.propertyType,
+        otherPropertyType: formData.otherPropertyType,
+        area: formData.area,
+        suburb: formData.suburb,
+        postcode: formData.postcode,
+        rooms: {
+          bedrooms: formData.bedrooms,
+          bathrooms: formData.bathrooms,
+          showers: formData.showers,
+          toilets: formData.toilets,
+          kitchens: formData.kitchens,
+          floors: formData.floors,
+          livingAreas: formData.livingAreas,
+          bedsToMake: formData.bedsToMake,
+        },
+        commercial: {
+          workstations: formData.workstations,
+          meetingRooms: formData.meetingRooms,
+          receptionAreas: formData.receptionAreas,
+          sharedAreas: formData.sharedAreas,
+          warehouseArea: formData.warehouseArea,
+          afterHours: formData.afterHours,
+        },
+        extras: Object.entries(formData.extras)
+          .filter(([, selected]) => selected)
+          .map(([id]) => id),
+        otherExtras: formData.otherExtras,
+        schedule: {
+          preferredDate: formData.preferredDate,
+          timeWindow: formData.timeWindow,
+          howSoon: formData.howSoon,
+          parking: formData.parking,
+          stairsLift: formData.stairsLift,
+          pets: formData.pets,
+          accessNotes: formData.accessNotes,
+          photoNames: formData.photos.map((f) => f.name),
+        },
+        customer: formData.customer,
+      };
+
+      const res = await fetch("/api/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok) {
+        throw new Error(
+          data?.message || "We couldn't send your request. Please try again, or contact us on WhatsApp +61 423 258 795.",
+        );
+      }
+      setSubmitReference(data?.reference ?? null);
       setIsSuccess(true);
       scrollToTop();
-    }, 2000);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error && err.message
+          ? err.message
+          : "We couldn't send your request. Please try again, or contact us on WhatsApp +61 423 258 795.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const Counter = ({ label, value, onChange }: {label: string, value: number, onChange: (v: number) => void}) => (
@@ -241,6 +305,11 @@ export default function QuotePage() {
               <CheckCircle2 className="w-12 h-12 text-[#2F7FD1]" />
             </div>
             <h2 className="text-3xl font-bold text-[#00275F] mb-4">Thanks — your quote request has been sent.</h2>
+            {submitReference && (
+              <div className="inline-flex items-center gap-2 bg-[#EAF5FF] border border-[#2F7FD1]/30 text-[#00275F] font-bold px-4 py-2 rounded-full mb-4" data-testid="text-quote-reference">
+                Reference: {submitReference}
+              </div>
+            )}
             <p className="text-[#00275F]/70 mb-8 leading-relaxed">
               Our team will review the details and contact you using your preferred method ({formData.customer.contactMethod}). If we need more information, we’ll let you know before confirming your quote.
             </p>
@@ -907,6 +976,11 @@ export default function QuotePage() {
                     </Button>
                   )}
                 </div>
+                {submitError && (
+                  <div className="mt-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl p-3 font-medium" data-testid="text-submit-error">
+                    {submitError}
+                  </div>
+                )}
               </div>
             </div>
 

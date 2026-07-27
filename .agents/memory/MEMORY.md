@@ -1,0 +1,2 @@
+- [Express 5 req.params typing](express5-params-typing.md) — @types/express v5 types route params as `string | string[]`; wrap in `String()` before passing to string-typed helpers.
+- [requestSecrets ends the turn](request-secrets-turn-end.md) — sequence all edits/tests/docs first; make the requestSecrets/requestEnvVars call the final action of a turn.

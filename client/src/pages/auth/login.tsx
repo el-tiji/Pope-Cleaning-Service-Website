@@ -1,25 +1,43 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
+import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { ArrowRight, Lock, Mail } from "lucide-react";
+import { ArrowRight, Lock, Mail, Loader2, AlertCircle } from "lucide-react";
+import { apiRequest, queryClient } from "@/lib/queryClient";
 
 export default function Login() {
   const [, setLocation] = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  const login = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", "/api/auth/login", { email, password });
+      return res.json();
+    },
+    onSuccess: (user) => {
+      queryClient.setQueryData(["/api/auth/me"], user);
+      setLocation("/admin/dashboard");
+    },
+    onError: (err: Error) => {
+      const message = err.message.includes("401")
+        ? "Invalid email or password."
+        : err.message.includes("429")
+          ? "Too many attempts — please wait 15 minutes."
+          : "Could not log in. Please try again.";
+      setError(message);
+    },
+  });
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock routing based on email
-    if (email.includes("admin")) {
-      setLocation("/admin/dashboard");
-    } else {
-      setLocation("/portal/dashboard");
-    }
+    setError(null);
+    login.mutate();
   };
 
   return (
@@ -42,17 +60,16 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10 h-12 rounded-xl" 
-                  placeholder="admin@popecleaning.com" 
+                  placeholder="you@popecleaning.com" 
+                  autoComplete="email"
                   required 
+                  data-testid="input-login-email"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <Label>Password</Label>
-                <a href="#" className="text-sm text-[#2F7FD1] hover:underline font-medium">Forgot password?</a>
-              </div>
+              <Label>Password</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input 
@@ -61,21 +78,42 @@ export default function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   className="pl-10 h-12 rounded-xl" 
                   placeholder="••••••••" 
+                  autoComplete="current-password"
                   required 
+                  data-testid="input-login-password"
                 />
               </div>
             </div>
 
-            <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold bg-[#2F7FD1] hover:bg-[#00275F] text-white" variant="default">
-              Log In
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            
-            <div className="text-center mt-6 text-sm text-muted-foreground bg-[#EAF5FF] p-3 rounded-lg border border-[#2F7FD1]/20">
-              <span className="font-bold text-[#00275F]">Prototype Mode:</span> Use any email containing "admin" to access the Admin Portal.
-            </div>
-          </form>
+            {error && (
+              <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3" data-testid="text-login-error">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                {error}
+              </div>
+            )}
 
+            <Button 
+              type="submit" 
+              disabled={login.isPending}
+              className="w-full h-12 rounded-xl text-lg font-bold bg-[#2F7FD1] hover:bg-[#00275F] text-white" 
+              variant="default"
+              data-testid="button-login-submit"
+            >
+              {login.isPending ? (
+                <>
+                  Logging in… <Loader2 className="w-5 h-5 ml-2 animate-spin" />
+                </>
+              ) : (
+                <>
+                  Log In <ArrowRight className="w-5 h-5 ml-2" />
+                </>
+              )}
+            </Button>
+
+            <p className="text-center text-xs text-muted-foreground">
+              Staff access only. Contact the administrator if you need an account.
+            </p>
+          </form>
         </div>
       </main>
       <Footer />

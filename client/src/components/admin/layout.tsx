@@ -1,4 +1,4 @@
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { 
   LayoutDashboard, 
   FileText, 
@@ -11,24 +11,63 @@ import {
   Settings, 
   LogOut,
   Menu,
-  X
+  X,
+  Loader2
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/use-auth";
+import { AdminCopilot } from "@/components/admin/copilot";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
+  /** When set, the copilot opens with this quote as case context. */
+  copilotQuoteReference?: string;
 }
 
-export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
+export function AdminLayout({ children, title, subtitle, copilotQuoteReference }: AdminLayoutProps) {
   const [location, setLocation] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, isLoading, logout } = useAuth();
+
+  // Client-side guard (server enforces the real check on every API call).
+  useEffect(() => {
+    if (!isLoading && !user) {
+      setLocation("/auth/login");
+    }
+  }, [isLoading, user, setLocation]);
+
+  const { data: stats } = useQuery<{ quoteCounts: Record<string, number> }>({
+    queryKey: ["/api/admin/stats"],
+    enabled: !!user,
+    refetchInterval: 60_000,
+  });
+  const newCount = stats?.quoteCounts?.new ?? 0;
+
+  if (isLoading || !user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#F5F8FC]">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 className="w-8 h-8 text-[#2F7FD1] animate-spin" />
+          <p className="text-sm text-muted-foreground">Checking access…</p>
+        </div>
+      </div>
+    );
+  }
+
+  const initials = (user.name || user.email)
+    .split(/[\s@.]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
 
   const navigation = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Quote Requests', href: '/admin/quotes', icon: FileText, badge: '3' },
+    { name: 'Quote Requests', href: '/admin/quotes', icon: FileText, badge: newCount > 0 ? String(newCount) : undefined },
     { name: 'Bookings', href: '#', icon: CalendarCheck },
     { name: 'Calendar', href: '#', icon: Calendar },
     { name: 'Customers', href: '#', icon: Users },
@@ -59,10 +98,10 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
         
         <div className="p-4 border-b border-border">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#EAF5FF] text-[#2F7FD1] flex items-center justify-center font-bold">KP</div>
-            <div>
-              <p className="text-sm font-bold text-secondary">Kevin Pope</p>
-              <p className="text-xs text-muted-foreground">Administrator</p>
+            <div className="w-10 h-10 rounded-full bg-[#EAF5FF] text-[#2F7FD1] flex items-center justify-center font-bold">{initials || "PC"}</div>
+            <div className="min-w-0">
+              <p className="text-sm font-bold text-secondary truncate" data-testid="text-admin-name">{user.name || user.email}</p>
+              <p className="text-xs text-muted-foreground capitalize">{user.role}</p>
             </div>
           </div>
         </div>
@@ -93,7 +132,7 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
                   {item.name}
                 </div>
                 {item.badge && (
-                  <span className="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-0.5 rounded-full">
+                  <span className="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-0.5 rounded-full" data-testid="badge-new-quotes">
                     {item.badge}
                   </span>
                 )}
@@ -103,17 +142,15 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
         </nav>
 
         <div className="p-4 border-t border-border">
-          <a
-            href="/login"
-            onClick={(e) => {
-              e.preventDefault();
-              setLocation('/login');
-            }}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-600 hover:bg-red-50 font-medium transition-colors"
+          <button
+            onClick={() => logout.mutate()}
+            disabled={logout.isPending}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-600 hover:bg-red-50 font-medium transition-colors disabled:opacity-60"
+            data-testid="button-logout"
           >
-            <LogOut className="w-5 h-5" />
+            {logout.isPending ? <Loader2 className="w-5 h-5 animate-spin" /> : <LogOut className="w-5 h-5" />}
             Log out
-          </a>
+          </button>
         </div>
       </aside>
 
@@ -140,6 +177,9 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
           {children}
         </div>
       </main>
+
+      {/* Staff Copilot (internal AI assistant) */}
+      <AdminCopilot quoteReference={copilotQuoteReference} />
     </div>
   );
 }
